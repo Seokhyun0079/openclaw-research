@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ベビー用品セール 12:38</title>
+  <style>
+    :root {
+      --bg: #1a1520;
+      --surface: #251e2a;
+      --surface-2: #2f2636;
+      --border: #3d3348;
+      --text: #f5eef5;
+      --muted: #a89bb0;
+      --accent: #f0abfc;
+      --accent-2: #86efac;
+      --accent-glow: rgba(240, 171, 252, 0.14);
+      --sale: #f9a8d4;
+      --event: #6ee7b7;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Segoe UI", sans-serif;
+      background: var(--bg);
+      background-image:
+        radial-gradient(ellipse 70% 45% at 20% -10%, rgba(240,171,252,0.16), transparent),
+        radial-gradient(ellipse 50% 35% at 100% 0%, rgba(110,231,183,0.1), transparent);
+      color: var(--text);
+      line-height: 1.55;
+      min-height: 100vh;
+      padding: 1.25rem;
+    }
+    .wrap { max-width: 720px; margin: 0 auto; }
+    header {
+      background: linear-gradient(135deg, var(--surface) 0%, var(--surface-2) 100%);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1.5rem 1.25rem;
+      margin-bottom: 1rem;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.35);
+    }
+    .badge {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      color: var(--accent);
+      background: var(--accent-glow);
+      border: 1px solid rgba(240,171,252,0.35);
+      padding: 0.25rem 0.6rem;
+      border-radius: 999px;
+      margin-bottom: 0.75rem;
+    }
+    header h1 {
+      font-size: clamp(1.35rem, 4vw, 1.65rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.35rem;
+    }
+    .datetime {
+      font-size: 2rem;
+      font-weight: 800;
+      font-variant-numeric: tabular-nums;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+    }
+    .datetime span { font-size: 1rem; font-weight: 500; color: var(--muted); margin-left: 0.35rem; }
+    .summary-bar {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.65rem;
+      margin-bottom: 1rem;
+    }
+    .chip {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 0.85rem 1rem;
+    }
+    .chip.sale { border-color: rgba(249,168,212,0.35); background: rgba(249,168,212,0.08); }
+    .chip.event { border-color: rgba(110,231,183,0.35); background: rgba(110,231,183,0.08); }
+    .chip-label { font-size: 0.78rem; color: var(--muted); font-weight: 500; display: block; }
+    .chip-value { font-size: 1.5rem; font-weight: 800; font-variant-numeric: tabular-nums; }
+    .chip.sale .chip-value { color: var(--sale); }
+    .chip.event .chip-value { color: var(--event); }
+    section {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1.25rem;
+      margin-bottom: 1rem;
+    }
+    section > h2 {
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+    .group-block { margin-bottom: 1.25rem; }
+    .group-block:last-child { margin-bottom: 0; }
+    .group-title {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--sale);
+      margin-bottom: 0.55rem;
+    }
+    .deal-grid, .event-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 0.65rem;
+    }
+    .deal-card, .event-card {
+      display: block;
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1rem;
+      text-decoration: none;
+      color: var(--text);
+      transition: border-color 0.15s, transform 0.15s;
+    }
+    .deal-card:hover { border-color: var(--sale); }
+    .event-card:hover { border-color: var(--event); }
+    .deal-group {
+      font-size: 0.68rem;
+      font-weight: 600;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+    }
+    .deal-store, .event-name {
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin: 0.35rem 0 0.45rem;
+      line-height: 1.35;
+    }
+    .deal-text { font-size: 0.84rem; color: #ddd6e0; line-height: 1.45; }
+    .sub-deal { font-size: 0.78rem; color: var(--muted); margin-top: 0.35rem; }
+    .deal-link, .event-link {
+      display: inline-block;
+      margin-top: 0.65rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--accent);
+    }
+    .event-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.35rem;
+    }
+    .event-area {
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--event);
+      background: rgba(110,231,183,0.12);
+      padding: 0.15rem 0.45rem;
+      border-radius: 6px;
+    }
+    .event-period {
+      font-size: 0.68rem;
+      color: var(--muted);
+      font-variant-numeric: tabular-nums;
+    }
+    .event-place { font-size: 0.8rem; color: var(--muted); margin-bottom: 0.25rem; }
+    .empty { color: var(--muted); font-size: 0.9rem; }
+    footer {
+      text-align: center;
+      font-size: 0.78rem;
+      color: var(--muted);
+      padding: 1rem 0 0.5rem;
+      line-height: 1.6;
+    }
+    @media (max-width: 480px) {
+      .summary-bar, .deal-grid, .event-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="badge">OpenClaw · Baby Deals</div>
+      <h1>🍼 ベビー用品セール & おでかけ</h1>
+      <div class="datetime">07/04 <span>12:38 JST</span></div>
+    </header>
+
+    <div class="summary-bar">
+      <div class="chip sale">
+        <span class="chip-label">セール・特価</span>
+        <span class="chip-value">8件</span>
+      </div>
+      <div class="chip event">
+        <span class="chip-label">子連れイベント</span>
+        <span class="chip-value">5件</span>
+      </div>
+    </div>
+
+    <section aria-labelledby="sales-heading">
+      <h2 id="sales-heading">🛍 セール・特価</h2>
+      <div class="group-block"><h3 class="group-title">専門店</h3><div class="deal-grid"><a class="deal-card" href="https://www.akachan.jp/" target="_blank" rel="noopener">
+  <span class="deal-group">専門店</span>
+  <h3 class="deal-store">アカチャンホンポ</h3>
+  <p class="deal-text">時間を選ばずお買物。通販限定の商品やセール、フェアを実施！</p>
+  <p class="sub-deal">通販限定の商品やセール、フェアを実施！</p>
+  <span class="deal-link">公式サイト ↗</span>
+</a><a class="deal-card" href="https://www.24028-net.jp/category/SALE/" target="_blank" rel="noopener">
+  <span class="deal-group">専門店</span>
+  <h3 class="deal-store">西松屋セール</h3>
+  <p class="deal-text">ベビー服・子供服・マタニティ専門通販、西松屋公式オンラインストアで開催中のセールの一覧です。 | 西松…</p>
+  <p class="sub-deal">今週のチラシ 7/2～7/14 ミミコレ 7/2～7/14 月</p>
+  <span class="deal-link">公式サイト ↗</span>
+</a><a class="deal-card" href="https://www.dadway.com/" target="_blank" rel="noopener">
+  <span class="deal-group">専門店</span>
+  <h3 class="deal-store">ダッドウェイ</h3>
+  <p class="deal-text">イベント / キャンペーン 2025.02.27</p>
+  
+  <span class="deal-link">公式サイト ↗</span>
+</a></div></div><div class="group-block"><h3 class="group-title">メーカー</h3><div class="deal-grid"><a class="deal-card" href="https://www.aprica.jp/" target="_blank" rel="noopener">
+  <span class="deal-group">メーカー</span>
+  <h3 class="deal-store">アップリカ公式</h3>
+  <p class="deal-text">大切なお知らせ 「クルリラ ビッテ エックス AB」サービスキャンペーンのご案内</p>
+  <p class="sub-deal">「クルリラ ビッテ エックス AB」サービスキャンペーンのご案内</p>
+  <span class="deal-link">公式サイト ↗</span>
+</a><a class="deal-card" href="https://www.katoji.co.jp/" target="_blank" rel="noopener">
+  <span class="deal-group">メーカー</span>
+  <h3 class="deal-store">カトージ</h3>
+  <p class="deal-text">KATOJI直営店舗限定【KATOJI SUMMER SALE】を開催いたします！</p>
+  
+  <span class="deal-link">公式サイト ↗</span>
+</a></div></div><div class="group-block"><h3 class="group-title">総合</h3><div class="deal-grid"><a class="deal-card" href="https://www.nitori-net.jp/ec/" target="_blank" rel="noopener">
+  <span class="deal-group">総合</span>
+  <h3 class="deal-store">ニトリ</h3>
+  <p class="deal-text">LINE 季節商品やお得なセール情報をお知らせします</p>
+  
+  <span class="deal-link">公式サイト ↗</span>
+</a><a class="deal-card" href="https://www.aeon.com/" target="_blank" rel="noopener">
+  <span class="deal-group">総合</span>
+  <h3 class="deal-store">イオン</h3>
+  <p class="deal-text">毎日のお買い物が楽しくなるキャンペーンや地域のイベントなど 、イオングループのおトクな情報をお届けしま…</p>
+  <p class="sub-deal">現在キャンペーンは開催しておりません。 --&gt;</p>
+  <span class="deal-link">公式サイト ↗</span>
+</a><a class="deal-card" href="https://www.itoyokado.co.jp/" target="_blank" rel="noopener">
+  <span class="deal-group">総合</span>
+  <h3 class="deal-store">イトーヨーカドー</h3>
+  <p class="deal-text">イトーヨーカドーのおすすめ商品、全国の店舗情報、ショッピングにお役立ち頂けるお得なチラシ情報、インター…</p>
+  <p class="sub-deal">店舗・チラシ情報</p>
+  <span class="deal-link">公式サイト ↗</span>
+</a></div></div>
+    </section>
+
+    <section aria-labelledby="events-heading">
+      <h2 id="events-heading">👨‍👩‍👧 子連れおでかけ（東京・近郊）</h2>
+      <div class="event-grid"><a class="event-card" href="https://sinkisarazuhonsyo.wixsite.com/shiohigari-gyogyo-ku" target="_blank" rel="noopener">
+  <div class="event-top">
+    <span class="event-area">千葉</span>
+    <span class="event-period">03/20〜07/12</span>
+  </div>
+  <h3 class="event-name">木更津海岸の潮干狩り</h3>
+  <p class="event-place">📍 木更津海岸</p>
+  <span class="event-link">詳細 ↗</span>
+</a><a class="event-card" href="https://mundopixar.com/ja/cities/tokyo" target="_blank" rel="noopener">
+  <div class="event-top">
+    <span class="event-area">東京</span>
+    <span class="event-period">03/20〜10/12</span>
+  </div>
+  <h3 class="event-name">「ピクサーの世界展」あなたが夢見た物語の世界へ</h3>
+  <p class="event-place">📍 CREVIA BASE Tokyo</p>
+  <span class="event-link">詳細 ↗</span>
+</a><a class="event-card" href="https://doraemon100japan.com/" target="_blank" rel="noopener">
+  <div class="event-top">
+    <span class="event-area">東京</span>
+    <span class="event-period">03/27〜09/30</span>
+  </div>
+  <h3 class="event-name">100％ドラえもん＆フレンズ in 東京</h3>
+  <p class="event-place">📍 TOKYO DREAM PARK(東京ドリームパーク)</p>
+  <span class="event-link">詳細 ↗</span>
+</a><a class="event-card" href="https://www.yokohama-sparkling-twilight.com/" target="_blank" rel="noopener">
+  <div class="event-top">
+    <span class="event-area">神奈川</span>
+    <span class="event-period">04/04〜09/20</span>
+  </div>
+  <h3 class="event-name">横浜ナイトフラワーズ × GREEN×EXPO2027 (グリーン×エキスポ2027)</h3>
+  <p class="event-place">📍 横浜港(新港ふ頭、大さん橋)</p>
+  <span class="event-link">詳細 ↗</span>
+</a><a class="event-card" href="https://depaato.kawaisouni.jp/" target="_blank" rel="noopener">
+  <div class="event-top">
+    <span class="event-area">神奈川</span>
+    <span class="event-period">04/25〜07/20</span>
+  </div>
+  <h3 class="event-name">「祝 閉店！可哀想に！デパート」展</h3>
+  <p class="event-place">📍 スカイビル</p>
+  <span class="event-link">詳細 ↗</span>
+</a></div>
+    </section>
+
+    <footer>
+      各公式サイトで条件・在庫・開催日をご確認ください<br>
+      2026-07-04 12:38 JST
+    </footer>
+  </div>
+</body>
+</html>
