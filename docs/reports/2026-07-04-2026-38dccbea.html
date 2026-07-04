@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>学資保険ガイド 2026 — 選び方・返戻率・おすすめ比較</title>
+<style>
+  :root {
+    --bg: #fffbf5;
+    --card: #fff;
+    --text: #1e293b;
+    --muted: #64748b;
+    --accent: #b45309;
+    --accent-light: #fffbeb;
+    --border: #fde68a;
+    --warn: #fef3c7;
+    --warn-border: #f59e0b;
+    --ok: #ecfdf5;
+    --ok-border: #10b981;
+    --bad: #fef2f2;
+    --bad-border: #ef4444;
+  }
+  * { box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", sans-serif;
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 1.5rem;
+    line-height: 1.75;
+    color: var(--text);
+    background: var(--bg);
+  }
+  header {
+    text-align: center;
+    padding: 2rem 1rem;
+    border-bottom: 3px solid #fcd34d;
+    margin-bottom: 2rem;
+  }
+  header h1 { color: var(--accent); font-size: clamp(1.35rem, 4vw, 1.85rem); margin-bottom: .5rem; }
+  header p { color: var(--muted); font-size: .92rem; margin: .25rem 0; }
+  nav {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1rem 1.25rem;
+    margin-bottom: 1.5rem;
+  }
+  nav h2 { font-size: .95rem; color: var(--accent); margin: 0 0 .6rem; }
+  nav ol { margin: 0; padding-left: 1.2rem; font-size: .9rem; }
+  nav li { margin: .2rem 0; }
+  nav a { color: var(--accent); text-decoration: none; }
+  section {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.4rem;
+    margin-bottom: 1.25rem;
+  }
+  section > h2 {
+    color: var(--accent);
+    font-size: 1.2rem;
+    margin: 0 0 .85rem;
+    padding-bottom: .45rem;
+    border-bottom: 2px solid #fcd34d;
+  }
+  h3 { color: #334155; font-size: 1.02rem; margin: 1.1rem 0 .45rem; }
+  h4 { color: #475569; font-size: .95rem; margin: .85rem 0 .35rem; }
+  table { width: 100%; border-collapse: collapse; margin: .75rem 0; font-size: .88rem; }
+  th, td { border: 1px solid #e2e8f0; padding: .5rem .65rem; text-align: left; vertical-align: top; }
+  th { background: var(--accent-light); font-weight: 600; }
+  tr:nth-child(even) { background: #fffbeb; }
+  ul, ol { padding-left: 1.35rem; margin: .45rem 0; }
+  li { margin: .2rem 0; }
+  .note, .tip, .danger {
+    padding: .7rem 1rem;
+    border-radius: 0 8px 8px 0;
+    margin: .85rem 0;
+    font-size: .9rem;
+  }
+  .note { background: var(--warn); border-left: 4px solid var(--warn-border); }
+  .tip { background: var(--ok); border-left: 4px solid var(--ok-border); }
+  .danger { background: var(--bad); border-left: 4px solid var(--bad-border); }
+  .rank { color: #b45309; font-weight: 700; }
+  .tag {
+    display: inline-block; background: #fef3c7; color: #92400e;
+    font-size: .72rem; padding: .12rem .45rem; border-radius: 4px; margin-right: .3rem;
+  }
+  a { color: #2563eb; }
+  footer { text-align: center; color: var(--muted); font-size: .82rem; padding: 1.5rem 0; }
+  @media (max-width: 640px) { body { padding: 1rem; } section { padding: 1rem; } }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>学資保険ガイド 2026</h1>
+  <p>選び方 · 返戻率 · おすすめ5社 · 新NISA併用 · タイプ別比較</p>
+  <p><em>2026年7月調査 · 条件により数値は変動 · 公式試算で最終確認</em></p>
+</header>
+
+<nav>
+  <h2>目次</h2>
+  <ol>
+    <li><a href="#summary">結論 — 学資保険は必要？</a></li>
+    <li><a href="#points">選び方3つの視点</a></li>
+    <li><a href="#return">返戻率を上げる方法</a></li>
+    <li><a href="#ranking">おすすめ5社と理由</a></li>
+    <li><a href="#type">タイプ別おすすめ</a></li>
+    <li><a href="#hybrid">学資＋新NISAハイブリッド</a></li>
+    <li><a href="#cost">教育費の目安</a></li>
+    <li><a href="#checklist">契約前チェックリスト</a></li>
+  </ol>
+</nav>
+
+<section id="summary">
+  <h2>結論 — 学資保険は必要？</h2>
+  <div class="tip">
+    <strong>2026年の現実的な答え：</strong> 教育費<strong>全部</strong>を学資保険だけで賄うのは難しい（返戻率105〜120% vs NISA 160%+）。ただし<strong>「親の万一の保障＋確実な積立」</strong>という学資保険固有の価値は今も有効。
+  </div>
+  <table>
+    <thead><tr><th>比較</th><th>学資保険</th><th>新NISA積立</th></tr></thead>
+    <tbody>
+      <tr><td>返戻率目安（18年）</td><td>105〜120%</td><td>140〜170%（年4〜5%運用想定）</td></tr>
+      <tr><td>親が亡くなったら</td><td><strong>以後保険料免除＋満期金確実</strong></td><td>積立停止リスク（死亡保障なし）</td></tr>
+      <tr><td>元本</td><td>満期まで保証的</td><td>なし（変動）</td></tr>
+      <tr><td>途中解約</td><td>元本割れリスク大</td><td>いつでも売却可</td></tr>
+      <tr><td>向く人</td><td>強制積立・保障が欲しい</td><td>リターン最大化・流動性重視</td></tr>
+    </tbody>
+  </table>
+  <p>死亡保障は <a href="life-insurance-guide.html">生命保険ガイド</a> を参照。</p>
+</section>
+
+<section id="points">
+  <h2>選び方 — 3つの視点（返戻率だけ見ない）</h2>
+  <table>
+    <thead><tr><th>視点</th><th>確認すること</th><th>ポイント</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><strong>① 満期金額</strong></td>
+        <td>大学入学時にいくら必要か</td>
+        <td>返戻率が高くても満期金が足りなければ意味がない</td>
+      </tr>
+      <tr>
+        <td><strong>② 受取タイミング</strong></td>
+        <td>一括 vs 分割 vs 祝金型</td>
+        <td>入学金・私立大学4年分など使途に合わせる</td>
+      </tr>
+      <tr>
+        <td><strong>③ 返戻率</strong></td>
+        <td>同条件（年齢・払込期間・プラン）で比較</td>
+        <td>条件が違うと数値比較は無意味</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>加入タイミング</h3>
+  <ul>
+    <li><strong>0歳加入が最も有利</strong> — 月額が安く、返戻率も1〜2%上がる</li>
+    <li>3歳以降は月額・返戻率とも不利に</li>
+    <li>家計に無理のない月額を優先（途中解約は元本割れ）</li>
+  </ul>
+</section>
+
+<section id="return">
+  <h2>返戻率を上げる3つの方法</h2>
+  <table>
+    <thead><tr><th>方法</th><th>効果</th><th>注意</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><strong>払込期間を短く</strong>（10歳払済等）</td>
+        <td>運用期間が長くなり返戻率↑</td>
+        <td>月額負担↑。支払不能リスクに注意</td>
+      </tr>
+      <tr>
+        <td><strong>祝金・特約を減らす</strong></td>
+        <td>純粋な貯蓄に振り切れる</td>
+        <td>祝金は「見かけの安心」で返戻率↓</td>
+      </tr>
+      <tr>
+        <td><strong>受取を大学時に集中</strong>（J型・Ⅱ型等）</td>
+        <td>運用期間最大化</td>
+        <td>高校入学時の資金は別途準備</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="note">
+    掲載されている返戻率129%等は<strong>特定条件（短期払・祝金なし・全期前納等）</strong>の一例。必ず自分の条件で各社シミュレーションを。
+  </div>
+</section>
+
+<section id="ranking">
+  <h2>おすすめ5社 — 商品と理由</h2>
+
+  <div class="danger">
+    比較参考です。返戻率は契約者年齢・子の年齢・払込期間・プランで大きく変わります。加入前に各社公式試算必須。
+  </div>
+
+  <h3><span class="rank">1</span> ソニー生命 — 学資保険（学資金準備スクエア）</h3>
+  <p><span class="tag">返戻率トップクラス</span><span class="tag">設計自由度◎</span> 返戻率目安：Ⅰ型106% / Ⅱ型111% / Ⅲ型115〜123%</p>
+  <p><strong>おすすめ理由：</strong></p>
+  <ul>
+    <li>保障を最小限にして<strong>貯蓄に振り切った設計</strong> → 返戻率が業界最高クラス</li>
+    <li>Ⅰ型（小中高祝金）/ Ⅱ型（大学一括）/ Ⅲ型（大学4年分割）から選べる</li>
+    <li>払込10年・15年・18年、満期17〜22歳と柔軟</li>
+    <li>2026年の保険料改定（値下げ）で返戻率がさらに改善</li>
+    <li>契約者死亡時：<strong>保険料払込免除＋満期金は確実に支払</strong></li>
+  </ul>
+  <p><strong>向く人：</strong> 返戻率最優先、大学費用を計画的に受取したい、FP相談で設計したい</p>
+  <p><strong>向かない人：</strong> 入学ごと祝金でモチベ維持したい（→日本生命）、共済の手軽さ重視</p>
+
+  <h3><span class="rank">2</span> 明治安田生命 — つみたて学資</h3>
+  <p><span class="tag">返戻率107%前後</span><span class="tag">シンプル</span></p>
+  <p><strong>おすすめ理由：</strong></p>
+  <ul>
+    <li>シンプルな設計で<strong>返戻率と分かりやすさのバランス</strong>が良い</li>
+    <li>払込10年・15年で早め完済 → 返戻率107%超の条件を組みやすい</li>
+    <li>大学4年間に分けて受取可能</li>
+    <li>明治安田の対面サポート＋MYプランニングツール</li>
+  </ul>
+  <p><strong>向く人：</strong> 複雑な設計は避けたい、返戻率とサポートのバランス重視</p>
+
+  <h3><span class="rank">3</span> フコク生命 — みらいのつばさ</h3>
+  <p><span class="tag">S型/J型</span><span class="tag">兄弟割引</span> 返戻率目安：105〜131%（J型・条件による）</p>
+  <p><strong>おすすめ理由：</strong></p>
+  <ul>
+    <li><strong>S型</strong>（ステップ）：入園・入学ごとに祝金 — モチベーション重視の家庭向け</li>
+    <li><strong>J型</strong>（ジャンプ）：大学進学時に受取集中 → <strong>返戻率最優先</strong>ならJ型</li>
+    <li>兄弟割引あり — 2人目以降の教育費も効率化</li>
+    <li>受取パターンの柔軟性が高い</li>
+  </ul>
+  <p><strong>向く人：</strong> 教育資金計画に合わせてS/Jを選びたい、兄弟がいる</p>
+
+  <h3><span class="rank">4</span> 日本生命 — ニッセイ学資保険</h3>
+  <p><span class="tag">祝金型</span><span class="tag">国内最大手</span> 返戻率：祝金なし105% / 祝金あり103%前後</p>
+  <p><strong>おすすめ理由：</strong></p>
+  <ul>
+    <li>幼稚園〜大学まで<strong>各入学時に祝金</strong> — 子どもの節目に合わせた受取</li>
+    <li>国内最大手の<strong>安心感・営業サポート</strong></li>
+    <li>祝金なしプランにすれば返戻率改善</li>
+    <li>祖父母名義契約も可能（制度要確認）</li>
+  </ul>
+  <p><strong>向く人：</strong> 大手の対面サポート重視、祝金で段階的に受取したい</p>
+
+  <h3><span class="rank">5</span> アフラック — 夢みるこどもの学資保険</h3>
+  <p><span class="tag">シンプル</span> 返戻率目安：104〜106%</p>
+  <p><strong>おすすめ理由：</strong></p>
+  <ul>
+    <li>設計が<strong>シンプルで分かりやすい</strong> — 初めて学資保険を検討する人向け</li>
+    <li>がん保険と同社で揃えやすい（アフラックユーザー）</li>
+    <li>満期型中心で迷いにくい</li>
+  </ul>
+  <p><strong>向く人：</strong> 返戻率より分かりやすさ・ブランド重視</p>
+
+  <h3>参考 — JA共済 こども共済</h3>
+  <p><span class="tag">手軽</span><span class="tag">返戻105%前後</span></p>
+  <p><strong>おすすめ理由：</strong> JA組合員なら加入しやすい。月額9,500円〜と比較的リーズナブル。ただし保障・設計の自由度は生保より低い。</p>
+
+  <h3>5社比較表（参考条件：0歳加入・18年払・300万円受取目安）</h3>
+  <table>
+    <thead>
+      <tr><th>会社</th><th>月額目安</th><th>返戻率</th><th>受取</th><th>最大の強み</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>ソニー生命</td><td>約15,000円</td><td>105〜123%</td><td>Ⅰ/Ⅱ/Ⅲ型</td><td>返戻率・設計自由度</td></tr>
+      <tr><td>明治安田</td><td>約14,500円</td><td>107%前後</td><td>満期・4年分割</td><td>シンプル＋返戻率</td></tr>
+      <tr><td>フコク</td><td>約10,000円</td><td>105〜131%</td><td>S型/J型</td><td>受取パターン・兄弟割</td></tr>
+      <tr><td>日本生命</td><td>約11,000円</td><td>104%前後</td><td>祝金型</td><td>大手・祝金</td></tr>
+      <tr><td>JA共済</td><td>約9,500円</td><td>105%前後</td><td>18歳一括</td><td>手軽・低月額</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section id="type">
+  <h2>タイプ別 — こう選ぶ</h2>
+  <table>
+    <thead><tr><th>あなたの優先</th><th>おすすめ</th><th>理由</th></tr></thead>
+    <tbody>
+      <tr><td>返戻率No.1</td><td>ソニー生命 Ⅲ型 / フコク J型</td><td>大学受取集中で運用期間最大化</td></tr>
+      <tr><td>シンプルに始めたい</td><td>明治安田 つみたて学資</td><td>設計が分かりやすく返戻率も良好</td></tr>
+      <tr><td>入学祝金で段階受取</td><td>日本生命 ニッセイ（祝金あり）</td><td>小中高大学で祝金</td></tr>
+      <tr><td>兄弟2人目以降</td><td>フコク みらいのつばさ</td><td>兄弟割引</td></tr>
+      <tr><td>月額を抑えたい</td><td>JA共済 / フコク（低額プラン）</td><td>月1万円前後から</td></tr>
+      <tr><td>対面相談重視</td><td>日本生命 / 明治安田</td><td>営業網・FPサポート</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section id="hybrid">
+  <h2>学資保険 ＋ 新NISA — ハイブリッド戦略（2026年推奨）</h2>
+  <div class="tip">
+    <strong>現代の定石：</strong> 学資保険で「保障付きの確実な土台」＋ NISAで「リターンの上乗せ」
+  </div>
+  <table>
+    <thead><tr><th>役割</th><th>手段</th><th>目安</th></tr></thead>
+    <tbody>
+      <tr>
+        <td>土台（保障＋確実積立）</td>
+        <td>学資保険</td>
+        <td>月1〜1.5万円 → 満期200〜300万円（国立大学分）</td>
+      </tr>
+      <tr>
+        <td>上乗せ（リターン）</td>
+        <td>新NISA つみたて</td>
+        <td>月1〜2万円 → 18年後400〜700万円（運用5%想定）</td>
+      </tr>
+      <tr>
+        <td>死亡保障（別枠）</td>
+        <td>定期保険</td>
+        <td>学資の「払込免除」だけでは足りない場合の補完</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3>シミュレーション例</h3>
+  <table>
+    <thead><tr><th>手段</th><th>月額</th><th>18年後</th><th>返戻率換算</th></tr></thead>
+    <tbody>
+      <tr><td>学資保険のみ</td><td>15,000円</td><td>約340万円</td><td>約106%</td></tr>
+      <tr><td>NISAのみ（年5%）</td><td>15,000円</td><td>約520万円</td><td>約192%</td></tr>
+      <tr><td>学資10,000＋NISA 5,000</td><td>15,000円</td><td>約230万＋約173万＝403万</td><td>保障付き</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section id="cost">
+  <h2>教育費の目安（2026年）</h2>
+  <table>
+    <thead><tr><th>進路</th><th>大学4年合計</th><th>学資保険単体で足りる？</th></tr></thead>
+    <tbody>
+      <tr><td>国立大学</td><td>約250〜350万円</td><td>△ 一部カバー可能</td></tr>
+      <tr><td>私立文系</td><td>約400〜500万円</td><td>× NISA併用推奨</td></tr>
+      <tr><td>私立理系</td><td>約550〜700万円</td><td>× NISA併用必須</td></tr>
+      <tr><td>私立医学部</td><td>2,000万円〜</td><td>× 別戦略が必要</td></tr>
+    </tbody>
+  </table>
+  <p>幼稚園〜高校まで含めると<strong>1,000〜2,000万円</strong>規模。学資保険は大学費用の「確実な一部」として位置づけるのが現実的。</p>
+</section>
+
+<section id="checklist">
+  <h2>契約前チェックリスト</h2>
+  <ol>
+    <li>大学費用の目標額を決めた（国立/私立）</li>
+    <li>同条件（子の年齢・払込期間・満期）で3社以上シミュレーション</li>
+    <li>返戻率だけでなく満期金額・受取時期を確認</li>
+    <li>月額が家計の10%以内（無理な短期払は避ける）</li>
+    <li>祝金・特約の必要性を検討（不要なら外して返戻率↑）</li>
+    <li>契約者死亡時の払込免除条項を確認</li>
+    <li>新NISA併用プランも検討した</li>
+    <li>0歳〜1歳のうちに加入を検討（遅いほど不利）</li>
+  </ol>
+
+  <h3>参考リンク</h3>
+  <ul>
+    <li><a href="https://www.sonylife.co.jp/" target="_blank" rel="noopener">ソニー生命</a></li>
+    <li><a href="https://www.meijiyasuda.co.jp/" target="_blank" rel="noopener">明治安田生命</a></li>
+    <li><a href="https://www.fukoku-life.co.jp/plan/tsubasa/" target="_blank" rel="noopener">フコク生命 みらいのつばさ</a></li>
+    <li><a href="https://www.nissay.co.jp/" target="_blank" rel="noopener">日本生命</a></li>
+    <li><a href="life-insurance-guide.html">生命保険ガイド 2026</a>（死亡保障）</li>
+  </ul>
+</section>
+
+<footer>
+  <p>2026年7月時点の公開情報に基づく調査メモ。特定商品の勧誘ではありません。</p>
+  <p>OpenClaw workspace · docs/gakushi-hoken-guide.html</p>
+</footer>
+
+</body>
+</html>
