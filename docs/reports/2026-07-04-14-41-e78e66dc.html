@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>東京発 格安航空券 14:41</title>
+  <style>
+    :root {
+      --bg: #0b1220;
+      --panel: #121c2e;
+      --panel2: #1a2740;
+      --text: #e8eef8;
+      --muted: #8fa3bf;
+      --accent: #38bdf8;
+      --accent2: #818cf8;
+      --up: #34d399;
+      --border: #243049;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: "Hiragino Sans", "Segoe UI", sans-serif;
+      background: var(--bg);
+      background-image:
+        radial-gradient(circle at 10% 0%, rgba(56,189,248,0.15), transparent 45%),
+        radial-gradient(circle at 90% 10%, rgba(129,140,248,0.12), transparent 40%);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+      padding: 1.25rem 1rem 2rem;
+    }
+    .wrap { max-width: 920px; margin: 0 auto; }
+    header {
+      background: linear-gradient(135deg, var(--panel), var(--panel2));
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 1.5rem;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+    .badge {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--accent);
+      background: rgba(56,189,248,0.12);
+      border: 1px solid rgba(56,189,248,0.35);
+      padding: 0.25rem 0.7rem;
+      border-radius: 999px;
+      margin-bottom: 0.6rem;
+    }
+    header h1 { font-size: 1.45rem; margin-bottom: 0.35rem; }
+    .subhead { color: var(--muted); font-size: 0.92rem; }
+    .datetime {
+      display: inline-block;
+      margin-top: 0.75rem;
+      font-weight: 700;
+      background: rgba(255,255,255,0.06);
+      padding: 0.35rem 0.9rem;
+      border-radius: 999px;
+      font-variant-numeric: tabular-nums;
+    }
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+    }
+    .chip {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 0.9rem;
+      text-align: center;
+    }
+    .chip .label { display: block; color: var(--muted); font-size: 0.78rem; }
+    .chip .value { display: block; font-size: 1.5rem; font-weight: 800; color: #fff; }
+    section {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 1rem;
+      margin-bottom: 1rem;
+    }
+    section h2 {
+      font-size: 0.95rem;
+      color: var(--muted);
+      margin-bottom: 0.85rem;
+    }
+    .table-wrap { overflow-x: auto; }
+    .deal-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.88rem;
+    }
+    .deal-table th, .deal-table td {
+      border-bottom: 1px solid var(--border);
+      padding: 0.75rem 0.55rem;
+      vertical-align: top;
+      text-align: left;
+    }
+    .deal-table th { color: var(--muted); font-size: 0.78rem; }
+    .route .sub { color: var(--muted); font-size: 0.76rem; }
+    .price { font-variant-numeric: tabular-nums; white-space: nowrap; }
+    .price.before { color: var(--muted); text-decoration: line-through; text-decoration-color: rgba(143,163,191,0.6); }
+    .price.after { color: var(--up); font-weight: 800; font-size: 1rem; }
+    .pct {
+      display: inline-block;
+      margin-left: 0.35rem;
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--accent);
+      background: rgba(56,189,248,0.12);
+      padding: 0.1rem 0.35rem;
+      border-radius: 6px;
+    }
+    .est {
+      display: block;
+      font-size: 0.65rem;
+      color: var(--muted);
+    }
+    .links a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.82rem;
+    }
+    .links a:hover { text-decoration: underline; }
+    .src { margin-top: 0.35rem; color: var(--muted); font-size: 0.74rem; line-height: 1.45; }
+    .src-meta { color: #64748b; font-size: 0.68rem; margin-top: 0.15rem; }
+    .empty { text-align: center; color: var(--muted); padding: 2rem 1rem; }
+    footer {
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.78rem;
+      line-height: 1.7;
+      padding-top: 0.5rem;
+    }
+    @media (max-width: 720px) {
+      .summary { grid-template-columns: 1fr; }
+      .deal-table { font-size: 0.8rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="badge">OpenClaw · Tokyo Departure Deals</div>
+      <h1>✈️ 東京発 格安航空券デイリー</h1>
+      <p class="subhead">羽田（HND）・成田（NRT）発 — セール/特価の比較（参考）</p>
+      <div class="datetime">07/04 <span style="color:var(--muted)">14:41 JST</span></div>
+    </header>
+
+    <div class="summary">
+      <div class="chip"><span class="label">特価情報</span><span class="value">12件</span></div>
+      <div class="chip"><span class="label">国内線</span><span class="value">6</span></div>
+      <div class="chip"><span class="label">国際線</span><span class="value">6</span></div>
+    </div>
+
+    <section>
+      <h2>🛫 路線別 通常/参考 → 特価</h2>
+      <div class="table-wrap">
+  <table class="deal-table">
+    <thead>
+      <tr>
+        <th>路線</th>
+        <th>通常/参考</th>
+        <th>特価</th>
+        <th>検索・出典</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+  <td class="route"><strong>羽田</strong> → <strong>伊丹</strong><br>
+    <span class="sub">ANA · 要確認</span></td>
+  <td class="price before">¥12,000<span class="est">目安</span></td>
+  <td class="price after">¥8,000<span class="pct">-33%</span></td>
+  <td class="links">
+    <a href="https://www.skyscanner.jp/transport/flights/hnd/itm/" target="_blank" rel="noopener">Skyscanner</a>
+    · <a href="https://skyticket.jp/?q=%E7%BE%BD%E7%94%B0%20%E4%BC%8A%E4%B8%B9%20%E8%88%AA%E7%A9%BA%E5%88%B8" target="_blank" rel="noopener">skyticket</a>
+    <div class="src" title="ANA国内線タイムセール【12/15まで】春休み･GW明けも対象！羽田～伊丹8,000円、札幌8,300円など航空券が格安に">ANA国内線タイムセール【12/15まで】春休み･GW明けも対象！羽田～伊丹8,000円、札幌8,300円など航空券が格安に</div>
+    <div class="src-meta">Googleニュース (東京発 格安航空券 セール)</div>
+  </td>
+</tr><tr>
+  <td class="route"><strong>成田</strong> → <strong>バンコク</strong><br>
+    <span class="sub">ZIPAIR Tokyo · 要確認</span></td>
+  <td class="price before">¥19,974<span class="est">目安</span></td>
+  <td class="price after">¥15,660<span class="pct">-22%</span></td>
+  <td class="links">
+    <a href="https://www.skyscanner.jp/transport/flights/nrt/bkk/" target="_blank" rel="noopener">Skyscanner</a>
+    · <a href="https://skyticket.jp/?q=%E6%88%90%E7%94%B0%20%E3%83%90%E3%83%B3%E3%82%B3%E3%82%AF%20%E8%88%AA%E7%A9%BA%E5%88%B8" target="_blank" rel="noopener">skyticket</a>
+    <div class="src" title="ZIPAIRがアーリーサマーセール開催中 成田発バンコク行き19,974円～、シンガポール行き15,660円～など">ZIPAIRがアーリーサマーセール開催中 成田発バンコク行き19,974円～、シンガポール行き15,660円～など</div>
+    <div class="src-meta">Googleニュース (ZIPAIR セール 成田)</div>
+  </td>
+</tr><tr>
+  <td class="route"><strong>羽田</strong> → <strong>那覇</strong><br>
+    <span class="sub">ANA · 要確認</span></td>
+  <td class="price before">¥15,000<span class="est">目安</span></td>
+  <td class="price after">¥11,880<span class="pct">-21%</span></td>
+  <td class="links">
+    <a href="https://www.skyscanner.jp/transport/flights/hnd/oka/" target="_blank" rel="noopener">Skyscanner</a>
+    · <a href="https://skyticket.jp/?q=%E7%BE%BD%E7%94%B0%20%E9%82%A3%E8%A6%87%20%E8%88%AA%E7%A9%BA%E5%88%B8" target="_blank" rel="noopener">skyticket</a>
+    <div class="src" title="ANA、国内線タイムセールまもなく開始。夏休みの羽田～那覇1万1880円ほか、事前座席指定は不可（トラベル Watch）">ANA、国内線タイムセールまもなく開始。夏休みの羽田～那覇1万1880円ほか、事前座席指定は不可（トラベル Watch）</div>
+    <div class="src-meta">Googleニュース (羽田 航空券 タイムセール)</div>
+  </td>
+</tr><tr>
+  <td class="route"><strong>羽田</strong> → <strong>福岡</strong><br>
+    <span class="sub">ANA · 要確認</span></td>
+  <td class="price before">¥14,000<span class="est">目安</span></td>
+  <td class="price after">¥11,880<span class="pct">-15%</span></td>
+  <td class="links">
+    <a href="https://www.skyscanner.jp/transport/flights/hnd/fuk/" target="_blank" rel="noopener">Skyscanner</a>
+    · <a href="https://skyticket.jp/?q=%E7%BE%BD%E7%94%B0%20%E7%A6%8F%E5%B2%A1%20%E8%88%AA%E7%A9%BA%E5%88%B8" target="_blank" rel="noopener">skyticket</a>
+    <div class="src" title="ANA、国内線でタイムセール。6月29日開催、羽田～福岡11,880円～">ANA、国内線でタイムセール。6月29日開催、羽田～福岡11,880円～</div>
+    <div class="src-meta">Googleニュース (羽田 航空券 タイムセール)</div>
+  </td>
+</tr><tr>
+  <td class="route"><strong>東京</strong> → <strong>バンコク</strong><br>
+    <span class="sub">ZIPAIR Tokyo · 要確認</span></td>
+  <td class="price before">¥20,900<span class="est">目安</span></td>
+  <td class="price after">¥18,860<span class="pct">-10%</span></td>
+  <td class="links">
+    <a href="https://www.skyscanner.jp/transport/flights/tyoa/bkk/" target="_blank" rel="noopener">Skyscanner</a>
+    · <a href="https://skyticket.jp/?q=%E6%9D%B1%E4%BA%AC%20%E3%83%90%E3%83%B3%E3%82%B3%E3%82%AF%20%E8%88%AA%E7%A9%BA%E5%88%B8" target="_blank" rel="noopener">skyticket</a>
+    <div class="src" title="ZIPAIRがブラックフライデーセール開催 バンコク行き諸費用込み20,900円～、シンガポール行き18,860円～、マニラ行き15,660円">ZIPAIRがブラックフライデーセール開催 バンコク行き諸費用込み20,900円～、シンガポール行き18,860円～、マニラ行き15,660円</div>
+    <div class="src-meta">Googleニュース (成田 航空券 特価)</div>
+  </td>
+</tr><tr>
+  <td class="route"><strong>成田</strong> → <strong>那覇</strong><br>
+    <span class="sub">Peach Aviation · 片道</span></td>
+  <td class="price before">—</td>
+  <td class="price after">¥3,190</td>
+  <td class="links">
+    <a href="https://www.skyscanner.jp/transport/flights/nrt/oka/" target="_blank" rel="noopener">Skyscanner</a>
+    · <a href="https://skyticket.jp/?q=%E6%88%90%E7%94%B0%20%E9%82%A3%E8%A6%87%20%E8%88%AA%E7%A9%BA%E5%88%B8" target="_blank" rel="noopener">skyticket</a>
+    <div class="src" title="ピーチ、片道3190円～の国内線セール実施。成田/関空～札幌/福岡/那覇など対象">ピーチ、片道3190円～の国内線セール実施。成田/関空～札幌/福岡/那覇など対象</div>
+    <div class="src-meta">Googleニュース (Peach ピーチ 航空券 セール)</div>
+  </td>
+</tr><tr>
+  <td class="route"><strong>成田</strong> → <strong>新千歳</strong><br>
+    <span class="sub">Peach Aviation · 要確認</span></td>
+  <td class="price before">—</td>
+  <td class="price after">¥4,190</td>
+  <td class="links">
+    <a href="https://www.skyscanner.jp/transport/flights/nrt/ctss/" target="_blank" rel="noopener">Skyscanner</a>
+    · <a href="https://skyticket.jp/?q=%E6%88%90%E7%94%B0%20%E6%96%B0%E5%8D%83%E6%AD%B3%20%E8%88%AA%E7%A9%BA%E5%88%B8" target="_blank" rel="noopener">skyticket</a>
+    <div class="src" title="【10/20まで】ピーチ「国内線セール」開催中！ 成田～新千歳4,190円・福岡4,890円など航空券をおトクにGET！">【10/20まで】ピーチ「国内線セール」開催中！ 成田～新千歳4,190円・福岡4,890円など航空券をおトクにGET！</div>
+    <div class="src-meta">Googleニュース (Peach ピーチ 航空券 セール)</div>
+  </td>
+</tr><tr>
+  <td class="route"><strong>成田</strong> → <strong>札幌</strong><br>
+    <span class="sub">— · 片道</span></td>
+  <td class="price before">—</td>
+  <td class="price after">¥4,880</td>
+  <td class="links">
+    <a href="https://www.skyscanner.jp/transport/flights/nrt/ctss/" target="_blank" rel="noopener">Skyscanner</a>
+    · <a href="https://skyticket.jp/?q=%E6%88%90%E7%94%B0%20%E6%9C%AD%E5%B9%8C%20%E8%88%AA%E7%A9%BA%E5%88%B8" target="_blank" rel="noopener">skyticket</a>
+    <div class="src" title="スプリング・ジャパン、東京/成田～函館・名古屋/中部～札幌/新千歳を対象に特別セール 片道4,880円から - sky">スプリング・ジャパン、東京/成田～函館・名古屋/中部～札幌/新千歳を対象に特別セール 片道4,880円から - sky</div>
+    <div class="src-meta">Googleニュース (成田 航空券 特価)</div>
+  </td>
+</tr><tr>
+  <td class="route"><strong>東京</strong> → <strong>ホノルル</strong><br>
+    <span class="sub">ZIPAIR Tokyo · 片道</span></td>
+  <td class="price before">—</td>
+  <td class="price after">¥6,500</td>
+  <td class="links">
+    <a href="https://www.skyscanner.jp/transport/flights/tyoa/hnl/" target="_blank" rel="noopener">Skyscanner</a>
+    · <a href="https://skyticket.jp/?q=%E6%9D%B1%E4%BA%AC%20%E3%83%9B%E3%83%8E%E3%83%AB%E3%83%AB%20%E8%88%AA%E7%A9%BA%E5%88%B8" target="_blank" rel="noopener">skyticket</a>
+    <div class="src" title="ZIPAIR、夏の海外航空券が片道6500円～「アーリーサマーセール」。アジア・ホノルル・北米8路線で">ZIPAIR、夏の海外航空券が片道6500円～「アーリーサマーセール」。アジア・ホノルル・北米8路線で</div>
+    <div class="src-meta">Googleニュース (成田 航空券 特価)</div>
+  </td>
+</tr><tr>
+  <td class="route"><strong>東京</strong> → <strong>ソウル</strong><br>
+    <span class="sub">— · 往復</span></td>
+  <td class="price before">—</td>
+  <td class="price after">¥9,800</td>
+  <td class="links">
+    <a href="https://www.skyscanner.jp/transport/flights/tyoa/sel/" target="_blank" rel="noopener">Skyscanner</a>
+    · <a href="https://skyticket.jp/?q=%E6%9D%B1%E4%BA%AC%20%E3%82%BD%E3%82%A6%E3%83%AB%20%E8%88%AA%E7%A9%BA%E5%88%B8" target="_blank" rel="noopener">skyticket</a>
+    <div class="src" title="ソウル行き往復航空券が9,800円～、ハワイ5日間59,800円～など！ この夏最後の「超サマーセール FINAL」を開催！">ソウル行き往復航空券が9,800円～、ハワイ5日間59,800円～など！ この夏最後の「超サマーセール FINAL」を開催！</div>
+    <div class="src-meta">Googleニュース (東京発 格安航空券 セール)</div>
+  </td>
+</tr><tr>
+  <td class="route"><strong>羽田</strong> → <strong>/沖縄</strong><br>
+    <span class="sub">JAL · 要確認</span></td>
+  <td class="price before">—</td>
+  <td class="price after">¥11,440</td>
+  <td class="links">
+    <a href="https://www.skyscanner.jp/transport/flights/hnd/?q=%E7%BE%BD%E7%94%B0%20/%E6%B2%96%E7%B8%84" target="_blank" rel="noopener">Skyscanner</a>
+    · <a href="https://skyticket.jp/?q=%E7%BE%BD%E7%94%B0%20/%E6%B2%96%E7%B8%84%20%E8%88%AA%E7%A9%BA%E5%88%B8" target="_blank" rel="noopener">skyticket</a>
+    <div class="src" title="JAL、5月15日に「国内航空券タイムセール」。夏搭乗の羽田線が伊丹9130円～/沖縄1万1440円～ほか">JAL、5月15日に「国内航空券タイムセール」。夏搭乗の羽田線が伊丹9130円～/沖縄1万1440円～ほか</div>
+    <div class="src-meta">Googleニュース (羽田 航空券 タイムセール)</div>
+  </td>
+</tr><tr>
+  <td class="route"><strong>羽田</strong> → <strong>札幌･沖縄の往復</strong><br>
+    <span class="sub">ANA · 往復</span></td>
+  <td class="price before">—</td>
+  <td class="price after">¥20,000</td>
+  <td class="links">
+    <a href="https://www.skyscanner.jp/transport/flights/hnd/?q=%E7%BE%BD%E7%94%B0%20%E6%9C%AD%E5%B9%8C%EF%BD%A5%E6%B2%96%E7%B8%84%E3%81%AE%E5%BE%80%E5%BE%A9" target="_blank" rel="noopener">Skyscanner</a>
+    · <a href="https://skyticket.jp/?q=%E7%BE%BD%E7%94%B0%20%E6%9C%AD%E5%B9%8C%EF%BD%A5%E6%B2%96%E7%B8%84%E3%81%AE%E5%BE%80%E5%BE%A9%20%E8%88%AA%E7%A9%BA%E5%88%B8" target="_blank" rel="noopener">skyticket</a>
+    <div class="src" title="ANA国内線タイムセール【開催中】 羽田～札幌･沖縄の往復が2万円台から、5/19から国内線運賃刷新で手荷物無料＆マイルも貯まる">ANA国内線タイムセール【開催中】 羽田～札幌･沖縄の往復が2万円台から、5/19から国内線運賃刷新で手荷物無料＆マイルも貯まる</div>
+    <div class="src-meta">Googleニュース (羽田 航空券 タイムセール)</div>
+  </td>
+</tr>
+    </tbody>
+  </table>
+</div>
+    </section>
+
+    <footer>
+      ※ 運賃は変動します。最終価格・在庫は Skyscanner / skyticket / 各航空会社で必ずご確認ください。<br>
+      「通常/参考」は過去相場または記事記載の目安です。投資・契約の助言ではありません。<br>
+      2026-07-04 14:41 JST
+    </footer>
+  </div>
+</body>
+</html>
