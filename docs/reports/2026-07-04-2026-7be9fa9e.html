@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>生命保険ガイド 2026 — 選び方・返戻率・おすすめ比較</title>
+<style>
+  :root {
+    --bg: #f8fafc;
+    --card: #fff;
+    --text: #1e293b;
+    --muted: #64748b;
+    --accent: #1e40af;
+    --accent-light: #eff6ff;
+    --border: #e2e8f0;
+    --warn: #fffbeb;
+    --warn-border: #f59e0b;
+    --ok: #ecfdf5;
+    --ok-border: #10b981;
+    --bad: #fef2f2;
+    --bad-border: #ef4444;
+  }
+  * { box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", sans-serif;
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 1.5rem;
+    line-height: 1.75;
+    color: var(--text);
+    background: var(--bg);
+  }
+  header {
+    text-align: center;
+    padding: 2rem 1rem;
+    border-bottom: 3px solid #93c5fd;
+    margin-bottom: 2rem;
+  }
+  header h1 { color: var(--accent); font-size: clamp(1.35rem, 4vw, 1.85rem); margin-bottom: .5rem; }
+  header p { color: var(--muted); font-size: .92rem; margin: .25rem 0; }
+  nav {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1rem 1.25rem;
+    margin-bottom: 1.5rem;
+  }
+  nav h2 { font-size: .95rem; color: var(--accent); margin: 0 0 .6rem; }
+  nav ol { margin: 0; padding-left: 1.2rem; columns: 2; column-gap: 1.5rem; font-size: .9rem; }
+  nav li { break-inside: avoid; margin: .2rem 0; }
+  nav a { color: var(--accent); text-decoration: none; }
+  nav a:hover { text-decoration: underline; }
+  section {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.4rem;
+    margin-bottom: 1.25rem;
+  }
+  section > h2 {
+    color: var(--accent);
+    font-size: 1.2rem;
+    margin: 0 0 .85rem;
+    padding-bottom: .45rem;
+    border-bottom: 2px solid #bfdbfe;
+  }
+  h3 { color: #334155; font-size: 1.02rem; margin: 1.1rem 0 .45rem; }
+  h4 { color: #475569; font-size: .95rem; margin: .85rem 0 .35rem; }
+  table { width: 100%; border-collapse: collapse; margin: .75rem 0; font-size: .88rem; }
+  th, td { border: 1px solid var(--border); padding: .5rem .65rem; text-align: left; vertical-align: top; }
+  th { background: var(--accent-light); font-weight: 600; }
+  tr:nth-child(even) { background: #f8fafc; }
+  ul, ol { padding-left: 1.35rem; margin: .45rem 0; }
+  li { margin: .2rem 0; }
+  .note, .tip, .danger {
+    padding: .7rem 1rem;
+    border-radius: 0 8px 8px 0;
+    margin: .85rem 0;
+    font-size: .9rem;
+  }
+  .note { background: var(--warn); border-left: 4px solid var(--warn-border); }
+  .tip { background: var(--ok); border-left: 4px solid var(--ok-border); }
+  .danger { background: var(--bad); border-left: 4px solid var(--bad-border); }
+  .flow {
+    display: flex; flex-wrap: wrap; gap: .4rem; align-items: center;
+    margin: .75rem 0; font-size: .85rem;
+  }
+  .flow span {
+    background: var(--accent-light); border: 1px solid #bfdbfe;
+    border-radius: 8px; padding: .35rem .6rem;
+  }
+  .flow .arrow { background: none; border: none; color: var(--muted); padding: 0; }
+  .rank { color: #b45309; font-weight: 700; }
+  a { color: #2563eb; }
+  .tag {
+    display: inline-block; background: #f1f5f9; color: #475569;
+    font-size: .72rem; padding: .12rem .45rem; border-radius: 4px; margin-right: .3rem;
+  }
+  footer { text-align: center; color: var(--muted); font-size: .82rem; padding: 1.5rem 0; }
+  @media (max-width: 640px) {
+    nav ol { columns: 1; }
+    body { padding: 1rem; }
+    section { padding: 1rem; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>生命保険ガイド 2026</h1>
+  <p>選び方 · 返戻率・予定利率 · 必要保障額 · おすすめ商品・会社比較</p>
+  <p><em>2026年7月調査 · 加入判断は各社公式・FP相談で最終確認</em></p>
+</header>
+
+<nav>
+  <h2>目次</h2>
+  <ol>
+    <li><a href="#summary">結論サマリー</a></li>
+    <li><a href="#points">見るべきポイント10</a></li>
+    <li><a href="#rates">返戻率・予定利率・支払余力</a></li>
+    <li><a href="#types">保険の種類と使い分け</a></li>
+    <li><a href="#amount">必要保障額の算出</a></li>
+    <li><a href="#kakesute">掛け捨て vs 貯蓄型</a></li>
+    <li><a href="#ranking">おすすめ商品・会社</a></li>
+    <li><a href="#stage">ライフステージ別</a></li>
+    <li><a href="#tax">税制・相続</a></li>
+    <li><a href="#checklist">契約前チェックリスト</a></li>
+  </ol>
+</nav>
+
+<section id="summary">
+  <h2>結論サマリー（2026年の主流）</h2>
+  <div class="tip">
+    <strong>現代の定石：</strong> 死亡保障は<strong>掛け捨て（定期・収入保障）</strong>で安く確保し、資産形成は<strong>新NISA・iDeCo</strong>で分離。貯蓄型は「強制積立」「相続対策」など目的がはっきりしている場合のみ。
+  </div>
+  <table>
+    <thead><tr><th>目的</th><th>おすすめ</th><th>理由</th></tr></thead>
+    <tbody>
+      <tr><td>子育て期の死亡保障</td><td>収入保障 or 定期（ネット生保）</td><td>保険料が終身の1/5〜1/10。同じ保障で年数万円差</td></tr>
+      <tr><td>葬儀・整理資金</td><td>低解約返戻金型終身 200〜300万円</td><td>一生涯・小額で確保</td></tr>
+      <tr><td>老後・教育資金</td><td>新NISA / iDeCo</td><td>長期リターン3〜7% vs 貯蓄型1〜2%</td></tr>
+      <tr><td>医療・がん</td><td>公的保障を差し引いて設計</td><td>高額療養費で月自己負担上限あり</td></tr>
+      <tr><td>金利上昇局面の見直し</td><td>一時払終身・学資の新契約比較</td><td>2026年予定利率引上げで返戻率改善商品あり</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section id="points">
+  <h2>見るべきポイント10</h2>
+  <table>
+    <thead><tr><th>#</th><th>ポイント</th><th>具体的に確認すること</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td><strong>必要保障額</strong></td><td>遺族年金・配偶者収入・貯蓄・団信を差し引いた「不足分」だけをカバー</td></tr>
+      <tr><td>2</td><td><strong>保障の種類</strong></td><td>死亡・医療・がん・就業不能を1商品に詰め込まない</td></tr>
+      <tr><td>3</td><td><strong>掛け捨て活用</strong></td><td>必要期間だけ厚く。満期返戻金ゼロ＝「損」ではなくリスク移転の対価</td></tr>
+      <tr><td>4</td><td><strong>返戻率（貯蓄型）</strong></td><td>払込満了時・解約時の%を比較。途中解約は元本割れが普通</td></tr>
+      <tr><td>5</td><td><strong>予定利率</strong></td><td>2026年は上昇トレンド（一時払終身で1.75→2.25%等）。新規契約のみ反映</td></tr>
+      <tr><td>6</td><td><strong>IRR（内部収益率）</strong></td><td>返戻率だけでなく、解約・満期タイミングの年利換算で比較</td></tr>
+      <tr><td>7</td><td><strong>ソルベンシー比率</strong></td><td>支払余力200%超が健全線。大手は600〜1,000%超</td></tr>
+      <tr><td>8</td><td><strong>保険料の総額</strong></td><td>月額だけでなく20年・30年累計。手取りの5〜7%以内が目安</td></tr>
+      <tr><td>9</td><td><strong>ネット vs 対面</strong></td><td>同条件で20〜30%（場合により2倍）の差。3社以上見積もり</td></tr>
+      <tr><td>10</td><td><strong>見直しタイミング</strong></td><td>結婚・出産・住宅購入・独立・退職の5タイミング</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section id="rates">
+  <h2>返戻率・予定利率・支払余力（支給率まわり）</h2>
+
+  <p>「支給率」は文脈により<strong>返戻率</strong>（貯蓄型）、<strong>給付率</strong>（医療）、<strong>ソルベンシー比率</strong>（支払余力）を指すことが多いです。以下をセットで確認します。</p>
+
+  <h3>① 返戻率（貯蓄型・学資・終身）</h3>
+  <p>払込保険料総額に対する受取額（解約返戻金・満期金）の割合。</p>
+  <table>
+    <thead><tr><th>商品タイプ</th><th>返戻率目安</th><th>注意点</th></tr></thead>
+    <tbody>
+      <tr><td>定期保険（掛け捨て）</td><td>0%（満期返戻なし）</td><td>最安。保障コスパ最高</td></tr>
+      <tr><td>終身保険（貯蓄型）</td><td>105〜120%（払込満了後）</td><td>途中解約は70%台〜100%未満も</td></tr>
+      <tr><td>低解約返戻金型終身</td><td>返戻抑制分保険料↓</td><td>葬儀・相続向け。RISE等</td></tr>
+      <tr><td>学資保険</td><td>106〜131%（商品・払込期間で差大）</td><td>ソニー・ニッセイ・フコク等で差</td></tr>
+      <tr><td>養老保険（20年満期）</td><td>100%前後</td><td>死亡保障＋満期金。予定利率依存</td></tr>
+    </tbody>
+  </table>
+
+  <h3>② 予定利率（2026年最新動向）</h3>
+  <div class="note">
+    長期金利上昇に伴い、<strong>一時払終身</strong>の予定利率引上げが続いています。例：住友生命 2026年7月〜 <strong>1.75% → 2.25%</strong>（28年ぶり水準）。同じ保険金額で保険料が約9〜11%減、または返戻水準改善。
+  </div>
+  <table>
+    <thead><tr><th>項目</th><th>2026年目安</th></tr></thead>
+    <tbody>
+      <tr><td>円建一時払（7〜15年）</td><td>1.87〜2.41%</td></tr>
+      <tr><td>一時払終身</td><td>1.75〜2.37%（商品・時期で変動）</td></tr>
+      <tr><td>平準払終身の平均利回り</td><td>0.4%前後（IRRベース）</td></tr>
+      <tr><td>掛け捨て定期への影響</td><td>ほぼなし（予定利率非依存）</td></tr>
+    </tbody>
+  </table>
+
+  <h3>③ ソルベンシー・マージン比率（支払余力）</h3>
+  <table>
+    <thead><tr><th>水準</th><th>意味</th></tr></thead>
+    <tbody>
+      <tr><td><strong>200%未満</strong></td><td>金融庁早期是正基準。要注意</td></tr>
+      <tr><td><strong>200%超</strong></td><td>健全ライン最低値</td></tr>
+      <tr><td><strong>600〜1,200%</strong></td><td>大手生保の一般的水準</td></tr>
+    </tbody>
+  </table>
+  <p>破綻時は生命保険契約者保護機構が責任準備金の<strong>90%まで</strong>補償（保障内容が一部削減される可能性あり）。</p>
+
+  <h3>④ 20年シミュレーション比較（月3万円×20年＝720万円）</h3>
+  <table>
+    <thead><tr><th>パターン</th><th>20年後の資産</th><th>死亡保障</th></tr></thead>
+    <tbody>
+      <tr><td>終身保険のみ（返戻110%）</td><td>約792万円</td><td>あり</td></tr>
+      <tr><td>掛け捨て1,500円＋NISA 28,500円（年5%）</td><td>約555万円＋保障</td><td>定期で1,000万円等</td></tr>
+      <tr><td>NISAのみ（年5%）</td><td>約1,482万円</td><td>なし（別途定期必要）</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section id="types">
+  <h2>保険の種類と使い分け</h2>
+
+  <h3>死亡保険3タイプ</h3>
+  <table>
+    <thead><tr><th>タイプ</th><th>保険料</th><th>向く人</th><th>月額目安（30歳男性）</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><strong>定期保険</strong></td>
+        <td>最安（終身の1/5〜1/10）</td>
+        <td>子育て期だけ大きな一時金が欲しい</td>
+        <td>2,000万円保障・20年 → 2,000〜4,000円</td>
+      </tr>
+      <tr>
+        <td><strong>収入保障保険</strong></td>
+        <td>定期より安いことも</td>
+        <td>遺族の毎月の生活費を補填</td>
+        <td>月20万円×60歳まで → 3,000〜5,000円</td>
+      </tr>
+      <tr>
+        <td><strong>終身保険</strong></td>
+        <td>高い</td>
+        <td>葬儀・相続・一生涯の保障</td>
+        <td>500万円・60歳払 → 7,000〜15,000円</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="flow">
+    <span>一生涯必要？</span>
+    <span class="arrow">→ YES → 終身（小額）</span>
+    <span class="arrow">→ NO → 毎月補填？</span>
+    <span class="arrow">→ YES → 収入保障</span>
+    <span class="arrow">→ NO → 定期</span>
+  </div>
+
+  <h3>医療・がん・就業不能</h3>
+  <table>
+    <thead><tr><th>種類</th><th>優先度が高い人</th><th>設計の要点</th></tr></thead>
+    <tbody>
+      <tr><td>医療保険</td><td>自営業・貯蓄少・既往歴</td><td>入院日額5,000〜10,000円で可（高額療養費あり）</td></tr>
+      <tr><td>がん保険</td><td>家族歴・不安が強い</td><td>診断一時金100万円優先。通院・自由診療対応</td></tr>
+      <tr><td>就業不能保険</td><td>住宅ローン・フリーランス</td><td>傷病手当金（会社員2/3×1.5年）を差し引く</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section id="amount">
+  <h2>必要保障額の算出</h2>
+
+  <p><strong>必要保障額 ＝ 遺族に必要な生活費・教育費・住宅費 － 遺族年金 － 配偶者収入 － 貯蓄・保険 － 死亡退職金</strong></p>
+
+  <h3>計算例（サラリーマン・子2人）</h3>
+  <table>
+    <thead><tr><th>項目</th><th>金額例</th></tr></thead>
+    <tbody>
+      <tr><td>遺族の生活費等（20年）</td><td>約3,000万円</td></tr>
+      <tr><td>教育費</td><td>約670万円</td></tr>
+      <tr><td>住宅ローン残債</td><td>要確認</td></tr>
+      <tr><td>遺族年金（公的年金）</td><td>▲ 約1,500〜2,000万円</td></tr>
+      <tr><td>死亡退職金・弔慰金</td><td>▲ 400万円</td></tr>
+      <tr><td>預貯金・既存保険</td><td>▲ 個別</td></tr>
+      <tr><td><strong>不足額（目安）</strong></td><td><strong>1,000〜3,000万円</strong></td></tr>
+    </tbody>
+  </table>
+
+  <div class="tip">
+    団体信用生命保険（団信）で住宅ローンはカバー済みのことが多い。<strong>二重加入</strong>（団信＋同額定期）で月5,000〜10,000円無駄になるケースあり → 住宅購入時に必ず見直し。
+  </div>
+</section>
+
+<section id="kakesute">
+  <h2>掛け捨て vs 貯蓄型 — 徹底比較</h2>
+  <table>
+    <thead><tr><th>比較軸</th><th>掛け捨て（定期・収入保障）</th><th>貯蓄型（終身・学資・養老）</th></tr></thead>
+    <tbody>
+      <tr><td>月額（1,000万円死亡保障）</td><td>1,500〜2,000円</td><td>7,000〜15,000円</td></tr>
+      <tr><td>20年累計コスト</td><td>36〜48万円</td><td>360万円〜</td></tr>
+      <tr><td>返戻・満期</td><td>なし</td><td>あり（条件付き）</td></tr>
+      <tr><td>長期リターン</td><td>—</td><td>1〜2%程度</td></tr>
+      <tr><td>流動性</td><td>—</td><td>低（早期解約で割れ）</td></tr>
+      <tr><td>向く人</td><td>純粋な死亡保障</td><td>強制積立・相続・告知緩和</td></tr>
+    </tbody>
+  </table>
+
+  <h3> vs 新NISA / iDeCo</h3>
+  <table>
+    <thead><tr><th>項目</th><th>貯蓄型保険</th><th>新NISA</th><th>iDeCo</th></tr></thead>
+    <tbody>
+      <tr><td>利回り目安</td><td>1〜2%</td><td>3〜7%（運用次第）</td><td>3〜7%</td></tr>
+      <tr><td>税制</td><td>生命保険料控除（最大12万円）</td><td>運用益非課税</td><td>掛金全額控除</td></tr>
+      <tr><td>死亡保障</td><td>○</td><td>×</td><td>×</td></tr>
+      <tr><td>元本</td><td>満期まで保証的</td><td>なし</td><td>商品次第</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section id="ranking">
+  <h2>おすすめ商品・会社比較（2026年）</h2>
+
+  <div class="danger">
+    以下は<strong>比較参考</strong>であり、特定商品の加入を推奨するものではありません。年齢・性別・健康状態で保険料は変動します。必ず各社公式で見積もりを取得してください。
+  </div>
+
+  <h3>死亡保険（定期）人気商品</h3>
+  <table>
+    <thead><tr><th>順位</th><th>商品</th><th>会社</th><th>特徴</th></tr></thead>
+    <tbody>
+      <tr><td><span class="rank">1</span></td><td>定期保険 Bridge［ブリッジ］</td><td>オリックス生命</td><td>ネット専用・500万〜3,000万円。30歳男性1,500万/10年 → 月1,337円〜</td></tr>
+      <tr><td><span class="rank">2</span></td><td>アクサダイレクトの定期保険2</td><td>アクサダイレクト生命</td><td>最高1億円まで。チャット24h対応</td></tr>
+      <tr><td><span class="rank">3</span></td><td>かぞくへの保険</td><td>ライフネット生命</td><td>最長90歳満了。情報開示に定評</td></tr>
+      <tr><td>—</td><td>クリック定期！Neo</td><td>SBI生命</td><td>業界最安クラス。住宅ローン団信とセット利用多</td></tr>
+    </tbody>
+  </table>
+
+  <h3>ネット生命保険 会社比較</h3>
+  <table>
+    <thead><tr><th>会社</th><th>保険料水準</th><th>強み</th><th>弱み</th></tr></thead>
+    <tbody>
+      <tr><td>ライフネット生命</td><td>最安クラス</td><td>透明性・UI・定期「かぞくへの保険」</td><td>対面相談なし</td></tr>
+      <tr><td>SBI生命</td><td>最安〜</td><td>価格・SBIグループ・団信</td><td>がん保険なし</td></tr>
+      <tr><td>楽天生命</td><td>安め</td><td>楽天ポイント還元</td><td>商品数少なめ</td></tr>
+      <tr><td>アクサダイレクト</td><td>合理的</td><td>収入保障・3大疾病・チャット</td><td>対面なし</td></tr>
+      <tr><td>オリックス生命</td><td>やや高め</td><td>商品豊富・対面も可・Bridge/CURE</td><td>ネット最安ではない</td></tr>
+      <tr><td>チューリッヒ生命</td><td>中</td><td>健康体割引・非喫煙優遇</td><td>—</td></tr>
+    </tbody>
+  </table>
+
+  <p><strong>同条件の保険料差：</strong> ネット生保 約800〜1,200円/月 vs 対面型平均 2,000〜3,500円/月（30歳・定期2,000万円級）</p>
+
+  <h3>貯蓄型 — 終身・学資（参考）</h3>
+  <table>
+    <thead><tr><th>商品</th><th>タイプ</th><th>返戻率例</th></tr></thead>
+    <tbody>
+      <tr><td>オリックス RISE［ライズ］</td><td>低解約返戻金型終身</td><td>保険料抑制・葬儀向け</td></tr>
+      <tr><td>ソニー生命 学資保険</td><td>学資</td><td>126.5%（条件による）</td></tr>
+      <tr><td>フコク みらいのつばさ J型</td><td>学資</td><td>131.3%（条件による）</td></tr>
+      <tr><td>住友生命 一時払終身</td><td>一時払</td><td>予定利率2.25%（2026年7月〜）</td></tr>
+    </tbody>
+  </table>
+
+  <h3>対面型大手（サポート重視）</h3>
+  <table>
+    <thead><tr><th>会社</th><th>タイプ</th><th>向く人</th></tr></thead>
+    <tbody>
+      <tr><td>日本生命</td><td>国内最大手</td><td>担当者サポート・バランス設計</td></tr>
+      <tr><td>第一生命</td><td>国内大手</td><td>バランス型商品</td></tr>
+      <tr><td>明治安田生命</td><td>国内大手</td><td>特約のカスタマイズ</td></tr>
+      <tr><td>アフラック</td><td>外資・特化</td><td>がん保険（Days1・ミライト等）</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section id="stage">
+  <h2>ライフステージ別 — 月額目安</h2>
+  <table>
+    <thead><tr><th>年代</th><th>死亡</th><th>医療・がん</th><th>合計目安</th></tr></thead>
+    <tbody>
+      <tr><td>20代独身</td><td>終身小額300万 or 不要</td><td>医療5,000円/日・がん100万</td><td>4,000〜8,000円</td></tr>
+      <tr><td>30代子育て</td><td>定期2,000〜3,000万 or 収入保障</td><td>医療・がん終身型</td><td>7,500〜12,000円</td></tr>
+      <tr><td>50代空 nest</td><td>定期減額・解約検討</td><td>医療見直し</td><td>5,500〜9,000円</td></tr>
+      <tr><td>60代以降</td><td>終身200〜300万（葬儀）</td><td>医療・がん優先</td><td>5,000〜9,000円</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section id="tax">
+  <h2>税制・相続の要点</h2>
+  <ul>
+    <li><strong>生命保険料控除：</strong> 年最大12万円（所得控除）。年収が高いほど節税効果大</li>
+    <li><strong>相続非課税枠：</strong> 法定相続人1人あたり500万円まで（生命保険金）</li>
+    <li><strong>解約返戻金：</strong> 払込保険料を超える部分は一時所得（課税）の対象</li>
+    <li><strong>2026年制度：</strong> 生命保険料控除見直し議論あり — 最新の税制ニュースを確認</li>
+  </ul>
+</section>
+
+<section id="checklist">
+  <h2>契約前チェックリスト</h2>
+  <ol>
+    <li>遺族年金の受給額を<a href="https://www.nenkin.go.jp/" target="_blank" rel="noopener">日本年金機構</a>で試算した</li>
+    <li>必要保障額を計算し、既加入（団信含む）と重複していない</li>
+    <li>掛け捨て vs 貯蓄型を目的で分けた</li>
+    <li>3社以上で同条件見積もり（ネット＋対面）</li>
+    <li>返戻率・IRR・解約返戻金推移を確認（貯蓄型）</li>
+    <li>ソルベンシー200%超を確認</li>
+    <li>特約の必要性を1つずつ検証（不要なら外す）</li>
+    <li>健康告知を正確に（後から無効になるリスク）</li>
+    <li>月額保険料が手取りの5〜7%以内</li>
+    <li>不安があれば<a href="https://www.jafp.or.jp/" target="_blank" rel="noopener">FP</a>無料相談を利用</li>
+  </ol>
+
+  <h3>参考リンク</h3>
+  <ul>
+    <li><a href="https://www.jili.or.jp/" target="_blank" rel="noopener">生命保険文化センター</a> — 統計・基礎知識</li>
+    <li><a href="https://www.seiho.or.jp/" target="_blank" rel="noopener">生命保険協会</a></li>
+    <li><a href="https://www.lifenet-seimei.co.jp/" target="_blank" rel="noopener">ライフネット生命</a></li>
+    <li><a href="https://www.orixlife.co.jp/" target="_blank" rel="noopener">オリックス生命</a></li>
+    <li><a href="https://www.sbilife.co.jp/" target="_blank" rel="noopener">SBI生命</a></li>
+  </ul>
+</section>
+
+<footer>
+  <p>本ページは2026年7月時点の公開情報に基づく調査メモです。商品内容・利率は随時改定されます。</p>
+  <p>特定商品の勧誘・推奨ではありません。契約判断はご自身の責任で行ってください。</p>
+  <p>OpenClaw workspace · docs/life-insurance-guide.html</p>
+</footer>
+
+</body>
+</html>
