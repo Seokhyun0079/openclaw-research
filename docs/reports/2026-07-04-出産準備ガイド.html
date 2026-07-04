@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>出産準備ガイド — ベビーカー・内祝い・韓国手続き・病院</title>
+<style>
+  :root {
+    --bg: #faf9f7;
+    --card: #fff;
+    --text: #1a1a1a;
+    --muted: #64748b;
+    --accent: #2c5282;
+    --accent-light: #ebf8ff;
+    --border: #e2e8f0;
+    --warn: #fffaf0;
+    --warn-border: #ed8936;
+    --ok: #f0fff4;
+    --ok-border: #48bb78;
+  }
+  * { box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", sans-serif;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 1.5rem;
+    line-height: 1.75;
+    color: var(--text);
+    background: var(--bg);
+  }
+  header {
+    text-align: center;
+    padding: 2rem 1rem 1.5rem;
+    border-bottom: 3px solid #bee3f8;
+    margin-bottom: 2rem;
+  }
+  header h1 {
+    color: var(--accent);
+    font-size: clamp(1.4rem, 4vw, 1.9rem);
+    margin-bottom: .5rem;
+  }
+  header p { color: var(--muted); font-size: .95rem; margin: 0; }
+  nav {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1rem 1.25rem;
+    margin-bottom: 2rem;
+  }
+  nav h2 { font-size: 1rem; color: var(--accent); margin: 0 0 .75rem; }
+  nav ol { margin: 0; padding-left: 1.25rem; }
+  nav li { margin: .35rem 0; }
+  nav a { color: var(--accent); text-decoration: none; }
+  nav a:hover { text-decoration: underline; }
+  section {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  section > h2 {
+    color: var(--accent);
+    font-size: 1.25rem;
+    margin: 0 0 1rem;
+    padding-bottom: .5rem;
+    border-bottom: 2px solid #bee3f8;
+  }
+  h3 { color: #2d3748; font-size: 1.05rem; margin: 1.25rem 0 .5rem; }
+  table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: .92rem; }
+  th, td { border: 1px solid var(--border); padding: .55rem .75rem; text-align: left; vertical-align: top; }
+  th { background: var(--accent-light); font-weight: 600; }
+  tr:nth-child(even) { background: #f8fafc; }
+  ul, ol { padding-left: 1.4rem; margin: .5rem 0; }
+  li { margin: .25rem 0; }
+  .note {
+    background: var(--warn);
+    border-left: 4px solid var(--warn-border);
+    padding: .75rem 1rem;
+    border-radius: 0 8px 8px 0;
+    margin: 1rem 0;
+    font-size: .93rem;
+  }
+  .tip {
+    background: var(--ok);
+    border-left: 4px solid var(--ok-border);
+    padding: .75rem 1rem;
+    border-radius: 0 8px 8px 0;
+    margin: 1rem 0;
+    font-size: .93rem;
+  }
+  .flow {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .5rem;
+    align-items: center;
+    margin: 1rem 0;
+    font-size: .9rem;
+  }
+  .flow span {
+    background: var(--accent-light);
+    border: 1px solid #bee3f8;
+    border-radius: 8px;
+    padding: .4rem .7rem;
+  }
+  .flow .arrow { background: none; border: none; color: var(--muted); padding: 0; }
+  a { color: #2563eb; }
+  footer {
+    text-align: center;
+    color: var(--muted);
+    font-size: .85rem;
+    padding: 2rem 0 1rem;
+  }
+  .tag {
+    display: inline-block;
+    background: #edf2f7;
+    color: #4a5568;
+    font-size: .75rem;
+    padding: .15rem .5rem;
+    border-radius: 4px;
+    margin-right: .35rem;
+  }
+  .status-yes { color: #276749; font-weight: 700; }
+  .status-part { color: #c05621; font-weight: 700; }
+  .status-no { color: #718096; font-weight: 700; }
+  .em-legend { font-size: .88rem; color: var(--muted); margin: .5rem 0 1rem; }
+  .em-legend strong { color: var(--text); }
+  @media (max-width: 600px) {
+    body { padding: 1rem; }
+    section { padding: 1rem; }
+    table { font-size: .85rem; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>出産準備ガイド</h1>
+  <p>ベビーカー · ベビーベッド · 内祝い · 韓国ハーフの手続き · 婚姻届 · 奥戸・小岩の病院</p>
+  <p><em>2026年7月時点 · 公式情報は必ず各窓口で最新確認</em></p>
+</header>
+
+<nav>
+  <h2>目次</h2>
+  <ol>
+    <li><a href="#stroller">ベビーカーレンタル — 奥戸・葛飾区でどう決めるか</a></li>
+    <li><a href="#uchiiwai">内祝いの検討</a></li>
+    <li><a href="#passport">韓国ハーフ新生児のパスポート申請</a></li>
+    <li><a href="#marriage">婚姻届・婚姻申告 — いつまでに出すか</a></li>
+    <li><a href="#hospital">奥戸・小岩駅周辺 — 赤ちゃんの病院</a></li>
+    <li><a href="#babybed">ベビーベッド — 奥戸・葛飾区でどう決めるか</a></li>
+  </ol>
+</nav>
+
+<!-- 1. ベビーカー -->
+<section id="stroller">
+  <h2>1. ベビーカーレンタル — 奥戸・葛飾区でどう決めるか</h2>
+
+  <p>奥戸在住なら、<strong>自宅に届けてくれる葛飾区対応のレンタル</strong>が第一候補です。最寄りは<strong>新小岩駅</strong>（奥戸からバス・徒歩圏）ですが、駅構内のベビカル設置はありません。</p>
+
+  <h3>用途別 — 奥戸からこう選ぶ</h3>
+  <table>
+    <thead>
+      <tr><th>シーン</th><th>おすすめ</th><th>目安</th><th>特徴</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>自宅で数日〜数ヶ月試す<br>（購入前のお試し）</td>
+        <td><a href="https://www.ibaby.co.jp/area/katsushika.html" target="_blank" rel="noopener">愛育ベビー</a></td>
+        <td>往復送料 <strong>1,200円</strong>（9,900円以上で無料）</td>
+        <td><strong>葛飾区全域が自社集配</strong>。週2〜3日配送。A型・B型あり。梱包不要で回収</td>
+      </tr>
+      <tr>
+        <td>ブランドを比較したい<br>（宅配・全国対応）</td>
+        <td><a href="https://babyrenta.com/" target="_blank" rel="noopener">ベビレンタ</a></td>
+        <td>最短3日〜</td>
+        <td>サイベックス・コンビ等1,000点以上。奥戸へ宅配。午前中注文で当日発送の日も</td>
+      </tr>
+      <tr>
+        <td>短期だけ試したい<br>（3〜7日）</td>
+        <td><a href="https://monocari.com/" target="_blank" rel="noopener">モノカリ</a></td>
+        <td>3日 890円〜（＋送料）</td>
+        <td>宅配。A/B型・バギー。道のり・電車移動の試し向き</td>
+      </tr>
+      <tr>
+        <td>錦糸町・スカイツリー等<br>お出かけ数時間</td>
+        <td><a href="https://babycal-jre.com/" target="_blank" rel="noopener">ベビカル</a></td>
+        <td>1時間250〜500円〜、12時間最大1,500円前後</td>
+        <td>新小岩駅には未設置。近場は<strong>錦糸町・押上</strong>等を要確認（アプリ/Webで予約）</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>奥戸在住 — 第一候補：愛育ベビー</h3>
+  <ul>
+    <li><strong>配送</strong> — 奥戸含む葛飾区全域。スタッフが直接届け・回収（日祝は宅配便）</li>
+    <li><strong>ベビーカー</strong> — A型（生後1ヶ月〜）・B型（7ヶ月ごろ〜）</li>
+    <li><strong>赤ちゃんファースト</strong> — 東京都ポイントでレンタル可（送料別）</li>
+    <li><strong>問い合わせ</strong> — <a href="tel:0484692221">048-469-2221</a></li>
+  </ul>
+
+  <h3>決めるときのチェックリスト</h3>
+  <ul>
+    <li><strong>総額</strong> — レンタル料＋往復送料（愛育ベビーは1,200円／ベビレンタ・モノカリは地域別）</li>
+    <li><strong>期間</strong> — 短期試し（3〜7日）か、生後数ヶ月レンタルか</li>
+    <li><strong>モデル</strong> — 新生児〜のA型か、首がすわってからのB型か</li>
+    <li><strong>返却</strong> — 自社回収（愛育ベビー）か、宅配返却か</li>
+  </ul>
+
+  <div class="note">
+    <strong>葛飾区の助成：</strong> 3歳未満の子がいる世帯は、ベビーカーの<strong>レンタル費用の2分の1（上限15,000円）</strong>を助成（令和7年4月1日以降に開始した分）。<a href="https://www.city.katsushika.lg.jp/kenkou/1000050/1001803/1037955.html" target="_blank" rel="noopener">葛飾区公式</a> · 0120-193-133
+  </div>
+
+  <div class="tip">
+    <strong>おすすめ：</strong> 奥戸ならまず<strong>愛育ベビー</strong>で1〜2週間試す → 合わなければ<strong>モノカリ</strong>で別モデル。錦糸町方面の日帰りだけなら<strong>ベビカル</strong>（事前に設置駅を確認）。
+  </div>
+</section>
+
+<!-- 2. 内祝い -->
+<section id="uchiiwai">
+  <h2>2. 内祝いの検討</h2>
+
+  <p>親戚・友人・同僚などから<strong>出産祝い</strong>（お金や品）をもらったとき、お礼として贈るのが<strong>内祝い</strong>です。祝いをくれた人にだけ送ります。</p>
+
+  <h3>基本ルール</h3>
+  <table>
+    <thead>
+      <tr><th>項目</th><th>目安</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>金額</td><td>もらった<strong>出産祝い</strong>の<strong>半返し〜3分の1</strong>を、品の値段の目安にする</td></tr>
+      <tr><td>時期</td><td>お宮参り前後（生後<strong>1〜2ヶ月以内</strong>が一般的）</td></tr>
+      <tr><td>のし</td><td>紅白蝶結び（何度でも結べる祝い事用）。表書き「内祝」</td></tr>
+      <tr><td>名入れ</td><td>赤ちゃんの名前（ふりがな付き）を記載</td></tr>
+    </tbody>
+  </table>
+
+  <h3>関係別の金額目安</h3>
+  <table>
+    <thead>
+      <tr><th>相手</th><th>目安</th><th>例（1万円いただいた場合）</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>友人・同僚</td><td>半返し</td><td>4,000〜5,000円</td></tr>
+      <tr><td>上司・目上の親族</td><td>3分の1返し</td><td>3,000〜3,500円</td></tr>
+      <tr><td>両親・祖父母</td><td>3分の1＋記念品も可</td><td>7,000〜10,000円</td></tr>
+      <tr><td>職場一同（連名）</td><td>人数割り＋配りやすい個包装</td><td>—</td></tr>
+    </tbody>
+  </table>
+
+  <h3>2026年の定番ギフト</h3>
+  <ul>
+    <li><strong>カタログギフト</strong> — 相手が選べて外しにくい。3,000〜30,000円台</li>
+    <li><strong>タオル・洗剤セット</strong> — 実用的で定番</li>
+    <li><strong>スイーツ・コーヒー・紅茶</strong> — 独身・若い世代向け</li>
+    <li><strong>お菓子詰め合わせ</strong> — 職場配布向け</li>
+  </ul>
+
+  <div class="note">
+    体調・育児で間に合わない場合は、無理せず<strong>2ヶ月以内</strong>を目安に。事前に「お礼状＋後日お届け」と連絡すれば問題になりにくいです。
+  </div>
+</section>
+
+<!-- 3. パスポート -->
+<section id="passport">
+  <h2>3. 韓国ハーフ新生児のパスポート申請</h2>
+
+  <p>親の一方が韓国籍（在日韓国人・特別永住者等）の場合、<strong>日本の出生届のあと、韓国側の出生申告（家族関係登録）</strong>が先です。韓国の戸籍がないと通常のパスポートは発給されません。先に<strong>婚姻届・婚姻申告（→ <a href="#marriage">4章</a>）</strong>が済んでいる必要があります。</p>
+
+  <h3>前提 — 国籍の整理</h3>
+  <table>
+    <thead>
+      <tr><th>ケース</th><th>日本側</th><th>韓国側</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>韓国人 × 日本人</td>
+        <td>日本国籍（日本籍親の戸籍へ）。14日以内に出生届</td>
+        <td>出生申告をすれば<strong>二重国籍</strong>の状態に。22歳までに国籍選択</td>
+      </tr>
+      <tr>
+        <td>韓国人 × 韓国人</td>
+        <td>14日以内に出生届（外国人登録関連書類も）</td>
+        <td>出生申告で韓国の家族関係登録簿へ</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>手続きの流れ</h3>
+  <div class="flow">
+    <span>① 婚姻届・婚姻申告（→ <a href="#marriage">4章</a>）</span>
+    <span class="arrow">→</span>
+    <span>② 日本：出生届（14日以内）</span>
+    <span class="arrow">→</span>
+    <span>③ 韓国：大使館で出生申告</span>
+    <span class="arrow">→</span>
+    <span>④ 韓国パスポート申請</span>
+  </div>
+
+  <h3>パスポート申請 — 参考書類（領事館で要確認）</h3>
+  <ul>
+    <li>旅券（パスポート）発給申請書</li>
+    <li>カラー写真 2枚（4.5×3.5cm、6ヶ月以内）</li>
+    <li>家族関係証明書・基本証明書（出生申告完了後、領事館で取得可）</li>
+    <li>父母の身分証（在留カード、特別永住者証明書、パスポート等）</li>
+    <li>手数料目安：5年有効 5,640円（18歳未満）／ 8歳未満 1,800円 等</li>
+  </ul>
+
+  <div class="note">
+    <strong>新生児は父母が代理申請</strong>します。戸籍登録前で急ぎの渡航がある場合は<strong>旅行証明書</strong>（単数旅券）が使えるケースもありますが、出生申告なしでは繰り返し発給できないことが多いです。行政書士・領事館への事前相談を推奨。
+  </div>
+
+  <p><strong>東京在住の管轄：</strong> <a href="https://overseas.mofa.go.kr/jp-ja/index.do" target="_blank" rel="noopener">駐日大韓民国大使館</a>（東京都港区南麻布）</p>
+</section>
+
+<!-- 4. 婚姻届 -->
+<section id="marriage">
+  <h2>4. 婚姻届・婚姻申告 — いつまでに出すか</h2>
+
+  <p>日韓カップル（一方が韓国籍）で、<strong>日本の婚姻届</strong>と<strong>韓国の婚姻申告</strong>をまだ出していない場合の期限です。出産前に済ませておくと、あとの出生届・パスポート手続きが楽です。</p>
+
+  <h3>期限</h3>
+  <table>
+    <thead>
+      <tr><th>手続き</th><th>どこ</th><th>期限</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>婚姻届</strong></td>
+        <td>市区町村役場（奥戸 → <a href="https://www.city.katsushika.lg.jp/" target="_blank" rel="noopener">葛飾区役所</a>）</td>
+        <td><strong>出産前</strong>に提出するのが無難</td>
+      </tr>
+      <tr>
+        <td><strong>婚姻申告</strong></td>
+        <td><a href="https://overseas.mofa.go.kr/jp-ja/index.do" target="_blank" rel="noopener">駐日大韓民国大使館</a>（葛飾区はここ管轄）</td>
+        <td>婚姻届の受理から<strong>3ヶ月以内</strong>（義務）<br><strong>1ヶ月以内</strong>なら書類が少ない</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="note">
+    <strong>1ヶ月 vs 3ヶ月：</strong> 在外国民の申告義務は<strong>3ヶ月</strong>。ただし<strong>1ヶ月を過ぎると住民票・戸籍謄本＋翻訳</strong>などが追加で必要になりやすい。早めに行くのがおすすめ。
+  </div>
+
+  <h3>手続きの流れ</h3>
+  <div class="flow">
+    <span>① 葛飾区役所で婚姻届</span>
+    <span class="arrow">→</span>
+    <span>② 受理証明書・戸籍謄本を取得（反映に約1週間）</span>
+    <span class="arrow">→</span>
+    <span>③ 大使館で婚姻申告（1ヶ月以内推奨）</span>
+    <span class="arrow">→</span>
+    <span>④ 出産後：出生届 → 出生申告 → パスポート（3章）</span>
+  </div>
+
+  <h3>婚姻申告の書類 — 時期による違い</h3>
+  <table>
+    <thead>
+      <tr><th>婚姻届から</th><th>必要なもの（目安）</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>1ヶ月以内</strong></td>
+        <td>婚姻申告書、婚姻届受理証明書＋翻訳、韓国籍の親の身分証・印鑑、領事館で発行する家族・婚姻関係証明書、日本籍の親のパスポート（またはコピー）</td>
+      </tr>
+      <tr>
+        <td><strong>1ヶ月超〜3ヶ月</strong></td>
+        <td>上記 ＋ <strong>二人の住民票</strong>＋翻訳、<strong>日本籍の親の戸籍謄本</strong>（婚姻記載）＋翻訳</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>日本の婚姻届 — 持ち物（目安）</h3>
+  <ul>
+    <li>婚姻届書（二人の署名・印鑑）</li>
+    <li>身分証明書（運転免許、マイナンバーカード、パスポート、在留カード等）</li>
+  </ul>
+  <p>詳細は提出前に<strong>葛飾区役所</strong>または<strong>大使館</strong>で最新リストを確認してください。</p>
+</section>
+
+<!-- 5. 病院 -->
+<section id="hospital">
+  <h2>5. 奥戸・小岩駅周辺 — 赤ちゃんの病院</h2>
+
+  <p>奥戸在住なら<strong>奥戸こども</strong>が最寄りですが、<strong>新小岩・小岩（JR／京成）</strong>方面もバス1本で行きやすく、365日診療・アレルギー専門・病児保育など選択肢が広いです。分娩・妊婦健診は<strong>立石・新小岩・小岩</strong>、生後のかかりつけは距離と診療時間で組み合わせるのが現実的です。</p>
+
+  <p class="em-legend"><strong>急患</strong>＝診療時間内の急な発熱・体調不良　<strong>夜間</strong>＝18時以降の外来診療（※ほとんどのクリニックは夜間外来なし。下記「夜間・休日の受け方」参照）</p>
+
+  <h3>小児科 — 急患・夜間 一覧</h3>
+  <table>
+    <thead>
+      <tr><th>クリニック</th><th>急患</th><th>夜間</th><th>備考</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>① アクアキッズ</td><td class="status-yes">○</td><td class="status-no">×</td><td>365日 9〜18時（水午後休）。日祝も発熱等OK</td></tr>
+      <tr><td>② ながきこども</td><td class="status-yes">○</td><td class="status-no">×</td><td>〜18:30。日祝休</td></tr>
+      <tr><td>③ タムス小岩</td><td class="status-yes">○</td><td class="status-no">×</td><td>発熱患者受入。〜18:00</td></tr>
+      <tr><td>④ タムス新小岩</td><td class="status-yes">○</td><td class="status-no">×</td><td>発熱外来。平日〜18:30</td></tr>
+      <tr><td>⑦ 奥戸こども</td><td class="status-yes">○</td><td class="status-part">△</td><td>かかりつけ登録で<strong>22時まで電話相談</strong>（来院は診療時間内）</td></tr>
+      <tr><td>⑧ おはようこども</td><td class="status-yes">○</td><td class="status-no">×</td><td>発熱外来（予約制）。〜18:00</td></tr>
+    </tbody>
+  </table>
+
+  <h3>小岩駅・新小岩駅周辺</h3>
+  <p class="muted" style="color:var(--muted);font-size:.9rem;margin:.25rem 0 1rem;">江戸川区（JR小岩・京成小岩）＋葛飾区（新小岩）。奥戸からは新小岩経由のバス、または京成で小岩方面へ。</p>
+
+  <h4>① アクアキッズクリニック ★365日診療</h4>
+  <table>
+    <tbody>
+      <tr><th>住所</th><td>〒133-0056 江戸川区南小岩7-24-20 FIRSTA I 5F</td></tr>
+      <tr><th>電話</th><td><a href="tel:03-6555-3650">03-6555-3650</a></td></tr>
+      <tr><th>診療科</th><td>小児科 · アレルギー科</td></tr>
+      <tr><th>アクセス</th><td>JR小岩駅南口 徒歩1分</td></tr>
+      <tr><th>診療時間</th><td>365日 9:00〜13:00 / 14:00〜18:00（水曜午後休）</td></tr>
+      <tr><th>急患</th><td class="status-yes">○ 診療時間内（発熱・風邪等）。日祝も可</td></tr>
+      <tr><th>夜間</th><td class="status-no">× 18:00以降は休診 → 下記「夜間・休日の受け方」</td></tr>
+      <tr><th>特徴</th><td>小児科専門医。Web・LINE予約可。駐車場なし（近隣コインパーキング）</td></tr>
+    </tbody>
+  </table>
+  <p>
+    <span class="tag">365日</span>
+    <span class="tag">小児科専門医</span>
+    <span class="tag">駅徒歩1分</span>
+    <a href="https://aquakids.jp/" target="_blank" rel="noopener">公式サイト</a>
+  </p>
+
+  <h4>② ながきこどもクリニック</h4>
+  <table>
+    <tbody>
+      <tr><th>住所</th><td>〒133-0051 江戸川区北小岩6-15-5 小岩メディカルセンター新館3F</td></tr>
+      <tr><th>電話</th><td><a href="tel:03-5612-0661">03-5612-0661</a></td></tr>
+      <tr><th>診療科</th><td>小児科 · アレルギー科 · 小児神経（低身長・けいれん外来）</td></tr>
+      <tr><th>アクセス</th><td>京成小岩駅北口 徒歩約1分</td></tr>
+      <tr><th>診療時間</th><td>月火木金 8:45〜11:30 / 16:00〜18:30、土 8:45〜11:30（健診・予防接種は別枠・要予約）</td></tr>
+      <tr><th>休診</th><td>水・日・祝（水曜は健診・予防接種のみの日あり）</td></tr>
+      <tr><th>急患</th><td class="status-yes">○ 診療時間内</td></tr>
+      <tr><th>夜間</th><td class="status-no">× 18:30以降休診</td></tr>
+      <tr><th>特徴</th><td>地域密着。アイチケット予約可。駐車場あり</td></tr>
+    </tbody>
+  </table>
+  <p><a href="https://nagaki-kodomo-clinic.com/" target="_blank" rel="noopener">公式サイト</a></p>
+
+  <h4>③ タムスわんぱくクリニック小岩</h4>
+  <table>
+    <tbody>
+      <tr><th>住所</th><td>〒133-0052 江戸川区東小岩4-5-2 神奈川ビル1F</td></tr>
+      <tr><th>電話</th><td><a href="tel:03-5612-3754">03-5612-3754</a></td></tr>
+      <tr><th>診療科</th><td>小児科 · アレルギー科</td></tr>
+      <tr><th>アクセス</th><td>JR小岩駅 → バス「南小岩三丁目」下車 徒歩1分</td></tr>
+      <tr><th>診療時間</th><td>月火木金 8:45〜12:45 / 14:00〜18:00、水 15:00〜18:00、土 8:45〜11:45 / 13:00〜15:00</td></tr>
+      <tr><th>急患</th><td class="status-yes">○ 発熱・感冒症状も受入（初診可）</td></tr>
+      <tr><th>夜間</th><td class="status-no">× 18:00以降休診</td></tr>
+      <tr><th>特徴</th><td>アレルギー専門医。病児保育室併設。Web予約可</td></tr>
+    </tbody>
+  </table>
+  <p>
+    <span class="tag">アレルギー専門</span>
+    <span class="tag">病児保育</span>
+    <a href="https://koiwa-wanpaku.tumsclinic.com/" target="_blank" rel="noopener">公式サイト</a>
+  </p>
+
+  <h4>④ タムスわんぱくクリニック新小岩駅前 ★新小岩南口1分</h4>
+  <table>
+    <tbody>
+      <tr><th>住所</th><td>〒124-0024 葛飾区新小岩2-1-1 リーフコンフォート新小岩3F</td></tr>
+      <tr><th>電話</th><td><a href="tel:03-6231-5512">03-6231-5512</a></td></tr>
+      <tr><th>診療科</th><td>小児科 · アレルギー科</td></tr>
+      <tr><th>アクセス</th><td>JR新小岩駅南口 徒歩1分（奥戸から京成タウンバスで新小岩方面）</td></tr>
+      <tr><th>診療時間</th><td>月〜金 9:00〜13:00 / 15:30〜18:30、土 9:00〜12:00 / 13:00〜15:00</td></tr>
+      <tr><th>休診</th><td>日・祝</td></tr>
+      <tr><th>急患</th><td class="status-yes">○ 発熱外来あり（受診歴不問）</td></tr>
+      <tr><th>夜間</th><td class="status-no">× 18:30以降休診</td></tr>
+      <tr><th>特徴</th><td>アレルギー専門医。葛飾区委託の<strong>病児保育室</strong>併設（平日8:30〜17:30）。土曜午後も診察</td></tr>
+    </tbody>
+  </table>
+  <p>
+    <span class="tag">駅徒歩1分</span>
+    <span class="tag">病児保育</span>
+    <span class="tag">土曜午後</span>
+    <a href="https://shinkoiwa-wanpaku.tumsclinic.com/" target="_blank" rel="noopener">公式サイト</a>
+  </p>
+
+  <h4>⑤ 小岩レディースクリニック（産婦人科）</h4>
+  <table>
+    <tbody>
+      <tr><th>住所</th><td>〒133-0051 江戸川区北小岩6-22-2</td></tr>
+      <tr><th>電話</th><td><a href="tel:03-5612-2871">03-5612-2871</a></td></tr>
+      <tr><th>診療科</th><td>産婦人科（産科専門医）</td></tr>
+      <tr><th>アクセス</th><td>京成小岩駅 徒歩3分 · JR小岩駅 徒歩16分</td></tr>
+      <tr><th>診療時間</th><td>月火水金 10:00〜13:00 / 15:00〜19:00、土 10:00〜13:00</td></tr>
+      <tr><th>休診</th><td>木・日・祝</td></tr>
+      <tr><th>急患</th><td class="status-part">△ 妊婦の急変は要電話相談（<strong>分娩不可</strong>）</td></tr>
+      <tr><th>夜間</th><td class="status-no">× 19:00以降休診</td></tr>
+      <tr><th>特徴</th><td>妊娠10週頃までの妊婦健診後、分娩先を紹介。駐車場4台</td></tr>
+    </tbody>
+  </table>
+  <p><a href="https://www.koiwa-ladies.com/" target="_blank" rel="noopener">公式サイト</a></p>
+
+  <h4>⑥ 中村医院（産婦人科）</h4>
+  <table>
+    <tbody>
+      <tr><th>住所</th><td>〒124-0024 葛飾区新小岩2-35-4</td></tr>
+      <tr><th>電話</th><td><a href="tel:03-3654-9237">03-3654-9237</a></td></tr>
+      <tr><th>診療科</th><td>産婦人科 · 婦人科 · 外科</td></tr>
+      <tr><th>アクセス</th><td>JR新小岩駅 徒歩6〜7分</td></tr>
+      <tr><th>急患</th><td class="status-part">△ 産科・婦人科の急変は要電話相談</td></tr>
+      <tr><th>夜間</th><td class="status-no">× 夜間外来なし（詳細は要確認）</td></tr>
+      <tr><th>特徴</th><td>産婦人科専門医。女性医師在籍。土曜診療あり</td></tr>
+    </tbody>
+  </table>
+
+  <h3>小児科 — 奥戸エリア</h3>
+
+  <h4>⑦ 奥戸こどもクリニック ★奥戸最寄り</h4>
+  <table>
+    <tbody>
+      <tr><th>住所</th><td>〒124-0022 葛飾区奥戸3-22-9（どらっぐぱぱす2F）</td></tr>
+      <tr><th>電話</th><td><a href="tel:03-5654-7611">03-5654-7611</a></td></tr>
+      <tr><th>診療科</th><td>小児科 · アレルギー科 · 小児皮膚科</td></tr>
+      <tr><th>アクセス</th><td>新小岩駅北口 → 京成タウンバス（亀有行）「奥戸四丁目」下車 徒歩1分</td></tr>
+      <tr><th>駐車場</th><td>28台（広い — ベビーカー・授乳室・おむつ交換台あり）</td></tr>
+      <tr><th>診療時間</th><td>月火水金 8:30〜12:00 / 15:00〜18:00、土 8:30〜12:00 / 15:00〜17:00</td></tr>
+      <tr><th>休診</th><td>木・日・祝</td></tr>
+      <tr><th>急患</th><td class="status-yes">○ 診療時間内。急な発熱・体調不良</td></tr>
+      <tr><th>夜間</th><td class="status-part">△ 小児かかりつけ登録で<strong>診療日22時まで電話相談</strong>（来院は診療時間内のみ）</td></tr>
+      <tr><th>特徴</th><td>小児科専門医。予防接種・乳幼児健診。隔離室2つ。Web予約可</td></tr>
+    </tbody>
+  </table>
+  <p>
+    <span class="tag">小児科専門医</span>
+    <span class="tag">駐車場28台</span>
+    <span class="tag">土曜午後診療</span>
+    <a href="https://okudo-kodomo.com/" target="_blank" rel="noopener">公式サイト</a>
+  </p>
+
+  <h4>⑧ おはようこどもクリニック</h4>
+  <table>
+    <tbody>
+      <tr><th>住所</th><td>〒124-0022 葛飾区奥戸3-7-15 エトワール1F</td></tr>
+      <tr><th>診療科</th><td>小児科 · 内科</td></tr>
+      <tr><th>アクセス</th><td>新小岩駅 → 京成タウンバス</td></tr>
+      <tr><th>診療時間</th><td>月火木金 8:30〜12:00 / 15:00〜18:00、土 8:30〜12:30</td></tr>
+      <tr><th>休診</th><td>水・日・祝</td></tr>
+      <tr><th>急患</th><td class="status-yes">○ 発熱外来（予約制・接触少なめ）</td></tr>
+      <tr><th>夜間</th><td class="status-no">× 18:00以降休診</td></tr>
+      <tr><th>特徴</th><td>口コミで丁寧な説明が評判</td></tr>
+    </tbody>
+  </table>
+
+  <h3>産婦人科・健診 — 奥戸からアクセスしやすい</h3>
+
+  <h4>⑨ 東京フェリシアレディースクリニック</h4>
+  <table>
+    <tbody>
+      <tr><th>住所</th><td>〒124-0012 葛飾区立石8-9-6</td></tr>
+      <tr><th>電話</th><td><a href="tel:03-3691-9931">03-3691-9931</a></td></tr>
+      <tr><th>診療科</th><td>産婦人科 · 産科 · 小児科 · 皮膚科</td></tr>
+      <tr><th>アクセス</th><td>京成立石駅 徒歩約2分（奥戸からバス・車で約10分圏）</td></tr>
+      <tr><th>駐車場</th><td>専用2台＋向かいコインパーキング</td></tr>
+      <tr><th>急患</th><td class="status-part">△ 陣痛・分娩中は24h対応。外来は〜17:00頃</td></tr>
+      <tr><th>夜間</th><td class="status-part">△ 入院・分娩時は24h。夜間の外来受付なし</td></tr>
+      <tr><th>特徴</th><td>無痛分娩対応。小児科もあり産前産後の相談がしやすい</td></tr>
+    </tbody>
+  </table>
+  <p><a href="https://tokyo-felicia.com/" target="_blank" rel="noopener">公式サイト</a></p>
+
+  <h4>⑩ 高岡産婦人科（立石）</h4>
+  <table>
+    <tbody>
+      <tr><th>住所</th><td>〒124-0012 葛飾区立石1-10-8</td></tr>
+      <tr><th>診療科</th><td>産婦人科 · 小児科</td></tr>
+      <tr><th>アクセス</th><td>新小岩駅・京成立石駅から近い</td></tr>
+      <tr><th>急患</th><td class="status-part">△ 産科・小児科とも要電話相談</td></tr>
+      <tr><th>夜間</th><td class="status-no">× 夜間外来なし（詳細は要確認）</td></tr>
+      <tr><th>特徴</th><td>地域で長く診療。小児科併設</td></tr>
+    </tbody>
+  </table>
+
+  <h3>奥戸から近い順 — 夜間・休日の小児診療</h3>
+  <p>奥戸エリアに<strong>18時以降の小児外来があるクリニックはほぼありません</strong>。夜間・休日は区の応急診療所か救急病院を使います。下表は<strong>奥戸からの距離・行きやすさ</strong>を優先した順です（目安時間は新小岩／京成タウンバス利用時）。受診前に<strong>必ず電話</strong>してください。</p>
+  <table>
+    <thead>
+      <tr><th>順</th><th>施設</th><th>奥戸から</th><th>夜間</th><th>休日</th><th>電話</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td><strong>葛飾平日夜間こどもクリニック</strong><br><small>立石休日応急診療所と同じ建物<br>葛飾区立石5-15-12（医師会館）</small></td>
+        <td>★最寄り<br>新小岩→立石 バス約10〜15分</td>
+        <td class="status-yes">○<br>月〜金<br>19:30〜21:45</td>
+        <td class="status-no">×</td>
+        <td><a href="tel:03-3694-9550">03-3694-9550</a></td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td><strong>立石休日応急診療所</strong><br><small>同上 · 内科・小児科</small></td>
+        <td>★同上</td>
+        <td class="status-yes">○<br>土日祝<br>17:00〜21:30</td>
+        <td class="status-yes">○<br>日祝 10:00〜11:30<br>13:00〜15:30<br>＋夜間枠</td>
+        <td><a href="tel:03-3694-9550">03-3694-9550</a></td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td><strong>アクアキッズクリニック</strong><br><small>JR小岩南口徒歩1分 · 小児科</small></td>
+        <td>新小岩→小岩 バス約15〜20分</td>
+        <td class="status-no">×<br>（〜18:00）</td>
+        <td class="status-yes">○<br>365日 9〜18時<br>（水午後休）</td>
+        <td><a href="tel:03-6555-3650">03-6555-3650</a></td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td><strong>葛飾バンビこどもクリニック</strong><br><small>堀切3-35-10 · お花茶屋／堀切菖蒲園</small></td>
+        <td>新小岩→京成 約25〜30分</td>
+        <td class="status-no">×<br>（〜18:30）</td>
+        <td class="status-part">△<br>日曜 9〜12:30<br>（祝日休）</td>
+        <td><a href="tel:03-6657-7752">03-6657-7752</a></td>
+      </tr>
+      <tr>
+        <td>5</td>
+        <td><strong>金町休日応急診療所</strong><br><small>葛飾区東金町1-22-1 · 内科・小児科</small></td>
+        <td>奥戸→金町 約30分〜</td>
+        <td class="status-yes">○<br>土日祝<br>17:00〜21:30</td>
+        <td class="status-yes">○<br>日祝 昼間枠＋夜間</td>
+        <td><a href="tel:03-3627-0022">03-3627-0022</a></td>
+      </tr>
+      <tr>
+        <td>6</td>
+        <td><strong>東京慈恵会医科大学<br>葛飾医療センター</strong><br><small>葛飾区青戸6-41-2 · 二次救急</small></td>
+        <td>新小岩→青戸 約20〜25分</td>
+        <td class="status-yes">○<br>365日24h<br>（救急外来）</td>
+        <td class="status-yes">○<br>同上</td>
+        <td><a href="tel:03-3603-2111">03-3603-2111</a><br><small>代表→救急申出</small></td>
+      </tr>
+      <tr>
+        <td>7</td>
+        <td><strong>江戸川区医師会<br>夜間急病診療所</strong><br><small>西瑞江5-1-6 · 小児・内科</small></td>
+        <td>小岩→一之江 約25〜35分<br>（区民でなくても利用可）</td>
+        <td class="status-yes">○<br>毎日<br>20:00〜翌5:00</td>
+        <td class="status-no">×</td>
+        <td><a href="tel:03-5667-7775">03-5667-7775</a></td>
+      </tr>
+      <tr>
+        <td>8</td>
+        <td><strong>江戸川区医師会<br>休日急病診療所</strong><br><small>同上 · 小児・内科</small></td>
+        <td>同上</td>
+        <td class="status-no">×</td>
+        <td class="status-yes">○<br>日祝 9:00〜17:00</td>
+        <td><a href="tel:03-5667-7775">03-5667-7775</a></td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="note">
+    <strong>使い分けの目安（奥戸在住）：</strong><br>
+    · <strong>平日19時以降</strong> → ①立石こども夜間（最寄り）<br>
+    · <strong>土曜夜・日祝夜</strong> → ②立石 or ⑤金町の休日夜間枠<br>
+    · <strong>日曜昼（17時前）</strong> → ③アクアキッズ or ⑧江戸川休日急病<br>
+    · <strong>20時以降・毎日</strong> → ⑦江戸川夜間（立石が終わった後）<br>
+    · <strong>重症・迷ったら</strong> → <a href="tel:#7119">#7119</a> または ⑥葛飾医療センター<br>
+    · 応急診療は「一次対応」が目的。翌日かかりつけ医へ。
+  </div>
+
+  <h3>夜間・休日の受け方（詳細・小児）</h3>
+  <p>上記クリニックはほぼ<strong>18時前後で終了</strong>です。それ以降・日祝は区の応急診療か救急病院を使います。受診前に<strong>必ず電話</strong>してください。</p>
+  <table>
+    <thead>
+      <tr><th>区分</th><th>施設</th><th>時間</th><th>電話</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>葛飾・平日夜間<br><span class="tag">小児</span></td>
+        <td>立石休日応急診療所<br><small>葛飾区立石5-15-12</small></td>
+        <td>月〜金 19:30〜21:45</td>
+        <td><a href="tel:03-3694-9550">03-3694-9550</a></td>
+      </tr>
+      <tr>
+        <td>葛飾・休日夜間<br><span class="tag">小児</span></td>
+        <td>立石休日応急診療所 / 金町休日応急診療所</td>
+        <td>土日祝 17:00〜21:30<br>（昼間枠もあり）</td>
+        <td>立石 <a href="tel:03-3694-9550">03-3694-9550</a><br>金町 <a href="tel:03-3627-0022">03-3627-0022</a></td>
+      </tr>
+      <tr>
+        <td>江戸川・休日<br><span class="tag">小児・内科</span></td>
+        <td>江戸川区医師会 休日急病診療所<br><small>西瑞江5-1-6</small></td>
+        <td>日・祝 9:00〜17:00</td>
+        <td><a href="tel:03-5667-7775">03-5667-7775</a></td>
+      </tr>
+      <tr>
+        <td>江戸川・毎日夜間<br><span class="tag">小児・内科</span></td>
+        <td>江戸川区医師会 夜間急病診療所<br><small>同上（一之江駅圏）</small></td>
+        <td>毎日 20:00〜翌5:00</td>
+        <td><a href="tel:03-5667-7775">03-5667-7775</a></td>
+      </tr>
+      <tr>
+        <td>重症・迷ったら</td>
+        <td>東京慈恵会医科大学 葛飾医療センター（二次救急）<br><small>青戸6-41-2 · 奥戸から約20〜25分</small></td>
+        <td>365日24時間</td>
+        <td><a href="tel:03-3603-2111">03-3603-2111</a> · <a href="tel:#7119">#7119</a></td>
+      </tr>
+    </tbody>
+  </table>
+  <p style="font-size:.88rem;color:var(--muted);">出典：<a href="https://www.city.katsushika.lg.jp/kenkou/1000050/1001801/1002045.html" target="_blank" rel="noopener">葛飾区 休日・夜間応急診療</a> · <a href="https://www.city.edogawa.tokyo.jp/e051/bosaianzen/anzen/iryo/taisei/kyujitsuyakan.html" target="_blank" rel="noopener">江戸川区 休日・夜間急病診療</a></p>
+
+  <h3>選び方のポイント</h3>
+  <ul>
+    <li><strong>かかりつけ小児科</strong> — 近さ重視なら<strong>奥戸こども</strong>、日祝・発熱時の選択肢なら<strong>アクアキッズ（365日）</strong>、アレルギー・病児保育なら<strong>タムス（小岩・新小岩）</strong></li>
+    <li><strong>産婦人科</strong> — 分娩するならフェリシア・高岡（立石）・中村（新小岩）等。早期健診のみなら小岩レディース（10週まで・分娩不可）</li>
+    <li><strong>新小岩経由</strong> — 奥戸から京成タウンバスで新小岩方面へ。駅前ならタムス新小岩が通いやすい</li>
+    <li><strong>受診前に</strong> — 母子手帳、問診票、予約要否（おたふく・健診・BCG等）を電話またはWebで確認</li>
+    <li><strong>18時以降</strong> — 最寄りは<strong>立石こども夜間</strong>（平日19:30〜）。それ以降は<strong>江戸川夜間急病</strong>（20:00〜）または<strong>葛飾医療センター</strong></li>
+  </ul>
+
+  <div class="tip">
+    <strong>奥戸在住の組み合わせ例：</strong> 分娩・妊婦健診 → フェリシア or 高岡（立石）／ 日常のかかりつけ → 奥戸こども（近い・駐車場28台）／ 日祝・急な発熱 → アクアキッズ（JR小岩）／ 仕事で病児保育が必要 → タムス新小岩（葛飾区委託・平日8:30〜17:30）
+  </div>
+</section>
+
+<!-- 6. ベビーベッド -->
+<section id="babybed">
+  <h2>6. ベビーベッド — 奥戸・葛飾区でどう決めるか</h2>
+
+  <p>ベビーベッドは<strong>レンタルか購入か</strong>、<strong>サイズ</strong>、<strong>置く場所</strong>の3点で決めるのが早いです。奥戸在住なら、1章と同じ<strong><a href="https://www.ibaby.co.jp/area/katsushika.html" target="_blank" rel="noopener">愛育ベビー</a></strong>が自社集配・その場組立対応で第一候補です。</p>
+
+  <h3>レンタル vs 購入</h3>
+  <table>
+    <thead>
+      <tr><th></th><th>レンタル</th><th>購入</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>向いている人</strong></td>
+        <td>使用期間が読めない、引越し予定、部屋が狭い</td>
+        <td>2人目以降も使う、長期使いが確定</td>
+      </tr>
+      <tr>
+        <td><strong>目安</strong></td>
+        <td>6ヶ月 7,800〜12,300円前後（サイズによる）</td>
+        <td>新品 2〜5万円台〜、中古も選択肢</td>
+      </tr>
+      <tr>
+        <td><strong>奥戸の選択肢</strong></td>
+        <td>愛育ベビー（組立・回収つき）、ベビレンタ（宅配）</td>
+        <td>アカチャンホンポ・西松屋・IKEA等＋葛飾区助成（1章参照）</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>サイズの選び方</h3>
+  <table>
+    <thead>
+      <tr><th>サイズ</th><th>内寸の目安</th><th>特徴</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>ミニ（コンパクト）</strong></td>
+        <td>90×60cm 前後</td>
+        <td>ワンルーム・寝室が狭い向き。生後すぐ〜数ヶ月</td>
+      </tr>
+      <tr>
+        <td><strong>標準（レギュラー）</strong></td>
+        <td>120×70cm 前後</td>
+        <td>一番人気。首がすわってから・つかまり立ちまで余裕</td>
+      </tr>
+      <tr>
+        <td><strong>ハイタイプ</strong></td>
+        <td>上記＋床板の高さ調整</td>
+        <td>腰を屈めずにお世話できる。長く使うなら検討</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>愛育ベビー — 料金目安（税込・2026年時点）</h3>
+  <p>商品により異なります。詳細は<a href="https://www.ibaby.co.jp/itembed.html" target="_blank" rel="noopener">公式のベビーベッド一覧</a>で確認してください。</p>
+  <table>
+    <thead>
+      <tr><th>タイプ</th><th>1ヶ月</th><th>3ヶ月</th><th>6ヶ月</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>ミニサイズ</td>
+        <td>約3,000円〜</td>
+        <td>約4,000円〜</td>
+        <td>約5,500円〜</td>
+      </tr>
+      <tr>
+        <td>標準サイズ</td>
+        <td>約4,300円〜</td>
+        <td>約5,700円〜</td>
+        <td>約7,800円〜</td>
+      </tr>
+      <tr>
+        <td>ハイタイプ等</td>
+        <td>約5,300〜6,500円〜</td>
+        <td>約7,500〜8,700円〜</td>
+        <td>約11,000〜12,300円〜</td>
+      </tr>
+    </tbody>
+  </table>
+  <p>マット別途（同時注文で＋1,760円前後）· 延長は1ヶ月単位 · 往復送料 <strong>1,200円</strong>（9,900円以上で無料）</p>
+
+  <h3>奥戸での流れ（愛育ベビー）</h3>
+  <div class="flow">
+    <span>① Web or 電話で予約</span>
+    <span class="arrow">→</span>
+    <span>② 自社便で配送（週2〜3日）</span>
+    <span class="arrow">→</span>
+    <span>③ スタッフがその場で組立</span>
+    <span class="arrow">→</span>
+    <span>④ 使用（延長可）</span>
+    <span class="arrow">→</span>
+    <span>⑤ 梱包不要で回収</span>
+  </div>
+
+  <h3>決める前のチェック</h3>
+  <ul>
+    <li><strong>置き場所</strong> — 寝室の広さ・ドアの開閉・エアコン直吹きでないか</li>
+    <li><strong>駐車スペース</strong> — 自社便の組立にはハイエース用の駐車場が必要な場合あり</li>
+    <li><strong>マット・シーツ</strong> — レンタル品に合うサイズか（120×70 / 90×60 等）</li>
+    <li><strong>同室寝</strong> — ベビーベッド不要派なら、畳・ファミリーベッド＋ベビーモニターも選択肢</li>
+  </ul>
+
+  <div class="note">
+    <strong>赤ちゃんファースト：</strong> 東京都ポイントでベビーベッドレンタル可（例：標準ハイタイプ6ヶ月＝10,000ポイント）。<a href="https://www.ibaby.co.jp/area/katsushika.html" target="_blank" rel="noopener">愛育ベビー葛飾区ページ</a>から申込。送料は別途。
+  </div>
+
+  <div class="tip">
+    <strong>おすすめ：</strong> 部屋サイズが不安なら、まず<strong>ミニサイズを1〜3ヶ月レンタル</strong> → 狭ければそのまま、余裕があれば標準に差し替え。問い合わせ <a href="tel:0484692221">048-469-2221</a>
+  </div>
+</section>
+
+<footer>
+  <p>参考情報のみ。医療・法律・領事手続きは必ず各窓口で最新確認してください。</p>
+  <p>作成: OpenClaw · 2026-07-04</p>
+</footer>
+
+</body>
+</html>
