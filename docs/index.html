@@ -156,16 +156,37 @@
       font-weight: 600;
       white-space: nowrap;
     }
+    .filter-btn {
+      flex-shrink: 0;
+      border: 1px solid var(--border);
+      background: var(--bg);
+      color: var(--muted);
+      border-radius: 10px;
+      padding: 0.55rem 0.85rem;
+      font: inherit;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: background 0.15s, color 0.15s, border-color 0.15s;
+    }
+    .filter-btn:hover { border-color: var(--accent); color: var(--accent); }
+    .filter-btn.active {
+      background: var(--accent-soft);
+      border-color: var(--accent);
+      color: var(--accent);
+    }
     .grid {
       display: grid;
       gap: 1rem;
     }
     .card {
+      position: relative;
       border-radius: var(--radius);
       background: var(--surface);
       border: 1px solid var(--border);
       box-shadow: var(--shadow);
-      transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+      transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease, border-color 0.18s ease;
       overflow: hidden;
     }
     .card:hover {
@@ -174,9 +195,50 @@
       box-shadow: 0 16px 40px rgba(15, 23, 42, 0.12);
     }
     .card.hidden { display: none; }
+    .card.is-pinned {
+      border-color: color-mix(in srgb, var(--accent) 45%, var(--border));
+      box-shadow: 0 0 0 1px var(--accent-soft), var(--shadow);
+    }
+    .card-actions {
+      position: absolute;
+      top: 0.7rem;
+      right: 0.7rem;
+      display: flex;
+      gap: 0.3rem;
+      z-index: 2;
+    }
+    .icon-btn {
+      width: 2rem;
+      height: 2rem;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: color-mix(in srgb, var(--surface) 92%, transparent);
+      backdrop-filter: blur(6px);
+      color: var(--muted);
+      cursor: pointer;
+      font-size: 0.95rem;
+      line-height: 1;
+      padding: 0;
+      opacity: 0.45;
+      transition: opacity 0.15s, background 0.15s, border-color 0.15s, transform 0.12s;
+    }
+    .card:hover .icon-btn { opacity: 0.85; }
+    .icon-btn:hover {
+      opacity: 1;
+      border-color: var(--accent);
+      transform: scale(1.06);
+    }
+    .icon-btn.active {
+      opacity: 1;
+      background: var(--accent-soft);
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+    .icon-btn.fav-btn.active { font-size: 1.05rem; }
     .card-link {
       display: block;
       padding: 1.25rem 1.35rem 1.35rem;
+      padding-right: 4.5rem;
       color: inherit;
       text-decoration: none;
     }
@@ -237,7 +299,13 @@
     }
     @media (max-width: 640px) {
       .toolbar { flex-direction: column; align-items: stretch; }
-      .count { text-align: center; }
+      .count, .filter-btn { text-align: center; }
+    }
+    .local-note {
+      margin-top: 0.75rem;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.78rem;
     }
   </style>
 </head>
@@ -257,11 +325,16 @@
         <input id="search" type="search" placeholder="제목·내용·날짜 검색…" autocomplete="off" spellcheck="false">
         <button id="clear" type="button" aria-label="검색 지우기">×</button>
       </div>
+      <button type="button" id="fav-filter" class="filter-btn" aria-pressed="false">★ 즐겨찾기</button>
       <div class="count" id="count">3 reports</div>
     </div>
 
     <div class="grid" id="grid">
-    <article class="card" data-search="出産準備ガイド 2026-07-04 ベビーカー · ベビーベッド · 内祝い · 韓国ハーフの手続き · 婚姻届 · 奥戸・小岩の病院">
+    <article class="card" data-slug="2026-07-04-report-0fb80cc6" data-search="出産準備ガイド 2026-07-04 ベビーカー · ベビーベッド · 内祝い · 韓国ハーフの手続き · 婚姻届 · 奥戸・小岩の病院">
+      <div class="card-actions">
+        <button type="button" class="icon-btn pin-btn" title="고정" aria-label="고정" aria-pressed="false">📌</button>
+        <button type="button" class="icon-btn fav-btn" title="즐겨찾기" aria-label="즐겨찾기" aria-pressed="false">☆</button>
+      </div>
       <a class="card-link" href="reports/2026-07-04-report-0fb80cc6.html">
         <div class="card-top">
           <time datetime="2026-07-04">2026-07-04</time>
@@ -271,7 +344,11 @@
         <p class="excerpt">ベビーカー · ベビーベッド · 内祝い · 韓国ハーフの手続き · 婚姻届 · 奥戸・小岩の病院</p>
       </a>
     </article>
-    <article class="card" data-search="openclaw research 시작 2026-07-04 openclaw research · 2026-07-04">
+    <article class="card" data-slug="2026-07-04-openclaw-research-b97805cc" data-search="openclaw research 시작 2026-07-04 openclaw research · 2026-07-04">
+      <div class="card-actions">
+        <button type="button" class="icon-btn pin-btn" title="고정" aria-label="고정" aria-pressed="false">📌</button>
+        <button type="button" class="icon-btn fav-btn" title="즐겨찾기" aria-label="즐겨찾기" aria-pressed="false">☆</button>
+      </div>
       <a class="card-link" href="reports/2026-07-04-openclaw-research-b97805cc.html">
         <div class="card-top">
           <time datetime="2026-07-04">2026-07-04</time>
@@ -281,7 +358,11 @@
         <p class="excerpt">OpenClaw Research · 2026-07-04</p>
       </a>
     </article>
-    <article class="card" data-search="반도체 주가 브리핑 2026-07-04 12:20 2026-07-04 openclaw · 2026-07-04 12:20 jst">
+    <article class="card" data-slug="2026-07-04-2026-07-04-12-20-0900379a" data-search="반도체 주가 브리핑 2026-07-04 12:20 2026-07-04 openclaw · 2026-07-04 12:20 jst">
+      <div class="card-actions">
+        <button type="button" class="icon-btn pin-btn" title="고정" aria-label="고정" aria-pressed="false">📌</button>
+        <button type="button" class="icon-btn fav-btn" title="즐겨찾기" aria-label="즐겨찾기" aria-pressed="false">☆</button>
+      </div>
       <a class="card-link" href="reports/2026-07-04-2026-07-04-12-20-0900379a.html">
         <div class="card-top">
           <time datetime="2026-07-04">2026-07-04</time>
@@ -293,6 +374,7 @@
     </article>
     </div>
     <p class="no-results" id="no-results">검색 결과가 없습니다.</p>
+    <p class="local-note">📌 고정 · ★ 즐겨찾기는 이 브라우저(localStorage)에만 저장됩니다.</p>
 
     <footer>OpenClaw · GitHub Pages</footer>
   </div>
@@ -300,12 +382,77 @@
   <script id="reports-data" type="application/json">[{"date": "2026-07-04", "title": "出産準備ガイド", "slug": "2026-07-04-report-0fb80cc6", "url": "reports/2026-07-04-report-0fb80cc6.html", "excerpt": "ベビーカー · ベビーベッド · 内祝い · 韓国ハーフの手続き · 婚姻届 · 奥戸・小岩の病院"}, {"date": "2026-07-04", "title": "OpenClaw Research 시작", "slug": "2026-07-04-openclaw-research-b97805cc", "url": "reports/2026-07-04-openclaw-research-b97805cc.html", "excerpt": "OpenClaw Research · 2026-07-04"}, {"date": "2026-07-04", "title": "반도체 주가 브리핑 2026-07-04 12:20", "slug": "2026-07-04-2026-07-04-12-20-0900379a", "url": "reports/2026-07-04-2026-07-04-12-20-0900379a.html", "excerpt": "OpenClaw · 2026-07-04 12:20 JST"}]</script>
   <script>
     (function () {
+      var STORAGE_KEY = 'openclaw-research-ui-v1';
       var input = document.getElementById('search');
       var clear = document.getElementById('clear');
       var grid = document.getElementById('grid');
       var countEl = document.getElementById('count');
       var noResults = document.getElementById('no-results');
+      var favFilter = document.getElementById('fav-filter');
       var cards = Array.prototype.slice.call(grid.querySelectorAll('.card'));
+
+      function loadState() {
+        try {
+          var raw = localStorage.getItem(STORAGE_KEY);
+          if (!raw) return { pins: [], favorites: [] };
+          var data = JSON.parse(raw);
+          return {
+            pins: Array.isArray(data.pins) ? data.pins : [],
+            favorites: Array.isArray(data.favorites) ? data.favorites : []
+          };
+        } catch (e) {
+          return { pins: [], favorites: [] };
+        }
+      }
+
+      var state = loadState();
+
+      function saveState() {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+      }
+
+      function slugOf(card) {
+        return card.getAttribute('data-slug') || '';
+      }
+
+      function toggleInList(list, slug) {
+        var i = list.indexOf(slug);
+        if (i === -1) list.push(slug);
+        else list.splice(i, 1);
+      }
+
+      function applyCardState(card) {
+        var slug = slugOf(card);
+        var pinned = state.pins.indexOf(slug) !== -1;
+        var fav = state.favorites.indexOf(slug) !== -1;
+        var pinBtn = card.querySelector('.pin-btn');
+        var favBtn = card.querySelector('.fav-btn');
+        card.classList.toggle('is-pinned', pinned);
+        card.classList.toggle('is-fav', fav);
+        if (pinBtn) {
+          pinBtn.classList.toggle('active', pinned);
+          pinBtn.setAttribute('aria-pressed', pinned ? 'true' : 'false');
+        }
+        if (favBtn) {
+          favBtn.classList.toggle('active', fav);
+          favBtn.textContent = fav ? '★' : '☆';
+          favBtn.setAttribute('aria-pressed', fav ? 'true' : 'false');
+        }
+      }
+
+      function sortCards() {
+        var order = cards.map(function (c, i) { return { card: c, i: i }; });
+        order.sort(function (a, b) {
+          var ap = state.pins.indexOf(slugOf(a.card));
+          var bp = state.pins.indexOf(slugOf(b.card));
+          if (ap !== -1 && bp !== -1) return ap - bp;
+          if (ap !== -1) return -1;
+          if (bp !== -1) return 1;
+          return a.i - b.i;
+        });
+        order.forEach(function (o) { grid.appendChild(o.card); });
+        cards = Array.prototype.slice.call(grid.querySelectorAll('.card'));
+      }
 
       function normalize(s) {
         return (s || '').toLowerCase().normalize('NFKC');
@@ -313,22 +460,64 @@
 
       function filter() {
         var q = normalize(input.value.trim());
+        var favOnly = favFilter.classList.contains('active');
         clear.style.display = q ? 'block' : 'none';
         var visible = 0;
         cards.forEach(function (card) {
           var hay = normalize(card.getAttribute('data-search') || '');
-          var show = !q || hay.indexOf(q) !== -1;
+          var matchQuery = !q || hay.indexOf(q) !== -1;
+          var matchFav = !favOnly || card.classList.contains('is-fav');
+          var show = matchQuery && matchFav;
           card.classList.toggle('hidden', !show);
           if (show) visible++;
         });
-        countEl.textContent = q ? visible + ' / ' + cards.length + ' reports' : cards.length + ' reports';
+        var label = visible + ' reports';
+        if (q || favOnly) label = visible + ' / ' + cards.length + ' reports';
+        countEl.textContent = label;
         noResults.classList.toggle('visible', cards.length > 0 && visible === 0);
       }
+
+      cards.forEach(function (card) {
+        applyCardState(card);
+        card.addEventListener('click', function (e) {
+          if (e.target.closest('.icon-btn')) e.preventDefault();
+        });
+        var pinBtn = card.querySelector('.pin-btn');
+        var favBtn = card.querySelector('.fav-btn');
+        if (pinBtn) {
+          pinBtn.addEventListener('click', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            toggleInList(state.pins, slugOf(card));
+            saveState();
+            applyCardState(card);
+            sortCards();
+            filter();
+          });
+        }
+        if (favBtn) {
+          favBtn.addEventListener('click', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            toggleInList(state.favorites, slugOf(card));
+            saveState();
+            applyCardState(card);
+            filter();
+          });
+        }
+      });
+
+      sortCards();
 
       input.addEventListener('input', filter);
       clear.addEventListener('click', function () {
         input.value = '';
         input.focus();
+        filter();
+      });
+      favFilter.addEventListener('click', function () {
+        favFilter.classList.toggle('active');
+        favFilter.setAttribute('aria-pressed', favFilter.classList.contains('active') ? 'true' : 'false');
         filter();
       });
       document.addEventListener('keydown', function (e) {
@@ -337,6 +526,8 @@
           input.focus();
         }
       });
+
+      filter();
     })();
   </script>
 </body>
