@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>밀가루 파전 만드는 법 — 황금 반죽 비율 &amp; 바삭한 꿀팁</title>
+<style>
+  :root {
+    --bg: #fefce8;
+    --card: #fff;
+    --text: #1c1917;
+    --muted: #78716c;
+    --accent: #15803d;
+    --accent-light: #ecfdf5;
+    --border: #d9f99d;
+    --warn: #fff7ed;
+    --warn-border: #ea580c;
+    --tip: #f0fdf4;
+    --tip-border: #22c55e;
+  }
+  * { box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 1.5rem;
+    line-height: 1.75;
+    color: var(--text);
+    background: var(--bg);
+  }
+  header {
+    text-align: center;
+    padding: 2rem 1rem;
+    border-bottom: 3px solid #86efac;
+    margin-bottom: 1.5rem;
+  }
+  header h1 { color: var(--accent); font-size: clamp(1.4rem, 4vw, 1.9rem); margin-bottom: .5rem; }
+  header p { color: var(--muted); font-size: .95rem; margin: .25rem 0; }
+  nav {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1rem 1.25rem;
+    margin-bottom: 1.25rem;
+  }
+  nav h2 { font-size: .95rem; color: var(--accent); margin: 0 0 .5rem; }
+  nav ol { margin: 0; padding-left: 1.25rem; font-size: .9rem; }
+  nav a { color: var(--accent); text-decoration: none; }
+  section {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.35rem;
+    margin-bottom: 1.15rem;
+  }
+  section > h2 {
+    color: var(--accent);
+    font-size: 1.15rem;
+    margin: 0 0 .75rem;
+    padding-bottom: .4rem;
+    border-bottom: 2px solid #bbf7d0;
+  }
+  h3 { color: #44403c; font-size: 1rem; margin: 1rem 0 .4rem; }
+  table { width: 100%; border-collapse: collapse; margin: .75rem 0; font-size: .9rem; }
+  th, td { border: 1px solid #e7e5e4; padding: .5rem .7rem; text-align: left; vertical-align: top; }
+  th { background: var(--accent-light); font-weight: 600; }
+  tr:nth-child(even) { background: #fafaf9; }
+  ul, ol { padding-left: 1.35rem; margin: .5rem 0; }
+  li { margin: .25rem 0; }
+  .note, .tip {
+    padding: .7rem 1rem;
+    border-radius: 0 8px 8px 0;
+    margin: .75rem 0;
+    font-size: .9rem;
+  }
+  .note { background: var(--warn); border-left: 4px solid var(--warn-border); }
+  .tip { background: var(--tip); border-left: 4px solid var(--tip-border); }
+  .step { display: flex; gap: .75rem; margin: .65rem 0; align-items: flex-start; }
+  .step-num {
+    flex-shrink: 0;
+    width: 1.75rem; height: 1.75rem;
+    background: var(--accent);
+    color: #fff;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: .85rem; font-weight: 700;
+  }
+  .badge {
+    display: inline-block;
+    background: #dcfce7;
+    color: #166534;
+    font-size: .75rem;
+    padding: .15rem .5rem;
+    border-radius: 4px;
+    margin-right: .35rem;
+  }
+  footer { text-align: center; color: var(--muted); font-size: .82rem; padding: 1.5rem 0; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>🥞 밀가루 파전 만드는 법</h1>
+  <p>부침가루 없이 · 황금 반죽 비율 · 바삭하게 굽는 꿀팁</p>
+  <p><em>2026년 7월 정리 · 2~3인분 기준</em></p>
+</header>
+
+<nav>
+  <h2>목차</h2>
+  <ol>
+    <li><a href="#ratio">반죽 황금 비율</a></li>
+    <li><a href="#basic">기본 레시피（밀가루만）</a></li>
+    <li><a href="#crispy">바삭 버전（튀김가루·전분 추가）</a></li>
+    <li><a href="#classic">전통 방식（파 먼저 깔기）</a></li>
+    <li><a href="#easy">초간단 한 그릇 버전</a></li>
+    <li><a href="#sauce">초간장 소스</a></li>
+    <li><a href="#tips">실패 없는 꿀팁</a></li>
+  </ol>
+</nav>
+
+<section id="ratio">
+  <h2>반죽 황금 비율（핵심）</h2>
+  <p>부침가루가 없어도 <strong>밀가루 + 물 + 소금</strong>만으로 충분합니다. 농도가 전부입니다.</p>
+  <table>
+    <thead>
+      <tr><th>재료</th><th>양（1~2장）</th><th>비고</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>밀가루（중력분）</td><td>1컵（120g）</td><td>없으면 박력분도 OK</td></tr>
+      <tr><td>물（찬물·얼음물）</td><td>2/3컵（160ml）</td><td>밀가루 대비 약 1 : 1.3</td></tr>
+      <tr><td>소금</td><td>1/2작은술（2g）</td><td>—</td></tr>
+      <tr><td>계란（선택）</td><td>1개</td><td>고소함 UP, 반죽 살짝 묽어짐</td></tr>
+    </tbody>
+  </table>
+  <div class="tip">
+    <strong>농도 체크：</strong> 숟가락으로 떠서 흘러내릴 때 <strong>줄기처럼 이어지는 정도</strong>（요구르트보다 약간 묽게）. 너무 되직하면 안 익고, 너무 묽으면 흐물거립니다.
+  </div>
+  <table>
+    <thead><tr><th>버전</th><th>밀가루</th><th>추가</th><th>물</th><th>특징</th></tr></thead>
+    <tbody>
+      <tr><td>기본</td><td>1컵</td><td>—</td><td>2/3컵</td><td>촉촉·고소</td></tr>
+      <tr><td>바삭</td><td>2/3컵</td><td>튀김가루 1/3컵</td><td>1컵（얼음물）</td><td>겉바속촉</td></tr>
+      <tr><td>더 바삭</td><td>2/3컵</td><td>감자전분 2큰술</td><td>2/3컵</td><td>얇고 바삭</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section id="basic">
+  <h2>기본 레시피 — 밀가루만</h2>
+  <p><span class="badge">난이도 ★☆☆</span><span class="badge">15분</span><span class="badge">2~3인분</span></p>
+
+  <h3>재료</h3>
+  <ul>
+    <li>대파（또는 쪽파）4~6대 — 5~7cm 길이로 송송 썰기</li>
+    <li>밀가루 1컵（120g）</li>
+    <li>물 2/3컵（160ml, 찬물）</li>
+    <li>소금 1/2작은술</li>
+    <li>식용유 넉넉히（팬 바닥 1mm）</li>
+    <li>참기름 약간（마무리용, 선택）</li>
+  </ul>
+
+  <h3>만드는 법</h3>
+  <div class="step"><span class="step-num">1</span><div>대파를 씻어 물기를 털고 송송 썰어 준비합니다.</div></div>
+  <div class="step"><span class="step-num">2</span><div>볼에 밀가루 + 소금을 넣고, <strong>물을 조금씩 나눠</strong> 부으며 젓가락으로 저어 반죽을 만듭니다.（거품기 OK）</div></div>
+  <div class="step"><span class="step-num">3</span><div>썬 파를 반죽에 넣고 가볍게 섞어 1~2분 재워 둡니다.</div></div>
+  <div class="step"><span class="step-num">4</span><div>팬을 <strong>중불 이상</strong>으로 달군 뒤 기름을 넉넉히 둘릅니다.</div></div>
+  <div class="step"><span class="step-num">5</span><div>반죽을 한 국자 떠서 팬에 펴고, <strong>센 불 30초~1분</strong> → 중불로 줄여 1~2분 더 굽습니다.</div></div>
+  <div class="step"><span class="step-num">6</span><div>뒤집어 반대면도 노릇하게. 마지막에 참기름 1~2방울.</div></div>
+</section>
+
+<section id="crispy">
+  <h2>바삭 버전 — 밀가루 + 튀김가루</h2>
+  <p><span class="badge">겉바속촉</span> 해물·김치 파전에도 응용 가능</p>
+
+  <h3>재료</h3>
+  <ul>
+    <li>밀가루 1컵（100g）</li>
+    <li>튀김가루 1/2컵（50g）— 없으면 감자전분 2~3큰술</li>
+    <li>얼음물 1컵（200ml）</li>
+    <li>계란 1개</li>
+    <li>소금 1/2작은술</li>
+    <li>대파 3~4대, （선택）오징어·새우·홍합살</li>
+    <li>식용유 넉넉히</li>
+  </ul>
+
+  <h3>만드는 법</h3>
+  <ol>
+    <li>해물은 키친타월로 수분을 꼭 짭니다.（기름 튐·눅눅함 방지）</li>
+    <li>밀가루 + 튀김가루 + 소금을 섞고, 얼음물 + 계란을 넣어 <strong>덩어리 약간 남을 정도</strong> 가볍게만 섞습니다.（과하게 저으면 딱딱해짐）</li>
+    <li>팬에 기름 넉넉히, 중불~센불로 예열.</li>
+    <li>파（+ 해물）를 팬에 깔거나 반죽에 섞어 부칩니다.</li>
+    <li>양면 노릇할 때까지 2~3분씩. 뒤집기 전 가장자리에 기름 1큰술 추가 → 테두리 바삭.</li>
+  </ol>
+</section>
+
+<section id="classic">
+  <h2>전통 방식 — 파를 먼저 깔기</h2>
+  <p>막걸리집 스타일. 파가 팬에 직접 닿아 <strong>캐러멜화</strong>되면서 향이 더 좋아집니다.</p>
+  <ol>
+    <li>반죽은 <strong>얇게 펴는 용도</strong>로만 — 파보다 적게（물 10% 더 넣어 살짝 묽게）</li>
+    <li>팬에 기름 → 파를 빈틈없이 깔기</li>
+    <li>반죽을 숟가락으로 파 위에 <strong>얇게 뿌리기</strong>（3~4스푼）</li>
+    <li>（선택）계란 풀어 위에 뿌리기, 고추 올리기</li>
+    <li>한 번만 뒤집어 노릇하게 — 파는 금방 익으니 과익 주의</li>
+  </ol>
+</section>
+
+<section id="easy">
+  <h2>초간단 한 그릇 버전（15분）</h2>
+  <ul>
+    <li>밀가루 220g + 물 400ml + 소금 1/2작은술 + （선택）육수가루 1작은술</li>
+    <li>파 1그릇 넣고 섞기</li>
+    <li>팬에 기름, 중불로 양면 3~4분씩</li>
+  </ul>
+  <p>가장 쉽지만 물 비율이 많아 <strong>얇게 부치는 것</strong>이 포인트입니다.</p>
+</section>
+
+<section id="sauce">
+  <h2>초간장 소스</h2>
+  <table>
+    <thead><tr><th>재료</th><th>양</th></tr></thead>
+    <tbody>
+      <tr><td>진간장</td><td>2큰술</td></tr>
+      <tr><td>식초</td><td>1큰술</td></tr>
+      <tr><td>설탕</td><td>1작은술</td></tr>
+      <tr><td>물</td><td>1큰술</td></tr>
+      <tr><td>통깨·고춧가루·다진 청양</td><td>취향껏</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section id="tips">
+  <h2>실패 없는 꿀팁 7가지</h2>
+  <table>
+    <thead><tr><th>문제</th><th>해결</th></tr></thead>
+    <tbody>
+      <tr><td>안 익고 눅눅</td><td>반죽 너무 되직 → 물 조금 추가. 불 너무 약함 → 처음 센 불</td></tr>
+      <tr><td>파만 타고 밀가루 덜 익음</td><td>파를 너무 얇게 X, 반죽을 파에 골고루 묻히기</td></tr>
+      <tr><td>기름에 들러붙음</td><td>팬 충분히 예열 + 기름 넉넉히. 반죽에 기름 1큰술 섞어도 OK</td></tr>
+      <tr><td>딱딱해짐</td><td>반죽 과하게 저음 → 가볍게만 섞기. 계란 1개 추가</td></tr>
+      <tr><td>바삭함 부족</td><td>얼음물 + 튀김가루/전분. 얇게 부치기. 뒤집기 전 기름 추가</td></tr>
+      <tr><td>밋밋함</td><td>소금 반죽에 넣기. 초간장 + 참기름 마무리</td></tr>
+      <tr><td>흐물거림</td><td>물 줄이거나 밀가루 1~2큰술 추가</td></tr>
+    </tbody>
+  </table>
+  <div class="note">
+    <strong>3단계 황금 공식：</strong> ① 반죽은 요구르트보다 살짝 묽게 → ② 첫 면은 센 불 2분 → ③ 뒤집을 때 기름 1큰술 추가
+  </div>
+</section>
+
+<footer>
+  <p>집에 있는 밀가루만으로도 충분합니다. 비 오는 날 막걸리와 함께 🍶</p>
+  <p>OpenClaw · docs/pajeon-recipe.html</p>
+</footer>
+
+</body>
+</html>
