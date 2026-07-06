@@ -33,6 +33,56 @@
     }
     .rank { font-weight: bold; color: #4f46e5; }
     .note { font-size: 0.88rem; color: #666; }
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+      gap: 1rem;
+      margin: 1.25rem 0 2rem;
+    }
+    .product-card {
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      padding: 0.85rem;
+      background: #fff;
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+    @media (prefers-color-scheme: dark) {
+      .product-card { background: #1a1a1a; border-color: #444; }
+    }
+    .product-card .rank-badge {
+      display: inline-block;
+      font-weight: 700;
+      color: #4f46e5;
+      font-size: 0.85rem;
+    }
+    .product-card a.img-link {
+      display: block;
+      text-align: center;
+      margin: 0.25rem 0;
+    }
+    .product-card img {
+      max-width: 100%;
+      height: 9rem;
+      object-fit: contain;
+      background: #f8f8f8;
+      border-radius: 6px;
+    }
+    @media (prefers-color-scheme: dark) {
+      .product-card img { background: #222; }
+    }
+    .product-card h4 {
+      margin: 0;
+      font-size: 0.95rem;
+      line-height: 1.35;
+    }
+    .product-card .capacity { margin: 0; font-size: 0.82rem; color: #666; }
+    @media (prefers-color-scheme: dark) { .product-card .capacity { color: #aaa; } }
+    .product-card .points { margin: 0; font-size: 0.85rem; flex: 1; }
+    .product-card .price { margin: 0; font-weight: 600; font-size: 0.9rem; color: #b45309; }
+    @media (prefers-color-scheme: dark) { .product-card .price { color: #fbbf24; } }
+    .img-credit { font-size: 0.8rem; color: #888; margin-top: -1rem; margin-bottom: 1.5rem; }
   </style>
 </head>
 <body>
@@ -125,131 +175,159 @@
   </table>
 
   <h2>4. おすすめ12選</h2>
+  <p class="img-credit">※ 製品写真は価格.com等の公開画像を参照表示しています（個人の購入検討用）。</p>
 
   <h3>🏆 ドラム式・ファミリー向け（洗12kg前後）</h3>
-  <table>
-    <thead>
-      <tr><th>#</th><th>モデル</th><th>容量</th><th>ポイント</th><th>価格目安</th></tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td class="rank">1</td>
-        <td><strong>パナソニック NA-LX129EL</strong></td>
-        <td>洗12/乾6kg</td>
-        <td>総合力No.1候補。ヒートポンプ・トリプル自動投入・温水洗浄</td>
-        <td>約35万円</td>
-      </tr>
-      <tr>
-        <td class="rank">2</td>
-        <td><strong>日立 BD-STX130M / BD-SX130ML</strong></td>
-        <td>洗13/乾7kg</td>
-        <td>らくメンテ・ナイアガラ洗浄・風アイロン。大容量</td>
-        <td>約24〜28万円</td>
-      </tr>
-      <tr>
-        <td class="rank">3</td>
-        <td><strong>東芝 ZABOON TW-127XP5L</strong></td>
-        <td>洗12/乾7kg</td>
-        <td>ウルトラファインバブル。4社中最安クラスで高性能</td>
-        <td>約20〜31万円</td>
-      </tr>
-      <tr>
-        <td class="rank">4</td>
-        <td><strong>パナソニック NA-LX127EL</strong></td>
-        <td>洗12/乾6kg</td>
-        <td>LX129のひとつ下。バランス型の定番</td>
-        <td>約28〜32万円</td>
-      </tr>
-      <tr>
-        <td class="rank">5</td>
-        <td><strong>シャープ ES-X12C / ES-K11C</strong></td>
-        <td>洗12/乾6kg</td>
-        <td>マイクロ高圧洗浄・ハイブリッド乾燥・乾燥ダクト自動掃除</td>
-        <td>約15〜23万円</td>
-      </tr>
-      <tr>
-        <td class="rank">6</td>
-        <td><strong>東芝 ZABOON TW-127XM5L</strong></td>
-        <td>洗12/乾7kg</td>
-        <td>コスパ最強クラス。バブル洗浄＋ヒートポンプ</td>
-        <td>約17〜22万円</td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="product-grid">
+    <article class="product-card">
+      <span class="rank-badge">#1</span>
+      <a class="img-link" href="https://kakaku.com/item/K0001705582/" target="_blank" rel="noopener">
+        <img src="https://img1.kakaku.k-img.com/images/productimage/fullscale/K0001705582.jpg" alt="パナソニック NA-LX129EL" loading="lazy" width="200" height="200">
+      </a>
+      <h4>パナソニック NA-LX129EL</h4>
+      <p class="capacity">洗12 / 乾6kg</p>
+      <p class="points">総合力No.1候補。ヒートポンプ・トリプル自動投入・温水洗浄</p>
+      <p class="price">約35万円</p>
+    </article>
+    <article class="product-card">
+      <span class="rank-badge">#2</span>
+      <a class="img-link" href="https://kakaku.com/item/K0001702512/" target="_blank" rel="noopener">
+        <img src="https://img1.kakaku.k-img.com/images/productimage/fullscale/K0001702512.jpg" alt="日立 BD-SX130ML" loading="lazy" width="200" height="200">
+      </a>
+      <h4>日立 BD-STX130M / BD-SX130ML</h4>
+      <p class="capacity">洗13 / 乾7kg</p>
+      <p class="points">らくメンテ・ナイアガラ洗浄・風アイロン。大容量</p>
+      <p class="price">約24〜28万円</p>
+    </article>
+    <article class="product-card">
+      <span class="rank-badge">#3</span>
+      <a class="img-link" href="https://kakaku.com/item/J0000048632/" target="_blank" rel="noopener">
+        <img src="https://img1.kakaku.k-img.com/images/productimage/fullscale/J0000048632.jpg" alt="東芝 TW-127XP5L" loading="lazy" width="200" height="200">
+      </a>
+      <h4>東芝 ZABOON TW-127XP5L</h4>
+      <p class="capacity">洗12 / 乾7kg</p>
+      <p class="points">ウルトラファインバブル。4社中最安クラスで高性能</p>
+      <p class="price">約20〜31万円</p>
+    </article>
+    <article class="product-card">
+      <span class="rank-badge">#4</span>
+      <a class="img-link" href="https://kakaku.com/item/K0001705586/" target="_blank" rel="noopener">
+        <img src="https://img1.kakaku.k-img.com/images/productimage/fullscale/K0001705586.jpg" alt="パナソニック NA-LX127EL" loading="lazy" width="200" height="200">
+      </a>
+      <h4>パナソニック NA-LX127EL</h4>
+      <p class="capacity">洗12 / 乾6kg</p>
+      <p class="points">LX129のひとつ下。バランス型の定番</p>
+      <p class="price">約28〜32万円</p>
+    </article>
+    <article class="product-card">
+      <span class="rank-badge">#5</span>
+      <a class="img-link" href="https://kakaku.com/item/J0000045347/" target="_blank" rel="noopener">
+        <img src="https://img1.kakaku.k-img.com/images/productimage/fullscale/J0000045347.jpg" alt="シャープ ES-K11C" loading="lazy" width="200" height="200">
+      </a>
+      <h4>シャープ ES-X12C / ES-K11C</h4>
+      <p class="capacity">洗12 / 乾6kg</p>
+      <p class="points">マイクロ高圧洗浄・ハイブリッド乾燥・乾燥ダクト自動掃除</p>
+      <p class="price">約15〜23万円</p>
+    </article>
+    <article class="product-card">
+      <span class="rank-badge">#6</span>
+      <a class="img-link" href="https://kakaku.com/item/K0001706928/" target="_blank" rel="noopener">
+        <img src="https://img1.kakaku.k-img.com/images/productimage/fullscale/K0001706928.jpg" alt="東芝 TW-127XM5L" loading="lazy" width="200" height="200">
+      </a>
+      <h4>東芝 ZABOON TW-127XM5L</h4>
+      <p class="capacity">洗12 / 乾7kg</p>
+      <p class="points">コスパ最強クラス。バブル洗浄＋ヒートポンプ</p>
+      <p class="price">約17〜22万円</p>
+    </article>
+  </div>
 
   <h3>💰 コスパ・コンパクト・一人暮らし</h3>
-  <table>
-    <thead>
-      <tr><th>#</th><th>モデル</th><th>容量</th><th>ポイント</th><th>価格目安</th></tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td class="rank">7</td>
-        <td><strong>日立 BD-SV120J</strong></td>
-        <td>洗12/乾6kg</td>
-        <td>ビッグドラムのエントリー。機能は絞り価格抑えめ</td>
-        <td>約18万円</td>
-      </tr>
-      <tr>
-        <td class="rank">8</td>
-        <td><strong>アクア AQW-DX12R</strong></td>
-        <td>洗12/乾6kg</td>
-        <td>ハイセンス系。ドラム式を手頃に</td>
-        <td>約17万円</td>
-      </tr>
-      <tr>
-        <td class="rank">9</td>
-        <td><strong>ハイセンス HWF-KD80SL</strong></td>
-        <td>洗8/乾5kg</td>
-        <td>コンパクト・低価格ドラム式</td>
-        <td>約11万円</td>
-      </tr>
-      <tr>
-        <td class="rank">10</td>
-        <td><strong>アイリスオーヤマ DKC85A</strong></td>
-        <td>洗8/乾5kg</td>
-        <td>新生活向け。ファイブセンシング乾燥</td>
-        <td>約20万円</td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="product-grid">
+    <article class="product-card">
+      <span class="rank-badge">#7</span>
+      <a class="img-link" href="https://kakaku.com/item/K0001565993/" target="_blank" rel="noopener">
+        <img src="https://img1.kakaku.k-img.com/images/productimage/fullscale/K0001565993.jpg" alt="日立 BD-SV120J" loading="lazy" width="200" height="200">
+      </a>
+      <h4>日立 BD-SV120J</h4>
+      <p class="capacity">洗12 / 乾6kg</p>
+      <p class="points">ビッグドラムのエントリー。機能は絞り価格抑えめ</p>
+      <p class="price">約18万円</p>
+    </article>
+    <article class="product-card">
+      <span class="rank-badge">#8</span>
+      <a class="img-link" href="https://kakaku.com/item/J0000045654/" target="_blank" rel="noopener">
+        <img src="https://img1.kakaku.k-img.com/images/productimage/fullscale/J0000045654.jpg" alt="アクア AQW-DX12R" loading="lazy" width="200" height="200">
+      </a>
+      <h4>アクア AQW-DX12R</h4>
+      <p class="capacity">洗12 / 乾6kg</p>
+      <p class="points">ハイセンス系。ドラム式を手頃に</p>
+      <p class="price">約17万円</p>
+    </article>
+    <article class="product-card">
+      <span class="rank-badge">#9</span>
+      <a class="img-link" href="https://kakaku.com/item/K0001771602/" target="_blank" rel="noopener">
+        <img src="https://img1.kakaku.k-img.com/images/productimage/fullscale/K0001771602.jpg" alt="ハイセンス HWF-KD80SL" loading="lazy" width="200" height="200">
+      </a>
+      <h4>ハイセンス HWF-KD80SL</h4>
+      <p class="capacity">洗8 / 乾5kg（写真は同系 HW-KD80L）</p>
+      <p class="points">コンパクト・低価格ドラム式</p>
+      <p class="price">約11万円</p>
+    </article>
+    <article class="product-card">
+      <span class="rank-badge">#10</span>
+      <a class="img-link" href="https://kakaku.com/item/J0000046756/" target="_blank" rel="noopener">
+        <img src="https://m.media-amazon.com/images/I/31Bmudx+gfL.jpg" alt="アイリスオーヤマ DKC85A" loading="lazy" width="200" height="200">
+      </a>
+      <h4>アイリスオーヤマ DKC85A</h4>
+      <p class="capacity">洗8 / 乾5kg</p>
+      <p class="points">新生活向け。ファイブセンシング乾燥</p>
+      <p class="price">約20万円</p>
+    </article>
+  </div>
 
   <h3>🧺 縦型洗濯乾燥機</h3>
-  <table>
-    <thead>
-      <tr><th>#</th><th>モデル</th><th>容量</th><th>ポイント</th><th>価格目安</th></tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td class="rank">11</td>
-        <td><strong>日立 ビートウォッシュ BW-DX100M</strong></td>
-        <td>洗10/乾5.5kg</td>
-        <td>縦型の高機能。AIお洗濯・洗剤自動投入</td>
-        <td>約12〜15万円</td>
-      </tr>
-      <tr>
-        <td class="rank">12</td>
-        <td><strong>東芝 ZABOON AW-8VH4</strong></td>
-        <td>洗8/乾4.5kg</td>
-        <td>コンパクト縦型。高洗浄＋乾燥</td>
-        <td>約10万円前後</td>
-      </tr>
-      <tr>
-        <td class="rank">—</td>
-        <td><strong>パナソニック NA-FA12V5</strong></td>
-        <td>洗12kg</td>
-        <td>縦型・スゴ落ち泡洗浄。乾燥は別途 or 少量</td>
-        <td>約8〜12万円</td>
-      </tr>
-      <tr>
-        <td class="rank">—</td>
-        <td><strong>シャープ ES-PW11J</strong></td>
-        <td>洗11kg</td>
-        <td>穴なし槽・節水。衣類に優しい</td>
-        <td>約10万円前後</td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="product-grid">
+    <article class="product-card">
+      <span class="rank-badge">#11</span>
+      <a class="img-link" href="https://kakaku.com/item/K0001687190/" target="_blank" rel="noopener">
+        <img src="https://img1.kakaku.k-img.com/images/productimage/fullscale/K0001687190.jpg" alt="日立 ビートウォッシュ BW-DX100M" loading="lazy" width="200" height="200">
+      </a>
+      <h4>日立 ビートウォッシュ BW-DX100M</h4>
+      <p class="capacity">洗10 / 乾5.5kg</p>
+      <p class="points">縦型の高機能。AIお洗濯・洗剤自動投入</p>
+      <p class="price">約12〜15万円</p>
+    </article>
+    <article class="product-card">
+      <span class="rank-badge">#12</span>
+      <a class="img-link" href="https://kakaku.com/item/K0001637967/" target="_blank" rel="noopener">
+        <img src="https://img1.kakaku.k-img.com/images/productimage/fullscale/K0001637967.jpg" alt="東芝 AW-8VH4" loading="lazy" width="200" height="200">
+      </a>
+      <h4>東芝 ZABOON AW-8VH4</h4>
+      <p class="capacity">洗8 / 乾4.5kg</p>
+      <p class="points">コンパクト縦型。高洗浄＋乾燥</p>
+      <p class="price">約10万円前後</p>
+    </article>
+    <article class="product-card">
+      <span class="rank-badge">参考</span>
+      <a class="img-link" href="https://kakaku.com/item/K0001684470/" target="_blank" rel="noopener">
+        <img src="https://img1.kakaku.k-img.com/images/productimage/fullscale/K0001684470.jpg" alt="パナソニック NA-FA12V5" loading="lazy" width="200" height="200">
+      </a>
+      <h4>パナソニック NA-FA12V5</h4>
+      <p class="capacity">洗12kg</p>
+      <p class="points">縦型・スゴ落ち泡洗浄。乾燥は別途 or 少量</p>
+      <p class="price">約8〜12万円</p>
+    </article>
+    <article class="product-card">
+      <span class="rank-badge">参考</span>
+      <a class="img-link" href="https://kakaku.com/item/K0001634073/" target="_blank" rel="noopener">
+        <img src="https://img1.kakaku.k-img.com/images/productimage/fullscale/K0001634073.jpg" alt="シャープ ES-PW11J" loading="lazy" width="200" height="200">
+      </a>
+      <h4>シャープ ES-PW11J</h4>
+      <p class="capacity">洗11kg</p>
+      <p class="points">穴なし槽・節水。衣類に優しい</p>
+      <p class="price">約10万円前後</p>
+    </article>
+  </div>
   <p class="note">※ 価格は店舗・時期で変動。型番末尾（EL/DL等）は色・機能差。</p>
 
   <h2>5. 用途別 こんな人におすすめ</h2>
