@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>애니플러스(310200) 주가 상승 분석 — 2026-07-07</title>
+  <style>
+    :root {
+      --bg: #0f1419; --panel: #1a2332; --panel-2: #243044; --text: #e7ecf3;
+      --muted: #94a3b8; --up: #34d399; --down: #f87171; --accent: #a78bfa; --border: #334155;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: "Pretendard", "Apple SD Gothic Neo", "Segoe UI", sans-serif;
+      background: var(--bg);
+      background-image: radial-gradient(circle at 15% 0%, #1e293b 0%, transparent 45%),
+        radial-gradient(circle at 85% 100%, #4c1d95 0%, transparent 35%);
+      color: var(--text); line-height: 1.65; min-height: 100vh; padding: 1.25rem 1rem 2rem;
+    }
+    .wrap { max-width: 720px; margin: 0 auto; }
+    header {
+      background: var(--panel); border: 1px solid var(--border); border-radius: 20px;
+      padding: 1.5rem; margin-bottom: 1rem; text-align: center;
+    }
+    .badge {
+      display: inline-block; font-size: 0.72rem; font-weight: 600; color: var(--accent);
+      background: rgba(167,139,250,0.15); padding: 0.25rem 0.7rem; border-radius: 999px; margin-bottom: 0.5rem;
+    }
+    header h1 { font-size: 1.3rem; margin-bottom: 0.35rem; }
+    .symbol { color: var(--muted); font-size: 0.9rem; }
+    .price-row { display: flex; align-items: baseline; justify-content: center; gap: 0.75rem; margin-top: 0.75rem; flex-wrap: wrap; }
+    .price-big { font-size: 2rem; font-weight: 800; }
+    .chg { font-size: 1rem; font-weight: 600; padding: 0.2rem 0.55rem; border-radius: 8px; background: rgba(52,211,153,0.15); color: var(--up); }
+    section {
+      background: var(--panel); border: 1px solid var(--border); border-radius: 18px;
+      padding: 1.15rem; margin-bottom: 1rem;
+    }
+    section > h2 { font-size: 0.95rem; color: var(--muted); margin-bottom: 0.85rem; font-weight: 600; }
+    .chart-wrap { background: var(--panel-2); border-radius: 14px; padding: 0.85rem; }
+    .chart { width: 100%; height: auto; display: block; }
+    .chart-dates { display: flex; justify-content: space-between; font-size: 0.72rem; color: var(--muted); margin-top: 0.35rem; }
+    .metric-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 0.65rem; }
+    .metric-card { background: var(--panel-2); border-radius: 12px; padding: 0.75rem; text-align: center; }
+    .metric-label { display: block; font-size: 0.72rem; color: var(--muted); }
+    .metric-value { font-size: 1rem; font-weight: 700; }
+    ul { padding-left: 1.2rem; }
+    li { margin: 0.45rem 0; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+    th, td { border: 1px solid var(--border); padding: 0.5rem; text-align: left; vertical-align: top; }
+    th { background: var(--panel-2); color: var(--muted); font-weight: 600; }
+    .tag { display: inline-block; font-size: 0.75rem; padding: 0.15rem 0.45rem; border-radius: 6px; margin-right: 0.35rem; }
+    .tag-up { background: rgba(52,211,153,0.15); color: var(--up); }
+    .tag-theme { background: rgba(167,139,250,0.15); color: var(--accent); }
+    .tag-neutral { background: rgba(148,163,184,0.15); color: var(--muted); }
+    blockquote {
+      margin: 0.75rem 0 0; padding: 0.65rem 0.9rem; border-left: 3px solid var(--accent);
+      background: rgba(167,139,250,0.08); border-radius: 0 10px 10px 0; color: var(--muted); font-size: 0.9rem;
+    }
+    .sources { font-size: 0.82rem; color: var(--muted); }
+    .sources a { color: #93c5fd; }
+    .back { margin-top: 1rem; font-size: 0.9rem; }
+    .back a { color: #93c5fd; }
+    .verdict {
+      background: linear-gradient(135deg, rgba(167,139,250,0.2), rgba(52,211,153,0.1));
+      border: 1px solid var(--accent); border-radius: 14px; padding: 1rem; text-align: center;
+    }
+    .verdict strong { color: var(--accent); font-size: 1.05rem; }
+  </style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <span class="badge">코스닥 · 애니메이션 유통</span>
+    <h1>애니플러스 주가 상승 분석</h1>
+    <p class="symbol">310200 · ANIPLUS INC. · 2026-07-07 장마감 기준</p>
+    <div class="price-row">
+      <span class="price-big">2,420원</span>
+      <span class="chg">+170원 (+7.56%)</span>
+    </div>
+  </header>
+
+  <section>
+    <h2>30초 요약</h2>
+    <div class="verdict">
+      <strong>오늘 상승은 시장 전체가 아니라 종목·테마 모멘텀</strong>
+      <p style="margin-top:0.5rem;color:var(--muted);font-size:0.92rem;">
+        코스닥 지수는 하락했지만 애니플러스는 <b>+7.8%</b> 급등.
+        7/1 <b>애니맥스 흡수합병 완료</b> 이후 사업 통합 기대감 + 영상콘텐츠·영화 테마 강세 + 6월 저점 대비 기술적 반등이 겹친 날로 해석됩니다.
+        당일 별도 호재 공시는 없었고, <b>구조적·테마·수급</b> 요인이 주도한 상승에 가깝습니다.
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <h2>가격·거래 (최근 30거래일)</h2>
+    <div class="chart-wrap">
+      <svg class="chart" viewBox="0 0 600 120" preserveAspectRatio="none" aria-label="주가 추이">
+        <polyline fill="none" stroke="#34d399" stroke-width="2.5" points="0.0,0.0 20.7,35.6 41.4,36.9 62.1,62.0 82.8,76.5 103.4,54.1 124.1,48.8 144.8,50.1 165.5,73.8 186.2,62.0 206.9,67.3 227.6,51.4 248.3,58.0 269.0,54.1 289.7,56.7 310.3,43.5 331.0,62.0 351.7,83.1 372.4,87.0 393.1,120.0 413.8,119.7 434.5,119.5 455.2,117.4 475.9,98.9 496.6,81.8 517.2,85.7 537.9,85.7 558.6,69.9 579.3,48.8 600.0,4.0" />
+      </svg>
+      <div class="chart-dates"><span>2026-05-26</span><span>2026-07-07</span></div>
+    </div>
+    <div class="metric-grid" style="margin-top:0.85rem">
+      <div class="metric-card"><span class="metric-label">시가</span><span class="metric-value">2,250</span></div>
+      <div class="metric-card"><span class="metric-label">고가</span><span class="metric-value">2,435</span></div>
+      <div class="metric-card"><span class="metric-label">저가</span><span class="metric-value">2,205</span></div>
+      <div class="metric-card"><span class="metric-label">거래량</span><span class="metric-value">226,815</span></div>
+      <div class="metric-card"><span class="metric-label">20일 평균 대비</span><span class="metric-value">1.56x</span></div>
+      <div class="metric-card"><span class="metric-label">6개월 저점</span><span class="metric-value">1,980</span></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>오늘 왜 올랐나 — 핵심 요인</h2>
+    <table>
+      <thead><tr><th>요인</th><th>영향</th><th>설명</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><span class="tag tag-up">구조</span>애니맥스 합병</td>
+          <td>★★★</td>
+          <td>7월 1일 자회사 <b>애니맥스브로드캐스팅코리아</b> 흡수합병 완료(등기 7/3). IP·방송·VOD·MD 밸류체인 일원화 기대가 상승 랠리의 배경. 합병 당일엔 반응이 약했으나(2,110원) 이후 매수세가 이어지며 오늘 <b>2,435원 고가</b> 터치.</td>
+        </tr>
+        <tr>
+          <td><span class="tag tag-theme">테마</span>영상콘텐츠·영화</td>
+          <td>★★★</td>
+          <td>영화·영상콘텐츠 테마가 최근 연속 강세. 같은 날 스튜디오미르 +2.4%, CJ ENM +1.8% 등 동반 상승. 애니플러스는 테마 내 <b>상대 강세(+7.8%)</b>로 자금이 집중된 모습.</td>
+        </tr>
+        <tr>
+          <td><span class="tag tag-up">기술</span>저점 반등</td>
+          <td>★★☆</td>
+          <td>6월 26일 <b>1,800원</b> 6개월 저점 형성 후 바닥 다지기 → 7월 초 2,100원대 회복 → 오늘 2,400원대 돌파. 단기 저항(2,280원) 돌파 후 추격 매수 유입 가능.</td>
+        </tr>
+        <tr>
+          <td><span class="tag tag-neutral">수급</span>거래량 증가</td>
+          <td>★★☆</td>
+          <td>거래량 <b>226,815주</b>로 20일 평균(145,374주) 대비 <b>1.6배</b>. 가격·거래량 동반 상승은 단순 뉴스성 반등보다 적극 매수에 가깝게 해석.</td>
+        </tr>
+        <tr>
+          <td><span class="tag tag-theme">이벤트</span>IP·VOD</td>
+          <td>★★☆</td>
+          <td>극장판 <b>귀멸의 칼날: 무한성편</b> 국내 배급 실적(애니맥스 보유 판권) 이후, 7월 말 VOD·채널 재방영 등 후속 수익 기대. 합병으로 IP가 애니플러스로 통합되며 시너지 재평가 요인.</td>
+        </tr>
+        <tr>
+          <td><span class="tag tag-neutral">배당</span>분기 70원</td>
+          <td>★☆☆</td>
+          <td>6/30 배당 기준일, 7/29 지급 예정(주당 70원). 직접적인 급등 트리거는 아니나, 현금흐름·주주환원 이미지 보조 요인.</td>
+        </tr>
+      </tbody>
+    </table>
+    <blockquote>
+      <b>시장 대비 성과:</b> 7/7 코스닥 지수는 약세(856pt대)였으나 애니플러스는 역행 상승 → <b>베타가 아닌 종목 고유·테마 모멘텀</b>이 맞는 날.
+    </blockquote>
+  </section>
+
+  <section>
+    <h2>회사 맥락 — 왜 지금 주목받나</h2>
+    <ul>
+      <li><b>사업:</b> 일본 애니메이션 국내 유통 1위급, OTT <b>라프텔</b>·채널 <b>애니플러스/애니맥스</b>·극장 배급·MD까지 아우르는 토탈 플레이어.</li>
+      <li><b>합병 효과:</b> 귀멸의 칼날·진격의 거인 등 메가 IP 판권이 한 법인으로 통합. 경영비 절감 + 크로스셀(극장→OTT→굿즈) 기대.</li>
+      <li><b>실적:</b> 2025년 연결 영업이익 전년比 대폭 개선(극장 흥행·라프텔 성장). 1분기도 역대급 실적 기록 이력.</li>
+      <li><b>과거 오버행:</b> 애니맥스 인수 관련 CB(전환사채)가 주가를 눌렀던 이력. 상환·전환 진행으로 희석 부담 완화 narrative는 중장기 우호적.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>리스크·체크포인트</h2>
+    <ul>
+      <li><b>급등 후 차익 실현:</b> 6월 저점 대비 약 +35% 반등. 단기 과열 시 조정 가능.</li>
+      <li><b>52주 고가 6,430원</b> 대비 현재가는 여전히 깊은 할인 구간 — 과거 고점 회복엔 실적·신작 IP 재확인 필요.</li>
+      <li><b>합병 효과는 실적로 증명</b>해야 함. 2분기 이후 통합 시너지가 숫자로 나오는지가 관건.</li>
+      <li><b>테마 의존:</b> 콘텐츠 테마 약세 전환 시 동반 하락 위험.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>결론</h2>
+    <p>
+      2026년 7월 7일 애니플러스 <b>+7.78%(2,425원)</b> 상승은 단일 공시보다
+      <b>① 애니맥스 합병 완료 후 구조 재평가</b>,
+      <b>② 영상콘텐츠·영화 테마 강세 속 대장주 성격</b>,
+      <b>③ 6월 저점 이후 기술적 반등 + 거래량 증가</b>가 겹친 결과로 보는 것이 타당합니다.
+      코스닥 약세 속 역행한 점에서 시장 전체가 아닌 <b>종목·섹터 모멘텀</b>이 핵심입니다.
+    </p>
+  </section>
+
+  <section>
+    <h2>참고 자료</h2>
+    <p class="sources">
+      <a href="https://biz.chosun.com/it-science/ict/2026/06/30/TTQG27TUANHRPDF7MYHPPLID6A/" target="_blank" rel="noopener">조선비즈 — 애니맥스 흡수합병 완료 (2026-06-30)</a><br>
+      <a href="https://www.bloter.net/news/articleView.html?idxno=666910" target="_blank" rel="noopener">블로터 — 애니 IP 밸류체인 확대 (2026)</a><br>
+      <a href="https://www.mk.co.kr/news/stock/12090899" target="_blank" rel="noopener">매일경제 — 영화 테마 강세 (2026-07-06)</a><br>
+      <a href="https://finance.yahoo.com/quote/310200.KQ" target="_blank" rel="noopener">Yahoo Finance — 310200.KQ 시세</a>
+    </p>
+    <p class="sources" style="margin-top:0.75rem">
+      ※ 본 문서는 공개 정보 기반 투자 참고용이며, 투자 권유가 아닙니다. 시세·뉴스는 작성 시점 기준입니다.
+    </p>
+  </section>
+
+  <p class="back"><a href="../index.html">← 목록으로</a></p>
+</div>
+</body>
+</html>
