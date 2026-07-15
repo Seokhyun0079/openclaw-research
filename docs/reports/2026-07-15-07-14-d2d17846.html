@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>노무라 세계반도체 펀드 브리핑 07/14</title>
+  <style>
+    :root {
+      --bg:#0f1419; --surface:#1a2332; --surface-2:#243044; --border:#2d3a4f;
+      --text:#e8edf4; --muted:#8b9cb3; --accent:#3b82f6; --accent-glow:rgba(59,130,246,0.15);
+      --up:#f87171; --up-bg:rgba(248,113,113,0.12); --down:#60a5fa; --down-bg:rgba(96,165,250,0.12);
+      --flat:#94a3b8;
+    }
+    * { box-sizing:border-box; margin:0; padding:0; }
+    body {
+      font-family:"Pretendard",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      background:var(--bg);
+      background-image:radial-gradient(ellipse 80% 50% at 50% -20%, rgba(59,130,246,0.18), transparent);
+      color:var(--text); line-height:1.5; min-height:100vh; padding:1.25rem;
+    }
+    .wrap { max-width:720px; margin:0 auto; }
+    header {
+      background:linear-gradient(135deg,var(--surface),var(--surface-2));
+      border:1px solid var(--border); border-radius:16px; padding:1.5rem 1.25rem;
+      margin-bottom:1rem; box-shadow:0 8px 32px rgba(0,0,0,0.35);
+    }
+    .badge {
+      display:inline-block; font-size:0.7rem; font-weight:600; letter-spacing:0.06em;
+      text-transform:uppercase; color:var(--accent); background:var(--accent-glow);
+      border:1px solid rgba(59,130,246,0.35); padding:0.25rem 0.6rem; border-radius:999px; margin-bottom:0.75rem;
+    }
+    header h1 { font-size:clamp(1.2rem,4vw,1.5rem); font-weight:700; letter-spacing:-0.02em; }
+    .fund-full { font-size:0.8rem; color:var(--muted); margin-top:0.25rem; }
+    .nav-row { display:flex; align-items:baseline; gap:0.6rem; margin-top:1rem; flex-wrap:wrap; }
+    .nav-price { font-size:2.4rem; font-weight:800; font-variant-numeric:tabular-nums; letter-spacing:-0.03em; color:#fff; }
+    .nav-price .unit { font-size:1rem; font-weight:600; color:var(--muted); margin-left:0.15rem; }
+    .nav-chg { font-size:1.1rem; font-weight:800; font-variant-numeric:tabular-nums; padding:0.2rem 0.6rem; border-radius:8px; }
+    .nav-chg.up { color:var(--up); background:var(--up-bg); }
+    .nav-chg.down { color:var(--down); background:var(--down-bg); }
+    .nav-chg.flat { color:var(--flat); background:rgba(148,163,184,0.12); }
+    .nav-date { font-size:0.9rem; color:var(--muted); margin-top:0.35rem; }
+    .session {
+      margin-top:0.75rem; font-size:0.85rem; color:var(--muted); padding:0.5rem 0.75rem;
+      background:rgba(0,0,0,0.2); border-radius:8px; border-left:3px solid var(--accent);
+    }
+    section {
+      background:var(--surface); border:1px solid var(--border); border-radius:16px;
+      padding:1.25rem; margin-bottom:1rem;
+    }
+    section > h2 {
+      font-size:0.8rem; font-weight:600; letter-spacing:0.08em; text-transform:uppercase;
+      color:var(--muted); margin-bottom:1rem;
+    }
+    .nav-chart { display:block; width:100%; height:160px; }
+    .chart-empty { font-size:0.85rem; color:var(--muted); text-align:center; padding:2rem 0; }
+    .stat-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(110px,1fr)); gap:0.65rem; margin-top:1rem; }
+    .stat-chip {
+      background:var(--surface-2); border:1px solid var(--border); border-radius:10px;
+      padding:0.65rem 0.8rem; display:flex; flex-direction:column; gap:0.2rem;
+    }
+    .stat-label { font-size:0.72rem; color:var(--muted); font-weight:500; }
+    .stat-val { font-size:1.1rem; font-weight:800; font-variant-numeric:tabular-nums; color:#fff; }
+    .stat-val.up { color:var(--up); } .stat-val.down { color:var(--down); }
+    .reason-list { list-style:none; display:flex; flex-direction:column; gap:0.6rem; }
+    .reason-list li {
+      font-size:0.92rem; padding:0.75rem 0.9rem; background:var(--surface-2);
+      border:1px solid var(--border); border-radius:10px; border-left:3px solid var(--accent);
+    }
+    .proxy-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(150px,1fr)); gap:0.6rem; margin-top:1rem; }
+    .proxy-card {
+      background:var(--surface-2); border:1px solid var(--border); border-radius:10px;
+      padding:0.75rem 0.9rem; display:flex; justify-content:space-between; align-items:center;
+    }
+    .proxy-card.up { border-left:3px solid var(--up); }
+    .proxy-card.down { border-left:3px solid var(--down); }
+    .proxy-card.flat { border-left:3px solid var(--flat); }
+    .proxy-name { font-size:0.9rem; font-weight:600; }
+    .proxy-pct { font-size:0.9rem; font-weight:800; font-variant-numeric:tabular-nums; }
+    .proxy-pct.up { color:var(--up); } .proxy-pct.down { color:var(--down); } .proxy-pct.flat { color:var(--flat); }
+    .news-card {
+      display:flex; align-items:center; justify-content:space-between; gap:0.75rem;
+      padding:0.75rem 0.9rem; background:var(--surface-2); border:1px solid var(--border);
+      border-radius:10px; margin-bottom:0.45rem; text-decoration:none; color:var(--text);
+      transition:border-color 0.15s, background 0.15s;
+    }
+    .news-card:hover { border-color:var(--accent); background:rgba(59,130,246,0.08); }
+    .news-title { font-size:0.88rem; line-height:1.45; flex:1; }
+    .news-link { color:var(--accent); font-size:1rem; flex-shrink:0; }
+    .empty { color:var(--muted); font-size:0.9rem; }
+    footer { text-align:center; font-size:0.78rem; color:var(--muted); padding:1rem 0 0.5rem; line-height:1.6; }
+    footer strong { color:#94a3b8; }
+    @media (max-width:480px) { .nav-price { font-size:2rem; } }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="badge">OpenClaw · Fund</div>
+      <h1>노무라 세계반도체 펀드</h1>
+      <p class="fund-full">野村世界業種別投資シリーズ(世界半導体株投資)</p>
+      <div class="nav-row">
+        <span class="nav-price">336,768<span class="unit">엔</span></span>
+        <span class="nav-chg down">▼ -3.62% (-12,641엔)</span>
+      </div>
+      <p class="nav-date">07/14 기준가 · 전일 349,409엔</p>
+      
+    </header>
+
+    <section>
+      <h2>기준가 추이 (최근 30영업일)</h2>
+      <svg class="nav-chart" viewBox="0 0 640 160" preserveAspectRatio="none" role="img" aria-label="기준가 추이">
+  <defs>
+    <linearGradient id="navgrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#60a5fa" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#60a5fa" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <path d="M8.0,144 L8.0,32.7 L29.5,34.4 L51.0,56.9 L72.6,108.4 L94.1,93.1 L115.6,90.5 L137.1,117.1 L158.6,87.4 L180.1,76.9 L201.7,49.8 L223.2,68.9 L244.7,59.9 L266.2,27.0 L287.7,24.6 L309.2,16.0 L330.8,61.8 L352.3,68.9 L373.8,48.9 L395.3,116.7 L416.8,94.5 L438.3,71.2 L459.9,99.5 L481.4,135.4 L502.9,130.6 L524.4,122.7 L545.9,144.0 L567.4,127.4 L589.0,117.8 L610.5,112.5 L632.0,139.5 L632.0,144 Z" fill="url(#navgrad)"/>
+  <polyline points="8.0,32.7 29.5,34.4 51.0,56.9 72.6,108.4 94.1,93.1 115.6,90.5 137.1,117.1 158.6,87.4 180.1,76.9 201.7,49.8 223.2,68.9 244.7,59.9 266.2,27.0 287.7,24.6 309.2,16.0 330.8,61.8 352.3,68.9 373.8,48.9 395.3,116.7 416.8,94.5 438.3,71.2 459.9,99.5 481.4,135.4 502.9,130.6 524.4,122.7 545.9,144.0 567.4,127.4 589.0,117.8 610.5,112.5 632.0,139.5" fill="none" stroke="#60a5fa" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="632.0" cy="139.5" r="4" fill="#60a5fa"/>
+</svg>
+      <div class="stat-grid"><div class="stat-chip"><span class="stat-label">1주</span><span class="stat-val down">-2.3%</span></div><div class="stat-chip"><span class="stat-label">1개월</span><span class="stat-val down">-8.0%</span></div><div class="stat-chip"><span class="stat-label">엔/달러</span><span class="stat-val down">-0.2%</span></div><div class="stat-chip"><span class="stat-label">순자산</span><span class="stat-val flat">9,571억엔</span></div></div>
+    </section>
+
+    <section>
+      <h2>하락 요인</h2>
+      <ul class="reason-list"><li>글로벌 반도체주 강세(평균 +2.3%): 엔비디아 +4.1% · TSMC -0.3% · 브로드컴 +1.3% · ASML +2.9%</li><li>엔/달러 -0.2% → 엔고(환차손, NAV −요인)</li><li>※ 기준가와 섹터 방향이 엇갈림 → 환율·반영 시차(직전 영업일 종가 기준) 영향</li></ul>
+      <h2 style="margin-top:1.25rem">주요 편입 종목 (직전 세션)</h2>
+      <div class="proxy-grid"><div class="proxy-card up">
+  <span class="proxy-name">엔비디아</span>
+  <span class="proxy-pct up">▲ +4.1%</span>
+</div><div class="proxy-card down">
+  <span class="proxy-name">TSMC</span>
+  <span class="proxy-pct down">▼ -0.3%</span>
+</div><div class="proxy-card up">
+  <span class="proxy-name">브로드컴</span>
+  <span class="proxy-pct up">▲ +1.3%</span>
+</div><div class="proxy-card up">
+  <span class="proxy-name">ASML</span>
+  <span class="proxy-pct up">▲ +2.9%</span>
+</div><div class="proxy-card up">
+  <span class="proxy-name">AMD</span>
+  <span class="proxy-pct up">▲ +2.6%</span>
+</div><div class="proxy-card up">
+  <span class="proxy-name">AMAT</span>
+  <span class="proxy-pct up">▲ +3.5%</span>
+</div></div>
+    </section>
+
+    <section>
+      <h2>관련 뉴스</h2>
+      <a class="news-card" href="https://news.google.com/rss/articles/CBMidEFVX3lxTE1NbjQ0RlNWb1IyYV92S0FSTTJOS3FiX3lVZlAxalVQRjlkNGkySHFjeFpGdEFHMFVLdzd6RTBpM015bnczbkpBSzRlZndwaFZTX2ZSbnlkMmtOS3k2VU1aaFRyazlWY2padmhQYVYweFdkWHk4?oc=5" target="_blank" rel="noopener"><span class="news-title">AI株の集団調整は「黄金の買い場」か？ 海外メディアがエヌビディア、TSMC、ブロードコムの3大リーダー株を「割引買い」候補に指名</span><span class="news-link">↗</span></a><a class="news-card" href="https://news.google.com/rss/articles/CBMiWEFVX3lxTE1GTHVFdVN2QlJ5ZEFZTmNtT3V3eFBhV2RJRHlyRUo1dWVDd0lRcHAtWVFTbjkxa3ZBVGdybzZOc0pOcE1Hd0hxYnhvT2h6bUhkVGV1ZXV2aG4?oc=5" target="_blank" rel="noopener"><span class="news-title">｢日本の半導体｣に習近平は手を出せない…エヌビディア･TSMCの製造ラインの要所を握る日本企業の名前</span><span class="news-link">↗</span></a><a class="news-card" href="https://news.google.com/rss/articles/CBMixgFBVV95cUxPTnRGOWEzcHpXT0w4dWxuOFh0OUpsX2hHNGgzSkhpVS04MW9RSTdsa3RqcnR5RVppaUdOZGF3Vjl3RlB4TUJEWUhjczJ3TGZobjJBYkVyR2QyY3dzT20wRldtUjRzV3FNMHM2ajNKSXdYU3RIWnNwMTFhVzNsdm1RVWtxOERjUTllRGJ4Ui1qdm50T09hdGh3anlvaWkxWXJraVo2RlpBNzNMekpyWndoU0RyeEN0dm1MZzdWSkxtN2FKRjl5bXc?oc=5" target="_blank" rel="noopener"><span class="news-title">TSMC対エヌビディア: どちらのAI銘柄がより優れた投資先か?</span><span class="news-link">↗</span></a>
+    </section>
+
+    <footer>
+      <strong>※ 참고용</strong> · 기준가 출처 투신협회 · 편입종목·환율 Yahoo Finance · 투자 조언이 아닙니다<br>
+      2026-07-15 10:27 JST
+    </footer>
+  </div>
+</body>
+</html>
