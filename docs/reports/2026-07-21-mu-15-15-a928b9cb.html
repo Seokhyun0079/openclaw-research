@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>마이크론(MU) 차트 분석 15:15</title>
+  <style>
+    :root {
+      --bg: #0f1419;
+      --panel: #1a2332;
+      --panel-2: #243044;
+      --text: #e7ecf3;
+      --muted: #94a3b8;
+      --up: #34d399;
+      --down: #f87171;
+      --buy: #34d399;
+      --hold: #fbbf24;
+      --sell: #f87171;
+      --accent: #818cf8;
+      --border: #334155;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: "Pretendard", "Apple SD Gothic Neo", "Segoe UI", sans-serif;
+      background: var(--bg);
+      background-image: radial-gradient(circle at 20% 0%, #1e293b 0%, transparent 50%),
+        radial-gradient(circle at 80% 100%, #312e81 0%, transparent 40%);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+      padding: 1.25rem 1rem 2rem;
+    }
+    .wrap { max-width: 720px; margin: 0 auto; }
+    header {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 1.5rem;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+    .badge {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--accent);
+      background: rgba(129,140,248,0.15);
+      padding: 0.25rem 0.7rem;
+      border-radius: 999px;
+      margin-bottom: 0.5rem;
+    }
+    header h1 { font-size: 1.35rem; margin-bottom: 0.35rem; }
+    .symbol { color: var(--muted); font-size: 0.9rem; }
+    .price-row {
+      display: flex;
+      align-items: baseline;
+      justify-content: center;
+      gap: 0.75rem;
+      margin-top: 0.75rem;
+      flex-wrap: wrap;
+    }
+    .price-big { font-size: 2rem; font-weight: 800; font-variant-numeric: tabular-nums; }
+    .chg { font-size: 1rem; font-weight: 600; padding: 0.2rem 0.55rem; border-radius: 8px; }
+    .chg.up { background: rgba(52,211,153,0.15); color: var(--up); }
+    .chg.down { background: rgba(248,113,113,0.15); color: var(--down); }
+    section {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 1.15rem;
+      margin-bottom: 1rem;
+    }
+    section > h2 {
+      font-size: 0.95rem;
+      color: var(--muted);
+      margin-bottom: 0.85rem;
+      font-weight: 600;
+    }
+    .year-chart-wrap {
+      background: var(--panel-2);
+      border-radius: 14px;
+      padding: 0.85rem;
+      margin-bottom: 0.5rem;
+    }
+    .year-chart-head {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      margin-bottom: 0.5rem;
+      font-size: 0.82rem;
+    }
+    .year-label { font-weight: 700; color: var(--text); }
+    .year-pct { font-weight: 700; font-variant-numeric: tabular-nums; }
+    .year-pct.up { color: var(--up); }
+    .year-pct.down { color: var(--down); }
+    .legend { margin-left: auto; color: var(--muted); font-size: 0.75rem; }
+    .legend .dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin: 0 4px 0 10px; vertical-align: middle; }
+    .dot.price { background: var(--up); }
+    .dot.sma { background: #fbbf24; }
+    .year-chart { width: 100%; height: auto; display: block; }
+    .chart-dates {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.72rem;
+      color: var(--muted);
+      margin-top: 0.35rem;
+    }
+    .metric-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 0.65rem;
+    }
+    .metric-card {
+      background: var(--panel-2);
+      border-radius: 12px;
+      padding: 0.75rem;
+      text-align: center;
+    }
+    .metric-label { display: block; font-size: 0.72rem; color: var(--muted); }
+    .metric-value { display: block; font-size: 1.05rem; font-weight: 700; margin: 0.2rem 0; }
+    .metric-sub { display: block; font-size: 0.68rem; color: var(--muted); }
+    .verdict-banner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      padding: 1rem 1.15rem;
+      border-radius: 14px;
+      margin-bottom: 1rem;
+    }
+    .verdict-banner.buy { background: rgba(52,211,153,0.12); border: 1px solid rgba(52,211,153,0.35); }
+    .verdict-banner.hold { background: rgba(251,191,36,0.12); border: 1px solid rgba(251,191,36,0.35); }
+    .verdict-banner.sell { background: rgba(248,113,113,0.12); border: 1px solid rgba(248,113,113,0.35); }
+    .verdict-ko { font-size: 1.75rem; font-weight: 800; margin-right: 0.5rem; }
+    .verdict-en { font-size: 0.85rem; color: var(--muted); font-weight: 600; }
+    .verdict-banner.buy .verdict-ko { color: var(--buy); }
+    .verdict-banner.hold .verdict-ko { color: var(--hold); }
+    .verdict-banner.sell .verdict-ko { color: var(--sell); }
+    .verdict-meta { text-align: right; font-size: 0.78rem; color: var(--muted); }
+    .verdict-meta span { display: block; }
+    .analysis-summary {
+      font-size: 0.95rem;
+      margin-bottom: 1rem;
+      padding: 0.85rem;
+      background: var(--panel-2);
+      border-radius: 12px;
+      border-left: 3px solid var(--accent);
+    }
+    .analysis-cols { display: grid; gap: 0.75rem; }
+    .analysis-block h3 { font-size: 0.85rem; margin-bottom: 0.45rem; color: var(--muted); }
+    .analysis-block ul { padding-left: 1.1rem; font-size: 0.88rem; color: var(--text); }
+    .analysis-block li { margin-bottom: 0.35rem; }
+    .period-returns { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.85rem; }
+    .ret-chip {
+      font-size: 0.78rem; font-weight: 600; padding: 0.3rem 0.6rem; border-radius: 8px;
+      font-variant-numeric: tabular-nums;
+    }
+    .ret-chip.up { background: rgba(52,211,153,0.15); color: var(--buy); }
+    .ret-chip.down { background: rgba(248,113,113,0.15); color: var(--sell); }
+    .evidence-block, .context-block, .peer-block, .news-block {
+      background: var(--panel-2);
+      border-radius: 12px;
+      padding: 0.85rem;
+      margin-bottom: 0.75rem;
+    }
+    .evidence-block h3, .context-block h3, .peer-block h3, .news-block h3 {
+      font-size: 0.82rem; color: var(--muted); margin-bottom: 0.5rem;
+    }
+    .score-table, .peer-table {
+      width: 100%; border-collapse: collapse; font-size: 0.82rem;
+    }
+    .score-table th, .score-table td, .peer-table th, .peer-table td {
+      border: 1px solid var(--border); padding: 0.4rem 0.55rem; text-align: left;
+    }
+    .score-table th, .peer-table th { background: rgba(0,0,0,0.2); color: var(--muted); }
+    .score-table td.pos, .score-table tfoot .pos { color: var(--buy); font-weight: 700; }
+    .score-table td.neg, .score-table tfoot .neg { color: var(--sell); font-weight: 700; }
+    .score-table td.neu { color: var(--muted); }
+    .score-hint { font-size: 0.72rem; color: var(--muted); margin-top: 0.45rem; }
+    .context-block p { font-size: 0.88rem; margin-bottom: 0.35rem; }
+    .news-block ul { padding-left: 1.1rem; font-size: 0.85rem; }
+    .news-block a { color: var(--accent); }
+    .score-total { display: block; font-weight: 700; margin-top: 0.2rem; }
+    .disclaimer {
+      font-size: 0.78rem;
+      color: var(--muted);
+      text-align: center;
+      padding: 0.75rem;
+      line-height: 1.7;
+    }
+    @media (min-width: 600px) {
+      .analysis-cols { grid-template-columns: repeat(3, 1fr); }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="badge">OpenClaw · Daily Chart Analysis</div>
+      <h1>마이크론 (Micron Technology)</h1>
+      <p class="symbol">MU · NASDAQ · Yahoo Finance</p>
+      <div class="price-row">
+        <span class="price-big">$865.46</span>
+        <span class="chg up">+1.94%</span>
+      </div>
+      <div class="period-returns"><span class="ret-chip down">1개월 -17.0%</span><span class="ret-chip up">3개월 +90.2%</span><span class="ret-chip up">6개월 +157.1%</span><span class="ret-chip up">1년 +664.3%</span></div>
+    </header>
+
+    <section aria-labelledby="context-heading">
+      <h2 id="context-heading">🏭 배경</h2>
+      <div class="context-block">
+  <h3>🏭 섹터·종목 배경</h3>
+  <p><strong>DRAM·NAND 메모리 반도체</strong></p>
+  <p>AI/HBM·서버 메모리 수요와 메모리 가격 사이클에 민감한 대형 메모리 제조사.</p>
+</div>
+    </section>
+
+    <section aria-labelledby="chart-heading">
+      <h2 id="chart-heading">📊 1년 차트</h2>
+      <div class="year-chart-wrap">
+  <div class="year-chart-head">
+    <span class="year-label">1년 일봉</span>
+    <span class="year-pct up">+664.3%</span>
+    <span class="legend"><span class="dot price"></span>종가 <span class="dot sma"></span>50일선</span>
+  </div>
+  <svg class="year-chart" viewBox="0 0 640 220" preserveAspectRatio="none" role="img" aria-label="1년 주가 추이">
+    <defs>
+      <linearGradient id="gYear" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#34d399" stop-opacity="0.35"/>
+        <stop offset="100%" stop-color="#34d399" stop-opacity="0"/>
+      </linearGradient>
+    </defs>
+    <path d="M8.0,196 L8.0,194.7 L10.5,195.3 L13.0,195.2 L15.5,194.9 L18.0,195.0 L20.5,195.0 L23.0,194.9 L25.5,194.5 L28.0,195.3 L30.5,196.0 L33.0,195.6 L35.5,195.4 L38.0,195.4 L40.4,194.9 L42.9,193.8 L45.4,193.1 L47.9,192.5 L50.4,193.0 L52.9,192.8 L55.4,193.5 L57.9,193.1 L60.4,193.3 L62.9,194.1 L65.4,194.3 L67.9,194.0 L70.4,194.2 L72.9,194.2 L75.4,194.0 L77.9,193.3 L80.4,193.8 L82.9,193.9 L85.4,193.9 L87.9,193.0 L90.4,191.9 L92.9,191.9 L95.4,191.3 L97.9,190.6 L100.4,188.9 L102.8,187.9 L105.3,187.8 L107.8,187.6 L110.3,187.5 L112.8,186.1 L115.3,187.0 L117.8,186.7 L120.3,186.5 L122.8,187.2 L125.3,187.9 L127.8,187.9 L130.3,186.8 L132.8,186.3 L135.3,184.0 L137.8,183.8 L140.3,183.1 L142.8,182.6 L145.3,183.5 L147.8,181.8 L150.3,182.4 L152.8,184.1 L155.3,182.4 L157.8,183.3 L160.3,182.5 L162.8,180.9 L165.2,180.9 L167.7,180.2 L170.2,180.9 L172.7,181.5 L175.2,180.2 L177.7,178.3 L180.2,178.1 L182.7,177.8 L185.2,177.1 L187.7,177.5 L190.2,177.6 L192.7,175.9 L195.2,178.4 L197.7,175.4 L200.2,175.3 L202.7,175.4 L205.2,173.0 L207.7,174.9 L210.2,174.3 L212.7,175.5 L215.2,174.0 L217.7,174.7 L220.2,176.8 L222.7,177.2 L225.2,181.0 L227.6,180.1 L230.1,177.5 L232.6,177.4 L235.1,176.5 L237.6,175.6 L240.1,175.0 L242.6,175.1 L245.1,175.9 L247.6,177.1 L250.1,175.5 L252.6,174.0 L255.1,173.1 L257.6,171.4 L260.1,172.2 L262.6,174.9 L265.1,175.4 L267.6,176.2 L270.1,177.3 L272.6,173.7 L275.1,171.0 L277.6,169.4 L280.1,169.4 L282.6,167.8 L285.1,168.1 L287.6,166.6 L290.0,166.9 L292.5,168.0 L295.0,163.3 L297.5,163.8 L300.0,159.0 L302.5,159.6 L305.0,161.5 L307.5,158.7 L310.0,158.6 L312.5,159.8 L315.0,160.6 L317.5,160.0 L320.0,156.0 L322.5,155.6 L325.0,151.9 L327.5,150.6 L330.0,150.3 L332.5,151.9 L335.0,148.6 L337.5,144.7 L340.0,144.7 L342.5,147.9 L345.0,144.4 L347.5,147.2 L350.0,153.4 L352.4,152.9 L354.9,151.0 L357.4,152.8 L359.9,154.4 L362.4,148.6 L364.9,148.0 L367.4,148.4 L369.9,150.2 L372.4,147.0 L374.9,147.5 L377.4,145.8 L379.9,147.0 L382.4,147.4 L384.9,145.7 L387.4,147.8 L389.9,148.3 L392.4,148.2 L394.9,153.4 L397.4,150.1 L399.9,150.7 L402.4,154.8 L404.9,151.9 L407.4,149.7 L409.9,147.3 L412.4,149.4 L414.8,146.2 L417.3,143.7 L419.8,140.6 L422.3,140.6 L424.8,143.3 L427.3,146.7 L429.8,149.5 L432.3,150.9 L434.8,153.0 L437.3,157.1 L439.8,156.9 L442.3,162.3 L444.8,159.9 L447.3,155.2 L449.8,155.5 L452.3,153.7 L454.8,153.7 L457.3,149.2 L459.8,146.9 L462.3,147.0 L464.8,146.1 L467.3,140.0 L469.8,141.5 L472.3,141.3 L474.8,141.7 L477.2,142.7 L479.7,142.6 L482.2,136.6 L484.7,137.5 L487.2,135.2 L489.7,130.9 L492.2,134.0 L494.7,131.8 L497.2,132.0 L499.7,128.2 L502.2,122.8 L504.7,113.0 L507.2,108.9 L509.7,112.0 L512.2,96.4 L514.7,88.9 L517.2,93.3 L519.7,87.6 L522.2,91.9 L524.7,99.8 L527.2,106.5 L529.7,103.9 L532.2,98.7 L534.7,94.0 L537.2,95.8 L539.6,73.3 L542.1,68.2 L544.6,69.0 L547.1,61.6 L549.6,51.6 L552.1,47.2 L554.6,44.8 L557.1,57.8 L559.6,78.2 L562.1,65.0 L564.6,67.1 L567.1,73.9 L569.6,57.8 L572.1,60.0 L574.6,43.5 L577.1,53.9 L579.6,50.4 L582.1,36.3 L584.6,24.3 L587.1,49.1 L589.6,49.6 L592.1,24.0 L594.6,36.6 L597.1,34.6 L599.6,33.2 L602.0,52.1 L604.5,60.9 L607.0,59.5 L609.5,66.7 L612.0,65.1 L614.5,58.4 L617.0,60.3 L619.5,66.9 L622.0,59.8 L624.5,72.0 L627.0,79.9 L629.5,80.6 L632.0,78.0 L632.0,196 Z" fill="url(#gYear)"/>
+    <polyline points="130.3,192.2 132.8,192.1 135.3,191.8 137.8,191.6 140.3,191.4 142.8,191.1 145.3,190.9 147.8,190.6 150.3,190.4 152.8,190.2 155.3,189.9 157.8,189.6 160.3,189.4 162.8,189.1 165.2,188.8 167.7,188.5 170.2,188.3 172.7,188.1 175.2,187.8 177.7,187.5 180.2,187.2 182.7,186.9 185.2,186.6 187.7,186.3 190.2,185.9 192.7,185.6 195.2,185.2 197.7,184.9 200.2,184.5 202.7,184.1 205.2,183.7 207.7,183.3 210.2,183.0 212.7,182.6 215.2,182.2 217.7,181.9 220.2,181.6 222.7,181.3 225.2,181.2 227.6,181.0 230.1,180.8 232.6,180.6 235.1,180.4 237.6,180.2 240.1,180.0 242.6,179.7 245.1,179.5 247.6,179.3 250.1,179.1 252.6,178.8 255.1,178.5 257.6,178.2 260.1,178.0 262.6,177.8 265.1,177.6 267.6,177.5 270.1,177.4 272.6,177.2 275.1,177.0 277.6,176.7 280.1,176.4 282.6,176.1 285.1,175.8 287.6,175.6 290.0,175.3 292.5,175.0 295.0,174.7 297.5,174.3 300.0,173.9 302.5,173.5 305.0,173.2 307.5,172.8 310.0,172.5 312.5,172.1 315.0,171.8 317.5,171.4 320.0,171.0 322.5,170.6 325.0,170.1 327.5,169.6 330.0,169.2 332.5,168.7 335.0,168.2 337.5,167.6 340.0,167.0 342.5,166.5 345.0,165.8 347.5,165.2 350.0,164.7 352.4,164.1 354.9,163.6 357.4,163.1 359.9,162.7 362.4,162.1 364.9,161.6 367.4,161.0 369.9,160.5 372.4,159.9 374.9,159.4 377.4,158.8 379.9,158.3 382.4,157.8 384.9,157.3 387.4,156.7 389.9,156.2 392.4,155.6 394.9,155.2 397.4,154.7 399.9,154.3 402.4,154.0 404.9,153.6 407.4,153.3 409.9,152.9 412.4,152.5 414.8,152.1 417.3,151.6 419.8,151.2 422.3,150.7 424.8,150.4 427.3,150.1 429.8,149.9 432.3,149.7 434.8,149.6 437.3,149.6 439.8,149.5 442.3,149.5 444.8,149.6 447.3,149.6 449.8,149.7 452.3,149.7 454.8,149.8 457.3,149.7 459.8,149.7 462.3,149.8 464.8,149.8 467.3,149.6 469.8,149.6 472.3,149.5 474.8,149.2 477.2,149.0 479.7,148.8 482.2,148.5 484.7,148.2 487.2,147.9 489.7,147.6 492.2,147.3 494.7,146.9 497.2,146.6 499.7,146.2 502.2,145.8 504.7,145.1 507.2,144.3 509.7,143.6 512.2,142.6 514.7,141.4 517.2,140.3 519.7,139.0 522.2,137.9 524.7,136.8 527.2,135.9 529.7,134.9 532.2,133.9 534.7,132.8 537.2,131.8 539.6,130.3 542.1,128.8 544.6,127.4 547.1,125.8 549.6,123.9 552.1,121.9 554.6,119.9 557.1,118.0 559.6,116.5 562.1,114.7 564.6,112.9 567.1,111.1 569.6,109.0 572.1,107.1 574.6,104.9 577.1,102.9 579.6,100.8 582.1,98.6 584.6,96.1 587.1,94.2 589.6,92.2 592.1,89.9 594.6,87.8 597.1,85.7 599.6,83.5 602.0,81.7 604.5,80.1 607.0,78.5 609.5,77.1 612.0,75.7 614.5,74.3 617.0,72.8 619.5,71.5 622.0,70.0 624.5,68.9 627.0,68.1 629.5,67.4 632.0,66.8" fill="none" stroke="#fbbf24" stroke-width="1.5" stroke-opacity="0.85"/>
+    <polyline points="8.0,194.7 10.5,195.3 13.0,195.2 15.5,194.9 18.0,195.0 20.5,195.0 23.0,194.9 25.5,194.5 28.0,195.3 30.5,196.0 33.0,195.6 35.5,195.4 38.0,195.4 40.4,194.9 42.9,193.8 45.4,193.1 47.9,192.5 50.4,193.0 52.9,192.8 55.4,193.5 57.9,193.1 60.4,193.3 62.9,194.1 65.4,194.3 67.9,194.0 70.4,194.2 72.9,194.2 75.4,194.0 77.9,193.3 80.4,193.8 82.9,193.9 85.4,193.9 87.9,193.0 90.4,191.9 92.9,191.9 95.4,191.3 97.9,190.6 100.4,188.9 102.8,187.9 105.3,187.8 107.8,187.6 110.3,187.5 112.8,186.1 115.3,187.0 117.8,186.7 120.3,186.5 122.8,187.2 125.3,187.9 127.8,187.9 130.3,186.8 132.8,186.3 135.3,184.0 137.8,183.8 140.3,183.1 142.8,182.6 145.3,183.5 147.8,181.8 150.3,182.4 152.8,184.1 155.3,182.4 157.8,183.3 160.3,182.5 162.8,180.9 165.2,180.9 167.7,180.2 170.2,180.9 172.7,181.5 175.2,180.2 177.7,178.3 180.2,178.1 182.7,177.8 185.2,177.1 187.7,177.5 190.2,177.6 192.7,175.9 195.2,178.4 197.7,175.4 200.2,175.3 202.7,175.4 205.2,173.0 207.7,174.9 210.2,174.3 212.7,175.5 215.2,174.0 217.7,174.7 220.2,176.8 222.7,177.2 225.2,181.0 227.6,180.1 230.1,177.5 232.6,177.4 235.1,176.5 237.6,175.6 240.1,175.0 242.6,175.1 245.1,175.9 247.6,177.1 250.1,175.5 252.6,174.0 255.1,173.1 257.6,171.4 260.1,172.2 262.6,174.9 265.1,175.4 267.6,176.2 270.1,177.3 272.6,173.7 275.1,171.0 277.6,169.4 280.1,169.4 282.6,167.8 285.1,168.1 287.6,166.6 290.0,166.9 292.5,168.0 295.0,163.3 297.5,163.8 300.0,159.0 302.5,159.6 305.0,161.5 307.5,158.7 310.0,158.6 312.5,159.8 315.0,160.6 317.5,160.0 320.0,156.0 322.5,155.6 325.0,151.9 327.5,150.6 330.0,150.3 332.5,151.9 335.0,148.6 337.5,144.7 340.0,144.7 342.5,147.9 345.0,144.4 347.5,147.2 350.0,153.4 352.4,152.9 354.9,151.0 357.4,152.8 359.9,154.4 362.4,148.6 364.9,148.0 367.4,148.4 369.9,150.2 372.4,147.0 374.9,147.5 377.4,145.8 379.9,147.0 382.4,147.4 384.9,145.7 387.4,147.8 389.9,148.3 392.4,148.2 394.9,153.4 397.4,150.1 399.9,150.7 402.4,154.8 404.9,151.9 407.4,149.7 409.9,147.3 412.4,149.4 414.8,146.2 417.3,143.7 419.8,140.6 422.3,140.6 424.8,143.3 427.3,146.7 429.8,149.5 432.3,150.9 434.8,153.0 437.3,157.1 439.8,156.9 442.3,162.3 444.8,159.9 447.3,155.2 449.8,155.5 452.3,153.7 454.8,153.7 457.3,149.2 459.8,146.9 462.3,147.0 464.8,146.1 467.3,140.0 469.8,141.5 472.3,141.3 474.8,141.7 477.2,142.7 479.7,142.6 482.2,136.6 484.7,137.5 487.2,135.2 489.7,130.9 492.2,134.0 494.7,131.8 497.2,132.0 499.7,128.2 502.2,122.8 504.7,113.0 507.2,108.9 509.7,112.0 512.2,96.4 514.7,88.9 517.2,93.3 519.7,87.6 522.2,91.9 524.7,99.8 527.2,106.5 529.7,103.9 532.2,98.7 534.7,94.0 537.2,95.8 539.6,73.3 542.1,68.2 544.6,69.0 547.1,61.6 549.6,51.6 552.1,47.2 554.6,44.8 557.1,57.8 559.6,78.2 562.1,65.0 564.6,67.1 567.1,73.9 569.6,57.8 572.1,60.0 574.6,43.5 577.1,53.9 579.6,50.4 582.1,36.3 584.6,24.3 587.1,49.1 589.6,49.6 592.1,24.0 594.6,36.6 597.1,34.6 599.6,33.2 602.0,52.1 604.5,60.9 607.0,59.5 609.5,66.7 612.0,65.1 614.5,58.4 617.0,60.3 619.5,66.9 622.0,59.8 624.5,72.0 627.0,79.9 629.5,80.6 632.0,78.0" fill="none" stroke="#34d399" stroke-width="2.5" stroke-linecap="round"/>
+  </svg>
+  <div class="chart-dates"><span>2025-07-21</span><span>2026-07-20</span></div>
+</div>
+    </section>
+
+    <section aria-labelledby="metrics-heading">
+      <h2 id="metrics-heading">📐 기술적 지표</h2>
+      <div class="metric-grid"><div class="metric-card">
+  <span class="metric-label">현재가</span>
+  <span class="metric-value">$865.46</span>
+  <span class="metric-sub">+1.94%</span>
+</div><div class="metric-card">
+  <span class="metric-label">52주 고점</span>
+  <span class="metric-value">$1,213.56</span>
+  <span class="metric-sub">-28.7%</span>
+</div><div class="metric-card">
+  <span class="metric-label">52주 저점</span>
+  <span class="metric-value">$104.88</span>
+  <span class="metric-sub">+725.2%</span>
+</div><div class="metric-card">
+  <span class="metric-label">RSI (14)</span>
+  <span class="metric-value">24.5</span>
+  <span class="metric-sub">과매수 70 / 과매도 30</span>
+</div><div class="metric-card">
+  <span class="metric-label">50일선</span>
+  <span class="metric-value">$937.67</span>
+  <span class="metric-sub">정배열 (강세)</span>
+</div><div class="metric-card">
+  <span class="metric-label">200일선</span>
+  <span class="metric-value">$486.58</span>
+  <span class="metric-sub">혼조·횡보</span>
+</div></div>
+    </section>
+
+    <section aria-labelledby="analysis-heading">
+      <h2 id="analysis-heading">🤖 AI 판단 — 홀딩 (HOLD)</h2>
+      <div class="verdict-banner hold">
+  <div class="verdict-main">
+    <span class="verdict-ko">홀딩</span>
+    <span class="verdict-en">HOLD</span>
+  </div>
+  <div class="verdict-meta">
+    <span class="confidence">신뢰도: 중</span>
+    <span class="source">OpenClaw AI</span>
+    <span class="score-total">기술점수: +2</span>
+  </div>
+</div>
+<p class="analysis-summary">규칙기반 점수 +2점으로 매수(+3)·매도(-2) 구간 사이라 홀딩이 적절합니다. 전일 +1.94%·RSI 24.5 과매도로 단기 반등 시도가 있으나, 50일선($937.67) -7.7%·20일선($1009.99) -14.3% 이탈·MACD 음전환·거래량 0.7배로 추세 전환 확인은 부족하고, 200일선($486.58) +77.9%로 장기 상승축만 유지됩니다. 본 내용은 투자 참고용 분석이며 확정적 매매 조언이 아닙니다.</p>
+<div class="analysis-cols">
+  <div class="analysis-block">
+    <h3>📈 근거</h3>
+    <ul><li>현재가 $865.46는 50일선 $937.67 대비 -7.7%로 중기 지지 이탈 지속, 200일선 $486.58 대비 +77.9%로 장기 상승축은 유지</li><li>20일선 $1009.99 대비 -14.3% 하회(전일 -17.0% 대비 격차 소폭 축소), 52주 고점 $1213.56 대비 -28.7% 조정 구간</li><li>RSI(14) 24.5로 과매도(30) 하회, 전일 24.0 대비 소폭 회복이나 중립(50) 복귀는 아직 멀음</li><li>MACD -23.030 &lt; 시그널 5.550, 히스토그램 -28.580로 음전환·단기 하방 모멘텀 지속(히스토그램 -30.6→-28.6로 소폭 개선)</li><li>전일 +1.94% 반등이나 거래량 20일 평균 대비 0.7배로 저거래량 상승·방향 확정 신호 부족</li><li>1년 +664.3%·저점 $104.88 대비 +725.2% 급등 뒤 1개월 -17.0% 깊은 조정·혼조 횡보 국면</li></ul>
+  </div>
+  <div class="analysis-block">
+    <h3>⚠️ 리스크</h3>
+    <ul><li>중국 경쟁·메모리 사이클 민감도로 섹터 동반 재매도 시 추가 급락 가능</li><li>1년 +664.3% 급등으로 변동성·급락 시 이익 반납 폭이 큼</li><li>저거래량 반등이라 50일선 $938 재탈환 실패 시 재조정·200일선 $487 방향 테스트 가능</li><li>과매도(RSI 24.5)만으로 저점 확인은 어려우며, AI 메모리 테마 기대와 단기 차트 괴리 지속</li></ul>
+  </div>
+  <div class="analysis-block">
+    <h3>👀 관찰 포인트</h3>
+    <ul><li>지지: 200일 이동평균 $487 부근 — 장기 추세 최종 방어(이탈 시 구조적 약세 전환 우려)</li><li>저항: 50일 이동평균 $938 부근 — 재탈환 시 중기 추세 복원 신호</li><li>저항: 20일 이동평균 $1010 및 52주 고점 $1214 부근 — 재돌파 시 단기 반등·추세 재가속 신호</li></ul>
+  </div>
+</div>
+      <div class="evidence-block">
+  <h3>📋 기술 점수 산출（규칙 기반）</h3>
+  <table class="score-table">
+    <thead><tr><th>요인</th><th>상세</th><th>점수</th></tr></thead>
+    <tbody><tr><td>20일선</td><td>아래 (-14.3%)</td><td class="neg">-1</td></tr><tr><td>50일선</td><td>아래 (-7.7%)</td><td class="neg">-1</td></tr><tr><td>200일선</td><td>위 (+77.9%)</td><td class="pos">+1</td></tr><tr><td>RSI</td><td>24.5 과매도</td><td class="pos">+2</td></tr><tr><td>MACD</td><td>hist -28.580</td><td class="neg">-1</td></tr><tr><td>52주 고점</td><td>-28.7%</td><td class="pos">+1</td></tr><tr><td>52주 저점</td><td>+725.2%</td><td class="neg">-1</td></tr><tr><td>이평 정렬</td><td>정배열</td><td class="pos">+1</td></tr></tbody>
+    <tfoot><tr><td colspan="2"><strong>합계</strong></td><td class="pos"><strong>+2</strong></td></tr></tfoot>
+  </table>
+  <p class="score-hint">+3 이상 → 매수 우세 · -2 이하 → 매도 우세 · 그 외 → 홀딩</p>
+</div>
+      <div class="peer-block">
+  <h3>⚖️ 동종 비교 — 샌디스크 (SNDK)</h3>
+  <table class="peer-table">
+    <thead><tr><th>지표</th><th>MU</th><th>SNDK</th></tr></thead>
+    <tbody>
+      <tr><td>현재가</td><td>$865.46</td><td>$1390.95</td></tr>
+      <tr><td>전일 대비</td><td>+1.94%</td><td>+2.67%</td></tr>
+      <tr><td>52주 고점 대비</td><td>-28.7%</td><td>-40.4%</td></tr>
+      <tr><td>RSI(14)</td><td>24.5</td><td>33.0</td></tr>
+      <tr><td>50일선 대비</td><td>-7.7%</td><td>-19.3%</td></tr>
+    </tbody>
+  </table>
+</div>
+      <div class="news-block">
+  <h3>📰 관련 뉴스（참고）</h3>
+  <ul><li><a href="https://news.google.com/rss/articles/CBMivAFBVV95cUxOMDJmRzZuaGJlMWkyRzJfWExvOXVReGhhY0FPUlJ4VWE2ZFNLd0o1Q2k0RG5VeExURVRJRFE2aTdUc21HMHJCZTN0T1dyNVhoTXVod1hsVzBzNHZ5R3BXTWJnbV9WdUhub2JzU0hOdmNJaXhZLUl6TWJLRldhRVEzak9qeG1mZTkyU3diUlhoWUo3TS1qTFZqVWpRNmFVb2wtWlZvQWFHbk1SaXVWaHRfVzBYSFVHMWx6Wk9Ccw?oc=5" target="_blank" rel="noopener">If Micron’s CEO Is Right, These 3 Memory Stock ETFs Can Rally Through 2027</a></li><li><a href="https://news.google.com/rss/articles/CBMi5wFBVV95cUxOOG9UWU5NS3l4d1pzTGdBZjdiR1dwWDh0OUlYSmJxeDRvUnQzX3FfdjUtV3ZBUk55b0tRbW1XanFmdUtLWDV0b3N2LThfV2FnV2JYZnRyN3ZIanF3eTZCdm9TWWYxYjdmQlVUbEhSWUpXMHZiVXRYaUhaNUVDR3JHZk15TXRGeU9takxESkVYZ0ZXTWQteGU1eWFOSFgwUkEzQXVrc2VBQWxMT1RqN0hYajJHdmY3R1I3TXNlLWduTGNIX0ZpNkVVUU5pd0hQeG5XbUUtUVBWXzlNcEN4UDRlZDdfaDV0NXM?oc=5" target="_blank" rel="noopener">SNDK vs. MU: Which AI Memory Stock is a Smarter Buy at Current Levels?</a></li><li><a href="https://news.google.com/rss/articles/CBMiigFBVV95cUxNaU5CeDJad2M0bFgwUElIaVVhY1Fka25UVTZ0LXk0Uk5KN2JMOFFDYnZ3NEhDa2lxVXF4czlWZmZoN0ktSkVGQ1lEdUQ3cDFydkEwNnYwNmJja2IxclY2ME9IOTFpQmNfeE9FQlRkWUp5VmMtSFF5OV81M0VhVmZBQVd2a0V6WDZPTkE?oc=5" target="_blank" rel="noopener">Micron Is Up 900%. Here’s Why the AI Memory Trade May Still Have Room to Run</a></li><li><a href="https://news.google.com/rss/articles/CBMiiAFBVV95cUxQVDRJYmFmSFJQSHduTW5VOU44OFUxR2ozRjVCanlpUEFYTTVnWDVIVmtiaW1RalRqQkprNER4OUI0TklCQmNmemFmcVgwc29uNWRLelNjLXpKWXkwam1rcXRSS3pvMlduLVlLV19sekdXNmQ4cEhEdnVUeEV0X2U4QW9YMXY0UE96?oc=5" target="_blank" rel="noopener">Micron Stock Falls Even After Analyst Forecasts Strong Demand and $1,600 Target</a></li><li><a href="https://news.google.com/rss/articles/CBMifEFVX3lxTE0xdDZURldJM2NCVHA3bnA2SjJDNXdqSVFWYnhIbk0xb3gzT3BTNmFZTi1ITXFyV1hTZ25QTktsQWZxUUFOcG9kQk1nTDBaMy1zbzZNTWc3U1Y1cVl0Z0swOUVoNlpMLVotNzBRYTBEOGpHSmQta1dkWVE4TWs?oc=5" target="_blank" rel="noopener">Top AI Memory Stocks in 2026: Which Stocks Are Worth Watching?</a></li></ul>
+</div>
+    </section>
+
+    <p class="disclaimer">
+      본 리포트는 Yahoo Finance 공개 데이터와 기술적 분석을 바탕으로 한 <strong>참고용</strong> 정보입니다.<br>
+      투자 권유·매매 지시가 아니며, 최종 판단과 책임은 투자자 본인에게 있습니다.<br>
+      2026-07-21 15:15 JST
+    </p>
+  </div>
+</body>
+</html>
