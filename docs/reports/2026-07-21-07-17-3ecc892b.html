@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>펀드 브리핑 07/17</title>
+  <style>
+    :root {
+      --bg:#0f1419; --surface:#1a2332; --surface-2:#243044; --border:#2d3a4f;
+      --text:#e8edf4; --muted:#8b9cb3; --accent:#3b82f6; --accent-glow:rgba(59,130,246,0.15);
+      --up:#f87171; --up-bg:rgba(248,113,113,0.12); --down:#60a5fa; --down-bg:rgba(96,165,250,0.12);
+      --flat:#94a3b8;
+    }
+    * { box-sizing:border-box; margin:0; padding:0; }
+    body {
+      font-family:"Pretendard",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      background:var(--bg);
+      background-image:radial-gradient(ellipse 80% 50% at 50% -20%, rgba(59,130,246,0.18), transparent);
+      color:var(--text); line-height:1.5; min-height:100vh; padding:1.25rem;
+    }
+    .wrap { max-width:760px; margin:0 auto; }
+    .page-head {
+      display:flex; align-items:center; justify-content:space-between; gap:0.75rem;
+      margin-bottom:1rem; flex-wrap:wrap;
+    }
+    .page-head h1 { font-size:clamp(1.25rem,4vw,1.6rem); font-weight:800; letter-spacing:-0.02em; }
+    .badge {
+      display:inline-block; font-size:0.7rem; font-weight:600; letter-spacing:0.06em;
+      text-transform:uppercase; color:var(--accent); background:var(--accent-glow);
+      border:1px solid rgba(59,130,246,0.35); padding:0.25rem 0.6rem; border-radius:999px;
+    }
+    .fund-block {
+      background:var(--surface); border:1px solid var(--border); border-radius:16px;
+      padding:1.35rem 1.25rem; margin-bottom:1.1rem; box-shadow:0 8px 32px rgba(0,0,0,0.35);
+    }
+    .fund-head {
+      display:flex; align-items:flex-start; justify-content:space-between; gap:0.75rem;
+      flex-wrap:wrap; padding-bottom:0.5rem; border-bottom:1px solid var(--border);
+    }
+    .fund-name { font-size:1.15rem; font-weight:800; letter-spacing:-0.01em; }
+    .fund-full { font-size:0.75rem; color:var(--muted); margin-top:0.2rem; }
+    .fund-price-wrap { display:flex; flex-direction:column; align-items:flex-end; gap:0.25rem; }
+    .nav-price { font-size:1.7rem; font-weight:800; font-variant-numeric:tabular-nums; letter-spacing:-0.02em; color:#fff; }
+    .nav-price .unit { font-size:0.85rem; font-weight:600; color:var(--muted); margin-left:0.1rem; }
+    .nav-chg { font-size:0.95rem; font-weight:800; font-variant-numeric:tabular-nums; padding:0.15rem 0.5rem; border-radius:8px; }
+    .nav-chg.up { color:var(--up); background:var(--up-bg); }
+    .nav-chg.down { color:var(--down); background:var(--down-bg); }
+    .nav-chg.flat { color:var(--flat); background:rgba(148,163,184,0.12); }
+    .nav-date { font-size:0.85rem; color:var(--muted); margin-top:0.5rem; }
+    .session {
+      margin-top:0.6rem; font-size:0.82rem; color:var(--muted); padding:0.5rem 0.75rem;
+      background:rgba(0,0,0,0.2); border-radius:8px; border-left:3px solid var(--accent);
+    }
+    .block-title {
+      font-size:0.75rem; font-weight:600; letter-spacing:0.08em; text-transform:uppercase;
+      color:var(--muted); margin:1.15rem 0 0.7rem;
+    }
+    .period-charts { display:grid; grid-template-columns:repeat(3,1fr); gap:0.65rem; }
+    .period-chart {
+      background:var(--surface-2); border:1px solid var(--border); border-radius:10px;
+      padding:0.6rem 0.65rem 0.4rem;
+    }
+    .period-head { display:flex; align-items:baseline; justify-content:space-between; margin-bottom:0.35rem; }
+    .period-label { font-size:0.72rem; color:var(--muted); font-weight:600; }
+    .period-ret { font-size:0.8rem; font-weight:800; font-variant-numeric:tabular-nums; }
+    .period-ret.up { color:var(--up); } .period-ret.down { color:var(--down); } .period-ret.flat { color:var(--flat); }
+    .nav-chart { display:block; width:100%; height:70px; }
+    .chart-empty { font-size:0.75rem; color:var(--muted); text-align:center; padding:1.5rem 0; }
+    .stat-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(90px,1fr)); gap:0.55rem; margin-top:0.85rem; }
+    .stat-chip {
+      background:var(--surface-2); border:1px solid var(--border); border-radius:10px;
+      padding:0.55rem 0.7rem; display:flex; flex-direction:column; gap:0.15rem;
+    }
+    .stat-label { font-size:0.68rem; color:var(--muted); font-weight:500; }
+    .stat-val { font-size:1rem; font-weight:800; font-variant-numeric:tabular-nums; color:#fff; }
+    .stat-val.up { color:var(--up); } .stat-val.down { color:var(--down); }
+    .reason-list { list-style:none; display:flex; flex-direction:column; gap:0.55rem; }
+    .reason-list li {
+      font-size:0.9rem; padding:0.7rem 0.85rem; background:var(--surface-2);
+      border:1px solid var(--border); border-radius:10px; border-left:3px solid var(--accent);
+    }
+    .proxy-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(140px,1fr)); gap:0.55rem; }
+    .proxy-card {
+      background:var(--surface-2); border:1px solid var(--border); border-radius:10px;
+      padding:0.65rem 0.8rem; display:flex; justify-content:space-between; align-items:center;
+    }
+    .proxy-card.up { border-left:3px solid var(--up); }
+    .proxy-card.down { border-left:3px solid var(--down); }
+    .proxy-card.flat { border-left:3px solid var(--flat); }
+    .proxy-name { font-size:0.88rem; font-weight:600; }
+    .proxy-pct { font-size:0.88rem; font-weight:800; font-variant-numeric:tabular-nums; }
+    .proxy-pct.up { color:var(--up); } .proxy-pct.down { color:var(--down); } .proxy-pct.flat { color:var(--flat); }
+    .news-card {
+      display:flex; align-items:center; justify-content:space-between; gap:0.75rem;
+      padding:0.7rem 0.85rem; background:var(--surface-2); border:1px solid var(--border);
+      border-radius:10px; margin-bottom:0.45rem; text-decoration:none; color:var(--text);
+      transition:border-color 0.15s, background 0.15s;
+    }
+    .news-card:hover { border-color:var(--accent); background:rgba(59,130,246,0.08); }
+    .news-title { font-size:0.86rem; line-height:1.45; flex:1; }
+    .news-link { color:var(--accent); font-size:1rem; flex-shrink:0; }
+    .empty { color:var(--muted); font-size:0.88rem; }
+    footer { text-align:center; font-size:0.78rem; color:var(--muted); padding:1rem 0 0.5rem; line-height:1.6; }
+    footer strong { color:#94a3b8; }
+    @media (max-width:520px) {
+      .period-charts { grid-template-columns:1fr; }
+      .nav-chart { height:90px; }
+      .fund-price-wrap { align-items:flex-start; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="page-head">
+      <h1>펀드 브리핑</h1>
+      <span class="badge">OpenClaw · 07/17 기준가</span>
+    </div>
+    <section class="fund-block">
+  <div class="fund-head down">
+    <div>
+      <h2 class="fund-name">노무라 세계반도체</h2>
+      <p class="fund-full">野村世界業種別投資シリーズ(世界半導体株投資)</p>
+    </div>
+    <div class="fund-price-wrap">
+      <span class="nav-price">332,769<span class="unit">엔</span></span>
+      <span class="nav-chg down">▼ -2.72% (-9,292엔)</span>
+    </div>
+  </div>
+  <p class="nav-date">07/17 기준가 · 전일 342,061엔</p>
+  <p class="session">기준가 갱신 없음(휴장/미발표) · 직전 영업일 기준</p>
+  
+
+  <h3 class="block-title">기준가 추이</h3>
+  <div class="period-charts"><div class="period-chart">
+  <div class="period-head"><span class="period-label">1주</span><span class="period-ret down">▼ -4.1%</span></div>
+  <svg class="nav-chart" viewBox="0 0 320 88" preserveAspectRatio="none" role="img" aria-label="기준가 추이">
+  <defs>
+    <linearGradient id="grad-nomura_semi-5" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#60a5fa" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#60a5fa" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <path d="M6.0,76 L6.0,21.6 L67.6,12.0 L129.2,60.6 L190.8,35.0 L252.4,40.3 L314.0,76.0 L314.0,76 Z" fill="url(#grad-nomura_semi-5)"/>
+  <polyline points="6.0,21.6 67.6,12.0 129.2,60.6 190.8,35.0 252.4,40.3 314.0,76.0" fill="none" stroke="#60a5fa" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="314.0" cy="76.0" r="3.5" fill="#60a5fa"/>
+</svg>
+</div><div class="period-chart">
+  <div class="period-head"><span class="period-label">1개월</span><span class="period-ret down">▼ -11.0%</span></div>
+  <svg class="nav-chart" viewBox="0 0 320 88" preserveAspectRatio="none" role="img" aria-label="기준가 추이">
+  <defs>
+    <linearGradient id="grad-nomura_semi-21" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#60a5fa" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#60a5fa" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <path d="M6.0,76 L6.0,33.3 L20.7,17.3 L35.3,16.2 L50.0,12.0 L64.7,34.2 L79.3,37.6 L94.0,28.0 L108.7,60.8 L123.3,50.1 L138.0,38.8 L152.7,52.5 L167.3,69.9 L182.0,67.6 L196.7,63.7 L211.3,74.1 L226.0,66.0 L240.7,61.4 L255.3,58.8 L270.0,71.9 L284.7,65.0 L299.3,66.4 L314.0,76.0 L314.0,76 Z" fill="url(#grad-nomura_semi-21)"/>
+  <polyline points="6.0,33.3 20.7,17.3 35.3,16.2 50.0,12.0 64.7,34.2 79.3,37.6 94.0,28.0 108.7,60.8 123.3,50.1 138.0,38.8 152.7,52.5 167.3,69.9 182.0,67.6 196.7,63.7 211.3,74.1 226.0,66.0 240.7,61.4 255.3,58.8 270.0,71.9 284.7,65.0 299.3,66.4 314.0,76.0" fill="none" stroke="#60a5fa" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="314.0" cy="76.0" r="3.5" fill="#60a5fa"/>
+</svg>
+</div><div class="period-chart">
+  <div class="period-head"><span class="period-label">1년</span><span class="period-ret up">▲ +88.1%</span></div>
+  <svg class="nav-chart" viewBox="0 0 320 88" preserveAspectRatio="none" role="img" aria-label="기준가 추이">
+  <defs>
+    <linearGradient id="grad-nomura_semi-248" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f87171" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#f87171" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <path d="M6.0,76 L6.0,75.9 L7.2,75.3 L8.5,75.2 L9.7,75.3 L11.0,73.6 L12.2,74.3 L13.5,73.9 L14.7,74.3 L15.9,76.0 L17.2,75.4 L18.4,74.5 L19.7,74.5 L20.9,73.6 L22.1,73.9 L23.4,72.7 L24.6,73.2 L25.9,75.3 L27.1,74.4 L28.4,74.4 L29.6,74.2 L30.8,73.3 L32.1,72.4 L33.3,71.8 L34.6,72.3 L35.8,71.9 L37.0,72.7 L38.3,72.3 L39.5,73.5 L40.8,74.5 L42.0,74.3 L43.3,74.1 L44.5,73.7 L45.7,73.2 L47.0,72.9 L48.2,73.0 L49.5,74.2 L50.7,74.2 L52.0,74.3 L53.2,74.3 L54.4,73.6 L55.7,72.1 L56.9,71.8 L58.2,71.4 L59.4,69.0 L60.6,69.0 L61.9,67.9 L63.1,68.2 L64.4,69.2 L65.6,67.2 L66.9,67.6 L68.1,67.1 L69.3,67.1 L70.6,67.2 L71.8,67.7 L73.1,67.5 L74.3,67.0 L75.5,66.4 L76.8,65.2 L78.0,64.0 L79.3,63.8 L80.5,63.2 L81.8,62.2 L83.0,61.7 L84.2,62.3 L85.5,64.2 L86.7,63.3 L88.0,62.6 L89.2,62.6 L90.5,62.1 L91.7,62.3 L92.9,62.8 L94.2,61.9 L95.4,60.4 L96.7,59.0 L97.9,58.0 L99.1,55.8 L100.4,56.1 L101.6,55.9 L102.9,58.5 L104.1,58.0 L105.4,59.4 L106.6,59.7 L107.8,57.2 L109.1,58.6 L110.3,57.8 L111.6,59.8 L112.8,59.7 L114.0,59.7 L115.3,61.2 L116.5,59.3 L117.8,60.5 L119.0,59.5 L120.3,59.5 L121.5,57.9 L122.7,57.6 L124.0,57.7 L125.2,58.3 L126.5,57.9 L127.7,58.1 L129.0,58.1 L130.2,57.3 L131.4,55.3 L132.7,54.9 L133.9,54.5 L135.2,55.7 L136.4,58.9 L137.6,60.3 L138.9,60.9 L140.1,62.5 L141.4,61.0 L142.6,58.5 L143.9,57.8 L145.1,56.8 L146.3,56.7 L147.6,56.4 L148.8,56.0 L150.1,55.8 L151.3,53.9 L152.5,53.1 L153.8,51.9 L155.0,52.1 L156.3,53.4 L157.5,50.8 L158.8,50.0 L160.0,51.5 L161.2,50.0 L162.5,49.1 L163.7,48.9 L165.0,50.7 L166.2,49.9 L167.5,49.2 L168.7,50.4 L169.9,50.8 L171.2,49.8 L172.4,48.1 L173.7,47.7 L174.9,48.3 L176.1,48.8 L177.4,49.5 L178.6,51.9 L179.9,52.4 L181.1,48.7 L182.4,47.4 L183.6,47.5 L184.8,48.8 L186.1,49.4 L187.3,49.3 L188.6,48.9 L189.8,47.0 L191.0,46.9 L192.3,46.5 L193.5,45.2 L194.8,43.2 L196.0,45.8 L197.3,46.8 L198.5,46.3 L199.7,48.9 L201.0,49.3 L202.2,47.8 L203.5,49.1 L204.7,48.8 L206.0,47.1 L207.2,45.4 L208.4,47.0 L209.7,48.1 L210.9,47.3 L212.2,46.8 L213.4,46.2 L214.6,49.1 L215.9,49.1 L217.1,48.7 L218.4,47.6 L219.6,50.3 L220.9,51.4 L222.1,53.6 L223.3,51.7 L224.6,49.4 L225.8,49.4 L227.1,49.3 L228.3,48.9 L229.5,48.2 L230.8,43.5 L232.0,42.4 L233.3,40.0 L234.5,39.9 L235.8,37.7 L237.0,36.7 L238.2,36.1 L239.5,35.6 L240.7,35.7 L242.0,35.0 L243.2,32.9 L244.5,33.0 L245.7,29.8 L246.9,28.8 L248.2,31.8 L249.4,34.3 L250.7,28.6 L251.9,28.7 L253.1,26.5 L254.4,25.1 L255.6,26.0 L256.9,24.8 L258.1,21.6 L259.4,24.9 L260.6,26.8 L261.8,28.2 L263.1,26.3 L264.3,25.4 L265.6,24.8 L266.8,23.9 L268.0,22.3 L269.3,21.6 L270.5,21.2 L271.8,19.9 L273.0,17.0 L274.3,14.3 L275.5,14.5 L276.7,17.6 L278.0,24.7 L279.2,22.6 L280.5,22.2 L281.7,25.9 L283.0,21.8 L284.2,20.4 L285.4,16.7 L286.7,19.3 L287.9,18.0 L289.2,13.5 L290.4,13.2 L291.6,12.0 L292.9,18.3 L294.1,19.3 L295.4,16.5 L296.6,25.9 L297.9,22.8 L299.1,19.6 L300.3,23.5 L301.6,28.4 L302.8,27.8 L304.1,26.7 L305.3,29.6 L306.5,27.3 L307.8,26.0 L309.0,25.3 L310.3,29.0 L311.5,27.0 L312.8,27.4 L314.0,30.2 L314.0,76 Z" fill="url(#grad-nomura_semi-248)"/>
+  <polyline points="6.0,75.9 7.2,75.3 8.5,75.2 9.7,75.3 11.0,73.6 12.2,74.3 13.5,73.9 14.7,74.3 15.9,76.0 17.2,75.4 18.4,74.5 19.7,74.5 20.9,73.6 22.1,73.9 23.4,72.7 24.6,73.2 25.9,75.3 27.1,74.4 28.4,74.4 29.6,74.2 30.8,73.3 32.1,72.4 33.3,71.8 34.6,72.3 35.8,71.9 37.0,72.7 38.3,72.3 39.5,73.5 40.8,74.5 42.0,74.3 43.3,74.1 44.5,73.7 45.7,73.2 47.0,72.9 48.2,73.0 49.5,74.2 50.7,74.2 52.0,74.3 53.2,74.3 54.4,73.6 55.7,72.1 56.9,71.8 58.2,71.4 59.4,69.0 60.6,69.0 61.9,67.9 63.1,68.2 64.4,69.2 65.6,67.2 66.9,67.6 68.1,67.1 69.3,67.1 70.6,67.2 71.8,67.7 73.1,67.5 74.3,67.0 75.5,66.4 76.8,65.2 78.0,64.0 79.3,63.8 80.5,63.2 81.8,62.2 83.0,61.7 84.2,62.3 85.5,64.2 86.7,63.3 88.0,62.6 89.2,62.6 90.5,62.1 91.7,62.3 92.9,62.8 94.2,61.9 95.4,60.4 96.7,59.0 97.9,58.0 99.1,55.8 100.4,56.1 101.6,55.9 102.9,58.5 104.1,58.0 105.4,59.4 106.6,59.7 107.8,57.2 109.1,58.6 110.3,57.8 111.6,59.8 112.8,59.7 114.0,59.7 115.3,61.2 116.5,59.3 117.8,60.5 119.0,59.5 120.3,59.5 121.5,57.9 122.7,57.6 124.0,57.7 125.2,58.3 126.5,57.9 127.7,58.1 129.0,58.1 130.2,57.3 131.4,55.3 132.7,54.9 133.9,54.5 135.2,55.7 136.4,58.9 137.6,60.3 138.9,60.9 140.1,62.5 141.4,61.0 142.6,58.5 143.9,57.8 145.1,56.8 146.3,56.7 147.6,56.4 148.8,56.0 150.1,55.8 151.3,53.9 152.5,53.1 153.8,51.9 155.0,52.1 156.3,53.4 157.5,50.8 158.8,50.0 160.0,51.5 161.2,50.0 162.5,49.1 163.7,48.9 165.0,50.7 166.2,49.9 167.5,49.2 168.7,50.4 169.9,50.8 171.2,49.8 172.4,48.1 173.7,47.7 174.9,48.3 176.1,48.8 177.4,49.5 178.6,51.9 179.9,52.4 181.1,48.7 182.4,47.4 183.6,47.5 184.8,48.8 186.1,49.4 187.3,49.3 188.6,48.9 189.8,47.0 191.0,46.9 192.3,46.5 193.5,45.2 194.8,43.2 196.0,45.8 197.3,46.8 198.5,46.3 199.7,48.9 201.0,49.3 202.2,47.8 203.5,49.1 204.7,48.8 206.0,47.1 207.2,45.4 208.4,47.0 209.7,48.1 210.9,47.3 212.2,46.8 213.4,46.2 214.6,49.1 215.9,49.1 217.1,48.7 218.4,47.6 219.6,50.3 220.9,51.4 222.1,53.6 223.3,51.7 224.6,49.4 225.8,49.4 227.1,49.3 228.3,48.9 229.5,48.2 230.8,43.5 232.0,42.4 233.3,40.0 234.5,39.9 235.8,37.7 237.0,36.7 238.2,36.1 239.5,35.6 240.7,35.7 242.0,35.0 243.2,32.9 244.5,33.0 245.7,29.8 246.9,28.8 248.2,31.8 249.4,34.3 250.7,28.6 251.9,28.7 253.1,26.5 254.4,25.1 255.6,26.0 256.9,24.8 258.1,21.6 259.4,24.9 260.6,26.8 261.8,28.2 263.1,26.3 264.3,25.4 265.6,24.8 266.8,23.9 268.0,22.3 269.3,21.6 270.5,21.2 271.8,19.9 273.0,17.0 274.3,14.3 275.5,14.5 276.7,17.6 278.0,24.7 279.2,22.6 280.5,22.2 281.7,25.9 283.0,21.8 284.2,20.4 285.4,16.7 286.7,19.3 287.9,18.0 289.2,13.5 290.4,13.2 291.6,12.0 292.9,18.3 294.1,19.3 295.4,16.5 296.6,25.9 297.9,22.8 299.1,19.6 300.3,23.5 301.6,28.4 302.8,27.8 304.1,26.7 305.3,29.6 306.5,27.3 307.8,26.0 309.0,25.3 310.3,29.0 311.5,27.0 312.8,27.4 314.0,30.2" fill="none" stroke="#f87171" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="314.0" cy="30.2" r="3.5" fill="#f87171"/>
+</svg>
+</div></div>
+  <div class="stat-grid"><div class="stat-chip"><span class="stat-label">1주</span><span class="stat-val down">-4.1%</span></div><div class="stat-chip"><span class="stat-label">1개월</span><span class="stat-val down">-11.0%</span></div><div class="stat-chip"><span class="stat-label">1년</span><span class="stat-val up">+88.1%</span></div><div class="stat-chip"><span class="stat-label">엔/달러</span><span class="stat-val up">+0.0%</span></div><div class="stat-chip"><span class="stat-label">순자산</span><span class="stat-val flat">9,458억엔</span></div></div>
+
+  <h3 class="block-title">하락 요인</h3>
+  <ul class="reason-list"><li>글로벌 반도체주 강세(평균 +0.6%): 엔비디아 +0.2% · TSMC +1.0% · 브로드컴 +2.0% · ASML -0.5%</li><li>엔/달러 +0.0% (환율 영향 미미)</li><li>※ 기준가와 구성 방향이 엇갈림 → 환율·반영 시차(직전 영업일 종가 기준) 영향</li></ul>
+
+  <h3 class="block-title">주요 구성 종목 (직전 세션)</h3>
+  <div class="proxy-grid"><div class="proxy-card up">
+  <span class="proxy-name">엔비디아</span>
+  <span class="proxy-pct up">▲ +0.2%</span>
+</div><div class="proxy-card up">
+  <span class="proxy-name">TSMC</span>
+  <span class="proxy-pct up">▲ +1.0%</span>
+</div><div class="proxy-card up">
+  <span class="proxy-name">브로드컴</span>
+  <span class="proxy-pct up">▲ +2.0%</span>
+</div><div class="proxy-card down">
+  <span class="proxy-name">ASML</span>
+  <span class="proxy-pct down">▼ -0.5%</span>
+</div><div class="proxy-card up">
+  <span class="proxy-name">AMD</span>
+  <span class="proxy-pct up">▲ +1.6%</span>
+</div><div class="proxy-card down">
+  <span class="proxy-name">AMAT</span>
+  <span class="proxy-pct down">▼ -0.7%</span>
+</div></div>
+
+  <h3 class="block-title">관련 뉴스</h3>
+  <a class="news-card" href="https://news.google.com/rss/articles/CBMidEFVX3lxTE1GcVEtdkR2MFhHUmI2TlpFMGVNVWpxVjEwNjZvOHF5a3RNMWNGNEdjRHJTMzFrWDEyampXbnEtRW9hcXE4bDdlbnJuVlI1V3NibFI1ZkxUaUM5YXpIcmxueXFTNnQ5cjBDQTF3bkdLTkhZbGpL?oc=5" target="_blank" rel="noopener"><span class="news-title">半導体株急落後、買い場はどこか？外資メディア「TSMCはほぼ代替不可能」と強気の買い推奨</span><span class="news-link">↗</span></a><a class="news-card" href="https://news.google.com/rss/articles/CBMikAFBVV95cUxOaE01VlpQSk1sRVZQc3hDbjBpd3FNamNtUnJpZktBVk1zYWZDZi1WX2JyMlNvdFM1Sjd4Q0ltakZfV1k5aVczMWVZX0psaS1HOWNXN0JTNFAwMnhTd3lTY19RQWV6cmFzXzhVbEI2STNpMDNzUGxCcVNsekZJRFBSclktaVdBZnhHREFPM3BORk4?oc=5" target="_blank" rel="noopener"><span class="news-title">TSMC決算で半導体株ショック 設備投資加速 世界で株価急落連鎖</span><span class="news-link">↗</span></a>
+</section><section class="fund-block">
+  <div class="fund-head down">
+    <div>
+      <h2 class="fund-name">SBI 나스닥100</h2>
+      <p class="fund-full">SBI・NASDAQ100インデックス・ファンド</p>
+    </div>
+    <div class="fund-price-wrap">
+      <span class="nav-price">10,097<span class="unit">엔</span></span>
+      <span class="nav-chg down">▼ -1.44% (-148엔)</span>
+    </div>
+  </div>
+  <p class="nav-date">07/17 기준가 · 전일 10,245엔</p>
+  <p class="session">기준가 갱신 없음(휴장/미발표) · 직전 영업일 기준</p>
+  <p class="session">신규 펀드(2026-05-21 설정) · 1년 그래프는 "설정후" 구간으로 표시</p>
+
+  <h3 class="block-title">기준가 추이</h3>
+  <div class="period-charts"><div class="period-chart">
+  <div class="period-head"><span class="period-label">1주</span><span class="period-ret down">▼ -2.2%</span></div>
+  <svg class="nav-chart" viewBox="0 0 320 88" preserveAspectRatio="none" role="img" aria-label="기준가 추이">
+  <defs>
+    <linearGradient id="grad-sbi_nasdaq100-5" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#60a5fa" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#60a5fa" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <path d="M6.0,76 L6.0,20.1 L67.6,12.0 L129.2,57.6 L190.8,32.2 L252.4,38.7 L314.0,76.0 L314.0,76 Z" fill="url(#grad-sbi_nasdaq100-5)"/>
+  <polyline points="6.0,20.1 67.6,12.0 129.2,57.6 190.8,32.2 252.4,38.7 314.0,76.0" fill="none" stroke="#60a5fa" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="314.0" cy="76.0" r="3.5" fill="#60a5fa"/>
+</svg>
+</div><div class="period-chart">
+  <div class="period-head"><span class="period-label">1개월</span><span class="period-ret down">▼ -1.1%</span></div>
+  <svg class="nav-chart" viewBox="0 0 320 88" preserveAspectRatio="none" role="img" aria-label="기준가 추이">
+  <defs>
+    <linearGradient id="grad-sbi_nasdaq100-21" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#60a5fa" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#60a5fa" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <path d="M6.0,76 L6.0,57.9 L20.7,19.7 L35.3,15.9 L50.0,18.4 L64.7,65.8 L79.3,70.6 L94.0,59.4 L108.7,76.0 L123.3,39.1 L138.0,12.0 L152.7,34.9 L167.3,70.2 L182.0,67.6 L196.7,44.9 L211.3,68.0 L226.0,62.7 L240.7,43.4 L255.3,39.0 L270.0,64.0 L284.7,50.0 L299.3,53.6 L314.0,74.1 L314.0,76 Z" fill="url(#grad-sbi_nasdaq100-21)"/>
+  <polyline points="6.0,57.9 20.7,19.7 35.3,15.9 50.0,18.4 64.7,65.8 79.3,70.6 94.0,59.4 108.7,76.0 123.3,39.1 138.0,12.0 152.7,34.9 167.3,70.2 182.0,67.6 196.7,44.9 211.3,68.0 226.0,62.7 240.7,43.4 255.3,39.0 270.0,64.0 284.7,50.0 299.3,53.6 314.0,74.1" fill="none" stroke="#60a5fa" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="314.0" cy="74.1" r="3.5" fill="#60a5fa"/>
+</svg>
+</div><div class="period-chart">
+  <div class="period-head"><span class="period-label">설정후</span><span class="period-ret up">▲ +1.0%</span></div>
+  <svg class="nav-chart" viewBox="0 0 320 88" preserveAspectRatio="none" role="img" aria-label="기준가 추이">
+  <defs>
+    <linearGradient id="grad-sbi_nasdaq100-248" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f87171" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#f87171" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <path d="M6.0,76 L6.0,58.9 L13.5,58.9 L21.0,56.6 L28.5,55.9 L36.0,39.3 L43.6,38.3 L51.1,32.4 L58.6,28.8 L66.1,21.9 L73.6,16.3 L81.1,19.0 L88.6,23.3 L96.1,64.0 L103.7,50.9 L111.2,59.9 L118.7,76.0 L126.2,50.7 L133.7,45.1 L141.2,17.8 L148.7,33.6 L156.2,40.5 L163.8,16.8 L171.3,14.4 L178.8,16.0 L186.3,45.4 L193.8,48.4 L201.3,41.5 L208.8,51.8 L216.3,28.8 L223.9,12.0 L231.4,26.3 L238.9,48.2 L246.4,46.5 L253.9,32.4 L261.4,46.8 L268.9,43.5 L276.4,31.5 L284.0,28.8 L291.5,44.3 L299.0,35.6 L306.5,37.9 L314.0,50.6 L314.0,76 Z" fill="url(#grad-sbi_nasdaq100-248)"/>
+  <polyline points="6.0,58.9 13.5,58.9 21.0,56.6 28.5,55.9 36.0,39.3 43.6,38.3 51.1,32.4 58.6,28.8 66.1,21.9 73.6,16.3 81.1,19.0 88.6,23.3 96.1,64.0 103.7,50.9 111.2,59.9 118.7,76.0 126.2,50.7 133.7,45.1 141.2,17.8 148.7,33.6 156.2,40.5 163.8,16.8 171.3,14.4 178.8,16.0 186.3,45.4 193.8,48.4 201.3,41.5 208.8,51.8 216.3,28.8 223.9,12.0 231.4,26.3 238.9,48.2 246.4,46.5 253.9,32.4 261.4,46.8 268.9,43.5 276.4,31.5 284.0,28.8 291.5,44.3 299.0,35.6 306.5,37.9 314.0,50.6" fill="none" stroke="#f87171" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="314.0" cy="50.6" r="3.5" fill="#f87171"/>
+</svg>
+</div></div>
+  <div class="stat-grid"><div class="stat-chip"><span class="stat-label">1주</span><span class="stat-val down">-2.2%</span></div><div class="stat-chip"><span class="stat-label">1개월</span><span class="stat-val down">-1.1%</span></div><div class="stat-chip"><span class="stat-label">설정후</span><span class="stat-val up">+1.0%</span></div><div class="stat-chip"><span class="stat-label">엔/달러</span><span class="stat-val up">+0.0%</span></div><div class="stat-chip"><span class="stat-label">순자산</span><span class="stat-val flat">852억엔</span></div></div>
+
+  <h3 class="block-title">하락 요인</h3>
+  <ul class="reason-list"><li>나스닥100 강세(평균 +0.2%): 나스닥100 +0.1% · 애플 -2.1% · MS +2.2% · 엔비디아 +0.2%</li><li>엔/달러 +0.0% (환율 영향 미미)</li><li>※ 기준가와 구성 방향이 엇갈림 → 환율·반영 시차(직전 영업일 종가 기준) 영향</li></ul>
+
+  <h3 class="block-title">주요 구성 종목 (직전 세션)</h3>
+  <div class="proxy-grid"><div class="proxy-card up">
+  <span class="proxy-name">나스닥100</span>
+  <span class="proxy-pct up">▲ +0.1%</span>
+</div><div class="proxy-card down">
+  <span class="proxy-name">애플</span>
+  <span class="proxy-pct down">▼ -2.1%</span>
+</div><div class="proxy-card up">
+  <span class="proxy-name">MS</span>
+  <span class="proxy-pct up">▲ +2.2%</span>
+</div><div class="proxy-card up">
+  <span class="proxy-name">엔비디아</span>
+  <span class="proxy-pct up">▲ +0.2%</span>
+</div><div class="proxy-card up">
+  <span class="proxy-name">아마존</span>
+  <span class="proxy-pct up">▲ +1.1%</span>
+</div><div class="proxy-card down">
+  <span class="proxy-name">메타</span>
+  <span class="proxy-pct down">▼ -0.0%</span>
+</div></div>
+
+  <h3 class="block-title">관련 뉴스</h3>
+  <a class="news-card" href="https://news.google.com/rss/articles/CBMiVEFVX3lxTE1TSi1zclliczk4Wk1BZm5iNnJIZkw2S1QyQU1TOHlrc2d5Z0YwcVZqMlkzVEx4TGo0V1ppUHdIMk1LMTMxSGtWWUNBMzlxV0JCRWJNZQ?oc=5" target="_blank" rel="noopener"><span class="news-title">iFreeレバレッジ NASDAQ100【0431218A】：基準価格・投資信託情報</span><span class="news-link">↗</span></a><a class="news-card" href="https://news.google.com/rss/articles/CBMiUkFVX3lxTE1pVndaZW5YV25uYlFnaE90eGVYeE80ZTdXREZGRlN1YWhTWXNsdEpubFZtRGtNNW9YbDBKRlZHVUZjZzAzNC1KTEpncVJpZk1yVWc?oc=5" target="_blank" rel="noopener"><span class="news-title">GX NASDAQ100・カバード・コール【2865】：株価・株式情報（夜間PTS含む）</span><span class="news-link">↗</span></a>
+</section><section class="fund-block">
+  <div class="fund-head down">
+    <div>
+      <h2 class="fund-name">eMAXIS Slim 올컨트리</h2>
+      <p class="fund-full">eMAXIS Slim 全世界株式(オール・カントリー)</p>
+    </div>
+    <div class="fund-price-wrap">
+      <span class="nav-price">38,338<span class="unit">엔</span></span>
+      <span class="nav-chg down">▼ -0.49% (-188엔)</span>
+    </div>
+  </div>
+  <p class="nav-date">07/17 기준가 · 전일 38,526엔</p>
+  <p class="session">기준가 갱신 없음(휴장/미발표) · 직전 영업일 기준</p>
+  
+
+  <h3 class="block-title">기준가 추이</h3>
+  <div class="period-charts"><div class="period-chart">
+  <div class="period-head"><span class="period-label">1주</span><span class="period-ret up">▲ +0.0%</span></div>
+  <svg class="nav-chart" viewBox="0 0 320 88" preserveAspectRatio="none" role="img" aria-label="기준가 추이">
+  <defs>
+    <linearGradient id="grad-emaxis_acwi-5" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f87171" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#f87171" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <path d="M6.0,76 L6.0,49.3 L67.6,30.3 L129.2,76.0 L190.8,49.2 L252.4,12.0 L314.0,48.6 L314.0,76 Z" fill="url(#grad-emaxis_acwi-5)"/>
+  <polyline points="6.0,49.3 67.6,30.3 129.2,76.0 190.8,49.2 252.4,12.0 314.0,48.6" fill="none" stroke="#f87171" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="314.0" cy="48.6" r="3.5" fill="#f87171"/>
+</svg>
+</div><div class="period-chart">
+  <div class="period-head"><span class="period-label">1개월</span><span class="period-ret up">▲ +1.1%</span></div>
+  <svg class="nav-chart" viewBox="0 0 320 88" preserveAspectRatio="none" role="img" aria-label="기준가 추이">
+  <defs>
+    <linearGradient id="grad-emaxis_acwi-21" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f87171" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#f87171" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <path d="M6.0,76 L6.0,52.7 L20.7,32.5 L35.3,26.7 L50.0,31.3 L64.7,70.3 L79.3,69.0 L94.0,64.3 L108.7,76.0 L123.3,45.6 L138.0,22.2 L152.7,29.3 L167.3,46.1 L182.0,30.2 L196.7,12.0 L211.3,27.2 L226.0,36.2 L240.7,24.9 L255.3,18.5 L270.0,33.8 L284.7,24.8 L299.3,12.4 L314.0,24.6 L314.0,76 Z" fill="url(#grad-emaxis_acwi-21)"/>
+  <polyline points="6.0,52.7 20.7,32.5 35.3,26.7 50.0,31.3 64.7,70.3 79.3,69.0 94.0,64.3 108.7,76.0 123.3,45.6 138.0,22.2 152.7,29.3 167.3,46.1 182.0,30.2 196.7,12.0 211.3,27.2 226.0,36.2 240.7,24.9 255.3,18.5 270.0,33.8 284.7,24.8 299.3,12.4 314.0,24.6" fill="none" stroke="#f87171" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="314.0" cy="24.6" r="3.5" fill="#f87171"/>
+</svg>
+</div><div class="period-chart">
+  <div class="period-head"><span class="period-label">1년</span><span class="period-ret up">▲ +36.9%</span></div>
+  <svg class="nav-chart" viewBox="0 0 320 88" preserveAspectRatio="none" role="img" aria-label="기준가 추이">
+  <defs>
+    <linearGradient id="grad-emaxis_acwi-248" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f87171" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#f87171" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <path d="M6.0,76 L6.0,76.0 L7.2,74.8 L8.5,75.0 L9.7,74.1 L11.0,73.1 L12.2,73.4 L13.5,72.3 L14.7,73.2 L15.9,73.9 L17.2,72.2 L18.4,71.2 L19.7,70.6 L20.9,70.3 L22.1,70.9 L23.4,70.1 L24.6,69.3 L25.9,75.2 L27.1,73.8 L28.4,73.3 L29.6,72.1 L30.8,72.0 L32.1,70.1 L33.3,69.2 L34.6,69.7 L35.8,68.6 L37.0,68.8 L38.3,68.5 L39.5,69.4 L40.8,70.0 L42.0,69.3 L43.3,68.2 L44.5,69.1 L45.7,68.6 L47.0,68.4 L48.2,68.6 L49.5,69.1 L50.7,68.8 L52.0,68.6 L53.2,68.6 L54.4,67.2 L55.7,66.8 L56.9,67.4 L58.2,66.8 L59.4,66.2 L60.6,65.1 L61.9,63.9 L63.1,65.1 L64.4,64.7 L65.6,62.8 L66.9,62.1 L68.1,62.5 L69.3,61.9 L70.6,61.8 L71.8,61.7 L73.1,61.4 L74.3,61.7 L75.5,62.0 L76.8,61.1 L78.0,57.7 L79.3,56.5 L80.5,55.0 L81.8,53.5 L83.0,53.8 L84.2,56.9 L85.5,58.1 L86.7,57.9 L88.0,59.0 L89.2,57.8 L90.5,56.3 L91.7,55.0 L92.9,55.2 L94.2,53.7 L95.4,51.9 L96.7,50.5 L97.9,51.5 L99.1,50.0 L100.4,49.8 L101.6,49.2 L102.9,52.6 L104.1,51.2 L105.4,53.6 L106.6,52.8 L107.8,49.6 L109.1,48.8 L110.3,47.4 L111.6,50.2 L112.8,51.1 L114.0,52.0 L115.3,53.8 L116.5,51.2 L117.8,52.8 L119.0,50.8 L120.3,49.4 L121.5,48.3 L122.7,47.4 L124.0,47.6 L125.2,48.6 L126.5,47.8 L127.7,47.7 L129.0,47.7 L130.2,47.1 L131.4,46.6 L132.7,45.9 L133.9,45.9 L135.2,45.5 L136.4,46.5 L137.6,48.0 L138.9,49.3 L140.1,49.8 L141.4,48.1 L142.6,44.4 L143.9,44.1 L145.1,43.9 L146.3,43.8 L147.6,43.0 L148.8,43.0 L150.1,43.4 L151.3,42.6 L152.5,41.5 L153.8,40.4 L155.0,41.0 L156.3,40.8 L157.5,37.3 L158.8,36.2 L160.0,37.5 L161.2,36.9 L162.5,38.3 L163.7,38.0 L165.0,40.9 L166.2,39.4 L167.5,37.4 L168.7,41.8 L169.9,41.7 L171.2,42.5 L172.4,41.5 L173.7,41.2 L174.9,40.6 L176.1,39.4 L177.4,39.3 L178.6,39.0 L179.9,41.5 L181.1,38.0 L182.4,36.9 L183.6,40.4 L184.8,43.4 L186.1,43.4 L187.3,43.2 L188.6,42.9 L189.8,39.8 L191.0,39.8 L192.3,40.3 L193.5,37.7 L194.8,35.3 L196.0,36.3 L197.3,36.3 L198.5,36.3 L199.7,40.1 L201.0,40.5 L202.2,40.2 L203.5,41.6 L204.7,41.9 L206.0,40.1 L207.2,39.5 L208.4,42.1 L209.7,43.5 L210.9,41.6 L212.2,40.7 L213.4,42.2 L214.6,47.4 L215.9,47.2 L217.1,46.6 L218.4,44.2 L219.6,47.3 L220.9,49.7 L222.1,50.6 L223.3,47.2 L224.6,44.9 L225.8,44.0 L227.1,43.9 L228.3,43.0 L229.5,43.5 L230.8,37.7 L232.0,36.5 L233.3,35.6 L234.5,34.7 L235.8,32.5 L237.0,31.2 L238.2,30.1 L239.5,28.5 L240.7,28.8 L242.0,29.8 L243.2,28.6 L244.5,28.8 L245.7,27.9 L246.9,27.5 L248.2,28.0 L249.4,30.2 L250.7,25.6 L251.9,25.4 L253.1,24.6 L254.4,23.5 L255.6,23.8 L256.9,22.7 L258.1,20.5 L259.4,23.2 L260.6,23.0 L261.8,24.5 L263.1,22.2 L264.3,20.9 L265.6,19.9 L266.8,19.0 L268.0,17.8 L269.3,17.3 L270.5,16.8 L271.8,15.9 L273.0,15.1 L274.3,13.6 L275.5,15.3 L276.7,14.8 L278.0,19.9 L279.2,20.3 L280.5,20.1 L281.7,23.1 L283.0,20.4 L284.2,17.7 L285.4,14.4 L286.7,14.5 L287.9,15.8 L289.2,13.9 L290.4,13.4 L291.6,13.8 L292.9,17.4 L294.1,17.3 L295.4,16.9 L296.6,18.0 L297.9,15.1 L299.1,12.9 L300.3,13.6 L301.6,15.2 L302.8,13.7 L304.1,12.0 L305.3,13.4 L306.5,14.3 L307.8,13.2 L309.0,12.6 L310.3,14.0 L311.5,13.2 L312.8,12.0 L314.0,13.2 L314.0,76 Z" fill="url(#grad-emaxis_acwi-248)"/>
+  <polyline points="6.0,76.0 7.2,74.8 8.5,75.0 9.7,74.1 11.0,73.1 12.2,73.4 13.5,72.3 14.7,73.2 15.9,73.9 17.2,72.2 18.4,71.2 19.7,70.6 20.9,70.3 22.1,70.9 23.4,70.1 24.6,69.3 25.9,75.2 27.1,73.8 28.4,73.3 29.6,72.1 30.8,72.0 32.1,70.1 33.3,69.2 34.6,69.7 35.8,68.6 37.0,68.8 38.3,68.5 39.5,69.4 40.8,70.0 42.0,69.3 43.3,68.2 44.5,69.1 45.7,68.6 47.0,68.4 48.2,68.6 49.5,69.1 50.7,68.8 52.0,68.6 53.2,68.6 54.4,67.2 55.7,66.8 56.9,67.4 58.2,66.8 59.4,66.2 60.6,65.1 61.9,63.9 63.1,65.1 64.4,64.7 65.6,62.8 66.9,62.1 68.1,62.5 69.3,61.9 70.6,61.8 71.8,61.7 73.1,61.4 74.3,61.7 75.5,62.0 76.8,61.1 78.0,57.7 79.3,56.5 80.5,55.0 81.8,53.5 83.0,53.8 84.2,56.9 85.5,58.1 86.7,57.9 88.0,59.0 89.2,57.8 90.5,56.3 91.7,55.0 92.9,55.2 94.2,53.7 95.4,51.9 96.7,50.5 97.9,51.5 99.1,50.0 100.4,49.8 101.6,49.2 102.9,52.6 104.1,51.2 105.4,53.6 106.6,52.8 107.8,49.6 109.1,48.8 110.3,47.4 111.6,50.2 112.8,51.1 114.0,52.0 115.3,53.8 116.5,51.2 117.8,52.8 119.0,50.8 120.3,49.4 121.5,48.3 122.7,47.4 124.0,47.6 125.2,48.6 126.5,47.8 127.7,47.7 129.0,47.7 130.2,47.1 131.4,46.6 132.7,45.9 133.9,45.9 135.2,45.5 136.4,46.5 137.6,48.0 138.9,49.3 140.1,49.8 141.4,48.1 142.6,44.4 143.9,44.1 145.1,43.9 146.3,43.8 147.6,43.0 148.8,43.0 150.1,43.4 151.3,42.6 152.5,41.5 153.8,40.4 155.0,41.0 156.3,40.8 157.5,37.3 158.8,36.2 160.0,37.5 161.2,36.9 162.5,38.3 163.7,38.0 165.0,40.9 166.2,39.4 167.5,37.4 168.7,41.8 169.9,41.7 171.2,42.5 172.4,41.5 173.7,41.2 174.9,40.6 176.1,39.4 177.4,39.3 178.6,39.0 179.9,41.5 181.1,38.0 182.4,36.9 183.6,40.4 184.8,43.4 186.1,43.4 187.3,43.2 188.6,42.9 189.8,39.8 191.0,39.8 192.3,40.3 193.5,37.7 194.8,35.3 196.0,36.3 197.3,36.3 198.5,36.3 199.7,40.1 201.0,40.5 202.2,40.2 203.5,41.6 204.7,41.9 206.0,40.1 207.2,39.5 208.4,42.1 209.7,43.5 210.9,41.6 212.2,40.7 213.4,42.2 214.6,47.4 215.9,47.2 217.1,46.6 218.4,44.2 219.6,47.3 220.9,49.7 222.1,50.6 223.3,47.2 224.6,44.9 225.8,44.0 227.1,43.9 228.3,43.0 229.5,43.5 230.8,37.7 232.0,36.5 233.3,35.6 234.5,34.7 235.8,32.5 237.0,31.2 238.2,30.1 239.5,28.5 240.7,28.8 242.0,29.8 243.2,28.6 244.5,28.8 245.7,27.9 246.9,27.5 248.2,28.0 249.4,30.2 250.7,25.6 251.9,25.4 253.1,24.6 254.4,23.5 255.6,23.8 256.9,22.7 258.1,20.5 259.4,23.2 260.6,23.0 261.8,24.5 263.1,22.2 264.3,20.9 265.6,19.9 266.8,19.0 268.0,17.8 269.3,17.3 270.5,16.8 271.8,15.9 273.0,15.1 274.3,13.6 275.5,15.3 276.7,14.8 278.0,19.9 279.2,20.3 280.5,20.1 281.7,23.1 283.0,20.4 284.2,17.7 285.4,14.4 286.7,14.5 287.9,15.8 289.2,13.9 290.4,13.4 291.6,13.8 292.9,17.4 294.1,17.3 295.4,16.9 296.6,18.0 297.9,15.1 299.1,12.9 300.3,13.6 301.6,15.2 302.8,13.7 304.1,12.0 305.3,13.4 306.5,14.3 307.8,13.2 309.0,12.6 310.3,14.0 311.5,13.2 312.8,12.0 314.0,13.2" fill="none" stroke="#f87171" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="314.0" cy="13.2" r="3.5" fill="#f87171"/>
+</svg>
+</div></div>
+  <div class="stat-grid"><div class="stat-chip"><span class="stat-label">1주</span><span class="stat-val up">+0.0%</span></div><div class="stat-chip"><span class="stat-label">1개월</span><span class="stat-val up">+1.1%</span></div><div class="stat-chip"><span class="stat-label">1년</span><span class="stat-val up">+36.9%</span></div><div class="stat-chip"><span class="stat-label">엔/달러</span><span class="stat-val up">+0.0%</span></div><div class="stat-chip"><span class="stat-label">순자산</span><span class="stat-val flat">131,799억엔</span></div></div>
+
+  <h3 class="block-title">하락 요인</h3>
+  <ul class="reason-list"><li>글로벌 증시 강세(평균 +0.2%): MSCI ACWI -0.3% · 애플 -2.1% · MS +2.2% · 엔비디아 +0.2%</li><li>엔/달러 +0.0% (환율 영향 미미)</li><li>※ 기준가와 구성 방향이 엇갈림 → 환율·반영 시차(직전 영업일 종가 기준) 영향</li></ul>
+
+  <h3 class="block-title">주요 구성 종목 (직전 세션)</h3>
+  <div class="proxy-grid"><div class="proxy-card down">
+  <span class="proxy-name">MSCI ACWI</span>
+  <span class="proxy-pct down">▼ -0.3%</span>
+</div><div class="proxy-card down">
+  <span class="proxy-name">애플</span>
+  <span class="proxy-pct down">▼ -2.1%</span>
+</div><div class="proxy-card up">
+  <span class="proxy-name">MS</span>
+  <span class="proxy-pct up">▲ +2.2%</span>
+</div><div class="proxy-card up">
+  <span class="proxy-name">엔비디아</span>
+  <span class="proxy-pct up">▲ +0.2%</span>
+</div><div class="proxy-card up">
+  <span class="proxy-name">TSMC</span>
+  <span class="proxy-pct up">▲ +1.0%</span>
+</div></div>
+
+  <h3 class="block-title">관련 뉴스</h3>
+  <a class="news-card" href="https://news.google.com/rss/articles/CBMiUkFVX3lxTE9xSWxxalI3TmVNN1IyLW1hX1ZCUW1Od0dwTkNxM0twMHZuYm1WdHVZdUNmRTcyZmlhNVBlUWNvQnFIOTc1Yl8tdlhHd1JIYUVtTGc?oc=5" target="_blank" rel="noopener"><span class="news-title">MAXIS 全世界株式(オール・カントリー)上場投信【2559】：株価・株式情報（夜間PTS含む）</span><span class="news-link">↗</span></a><a class="news-card" href="https://news.google.com/rss/articles/CBMiTEFVX3lxTFBvY1htTVZQSEYwOHpudEdoVGViUjFIdF9veUMzYWNhRkZzanBiazVweXg0Q2RxX2gwUFAzaHRXYXhWbTY2RlJxbGxWSHHSAU9BVV95cUxQaXNQblNITkZVQk83WE5ZbUYwc3FqemJDNHcxSVN5aU9yZ3d2ejVBbUJaZ1NnMGJ4WmR2UU1oRkZUX2h2dXM5dnRHV0RGNXhF?oc=5" target="_blank" rel="noopener"><span class="news-title">「オルカン一択」で本当に大丈夫？ 株高しか知らない日本人投資家が見落とすリスクとは</span><span class="news-link">↗</span></a>
+</section>
+    <footer>
+      <strong>※ 참고용</strong> · 기준가 출처 투신협회 · 구성종목·환율 Yahoo Finance · 투자 조언이 아닙니다<br>
+      2026-07-21 15:14 JST
+    </footer>
+  </div>
+</body>
+</html>
