@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>청구서 엑셀 자동화 진행 계획</title>
+  <style>
+    :root { color-scheme: light dark; }
+    body {
+      font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+      line-height: 1.65;
+      max-width: 52rem;
+      margin: 2rem auto;
+      padding: 0 1.25rem;
+    }
+    .meta { color: #666; font-size: 0.9rem; margin-bottom: 2rem; }
+    @media (prefers-color-scheme: dark) { .meta { color: #999; } }
+    h1, h2, h3 { line-height: 1.25; }
+    pre, code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+    pre {
+      overflow-x: auto;
+      padding: 1rem;
+      border-radius: 8px;
+      background: #f4f4f4;
+    }
+    @media (prefers-color-scheme: dark) {
+      pre { background: #1e1e1e; }
+    }
+    table { border-collapse: collapse; width: 100%; margin: 1rem 0; }
+    th, td { border: 1px solid #ccc; padding: 0.5rem; text-align: left; }
+    a { color: #0969da; }
+    .back { margin-top: 3rem; font-size: 0.9rem; }
+    blockquote {
+      margin: 1rem 0;
+      padding: 0.5rem 1rem;
+      border-left: 4px solid #ccc;
+      color: #444;
+    }
+    @media (prefers-color-scheme: dark) {
+      blockquote { border-color: #555; color: #bbb; }
+    }
+  </style>
+</head>
+<body>
+  <p class="meta">OpenClaw Research · 2026-08-04</p>
+  <h1>청구서 엑셀 자동화 진행 계획</h1>
+<h2>목표</h2>
+<p>
+청구서용 엑셀 템플릿을 정해 두고, 이름·주소·금액·공수 등만 알려주면 스크립트가 청구서를 만들고,
+나중에는 메일로도 보낼 수 있게 한다.
+</p>
+
+<h2>현재 상태 (2026-08-04)</h2>
+<ul>
+  <li><strong>가능:</strong> 빈 엑셀 템플릿 생성 + 입력값 채우기 (<code>bin/oc-make-invoice</code>)</li>
+  <li><strong>가능:</strong> Google Chat에서 사용자가 파일을 첨부하면 <code>~/.openclaw/media/inbound/</code>로 수신</li>
+  <li><strong>불가:</strong> Google Chat으로 결과 파일 첨부 발송 (서비스 계정 업로드 권한 없음)</li>
+  <li><strong>불가:</strong> 메일 발송 (SMTP/Gmail API 등 미설정)</li>
+</ul>
+
+<h2>전체 흐름</h2>
+<ol>
+  <li>템플릿 엑셀 확정 (레이아웃·항목)</li>
+  <li>채팅/CLI로 입력값 전달</li>
+  <li>스크립트가 <code>청구서_이름_날짜.xlsx</code> 생성</li>
+  <li>(선택) PDF 변환</li>
+  <li>(선택) 메일 발송 또는 iMessage 등으로 전달</li>
+</ol>
+
+<h2>단계별 계획</h2>
+
+<h3>Phase 1 — 엑셀 생성 (진행 중 / 초안 완료)</h3>
+<ul>
+  <li>빈 템플릿: <code>templates/invoice-blank.xlsx</code></li>
+  <li>CLI: <code>oc-make-invoice --name --address --amount --hours</code></li>
+  <li>출력: <code>state/invoices/</code></li>
+  <li>기본 항목: 이름, 주소, 금액, 공수, 작성일</li>
+</ul>
+<p><strong>다음 할 일</strong></p>
+<ul>
+  <li>실제 쓰는 청구서 양식에 맞게 셀 배치·문구(한/일) 조정</li>
+  <li>필요 시 항목 추가 (세금, 기간, 건명, 계좌 등)</li>
+  <li>Google Chat에서 “이름·주소·금액·공수”만 말해도 스크립트 실행되게 연결</li>
+</ul>
+
+<h3>Phase 2 — 입력 UX</h3>
+<ul>
+  <li>채팅 한 줄/여러 줄 파싱 (예: <code>이름=…, 주소=…, 금액=…, 공수=…</code>)</li>
+  <li>또는 사용자가 엑셀/CSV 첨부 → inbound에서 읽어 일괄 생성</li>
+  <li>생성 후 로컬 경로를 채팅에 텍스트로 회신</li>
+</ul>
+
+<h3>Phase 3 — 결과물 전달</h3>
+<p>Google Chat 파일 첨부가 안 되므로 아래 중 선택:</p>
+<ol>
+  <li><strong>로컬 경로 안내</strong> (당장 가능)</li>
+  <li><strong>iMessage로 파일 전송</strong> (<code>oc-send</code> / 파일 전송 확장)</li>
+  <li><strong>메일 첨부 발송</strong> (Phase 4)</li>
+</ol>
+
+<h3>Phase 4 — 메일 발송 (미착수)</h3>
+<p>현재 OpenClaw에 메일 채널·SMTP·Gmail 권한이 없다. 연결 후보:</p>
+<ul>
+  <li>Gmail SMTP (앱 비밀번호)</li>
+  <li>Gmail API (OAuth)</li>
+  <li>SendGrid / AWS SES</li>
+</ul>
+<p><strong>작업 순서</strong></p>
+<ol>
+  <li>발신 계정·수신 기본 주소 결정</li>
+  <li>자격증명 저장 (secrets, git 제외)</li>
+  <li><code>oc-send-mail</code> 같은 스크립트 추가 (제목/본문/첨부)</li>
+  <li>청구서 생성 후 옵션으로 <code>--email to@example.com</code> 연동</li>
+  <li>외부 발송이므로 실행 전 확인 규칙 유지 (AGENTS.md)</li>
+</ol>
+
+<h2>입력 데이터 (1차)</h2>
+<table>
+  <thead>
+    <tr><th>항목</th><th>예시</th><th>비고</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>이름</td><td>홍길동</td><td>필수</td></tr>
+    <tr><td>주소</td><td>東京都…</td><td>필수</td></tr>
+    <tr><td>금액</td><td>150000</td><td>필수</td></tr>
+    <tr><td>공수</td><td>8</td><td>필수</td></tr>
+    <tr><td>작성일</td><td>2026-08-04</td><td>기본값: 오늘</td></tr>
+  </tbody>
+</table>
+
+<h2>파일 위치</h2>
+<ul>
+  <li>스크립트: <code>~/.openclaw/workspace/bin/oc-make-invoice</code></li>
+  <li>템플릿: <code>~/.openclaw/workspace/templates/invoice-blank.xlsx</code></li>
+  <li>출력: <code>~/.openclaw/workspace/state/invoices/</code></li>
+  <li>문서: <code>~/.openclaw/workspace/docs/INVOICE-SCRIPT.md</code></li>
+</ul>
+
+<h2>추천 진행 순서</h2>
+<ol>
+  <li>템플릿 레이아웃을 실제 청구서 느낌으로 다듬기</li>
+  <li>채팅 → 스크립트 실행 연결 (수동 CLI 없이)</li>
+  <li>결과 전달 방식 결정 (경로 / iMessage / 메일)</li>
+  <li>메일 권한 세팅 후 첨부 발송 자동화</li>
+</ol>
+
+<h2>결정이 필요한 것</h2>
+<ul>
+  <li>청구서 언어·양식 (한국어 / 일본어 / 둘 다)</li>
+  <li>추가 필드 (세금, 건명, 지급 기한, 계좌 등)</li>
+  <li>결과 전달 채널 우선순위</li>
+  <li>메일 쓸 경우 발신 계정</li>
+</ul>
+  <p class="back"><a href="../index.html">← 목록으로</a></p>
+</body>
+</html>
