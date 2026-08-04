@@ -243,6 +243,9 @@
       text-decoration: none;
     }
     .card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
       margin-bottom: 0.65rem;
     }
     time {
@@ -252,6 +255,15 @@
       background: var(--accent-soft);
       padding: 0.25rem 0.6rem;
       border-radius: 999px;
+    }
+    .arrow {
+      color: var(--muted);
+      font-size: 1.1rem;
+      transition: transform 0.18s ease, color 0.18s ease;
+    }
+    .card:hover .arrow {
+      transform: translateX(3px);
+      color: var(--accent);
     }
     .card h2 {
       margin: 0 0 0.55rem;
@@ -314,10 +326,24 @@
         <button id="clear" type="button" aria-label="검색 지우기">×</button>
       </div>
       <button type="button" id="fav-filter" class="filter-btn" aria-pressed="false">★ 즐겨찾기</button>
-      <div class="count" id="count">164 reports</div>
+      <div class="count" id="count">165 reports</div>
     </div>
 
     <div class="grid" id="grid">
+    <article class="card" data-slug="2026-08-05-08-03-b5ba2c82" data-ts="1785864968" data-search="펀드 브리핑 2026-08-05 野村世界業種別投資シリーズ(世界半導体株投資)">
+      <div class="card-actions">
+        <button type="button" class="icon-btn pin-btn" title="고정" aria-label="고정" aria-pressed="false">📌</button>
+        <button type="button" class="icon-btn fav-btn" title="즐겨찾기" aria-label="즐겨찾기" aria-pressed="false">☆</button>
+      </div>
+      <a class="card-link" href="reports/2026-08-05-08-03-b5ba2c82.html">
+        <div class="card-top">
+          <time datetime="2026-08-05">2026-08-05</time>
+          <span class="arrow" aria-hidden="true">→</span>
+        </div>
+        <h2>펀드 브리핑</h2>
+        <p class="excerpt">野村世界業種別投資シリーズ(世界半導体株投資)</p>
+      </a>
+    </article>
     <article class="card" data-slug="2026-08-04-19-00-c025c641" data-ts="1785837605" data-search="반도체 주가 브리핑 2026-08-04 아시아 마감 · 미국·유럽 장중·마감 반영">
       <div class="card-actions">
         <button type="button" class="icon-btn pin-btn" title="고정" aria-label="고정" aria-pressed="false">📌</button>
@@ -326,6 +352,7 @@
       <a class="card-link" href="reports/2026-08-04-19-00-c025c641.html">
         <div class="card-top">
           <time datetime="2026-08-04">2026-08-04</time>
+          <span class="arrow" aria-hidden="true">→</span>
         </div>
         <h2>반도체 주가 브리핑</h2>
         <p class="excerpt">아시아 마감 · 미국·유럽 장중·마감 반영</p>
@@ -339,6 +366,7 @@
       <a class="card-link" href="reports/2026-08-04-mu-12-00-97cca4fe.html">
         <div class="card-top">
           <time datetime="2026-08-04">2026-08-04</time>
+          <span class="arrow" aria-hidden="true">→</span>
         </div>
         <h2>마이크론 (Micron Technology)</h2>
         <p class="excerpt">MU · NASDAQ · Yahoo Finance</p>
@@ -352,6 +380,7 @@
       <a class="card-link" href="reports/2026-08-04-12-00-d601ac8f.html">
         <div class="card-top">
           <time datetime="2026-08-04">2026-08-04</time>
+          <span class="arrow" aria-hidden="true">→</span>
         </div>
         <h2>ベビー用品セール＆ おでかけスポット</h2>
         <p class="excerpt">本日、取得できたセール・特価情報はありませんでした。</p>
@@ -365,6 +394,7 @@
       <a class="card-link" href="reports/2026-08-04-12-00-86994cb0.html">
         <div class="card-top">
           <time datetime="2026-08-04">2026-08-04</time>
+          <span class="arrow" aria-hidden="true">→</span>
         </div>
         <h2>반도체 주가 브리핑</h2>
         <p class="excerpt">한국·대만·일본 장중 · 미국 전일 종가</p>
@@ -378,6 +408,7 @@
       <a class="card-link" href="reports/2026-08-04-08-03-b5ba2c82.html">
         <div class="card-top">
           <time datetime="2026-08-04">2026-08-04</time>
+          <span class="arrow" aria-hidden="true">→</span>
         </div>
         <h2>펀드 브리핑</h2>
         <p class="excerpt">野村世界業種別投資シリーズ(世界半導体株投資)</p>
@@ -391,6 +422,7 @@
       <a class="card-link" href="reports/2026-08-04-report-bdc61787.html">
         <div class="card-top">
           <time datetime="2026-08-04">2026-08-04</time>
+          <span class="arrow" aria-hidden="true">→</span>
         </div>
         <h2>청구서 엑셀 자동화 진행 계획</h2>
         <p class="excerpt">OpenClaw Research · 2026-08-04</p>
@@ -404,6 +436,7 @@
       <a class="card-link" href="reports/2026-08-04-07-00-6a636954.html">
         <div class="card-top">
           <time datetime="2026-08-04">2026-08-04</time>
+          <span class="arrow" aria-hidden="true">→</span>
         </div>
         <h2>반도체 주가 브리핑</h2>
         <p class="excerpt">아시아 장 전 · 미국·유럽 전일 종가</p>
@@ -417,6 +450,7 @@
       <a class="card-link" href="reports/2026-08-03-19-00-c025c641.html">
         <div class="card-top">
           <time datetime="2026-08-03">2026-08-03</time>
+          <span class="arrow" aria-hidden="true">→</span>
         </div>
         <h2>반도체 주가 브리핑</h2>
         <p class="excerpt">아시아 마감 · 미국·유럽 장중·마감 반영</p>
@@ -430,6 +464,7 @@
       <a class="card-link" href="reports/2026-08-03-mu-12-00-97cca4fe.html">
         <div class="card-top">
           <time datetime="2026-08-03">2026-08-03</time>
+          <span class="arrow" aria-hidden="true">→</span>
         </div>
         <h2>마이크론 (Micron Technology)</h2>
         <p class="excerpt">MU · NASDAQ · Yahoo Finance</p>
@@ -443,6 +478,7 @@
       <a class="card-link" href="reports/2026-08-03-12-00-d601ac8f.html">
         <div class="card-top">
           <time datetime="2026-08-03">2026-08-03</time>
+          <span class="arrow" aria-hidden="true">→</span>
         </div>
         <h2>ベビー用品セール＆ おでかけスポット</h2>
         <p class="excerpt">本日、取得できたセール・特価情報はありませんでした。</p>
@@ -456,6 +492,7 @@
       <a class="card-link" href="reports/2026-08-03-12-00-86994cb0.html">
         <div class="card-top">
           <time datetime="2026-08-03">2026-08-03</time>
+          <span class="arrow" aria-hidden="true">→</span>
         </div>
         <h2>반도체 주가 브리핑</h2>
         <p class="excerpt">한국·대만·일본 장중 · 미국 전일 종가</p>
@@ -469,6 +506,7 @@
       <a class="card-link" href="reports/2026-08-03-07-31-b21adf43.html">
         <div class="card-top">
           <time datetime="2026-08-03">2026-08-03</time>
+          <span class="arrow" aria-hidden="true">→</span>
         </div>
         <h2>펀드 브리핑</h2>
         <p class="excerpt">野村世界業種別投資シリーズ(世界半導体株投資)</p>
@@ -482,6 +520,7 @@
       <a class="card-link" href="reports/2026-08-03-07-00-6a636954.html">
         <div class="card-top">
           <time datetime="2026-08-03">2026-08-03</time>
+          <span class="arrow" aria-hidden="true">→</span>
         </div>
         <h2>반도체 주가 브리핑</h2>
         <p class="excerpt">아시아 장 전 · 미국·유럽 전일 종가</p>
@@ -495,6 +534,7 @@
       <a class="card-link" href="reports/2026-08-02-12-00-d601ac8f.html">
         <div class="card-top">
           <time datetime="2026-08-02">2026-08-02</time>
+          <span class="arrow" aria-hidden="true">→</span>
         </div>
         <h2>ベビー用品セール＆ おでかけスポット</h2>
         <p class="excerpt">本日、取得できたセール・特価情報はありませんでした。</p>
@@ -508,6 +548,7 @@
       <a class="card-link" href="reports/2026-08-01-12-00-d601ac8f.html">
         <div class="card-top">
           <time datetime="2026-08-01">2026-08-01</time>
+          <span class="arrow" aria-hidden="true">→</span>
         </div>
         <h2>ベビー用品セール＆ おでかけスポット</h2>
         <p class="excerpt">本日、取得できたセール・特価情報はありませんでした。</p>
@@ -521,6 +562,7 @@
       <a class="card-link" href="reports/2026-07-31-19-00-c025c641.html">
         <div class="card-top">
           <time datetime="2026-07-31">2026-07-31</time>
+          <span class="arrow" aria-hidden="true">→</span>
         </div>
         <h2>반도체 주가 브리핑</h2>
         <p class="excerpt">아시아 마감 · 미국·유럽 장중·마감 반영</p>
@@ -534,6 +576,7 @@
       <a class="card-link" href="reports/2026-07-31-mu-12-00-97cca4fe.html">
         <div class="card-top">
           <time datetime="2026-07-31">2026-07-31</time>
+          <span class="arrow" aria-hidden="true">→</span>
         </div>
         <h2>마이크론 (Micron Technology)</h2>
         <p class="excerpt">MU · NASDAQ · Yahoo Finance</p>
@@ -547,6 +590,7 @@
       <a class="card-link" href="reports/2026-07-31-12-00-d601ac8f.html">
         <div class="card-top">
           <time datetime="2026-07-31">2026-07-31</time>
+          <span class="arrow" aria-hidden="true">→</span>
         </div>
         <h2>ベビー用品セール＆ おでかけスポット</h2>
         <p class="excerpt">本日、取得できたセール・特価情報はありませんでした。</p>
@@ -560,6 +604,7 @@
       <a class="card-link" href="reports/2026-07-31-12-00-86994cb0.html">
         <div class="card-top">
           <time datetime="2026-07-31">2026-07-31</time>
+          <span class="arrow" aria-hidden="true">→</span>
         </div>
         <h2>반도체 주가 브리핑</h2>
         <p class="excerpt">한국·대만·일본 장중 · 미국 전일 종가</p>
@@ -573,6 +618,7 @@
       <a class="card-link" href="reports/2026-07-31-07-30-d2fa6c8b.html">
         <div class="card-top">
           <time datetime="2026-07-31">2026-07-31</time>
+          <span class="arrow" aria-hidden="true">→</span>
         </div>
         <h2>펀드 브리핑</h2>
         <p class="excerpt">野村世界業種別投資シリーズ(世界半導体株投資)</p>
@@ -586,6 +632,7 @@
       <a class="card-link" href="reports/2026-07-31-07-00-6a636954.html">
         <div class="card-top">
           <time datetime="2026-07-31">2026-07-31</time>
+          <span class="arrow" aria-hidden="true">→</span>
         </div>
         <h2>반도체 주가 브리핑</h2>
         <p class="excerpt">아시아 장 전 · 미국·유럽 전일 종가</p>
@@ -599,6 +646,7 @@
       <a class="card-link" href="reports/2026-07-30-19-00-c025c641.html">
         <div class="card-top">
           <time datetime="2026-07-30">2026-07-30</time>
+          <span class="arrow" aria-hidden="true">→</span>
         </div>
         <h2>반도체 주가 브리핑</h2>
         <p class="excerpt">아시아 마감 · 미국·유럽 장중·마감 반영</p>
@@ -612,6 +660,7 @@
       <a class="card-link" href="reports/2026-07-30-mu-12-00-97cca4fe.html">
         <div class="card-top">
           <time datetime="2026-07-30">2026-07-30</time>
+          <span class="arrow" aria-hidden="true">→</span>
         </div>
         <h2>마이크론 (Micron Technology)</h2>
         <p class="excerpt">MU · NASDAQ · Yahoo Finance</p>
@@ -625,6 +674,7 @@
       <a class="card-link" href="reports/2026-07-30-12-00-d601ac8f.html">
         <div class="card-top">
           <time datetime="2026-07-30">2026-07-30</time>
+          <span class="arrow" aria-hidden="true">→</span>
         </div>
         <h2>ベビー用品セール＆ おでかけスポット</h2>
         <p class="excerpt">本日、取得できたセール・特価情報はありませんでした。</p>
@@ -638,6 +688,7 @@
       <a class="card-link" href="reports/2026-07-30-07-29-742aa5ff.html">
         <div class="card-top">
           <time datetime="2026-07-30">2026-07-30</time>
+          <span class="arrow" aria-hidden="true">→</span>
         </div>
         <h2>펀드 브리핑</h2>
         <p class="excerpt">野村世界業種別投資シリーズ(世界半導体株投資)</p>
@@ -651,6 +702,7 @@
       <a class="card-link" href="reports/2026-07-30-12-00-86994cb0.html">
         <div class="card-top">
           <time datetime="2026-07-30">2026-07-30</time>
+          <span class="arrow" aria-hidden="true">→</span>
         </div>
         <h2>반도체 주가 브리핑</h2>
         <p class="excerpt">한국·대만·일본 장중 · 미국 전일 종가</p>
@@ -664,6 +716,7 @@
       <a class="card-link" href="reports/2026-07-30-07-00-6a636954.html">
         <div class="card-top">
           <time datetime="2026-07-30">2026-07-30</time>
+          <span class="arrow" aria-hidden="true">→</span>
         </div>
         <h2>반도체 주가 브리핑</h2>
         <p class="excerpt">아시아 장 전 · 미국·유럽 전일 종가</p>
@@ -677,6 +730,7 @@
       <a class="card-link" href="reports/2026-07-29-19-00-c025c641.html">
         <div class="card-top">
           <time datetime="2026-07-29">2026-07-29</time>
+          <span class="arrow" aria-hidden="true">→</span>
         </div>
         <h2>반도체 주가 브리핑</h2>
         <p class="excerpt">아시아 마감 · 미국·유럽 장중·마감 반영</p>
@@ -690,6 +744,7 @@
       <a class="card-link" href="reports/2026-07-29-mu-12-00-97cca4fe.html">
         <div class="card-top">
           <time datetime="2026-07-29">2026-07-29</time>
+          <span class="arrow" aria-hidden="true">→</span>
         </div>
         <h2>마이크론 (Micron Technology)</h2>
         <p class="excerpt">MU · NASDAQ · Yahoo Finance</p>
@@ -703,6 +758,7 @@
       <a class="card-link" href="reports/2026-07-29-12-00-d601ac8f.html">
         <div class="card-top">
           <time datetime="2026-07-29">2026-07-29</time>
+          <span class="arrow" aria-hidden="true">→</span>
         </div>
         <h2>ベビー用品セール＆ おでかけスポット</h2>
         <p class="excerpt">本日、取得できたセール・特価情報はありませんでした。</p>
@@ -716,6 +772,7 @@
       <a class="card-link" href="reports/2026-07-29-07-28-5f166a39.html">
         <div class="card-top">
           <time datetime="2026-07-29">2026-07-29</time>
+          <span class="arrow" aria-hidden="true">→</span>
         </div>
         <h2>펀드 브리핑</h2>
         <p class="excerpt">野村世界業種別投資シリーズ(世界半導体株投資)</p>
@@ -729,6 +786,7 @@
       <a class="card-link" href="reports/2026-07-29-12-00-86994cb0.html">
         <div class="card-top">
           <time datetime="2026-07-29">2026-07-29</time>
+          <span class="arrow" aria-hidden="true">→</span>
         </div>
         <h2>반도체 주가 브리핑</h2>
         <p class="excerpt">한국·대만·일본 장중 · 미국 전일 종가</p>
@@ -742,6 +800,7 @@
       <a class="card-link" href="reports/2026-07-29-07-00-6a636954.html">
         <div class="card-top">
           <time datetime="2026-07-29">2026-07-29</time>
+          <span class="arrow" aria-hidden="true">→</span>
         </div>
         <h2>반도체 주가 브리핑</h2>
         <p class="excerpt">아시아 장 전 · 미국·유럽 전일 종가</p>
@@ -755,6 +814,7 @@
       <a class="card-link" href="reports/2026-07-28-19-00-c025c641.html">
         <div class="card-top">
           <time datetime="2026-07-28">2026-07-28</time>
+          <span class="arrow" aria-hidden="true">→</span>
         </div>
         <h2>반도체 주가 브리핑</h2>
         <p class="excerpt">아시아 마감 · 미국·유럽 장중·마감 반영</p>
@@ -768,6 +828,7 @@
       <a class="card-link" href="reports/2026-07-28-mu-12-00-97cca4fe.html">
         <div class="card-top">
           <time datetime="2026-07-28">2026-07-28</time>
+          <span class="arrow" aria-hidden="true">→</span>
         </div>
         <h2>마이크론 (Micron Technology)</h2>
         <p class="excerpt">MU · NASDAQ · Yahoo Finance</p>
@@ -781,6 +842,7 @@
       <a class="card-link" href="reports/2026-07-28-12-00-d601ac8f.html">
         <div class="card-top">
           <time datetime="2026-07-28">2026-07-28</time>
+          <span class="arrow" aria-hidden="true">→</span>
         </div>
         <h2>ベビー用品セール＆ おでかけスポット</h2>
         <p class="excerpt">本日、取得できたセール・特価情報はありませんでした。</p>
@@ -794,6 +856,7 @@
       <a class="card-link" href="reports/2026-07-28-12-00-86994cb0.html">
         <div class="card-top">
           <time datetime="2026-07-28">2026-07-28</time>
+          <span class="arrow" aria-hidden="true">→</span>
         </div>
         <h2>반도체 주가 브리핑</h2>
         <p class="excerpt">한국·대만·일본 장중 · 미국 전일 종가</p>
@@ -807,6 +870,7 @@
       <a class="card-link" href="reports/2026-07-28-07-27-bd5afd10.html">
         <div class="card-top">
           <time datetime="2026-07-28">2026-07-28</time>
+          <span class="arrow" aria-hidden="true">→</span>
         </div>
         <h2>펀드 브리핑</h2>
         <p class="excerpt">野村世界業種別投資シリーズ(世界半導体株投資)</p>
@@ -820,6 +884,7 @@
       <a class="card-link" href="reports/2026-07-28-07-00-6a636954.html">
         <div class="card-top">
           <time datetime="2026-07-28">2026-07-28</time>
+          <span class="arrow" aria-hidden="true">→</span>
         </div>
         <h2>반도체 주가 브리핑</h2>
         <p class="excerpt">아시아 장 전 · 미국·유럽 전일 종가</p>
@@ -833,6 +898,7 @@
       <a class="card-link" href="reports/2026-07-27-19-00-c025c641.html">
         <div class="card-top">
           <time datetime="2026-07-27">2026-07-27</time>
+          <span class="arrow" aria-hidden="true">→</span>
         </div>
         <h2>반도체 주가 브리핑</h2>
         <p class="excerpt">아시아 마감 · 미국·유럽 장중·마감 반영</p>
@@ -846,6 +912,7 @@
       <a class="card-link" href="reports/2026-07-27-mu-12-00-97cca4fe.html">
         <div class="card-top">
           <time datetime="2026-07-27">2026-07-27</time>
+          <span class="arrow" aria-hidden="true">→</span>
         </div>
         <h2>마이크론 (Micron Technology)</h2>
         <p class="excerpt">MU · NASDAQ · Yahoo Finance</p>
@@ -859,6 +926,7 @@
       <a class="card-link" href="reports/2026-07-27-12-00-d601ac8f.html">
         <div class="card-top">
           <time datetime="2026-07-27">2026-07-27</time>
+          <span class="arrow" aria-hidden="true">→</span>
         </div>
         <h2>ベビー用品セール＆ おでかけスポット</h2>
         <p class="excerpt">本日、取得できたセール・特価情報はありませんでした。</p>
@@ -872,6 +940,7 @@
       <a class="card-link" href="reports/2026-07-27-12-00-86994cb0.html">
         <div class="card-top">
           <time datetime="2026-07-27">2026-07-27</time>
+          <span class="arrow" aria-hidden="true">→</span>
         </div>
         <h2>반도체 주가 브리핑</h2>
         <p class="excerpt">한국·대만·일본 장중 · 미국 전일 종가</p>
@@ -885,6 +954,7 @@
       <a class="card-link" href="reports/2026-07-27-07-24-344dc048.html">
         <div class="card-top">
           <time datetime="2026-07-27">2026-07-27</time>
+          <span class="arrow" aria-hidden="true">→</span>
         </div>
         <h2>펀드 브리핑</h2>
         <p class="excerpt">野村世界業種別投資シリーズ(世界半導体株投資)</p>
@@ -898,6 +968,7 @@
       <a class="card-link" href="reports/2026-07-27-07-00-6a636954.html">
         <div class="card-top">
           <time datetime="2026-07-27">2026-07-27</time>
+          <span class="arrow" aria-hidden="true">→</span>
         </div>
         <h2>반도체 주가 브리핑</h2>
         <p class="excerpt">아시아 장 전 · 미국·유럽 전일 종가</p>
@@ -911,6 +982,7 @@
       <a class="card-link" href="reports/2026-07-26-12-02-95d158b0.html">
         <div class="card-top">
           <time datetime="2026-07-26">2026-07-26</time>
+          <span class="arrow" aria-hidden="true">→</span>
         </div>
         <h2>ベビー用品セール＆ おでかけスポット</h2>
         <p class="excerpt">本日、取得できたセール・特価情報はありませんでした。</p>
@@ -924,6 +996,7 @@
       <a class="card-link" href="reports/2026-07-25-12-05-f0da595b.html">
         <div class="card-top">
           <time datetime="2026-07-25">2026-07-25</time>
+          <span class="arrow" aria-hidden="true">→</span>
         </div>
         <h2>ベビー用品セール＆ おでかけスポット</h2>
         <p class="excerpt">本日、取得できたセール・特価情報はありませんでした。</p>
@@ -937,6 +1010,7 @@
       <a class="card-link" href="reports/2026-07-24-mu-12-03-7109b052.html">
         <div class="card-top">
           <time datetime="2026-07-24">2026-07-24</time>
+          <span class="arrow" aria-hidden="true">→</span>
         </div>
         <h2>마이크론 (Micron Technology)</h2>
         <p class="excerpt">MU · NASDAQ · Yahoo Finance</p>
@@ -950,6 +1024,7 @@
       <a class="card-link" href="reports/2026-07-24-12-03-73a38c8f.html">
         <div class="card-top">
           <time datetime="2026-07-24">2026-07-24</time>
+          <span class="arrow" aria-hidden="true">→</span>
         </div>
         <h2>ベビー用品セール＆ おでかけスポット</h2>
         <p class="excerpt">本日、取得できたセール・特価情報はありませんでした。</p>
@@ -963,6 +1038,7 @@
       <a class="card-link" href="reports/2026-07-24-07-23-f29f65a1.html">
         <div class="card-top">
           <time datetime="2026-07-24">2026-07-24</time>
+          <span class="arrow" aria-hidden="true">→</span>
         </div>
         <h2>펀드 브리핑</h2>
         <p class="excerpt">野村世界業種別投資シリーズ(世界半導体株投資)</p>
@@ -976,6 +1052,7 @@
       <a class="card-link" href="reports/2026-07-23-19-00-c025c641.html">
         <div class="card-top">
           <time datetime="2026-07-23">2026-07-23</time>
+          <span class="arrow" aria-hidden="true">→</span>
         </div>
         <h2>반도체 주가 브리핑</h2>
         <p class="excerpt">아시아 마감 · 미국·유럽 장중·마감 반영</p>
@@ -989,6 +1066,7 @@
       <a class="card-link" href="reports/2026-07-23-mu-12-00-97cca4fe.html">
         <div class="card-top">
           <time datetime="2026-07-23">2026-07-23</time>
+          <span class="arrow" aria-hidden="true">→</span>
         </div>
         <h2>마이크론 (Micron Technology)</h2>
         <p class="excerpt">MU · NASDAQ · Yahoo Finance</p>
@@ -1002,6 +1080,7 @@
       <a class="card-link" href="reports/2026-07-23-12-00-d601ac8f.html">
         <div class="card-top">
           <time datetime="2026-07-23">2026-07-23</time>
+          <span class="arrow" aria-hidden="true">→</span>
         </div>
         <h2>ベビー用品セール＆ おでかけスポット</h2>
         <p class="excerpt">本日、取得できたセール・特価情報はありませんでした。</p>
@@ -1015,6 +1094,7 @@
       <a class="card-link" href="reports/2026-07-23-07-22-cb39dcbf.html">
         <div class="card-top">
           <time datetime="2026-07-23">2026-07-23</time>
+          <span class="arrow" aria-hidden="true">→</span>
         </div>
         <h2>펀드 브리핑</h2>
         <p class="excerpt">野村世界業種別投資シリーズ(世界半導体株投資)</p>
@@ -1028,6 +1108,7 @@
       <a class="card-link" href="reports/2026-07-23-12-00-86994cb0.html">
         <div class="card-top">
           <time datetime="2026-07-23">2026-07-23</time>
+          <span class="arrow" aria-hidden="true">→</span>
         </div>
         <h2>반도체 주가 브리핑</h2>
         <p class="excerpt">한국·대만·일본 장중 · 미국 전일 종가</p>
@@ -1041,6 +1122,7 @@
       <a class="card-link" href="reports/2026-07-23-07-00-6a636954.html">
         <div class="card-top">
           <time datetime="2026-07-23">2026-07-23</time>
+          <span class="arrow" aria-hidden="true">→</span>
         </div>
         <h2>반도체 주가 브리핑</h2>
         <p class="excerpt">아시아 장 전 · 미국·유럽 전일 종가</p>
@@ -1054,6 +1136,7 @@
       <a class="card-link" href="reports/2026-07-22-19-00-c025c641.html">
         <div class="card-top">
           <time datetime="2026-07-22">2026-07-22</time>
+          <span class="arrow" aria-hidden="true">→</span>
         </div>
         <h2>반도체 주가 브리핑</h2>
         <p class="excerpt">아시아 마감 · 미국·유럽 장중·마감 반영</p>
@@ -1067,6 +1150,7 @@
       <a class="card-link" href="reports/2026-07-22-mu-12-06-d256b7f8.html">
         <div class="card-top">
           <time datetime="2026-07-22">2026-07-22</time>
+          <span class="arrow" aria-hidden="true">→</span>
         </div>
         <h2>마이크론 (Micron Technology)</h2>
         <p class="excerpt">MU · NASDAQ · Yahoo Finance</p>
@@ -1080,6 +1164,7 @@
       <a class="card-link" href="reports/2026-07-22-12-06-dd0d232c.html">
         <div class="card-top">
           <time datetime="2026-07-22">2026-07-22</time>
+          <span class="arrow" aria-hidden="true">→</span>
         </div>
         <h2>ベビー用品セール＆ おでかけスポット</h2>
         <p class="excerpt">本日、取得できたセール・特価情報はありませんでした。</p>
@@ -1093,6 +1178,7 @@
       <a class="card-link" href="reports/2026-07-22-07-21-86d7572b.html">
         <div class="card-top">
           <time datetime="2026-07-22">2026-07-22</time>
+          <span class="arrow" aria-hidden="true">→</span>
         </div>
         <h2>펀드 브리핑</h2>
         <p class="excerpt">野村世界業種別投資シリーズ(世界半導体株投資)</p>
@@ -1106,6 +1192,7 @@
       <a class="card-link" href="reports/2026-07-22-07-02-378ed67d.html">
         <div class="card-top">
           <time datetime="2026-07-22">2026-07-22</time>
+          <span class="arrow" aria-hidden="true">→</span>
         </div>
         <h2>반도체 주가 브리핑</h2>
         <p class="excerpt">아시아 장 전 · 미국·유럽 전일 종가</p>
@@ -1119,6 +1206,7 @@
       <a class="card-link" href="reports/2026-07-21-19-00-c025c641.html">
         <div class="card-top">
           <time datetime="2026-07-21">2026-07-21</time>
+          <span class="arrow" aria-hidden="true">→</span>
         </div>
         <h2>반도체 주가 브리핑</h2>
         <p class="excerpt">아시아 마감 · 미국·유럽 장중·마감 반영</p>
@@ -1132,6 +1220,7 @@
       <a class="card-link" href="reports/2026-07-21-15-19-fe603ec3.html">
         <div class="card-top">
           <time datetime="2026-07-21">2026-07-21</time>
+          <span class="arrow" aria-hidden="true">→</span>
         </div>
         <h2>반도체 주가 브리핑</h2>
         <p class="excerpt">아시아 마감 · 미국·유럽 장중·마감 반영</p>
@@ -1145,6 +1234,7 @@
       <a class="card-link" href="reports/2026-07-21-mu-15-18-18a928e9.html">
         <div class="card-top">
           <time datetime="2026-07-21">2026-07-21</time>
+          <span class="arrow" aria-hidden="true">→</span>
         </div>
         <h2>마이크론 (Micron Technology)</h2>
         <p class="excerpt">MU · NASDAQ · Yahoo Finance</p>
@@ -1158,6 +1248,7 @@
       <a class="card-link" href="reports/2026-07-21-07-17-3ecc892b.html">
         <div class="card-top">
           <time datetime="2026-07-21">2026-07-21</time>
+          <span class="arrow" aria-hidden="true">→</span>
         </div>
         <h2>펀드 브리핑</h2>
         <p class="excerpt">野村世界業種別投資シリーズ(世界半導体株投資)</p>
@@ -1171,6 +1262,7 @@
       <a class="card-link" href="reports/2026-07-21-mu-15-15-a928b9cb.html">
         <div class="card-top">
           <time datetime="2026-07-21">2026-07-21</time>
+          <span class="arrow" aria-hidden="true">→</span>
         </div>
         <h2>마이크론 (Micron Technology)</h2>
         <p class="excerpt">MU · NASDAQ · Yahoo Finance</p>
@@ -1184,6 +1276,7 @@
       <a class="card-link" href="reports/2026-07-21-15-14-7472a913.html">
         <div class="card-top">
           <time datetime="2026-07-21">2026-07-21</time>
+          <span class="arrow" aria-hidden="true">→</span>
         </div>
         <h2>ベビー用品セール＆ おでかけスポット</h2>
         <p class="excerpt">本日、取得できたセール・特価情報はありませんでした。</p>
@@ -1197,6 +1290,7 @@
       <a class="card-link" href="reports/2026-07-21-12-00-d601ac8f.html">
         <div class="card-top">
           <time datetime="2026-07-21">2026-07-21</time>
+          <span class="arrow" aria-hidden="true">→</span>
         </div>
         <h2>ベビー用品セール＆ おでかけスポット</h2>
         <p class="excerpt">本日、取得できたセール・特価情報はありませんでした。</p>
@@ -1210,6 +1304,7 @@
       <a class="card-link" href="reports/2026-07-21-07-00-6a636954.html">
         <div class="card-top">
           <time datetime="2026-07-21">2026-07-21</time>
+          <span class="arrow" aria-hidden="true">→</span>
         </div>
         <h2>반도체 주가 브리핑</h2>
         <p class="excerpt">아시아 장 전 · 미국·유럽 전일 종가</p>
@@ -1223,6 +1318,7 @@
       <a class="card-link" href="reports/2026-07-20-19-00-c025c641.html">
         <div class="card-top">
           <time datetime="2026-07-20">2026-07-20</time>
+          <span class="arrow" aria-hidden="true">→</span>
         </div>
         <h2>반도체 주가 브리핑</h2>
         <p class="excerpt">아시아 마감 · 미국·유럽 장중·마감 반영</p>
@@ -1236,6 +1332,7 @@
       <a class="card-link" href="reports/2026-07-20-mu-12-00-97cca4fe.html">
         <div class="card-top">
           <time datetime="2026-07-20">2026-07-20</time>
+          <span class="arrow" aria-hidden="true">→</span>
         </div>
         <h2>마이크론 (Micron Technology)</h2>
         <p class="excerpt">MU · NASDAQ · Yahoo Finance</p>
@@ -1249,6 +1346,7 @@
       <a class="card-link" href="reports/2026-07-20-12-00-d601ac8f.html">
         <div class="card-top">
           <time datetime="2026-07-20">2026-07-20</time>
+          <span class="arrow" aria-hidden="true">→</span>
         </div>
         <h2>ベビー用品セール＆ おでかけスポット</h2>
         <p class="excerpt">本日、取得できたセール・特価情報はありませんでした。</p>
@@ -1262,6 +1360,7 @@
       <a class="card-link" href="reports/2026-07-20-12-00-86994cb0.html">
         <div class="card-top">
           <time datetime="2026-07-20">2026-07-20</time>
+          <span class="arrow" aria-hidden="true">→</span>
         </div>
         <h2>반도체 주가 브리핑</h2>
         <p class="excerpt">한국·대만·일본 장중 · 미국 전일 종가</p>
@@ -1275,6 +1374,7 @@
       <a class="card-link" href="reports/2026-07-20-07-17-3ecc892b.html">
         <div class="card-top">
           <time datetime="2026-07-20">2026-07-20</time>
+          <span class="arrow" aria-hidden="true">→</span>
         </div>
         <h2>펀드 브리핑</h2>
         <p class="excerpt">野村世界業種別投資シリーズ(世界半導体株投資)</p>
@@ -1288,6 +1388,7 @@
       <a class="card-link" href="reports/2026-07-20-07-00-6a636954.html">
         <div class="card-top">
           <time datetime="2026-07-20">2026-07-20</time>
+          <span class="arrow" aria-hidden="true">→</span>
         </div>
         <h2>반도체 주가 브리핑</h2>
         <p class="excerpt">아시아 장 전 · 미국·유럽 전일 종가</p>
@@ -1301,6 +1402,7 @@
       <a class="card-link" href="reports/2026-07-19-12-00-d601ac8f.html">
         <div class="card-top">
           <time datetime="2026-07-19">2026-07-19</time>
+          <span class="arrow" aria-hidden="true">→</span>
         </div>
         <h2>ベビー用品セール＆ おでかけスポット</h2>
         <p class="excerpt">本日、取得できたセール・特価情報はありませんでした。</p>
@@ -1314,6 +1416,7 @@
       <a class="card-link" href="reports/2026-07-18-12-00-d601ac8f.html">
         <div class="card-top">
           <time datetime="2026-07-18">2026-07-18</time>
+          <span class="arrow" aria-hidden="true">→</span>
         </div>
         <h2>ベビー用品セール＆ おでかけスポット</h2>
         <p class="excerpt">本日、取得できたセール・特価情報はありませんでした。</p>
@@ -1327,6 +1430,7 @@
       <a class="card-link" href="reports/2026-07-18-07-17-3ecc892b.html">
         <div class="card-top">
           <time datetime="2026-07-18">2026-07-18</time>
+          <span class="arrow" aria-hidden="true">→</span>
         </div>
         <h2>펀드 브리핑</h2>
         <p class="excerpt">野村世界業種別投資シリーズ(世界半導体株投資)</p>
@@ -1340,6 +1444,7 @@
       <a class="card-link" href="reports/2026-07-17-19-00-c025c641.html">
         <div class="card-top">
           <time datetime="2026-07-17">2026-07-17</time>
+          <span class="arrow" aria-hidden="true">→</span>
         </div>
         <h2>반도체 주가 브리핑</h2>
         <p class="excerpt">아시아 마감 · 미국·유럽 장중·마감 반영</p>
@@ -1353,6 +1458,7 @@
       <a class="card-link" href="reports/2026-07-17-mu-12-00-97cca4fe.html">
         <div class="card-top">
           <time datetime="2026-07-17">2026-07-17</time>
+          <span class="arrow" aria-hidden="true">→</span>
         </div>
         <h2>마이크론 (Micron Technology)</h2>
         <p class="excerpt">MU · NASDAQ · Yahoo Finance</p>
@@ -1366,6 +1472,7 @@
       <a class="card-link" href="reports/2026-07-17-12-00-d601ac8f.html">
         <div class="card-top">
           <time datetime="2026-07-17">2026-07-17</time>
+          <span class="arrow" aria-hidden="true">→</span>
         </div>
         <h2>ベビー用品セール＆ おでかけスポット</h2>
         <p class="excerpt">本日、取得できたセール・特価情報はありませんでした。</p>
@@ -1379,6 +1486,7 @@
       <a class="card-link" href="reports/2026-07-17-07-16-7aa40540.html">
         <div class="card-top">
           <time datetime="2026-07-17">2026-07-17</time>
+          <span class="arrow" aria-hidden="true">→</span>
         </div>
         <h2>펀드 브리핑</h2>
         <p class="excerpt">野村世界業種別投資シリーズ(世界半導体株投資)</p>
@@ -1392,6 +1500,7 @@
       <a class="card-link" href="reports/2026-07-17-12-00-86994cb0.html">
         <div class="card-top">
           <time datetime="2026-07-17">2026-07-17</time>
+          <span class="arrow" aria-hidden="true">→</span>
         </div>
         <h2>반도체 주가 브리핑</h2>
         <p class="excerpt">한국·대만·일본 장중 · 미국 전일 종가</p>
@@ -1405,6 +1514,7 @@
       <a class="card-link" href="reports/2026-07-17-07-00-6a636954.html">
         <div class="card-top">
           <time datetime="2026-07-17">2026-07-17</time>
+          <span class="arrow" aria-hidden="true">→</span>
         </div>
         <h2>반도체 주가 브리핑</h2>
         <p class="excerpt">아시아 장 전 · 미국·유럽 전일 종가</p>
@@ -1418,6 +1528,7 @@
       <a class="card-link" href="reports/2026-07-16-19-00-c025c641.html">
         <div class="card-top">
           <time datetime="2026-07-16">2026-07-16</time>
+          <span class="arrow" aria-hidden="true">→</span>
         </div>
         <h2>반도체 주가 브리핑</h2>
         <p class="excerpt">아시아 마감 · 미국·유럽 장중·마감 반영</p>
@@ -1431,6 +1542,7 @@
       <a class="card-link" href="reports/2026-07-16-mu-12-00-97cca4fe.html">
         <div class="card-top">
           <time datetime="2026-07-16">2026-07-16</time>
+          <span class="arrow" aria-hidden="true">→</span>
         </div>
         <h2>마이크론 (Micron Technology)</h2>
         <p class="excerpt">MU · NASDAQ · Yahoo Finance</p>
@@ -1444,6 +1556,7 @@
       <a class="card-link" href="reports/2026-07-16-12-00-d601ac8f.html">
         <div class="card-top">
           <time datetime="2026-07-16">2026-07-16</time>
+          <span class="arrow" aria-hidden="true">→</span>
         </div>
         <h2>ベビー用品セール＆ おでかけスポット</h2>
         <p class="excerpt">本日、取得できたセール・特価情報はありませんでした。</p>
@@ -1457,6 +1570,7 @@
       <a class="card-link" href="reports/2026-07-16-12-00-86994cb0.html">
         <div class="card-top">
           <time datetime="2026-07-16">2026-07-16</time>
+          <span class="arrow" aria-hidden="true">→</span>
         </div>
         <h2>반도체 주가 브리핑</h2>
         <p class="excerpt">한국·대만·일본 장중 · 미국 전일 종가</p>
@@ -1470,6 +1584,7 @@
       <a class="card-link" href="reports/2026-07-16-07-15-62d164d1.html">
         <div class="card-top">
           <time datetime="2026-07-16">2026-07-16</time>
+          <span class="arrow" aria-hidden="true">→</span>
         </div>
         <h2>펀드 브리핑</h2>
         <p class="excerpt">野村世界業種別投資シリーズ(世界半導体株投資)</p>
@@ -1483,6 +1598,7 @@
       <a class="card-link" href="reports/2026-07-16-07-00-6a636954.html">
         <div class="card-top">
           <time datetime="2026-07-16">2026-07-16</time>
+          <span class="arrow" aria-hidden="true">→</span>
         </div>
         <h2>반도체 주가 브리핑</h2>
         <p class="excerpt">아시아 장 전 · 미국·유럽 전일 종가</p>
@@ -1496,6 +1612,7 @@
       <a class="card-link" href="reports/2026-07-15-19-00-c025c641.html">
         <div class="card-top">
           <time datetime="2026-07-15">2026-07-15</time>
+          <span class="arrow" aria-hidden="true">→</span>
         </div>
         <h2>반도체 주가 브리핑</h2>
         <p class="excerpt">아시아 마감 · 미국·유럽 장중·마감 반영</p>
@@ -1509,6 +1626,7 @@
       <a class="card-link" href="reports/2026-07-15-07-14-421e1cdb.html">
         <div class="card-top">
           <time datetime="2026-07-15">2026-07-15</time>
+          <span class="arrow" aria-hidden="true">→</span>
         </div>
         <h2>펀드 브리핑</h2>
         <p class="excerpt">野村世界業種別投資シリーズ(世界半導体株投資)</p>
@@ -1522,6 +1640,7 @@
       <a class="card-link" href="reports/2026-07-15-mu-12-00-97cca4fe.html">
         <div class="card-top">
           <time datetime="2026-07-15">2026-07-15</time>
+          <span class="arrow" aria-hidden="true">→</span>
         </div>
         <h2>마이크론 (Micron Technology)</h2>
         <p class="excerpt">MU · NASDAQ · Yahoo Finance</p>
@@ -1535,6 +1654,7 @@
       <a class="card-link" href="reports/2026-07-15-12-00-d601ac8f.html">
         <div class="card-top">
           <time datetime="2026-07-15">2026-07-15</time>
+          <span class="arrow" aria-hidden="true">→</span>
         </div>
         <h2>ベビー用品セール＆ おでかけスポット</h2>
         <p class="excerpt">本日、取得できたセール・特価情報はありませんでした。</p>
@@ -1548,6 +1668,7 @@
       <a class="card-link" href="reports/2026-07-15-12-00-86994cb0.html">
         <div class="card-top">
           <time datetime="2026-07-15">2026-07-15</time>
+          <span class="arrow" aria-hidden="true">→</span>
         </div>
         <h2>반도체 주가 브리핑</h2>
         <p class="excerpt">한국·대만·일본 장중 · 미국 전일 종가</p>
@@ -1561,6 +1682,7 @@
       <a class="card-link" href="reports/2026-07-15-07-14-d2d17846.html">
         <div class="card-top">
           <time datetime="2026-07-15">2026-07-15</time>
+          <span class="arrow" aria-hidden="true">→</span>
         </div>
         <h2>노무라 세계반도체 펀드</h2>
         <p class="excerpt">野村世界業種別投資シリーズ(世界半導体株投資)</p>
@@ -1574,6 +1696,7 @@
       <a class="card-link" href="reports/2026-07-15-07-00-6a636954.html">
         <div class="card-top">
           <time datetime="2026-07-15">2026-07-15</time>
+          <span class="arrow" aria-hidden="true">→</span>
         </div>
         <h2>반도체 주가 브리핑</h2>
         <p class="excerpt">아시아 장 전 · 미국·유럽 전일 종가</p>
@@ -1587,6 +1710,7 @@
       <a class="card-link" href="reports/2026-07-14-19-00-c025c641.html">
         <div class="card-top">
           <time datetime="2026-07-14">2026-07-14</time>
+          <span class="arrow" aria-hidden="true">→</span>
         </div>
         <h2>반도체 주가 브리핑</h2>
         <p class="excerpt">아시아 마감 · 미국·유럽 장중·마감 반영</p>
@@ -1600,6 +1724,7 @@
       <a class="card-link" href="reports/2026-07-14-mu-12-00-97cca4fe.html">
         <div class="card-top">
           <time datetime="2026-07-14">2026-07-14</time>
+          <span class="arrow" aria-hidden="true">→</span>
         </div>
         <h2>마이크론 (Micron Technology)</h2>
         <p class="excerpt">MU · NASDAQ · Yahoo Finance</p>
@@ -1613,6 +1738,7 @@
       <a class="card-link" href="reports/2026-07-14-12-00-d601ac8f.html">
         <div class="card-top">
           <time datetime="2026-07-14">2026-07-14</time>
+          <span class="arrow" aria-hidden="true">→</span>
         </div>
         <h2>ベビー用品セール＆ おでかけスポット</h2>
         <p class="excerpt">本日、取得できたセール・特価情報はありませんでした。</p>
@@ -1626,6 +1752,7 @@
       <a class="card-link" href="reports/2026-07-14-12-00-86994cb0.html">
         <div class="card-top">
           <time datetime="2026-07-14">2026-07-14</time>
+          <span class="arrow" aria-hidden="true">→</span>
         </div>
         <h2>반도체 주가 브리핑</h2>
         <p class="excerpt">한국·대만·일본 장중 · 미국 전일 종가</p>
@@ -1639,6 +1766,7 @@
       <a class="card-link" href="reports/2026-07-14-07-00-6a636954.html">
         <div class="card-top">
           <time datetime="2026-07-14">2026-07-14</time>
+          <span class="arrow" aria-hidden="true">→</span>
         </div>
         <h2>반도체 주가 브리핑</h2>
         <p class="excerpt">아시아 장 전 · 미국·유럽 전일 종가</p>
@@ -1652,6 +1780,7 @@
       <a class="card-link" href="reports/2026-07-13-19-00-c025c641.html">
         <div class="card-top">
           <time datetime="2026-07-13">2026-07-13</time>
+          <span class="arrow" aria-hidden="true">→</span>
         </div>
         <h2>반도체 주가 브리핑</h2>
         <p class="excerpt">아시아 마감 · 미국·유럽 장중·마감 반영</p>
@@ -1665,6 +1794,7 @@
       <a class="card-link" href="reports/2026-07-13-mu-12-00-97cca4fe.html">
         <div class="card-top">
           <time datetime="2026-07-13">2026-07-13</time>
+          <span class="arrow" aria-hidden="true">→</span>
         </div>
         <h2>마이크론 (Micron Technology)</h2>
         <p class="excerpt">MU · NASDAQ · Yahoo Finance</p>
@@ -1678,6 +1808,7 @@
       <a class="card-link" href="reports/2026-07-13-12-00-d601ac8f.html">
         <div class="card-top">
           <time datetime="2026-07-13">2026-07-13</time>
+          <span class="arrow" aria-hidden="true">→</span>
         </div>
         <h2>ベビー用品セール＆ おでかけスポット</h2>
         <p class="excerpt">本日、取得できたセール・特価情報はありませんでした。</p>
@@ -1691,6 +1822,7 @@
       <a class="card-link" href="reports/2026-07-13-12-00-86994cb0.html">
         <div class="card-top">
           <time datetime="2026-07-13">2026-07-13</time>
+          <span class="arrow" aria-hidden="true">→</span>
         </div>
         <h2>반도체 주가 브리핑</h2>
         <p class="excerpt">한국·대만·일본 장중 · 미국 전일 종가</p>
@@ -1704,6 +1836,7 @@
       <a class="card-link" href="reports/2026-07-13-07-00-6a636954.html">
         <div class="card-top">
           <time datetime="2026-07-13">2026-07-13</time>
+          <span class="arrow" aria-hidden="true">→</span>
         </div>
         <h2>반도체 주가 브리핑</h2>
         <p class="excerpt">아시아 장 전 · 미국·유럽 전일 종가</p>
@@ -1717,6 +1850,7 @@
       <a class="card-link" href="reports/2026-07-12-12-00-d601ac8f.html">
         <div class="card-top">
           <time datetime="2026-07-12">2026-07-12</time>
+          <span class="arrow" aria-hidden="true">→</span>
         </div>
         <h2>ベビー用品セール＆ おでかけスポット</h2>
         <p class="excerpt">本日、取得できたセール・特価情報はありませんでした。</p>
@@ -1730,6 +1864,7 @@
       <a class="card-link" href="reports/2026-07-11-12-12-59517a29.html">
         <div class="card-top">
           <time datetime="2026-07-11">2026-07-11</time>
+          <span class="arrow" aria-hidden="true">→</span>
         </div>
         <h2>ベビー用品セール＆ おでかけスポット</h2>
         <p class="excerpt">本日、取得できたセール・特価情報はありませんでした。</p>
@@ -1743,6 +1878,7 @@
       <a class="card-link" href="reports/2026-07-10-mu-12-03-7109b052.html">
         <div class="card-top">
           <time datetime="2026-07-10">2026-07-10</time>
+          <span class="arrow" aria-hidden="true">→</span>
         </div>
         <h2>마이크론 (Micron Technology)</h2>
         <p class="excerpt">MU · NASDAQ · Yahoo Finance</p>
@@ -1756,6 +1892,7 @@
       <a class="card-link" href="reports/2026-07-10-12-03-73a38c8f.html">
         <div class="card-top">
           <time datetime="2026-07-10">2026-07-10</time>
+          <span class="arrow" aria-hidden="true">→</span>
         </div>
         <h2>ベビー用品セール＆ おでかけスポット</h2>
         <p class="excerpt">本日、取得できたセール・特価情報はありませんでした。</p>
@@ -1769,6 +1906,7 @@
       <a class="card-link" href="reports/2026-07-09-19-00-c025c641.html">
         <div class="card-top">
           <time datetime="2026-07-09">2026-07-09</time>
+          <span class="arrow" aria-hidden="true">→</span>
         </div>
         <h2>반도체 주가 브리핑</h2>
         <p class="excerpt">아시아 마감 · 미국·유럽 장중·마감 반영</p>
@@ -1782,6 +1920,7 @@
       <a class="card-link" href="reports/2026-07-09-mu-12-00-97cca4fe.html">
         <div class="card-top">
           <time datetime="2026-07-09">2026-07-09</time>
+          <span class="arrow" aria-hidden="true">→</span>
         </div>
         <h2>마이크론 (Micron Technology)</h2>
         <p class="excerpt">MU · NASDAQ · Yahoo Finance</p>
@@ -1795,6 +1934,7 @@
       <a class="card-link" href="reports/2026-07-09-12-00-d601ac8f.html">
         <div class="card-top">
           <time datetime="2026-07-09">2026-07-09</time>
+          <span class="arrow" aria-hidden="true">→</span>
         </div>
         <h2>ベビー用品セール＆ おでかけスポット</h2>
         <p class="excerpt">本日、取得できたセール・特価情報はありませんでした。</p>
@@ -1808,6 +1948,7 @@
       <a class="card-link" href="reports/2026-07-09-12-00-86994cb0.html">
         <div class="card-top">
           <time datetime="2026-07-09">2026-07-09</time>
+          <span class="arrow" aria-hidden="true">→</span>
         </div>
         <h2>반도체 주가 브리핑</h2>
         <p class="excerpt">한국·대만·일본 장중 · 미국 전일 종가</p>
@@ -1821,6 +1962,7 @@
       <a class="card-link" href="reports/2026-07-09-07-00-6a636954.html">
         <div class="card-top">
           <time datetime="2026-07-09">2026-07-09</time>
+          <span class="arrow" aria-hidden="true">→</span>
         </div>
         <h2>반도체 주가 브리핑</h2>
         <p class="excerpt">아시아 장 전 · 미국·유럽 전일 종가</p>
@@ -1834,6 +1976,7 @@
       <a class="card-link" href="reports/2026-07-08-19-00-c025c641.html">
         <div class="card-top">
           <time datetime="2026-07-08">2026-07-08</time>
+          <span class="arrow" aria-hidden="true">→</span>
         </div>
         <h2>반도체 주가 브리핑</h2>
         <p class="excerpt">아시아 마감 · 미국·유럽 장중·마감 반영</p>
@@ -1847,6 +1990,7 @@
       <a class="card-link" href="reports/2026-07-08-mu-12-00-97cca4fe.html">
         <div class="card-top">
           <time datetime="2026-07-08">2026-07-08</time>
+          <span class="arrow" aria-hidden="true">→</span>
         </div>
         <h2>마이크론 (Micron Technology)</h2>
         <p class="excerpt">MU · NASDAQ · Yahoo Finance</p>
@@ -1860,6 +2004,7 @@
       <a class="card-link" href="reports/2026-07-08-12-00-d601ac8f.html">
         <div class="card-top">
           <time datetime="2026-07-08">2026-07-08</time>
+          <span class="arrow" aria-hidden="true">→</span>
         </div>
         <h2>ベビー用品セール＆ おでかけスポット</h2>
         <p class="excerpt">本日、取得できたセール・特価情報はありませんでした。</p>
@@ -1873,6 +2018,7 @@
       <a class="card-link" href="reports/2026-07-08-12-00-86994cb0.html">
         <div class="card-top">
           <time datetime="2026-07-08">2026-07-08</time>
+          <span class="arrow" aria-hidden="true">→</span>
         </div>
         <h2>반도체 주가 브리핑</h2>
         <p class="excerpt">한국·대만·일본 장중 · 미국 전일 종가</p>
@@ -1886,6 +2032,7 @@
       <a class="card-link" href="reports/2026-07-08-07-00-6a636954.html">
         <div class="card-top">
           <time datetime="2026-07-08">2026-07-08</time>
+          <span class="arrow" aria-hidden="true">→</span>
         </div>
         <h2>반도체 주가 브리핑</h2>
         <p class="excerpt">아시아 장 전 · 미국·유럽 전일 종가</p>
@@ -1899,6 +2046,7 @@
       <a class="card-link" href="reports/2026-07-07-19-00-c025c641.html">
         <div class="card-top">
           <time datetime="2026-07-07">2026-07-07</time>
+          <span class="arrow" aria-hidden="true">→</span>
         </div>
         <h2>반도체 주가 브리핑</h2>
         <p class="excerpt">아시아 마감 · 미국·유럽 장중·마감 반영</p>
@@ -1912,6 +2060,7 @@
       <a class="card-link" href="reports/2026-07-07-mu-12-00-97cca4fe.html">
         <div class="card-top">
           <time datetime="2026-07-07">2026-07-07</time>
+          <span class="arrow" aria-hidden="true">→</span>
         </div>
         <h2>마이크론 (Micron Technology)</h2>
         <p class="excerpt">MU · NASDAQ · Yahoo Finance</p>
@@ -1925,6 +2074,7 @@
       <a class="card-link" href="reports/2026-07-07-12-00-d601ac8f.html">
         <div class="card-top">
           <time datetime="2026-07-07">2026-07-07</time>
+          <span class="arrow" aria-hidden="true">→</span>
         </div>
         <h2>ベビー用品セール＆ おでかけスポット</h2>
         <p class="excerpt">本日、取得できたセール・特価情報はありませんでした。</p>
@@ -1938,6 +2088,7 @@
       <a class="card-link" href="reports/2026-07-07-12-00-86994cb0.html">
         <div class="card-top">
           <time datetime="2026-07-07">2026-07-07</time>
+          <span class="arrow" aria-hidden="true">→</span>
         </div>
         <h2>반도체 주가 브리핑</h2>
         <p class="excerpt">한국·대만·일본 장중 · 미국 전일 종가</p>
@@ -1951,6 +2102,7 @@
       <a class="card-link" href="reports/2026-07-07-310200-2026-07-07-6fa58749.html">
         <div class="card-top">
           <time datetime="2026-07-07">2026-07-07</time>
+          <span class="arrow" aria-hidden="true">→</span>
         </div>
         <h2>애니플러스 주가 상승 분석</h2>
         <p class="excerpt">310200 · ANIPLUS INC. · 2026-07-07 장마감 기준</p>
@@ -1964,6 +2116,7 @@
       <a class="card-link" href="reports/2026-07-07-07-00-6a636954.html">
         <div class="card-top">
           <time datetime="2026-07-07">2026-07-07</time>
+          <span class="arrow" aria-hidden="true">→</span>
         </div>
         <h2>반도체 주가 브리핑</h2>
         <p class="excerpt">아시아 장 전 · 미국·유럽 전일 종가</p>
@@ -1977,6 +2130,7 @@
       <a class="card-link" href="reports/2026-07-06-2026-a3f9f092.html">
         <div class="card-top">
           <time datetime="2026-07-06">2026-07-06</time>
+          <span class="arrow" aria-hidden="true">→</span>
         </div>
         <h2>洗濯乾燥機おすすめリスト 2026</h2>
         <p class="excerpt">OpenClaw Research · 2026-07-06</p>
@@ -1990,6 +2144,7 @@
       <a class="card-link" href="reports/2026-07-06-19-00-c025c641.html">
         <div class="card-top">
           <time datetime="2026-07-06">2026-07-06</time>
+          <span class="arrow" aria-hidden="true">→</span>
         </div>
         <h2>반도체 주가 브리핑</h2>
         <p class="excerpt">아시아 마감 · 미국·유럽 장중·마감 반영</p>
@@ -2003,6 +2158,7 @@
       <a class="card-link" href="reports/2026-07-06-2026-07f05d80.html">
         <div class="card-top">
           <time datetime="2026-07-06">2026-07-06</time>
+          <span class="arrow" aria-hidden="true">→</span>
         </div>
         <h2>洗濯乾燥機おすすめリスト 2026</h2>
         <p class="excerpt">OpenClaw Research · 2026-07-06</p>
@@ -2016,6 +2172,7 @@
       <a class="card-link" href="reports/2026-07-06-mu-12-00-97cca4fe.html">
         <div class="card-top">
           <time datetime="2026-07-06">2026-07-06</time>
+          <span class="arrow" aria-hidden="true">→</span>
         </div>
         <h2>마이크론 (Micron Technology)</h2>
         <p class="excerpt">MU · NASDAQ · Yahoo Finance</p>
@@ -2029,6 +2186,7 @@
       <a class="card-link" href="reports/2026-07-06-12-00-d601ac8f.html">
         <div class="card-top">
           <time datetime="2026-07-06">2026-07-06</time>
+          <span class="arrow" aria-hidden="true">→</span>
         </div>
         <h2>ベビー用品セール＆ おでかけスポット</h2>
         <p class="excerpt">本日、取得できたセール・特価情報はありませんでした。</p>
@@ -2042,6 +2200,7 @@
       <a class="card-link" href="reports/2026-07-06-12-00-86994cb0.html">
         <div class="card-top">
           <time datetime="2026-07-06">2026-07-06</time>
+          <span class="arrow" aria-hidden="true">→</span>
         </div>
         <h2>반도체 주가 브리핑</h2>
         <p class="excerpt">한국·대만·일본 장중 · 미국 전일 종가</p>
@@ -2055,6 +2214,7 @@
       <a class="card-link" href="reports/2026-07-06-07-00-6a636954.html">
         <div class="card-top">
           <time datetime="2026-07-06">2026-07-06</time>
+          <span class="arrow" aria-hidden="true">→</span>
         </div>
         <h2>반도체 주가 브리핑</h2>
         <p class="excerpt">아시아 장 전 · 미국·유럽 전일 종가</p>
@@ -2068,6 +2228,7 @@
       <a class="card-link" href="reports/2026-07-05-2026-f611b939.html">
         <div class="card-top">
           <time datetime="2026-07-05">2026-07-05</time>
+          <span class="arrow" aria-hidden="true">→</span>
         </div>
         <h2>レディースシェーバーおすすめリスト 2026</h2>
         <p class="excerpt">OpenClaw Research · 2026-07-05</p>
@@ -2081,6 +2242,7 @@
       <a class="card-link" href="reports/2026-07-05-2026-96d77678.html">
         <div class="card-top">
           <time datetime="2026-07-05">2026-07-05</time>
+          <span class="arrow" aria-hidden="true">→</span>
         </div>
         <h2>電気シェーバーおすすめリスト 2026</h2>
         <p class="excerpt">OpenClaw Research · 2026-07-05</p>
@@ -2094,6 +2256,7 @@
       <a class="card-link" href="reports/2026-07-05-12-00-d601ac8f.html">
         <div class="card-top">
           <time datetime="2026-07-05">2026-07-05</time>
+          <span class="arrow" aria-hidden="true">→</span>
         </div>
         <h2>ベビー用品セール＆ おでかけスポット</h2>
         <p class="excerpt">本日、取得できたセール・特価情報はありませんでした。</p>
@@ -2107,6 +2270,7 @@
       <a class="card-link" href="reports/2026-07-05-2026-b27043f9.html">
         <div class="card-top">
           <time datetime="2026-07-05">2026-07-05</time>
+          <span class="arrow" aria-hidden="true">→</span>
         </div>
         <h2>赤ちゃんのミルク作り おすすめケトル・電気ポット</h2>
         <p class="excerpt">OpenClaw Research · 2026-07-05</p>
@@ -2120,6 +2284,7 @@
       <a class="card-link" href="reports/2026-07-05-1-10-2026-b2f5421e.html">
         <div class="card-top">
           <time datetime="2026-07-05">2026-07-05</time>
+          <span class="arrow" aria-hidden="true">→</span>
         </div>
         <h2>満1歳から預けられる施設（奥戸近く10選）</h2>
         <p class="excerpt">OpenClaw Research · 2026-07-05 · 葛飾区奥戸エリア</p>
@@ -2133,6 +2298,7 @@
       <a class="card-link" href="reports/2026-07-05-2026-fe5dfaef.html">
         <div class="card-top">
           <time datetime="2026-07-05">2026-07-05</time>
+          <span class="arrow" aria-hidden="true">→</span>
         </div>
         <h2>分割なしでスマホを安く買う方法（日本）</h2>
         <p class="excerpt">OpenClaw Research · 2026-07-05 · 日本向けガイド</p>
@@ -2146,6 +2312,7 @@
       <a class="card-link" href="reports/2026-07-05-07-00-6a636954.html">
         <div class="card-top">
           <time datetime="2026-07-05">2026-07-05</time>
+          <span class="arrow" aria-hidden="true">→</span>
         </div>
         <h2>반도체 주가 브리핑</h2>
         <p class="excerpt">아시아 장 전 · 미국·유럽 전일 종가</p>
@@ -2159,6 +2326,7 @@
       <a class="card-link" href="reports/2026-07-04-sndk-19-47-2e0c98e8.html">
         <div class="card-top">
           <time datetime="2026-07-04">2026-07-04</time>
+          <span class="arrow" aria-hidden="true">→</span>
         </div>
         <h2>샌디스크 (SanDisk)</h2>
         <p class="excerpt">SNDK · NASDAQ · Yahoo Finance</p>
@@ -2172,6 +2340,7 @@
       <a class="card-link" href="reports/2026-07-04-sndk-19-07-1962f874.html">
         <div class="card-top">
           <time datetime="2026-07-04">2026-07-04</time>
+          <span class="arrow" aria-hidden="true">→</span>
         </div>
         <h2>샌디스크 (SanDisk)</h2>
         <p class="excerpt">SNDK · NASDAQ · Yahoo Finance</p>
@@ -2185,6 +2354,7 @@
       <a class="card-link" href="reports/2026-07-04-19-00-c025c641.html">
         <div class="card-top">
           <time datetime="2026-07-04">2026-07-04</time>
+          <span class="arrow" aria-hidden="true">→</span>
         </div>
         <h2>반도체 주가 브리핑</h2>
         <p class="excerpt">아시아 마감 · 미국·유럽 장중·마감 반영</p>
@@ -2198,6 +2368,7 @@
       <a class="card-link" href="reports/2026-07-04-report-135214d2.html">
         <div class="card-top">
           <time datetime="2026-07-04">2026-07-04</time>
+          <span class="arrow" aria-hidden="true">→</span>
         </div>
         <h2>박력분 파전 레시피 베이킹파우더</h2>
         <p class="excerpt">OpenClaw Research · 2026-07-04</p>
@@ -2211,6 +2382,7 @@
       <a class="card-link" href="reports/2026-07-04-2026-a0ac63a1.html">
         <div class="card-top">
           <time datetime="2026-07-04">2026-07-04</time>
+          <span class="arrow" aria-hidden="true">→</span>
         </div>
         <h2>みん評 口コミサイト まとめ 2026</h2>
         <p class="excerpt">OpenClaw Research · 2026-07-04</p>
@@ -2224,6 +2396,7 @@
       <a class="card-link" href="reports/2026-07-04-2026-87321a73.html">
         <div class="card-top">
           <time datetime="2026-07-04">2026-07-04</time>
+          <span class="arrow" aria-hidden="true">→</span>
         </div>
         <h2>東京 ベビーベッド レンタル おすすめ 2026</h2>
         <p class="excerpt">OpenClaw Research · 2026-07-04</p>
@@ -2237,6 +2410,7 @@
       <a class="card-link" href="reports/2026-07-04-14-41-e78e66dc.html">
         <div class="card-top">
           <time datetime="2026-07-04">2026-07-04</time>
+          <span class="arrow" aria-hidden="true">→</span>
         </div>
         <h2>✈️ 東京発 格安航空券デイリー</h2>
         <p class="excerpt">羽田（HND）・成田（NRT）発 — セール/特価の比較（参考）</p>
@@ -2250,6 +2424,7 @@
       <a class="card-link" href="reports/2026-07-04-mu-14-22-d3b43856.html">
         <div class="card-top">
           <time datetime="2026-07-04">2026-07-04</time>
+          <span class="arrow" aria-hidden="true">→</span>
         </div>
         <h2>마이크론 (Micron Technology)</h2>
         <p class="excerpt">MU · NASDAQ · Yahoo Finance</p>
@@ -2263,6 +2438,7 @@
       <a class="card-link" href="reports/2026-07-04-mu-14-15-c07c9877.html">
         <div class="card-top">
           <time datetime="2026-07-04">2026-07-04</time>
+          <span class="arrow" aria-hidden="true">→</span>
         </div>
         <h2>마이크론 (Micron Technology)</h2>
         <p class="excerpt">MU · NASDAQ · Yahoo Finance</p>
@@ -2276,6 +2452,7 @@
       <a class="card-link" href="reports/2026-07-04-mu-14-12-5f3d36cc.html">
         <div class="card-top">
           <time datetime="2026-07-04">2026-07-04</time>
+          <span class="arrow" aria-hidden="true">→</span>
         </div>
         <h2>마이크론 (Micron Technology)</h2>
         <p class="excerpt">MU · NASDAQ · Yahoo Finance</p>
@@ -2289,6 +2466,7 @@
       <a class="card-link" href="reports/2026-07-04-report-86af4b63.html">
         <div class="card-top">
           <time datetime="2026-07-04">2026-07-04</time>
+          <span class="arrow" aria-hidden="true">→</span>
         </div>
         <h2>🥞 밀가루 파전 만드는 법</h2>
         <p class="excerpt">부침가루 없이 · 황금 반죽 비율 · 바삭하게 굽는 꿀팁</p>
@@ -2302,6 +2480,7 @@
       <a class="card-link" href="reports/2026-07-04-2026-38dccbea.html">
         <div class="card-top">
           <time datetime="2026-07-04">2026-07-04</time>
+          <span class="arrow" aria-hidden="true">→</span>
         </div>
         <h2>学資保険ガイド 2026</h2>
         <p class="excerpt">選び方 · 返戻率 · おすすめ5社 · 新NISA併用 · タイプ別比較</p>
@@ -2315,6 +2494,7 @@
       <a class="card-link" href="reports/2026-07-04-2026-7be9fa9e.html">
         <div class="card-top">
           <time datetime="2026-07-04">2026-07-04</time>
+          <span class="arrow" aria-hidden="true">→</span>
         </div>
         <h2>生命保険ガイド 2026</h2>
         <p class="excerpt">選び方 · 返戻率・予定利率 · 必要保障額 · おすすめ商品・会社比較</p>
@@ -2328,6 +2508,7 @@
       <a class="card-link" href="reports/2026-07-04-12-54-5d584270.html">
         <div class="card-top">
           <time datetime="2026-07-04">2026-07-04</time>
+          <span class="arrow" aria-hidden="true">→</span>
         </div>
         <h2>반도체 주가 브리핑</h2>
         <p class="excerpt">한국·대만·일본 장중 · 미국 전일 종가</p>
@@ -2341,6 +2522,7 @@
       <a class="card-link" href="reports/2026-07-04-12-50-b1fb6553.html">
         <div class="card-top">
           <time datetime="2026-07-04">2026-07-04</time>
+          <span class="arrow" aria-hidden="true">→</span>
         </div>
         <h2>반도체 주가 브리핑</h2>
         <p class="excerpt">한국 장중 / 미국 전일 종가 기준</p>
@@ -2354,6 +2536,7 @@
       <a class="card-link" href="reports/2026-07-04-12-48-5570b32e.html">
         <div class="card-top">
           <time datetime="2026-07-04">2026-07-04</time>
+          <span class="arrow" aria-hidden="true">→</span>
         </div>
         <h2>ベビー用品セール＆ おでかけスポット</h2>
         <p class="excerpt">時間を選ばずお買物。通販限定の商品やセール、フェアを実施！</p>
@@ -2367,6 +2550,7 @@
       <a class="card-link" href="reports/2026-07-04-12-38-81d4b1c8.html">
         <div class="card-top">
           <time datetime="2026-07-04">2026-07-04</time>
+          <span class="arrow" aria-hidden="true">→</span>
         </div>
         <h2>🍼 ベビー用品セール &amp; おでかけ</h2>
         <p class="excerpt">時間を選ばずお買物。通販限定の商品やセール、フェアを実施！</p>
@@ -2380,6 +2564,7 @@
       <a class="card-link" href="reports/2026-07-04-12-37-1517ea01.html">
         <div class="card-top">
           <time datetime="2026-07-04">2026-07-04</time>
+          <span class="arrow" aria-hidden="true">→</span>
         </div>
         <h2>반도체 주가 브리핑</h2>
         <p class="excerpt">한국 장중 / 미국 전일 종가 기준</p>
@@ -2393,6 +2578,7 @@
       <a class="card-link" href="reports/2026-07-04-12-30-2714dc08.html">
         <div class="card-top">
           <time datetime="2026-07-04">2026-07-04</time>
+          <span class="arrow" aria-hidden="true">→</span>
         </div>
         <h2>반도체 주가 브리핑</h2>
         <p class="excerpt">한국 장중 / 미국 전일 종가 기준</p>
@@ -2406,6 +2592,7 @@
       <a class="card-link" href="reports/2026-07-04-12-23-bfe99cb3.html">
         <div class="card-top">
           <time datetime="2026-07-04">2026-07-04</time>
+          <span class="arrow" aria-hidden="true">→</span>
         </div>
         <h2>반도체 주가 브리핑</h2>
         <p class="excerpt">한국 장중 / 미국 전일 종가 기준</p>
@@ -2419,6 +2606,7 @@
       <a class="card-link" href="reports/2026-07-04-2026-07-04-12-20-0900379a.html">
         <div class="card-top">
           <time datetime="2026-07-04">2026-07-04</time>
+          <span class="arrow" aria-hidden="true">→</span>
         </div>
         <h2>반도체 주가 브리핑 2026-07-04 12:20</h2>
         <p class="excerpt">OpenClaw · 2026-07-04 12:20 JST</p>
@@ -2432,6 +2620,7 @@
       <a class="card-link" href="reports/2026-07-04-report-0fb80cc6.html">
         <div class="card-top">
           <time datetime="2026-07-04">2026-07-04</time>
+          <span class="arrow" aria-hidden="true">→</span>
         </div>
         <h2>出産準備ガイド</h2>
         <p class="excerpt">ベビーカー · ベビーベッド · 内祝い · 韓国ハーフの手続き · 婚姻届 · 奥戸・小岩の病院</p>
@@ -2445,6 +2634,7 @@
       <a class="card-link" href="reports/2026-07-04-openclaw-research-b97805cc.html">
         <div class="card-top">
           <time datetime="2026-07-04">2026-07-04</time>
+          <span class="arrow" aria-hidden="true">→</span>
         </div>
         <h2>OpenClaw Research 시작</h2>
         <p class="excerpt">OpenClaw Research · 2026-07-04</p>
@@ -2457,7 +2647,7 @@
     <footer>OpenClaw · GitHub Pages</footer>
   </div>
 
-  <script id="reports-data" type="application/json">[{"date": "2026-08-04", "title": "반도체 주가 브리핑", "slug": "2026-08-04-19-00-c025c641", "url": "reports/2026-08-04-19-00-c025c641.html", "excerpt": "아시아 마감 · 미국·유럽 장중·마감 반영", "sort_ts": 1785837605}, {"date": "2026-08-04", "title": "마이크론 (Micron Technology)", "slug": "2026-08-04-mu-12-00-97cca4fe", "url": "reports/2026-08-04-mu-12-00-97cca4fe.html", "excerpt": "MU · NASDAQ · Yahoo Finance", "sort_ts": 1785812433}, {"date": "2026-08-04", "title": "ベビー用品セール＆ おでかけスポット", "slug": "2026-08-04-12-00-d601ac8f", "url": "reports/2026-08-04-12-00-d601ac8f.html", "excerpt": "本日、取得できたセール・特価情報はありませんでした。", "sort_ts": 1785812415}, {"date": "2026-08-04", "title": "반도체 주가 브리핑", "slug": "2026-08-04-12-00-86994cb0", "url": "reports/2026-08-04-12-00-86994cb0.html", "excerpt": "한국·대만·일본 장중 · 미국 전일 종가", "sort_ts": 1785812407}, {"date": "2026-08-04", "title": "펀드 브리핑", "slug": "2026-08-04-08-03-b5ba2c82", "url": "reports/2026-08-04-08-03-b5ba2c82.html", "excerpt": "野村世界業種別投資シリーズ(世界半導体株投資)", "sort_ts": 1785812405}, {"date": "2026-08-04", "title": "청구서 엑셀 자동화 진행 계획", "slug": "2026-08-04-report-bdc61787", "url": "reports/2026-08-04-report-bdc61787.html", "excerpt": "OpenClaw Research · 2026-08-04", "sort_ts": 1785805030}, {"date": "2026-08-04", "title": "반도체 주가 브리핑", "slug": "2026-08-04-07-00-6a636954", "url": "reports/2026-08-04-07-00-6a636954.html", "excerpt": "아시아 장 전 · 미국·유럽 전일 종가", "sort_ts": 1785794406}, {"date": "2026-08-03", "title": "반도체 주가 브리핑", "slug": "2026-08-03-19-00-c025c641", "url": "reports/2026-08-03-19-00-c025c641.html", "excerpt": "아시아 마감 · 미국·유럽 장중·마감 반영", "sort_ts": 1785751205}, {"date": "2026-08-03", "title": "마이크론 (Micron Technology)", "slug": "2026-08-03-mu-12-00-97cca4fe", "url": "reports/2026-08-03-mu-12-00-97cca4fe.html", "excerpt": "MU · NASDAQ · Yahoo Finance", "sort_ts": 1785726033}, {"date": "2026-08-03", "title": "ベビー用品セール＆ おでかけスポット", "slug": "2026-08-03-12-00-d601ac8f", "url": "reports/2026-08-03-12-00-d601ac8f.html", "excerpt": "本日、取得できたセール・特価情報はありませんでした。", "sort_ts": 1785726013}, {"date": "2026-08-03", "title": "반도체 주가 브리핑", "slug": "2026-08-03-12-00-86994cb0", "url": "reports/2026-08-03-12-00-86994cb0.html", "excerpt": "한국·대만·일본 장중 · 미국 전일 종가", "sort_ts": 1785726012}, {"date": "2026-08-03", "title": "펀드 브리핑", "slug": "2026-08-03-07-31-b21adf43", "url": "reports/2026-08-03-07-31-b21adf43.html", "excerpt": "野村世界業種別投資シリーズ(世界半導体株投資)", "sort_ts": 1785726004}, {"date": "2026-08-03", "title": "반도체 주가 브리핑", "slug": "2026-08-03-07-00-6a636954", "url": "reports/2026-08-03-07-00-6a636954.html", "excerpt": "아시아 장 전 · 미국·유럽 전일 종가", "sort_ts": 1785708005}, {"date": "2026-08-02", "title": "ベビー用品セール＆ おでかけスポット", "slug": "2026-08-02-12-00-d601ac8f", "url": "reports/2026-08-02-12-00-d601ac8f.html", "excerpt": "本日、取得できたセール・特価情報はありませんでした。", "sort_ts": 1785639614}, {"date": "2026-08-01", "title": "ベビー用品セール＆ おでかけスポット", "slug": "2026-08-01-12-00-d601ac8f", "url": "reports/2026-08-01-12-00-d601ac8f.html", "excerpt": "本日、取得できたセール・特価情報はありませんでした。", "sort_ts": 1785553215}, {"date": "2026-07-31", "title": "반도체 주가 브리핑", "slug": "2026-07-31-19-00-c025c641", "url": "reports/2026-07-31-19-00-c025c641.html", "excerpt": "아시아 마감 · 미국·유럽 장중·마감 반영", "sort_ts": 1785492006}, {"date": "2026-07-31", "title": "마이크론 (Micron Technology)", "slug": "2026-07-31-mu-12-00-97cca4fe", "url": "reports/2026-07-31-mu-12-00-97cca4fe.html", "excerpt": "MU · NASDAQ · Yahoo Finance", "sort_ts": 1785466834}, {"date": "2026-07-31", "title": "ベビー用品セール＆ おでかけスポット", "slug": "2026-07-31-12-00-d601ac8f", "url": "reports/2026-07-31-12-00-d601ac8f.html", "excerpt": "本日、取得できたセール・特価情報はありませんでした。", "sort_ts": 1785466813}, {"date": "2026-07-31", "title": "반도체 주가 브리핑", "slug": "2026-07-31-12-00-86994cb0", "url": "reports/2026-07-31-12-00-86994cb0.html", "excerpt": "한국·대만·일본 장중 · 미국 전일 종가", "sort_ts": 1785466805}, {"date": "2026-07-31", "title": "펀드 브리핑", "slug": "2026-07-31-07-30-d2fa6c8b", "url": "reports/2026-07-31-07-30-d2fa6c8b.html", "excerpt": "野村世界業種別投資シリーズ(世界半導体株投資)", "sort_ts": 1785466803}, {"date": "2026-07-31", "title": "반도체 주가 브리핑", "slug": "2026-07-31-07-00-6a636954", "url": "reports/2026-07-31-07-00-6a636954.html", "excerpt": "아시아 장 전 · 미국·유럽 전일 종가", "sort_ts": 1785448805}, {"date": "2026-07-30", "title": "반도체 주가 브리핑", "slug": "2026-07-30-19-00-c025c641", "url": "reports/2026-07-30-19-00-c025c641.html", "excerpt": "아시아 마감 · 미국·유럽 장중·마감 반영", "sort_ts": 1785405604}, {"date": "2026-07-30", "title": "마이크론 (Micron Technology)", "slug": "2026-07-30-mu-12-00-97cca4fe", "url": "reports/2026-07-30-mu-12-00-97cca4fe.html", "excerpt": "MU · NASDAQ · Yahoo Finance", "sort_ts": 1785380435}, {"date": "2026-07-30", "title": "ベビー用品セール＆ おでかけスポット", "slug": "2026-07-30-12-00-d601ac8f", "url": "reports/2026-07-30-12-00-d601ac8f.html", "excerpt": "本日、取得できたセール・特価情報はありませんでした。", "sort_ts": 1785380414}, {"date": "2026-07-30", "title": "펀드 브리핑", "slug": "2026-07-30-07-29-742aa5ff", "url": "reports/2026-07-30-07-29-742aa5ff.html", "excerpt": "野村世界業種別投資シリーズ(世界半導体株投資)", "sort_ts": 1785380406}, {"date": "2026-07-30", "title": "반도체 주가 브리핑", "slug": "2026-07-30-12-00-86994cb0", "url": "reports/2026-07-30-12-00-86994cb0.html", "excerpt": "한국·대만·일본 장중 · 미국 전일 종가", "sort_ts": 1785380405}, {"date": "2026-07-30", "title": "반도체 주가 브리핑", "slug": "2026-07-30-07-00-6a636954", "url": "reports/2026-07-30-07-00-6a636954.html", "excerpt": "아시아 장 전 · 미국·유럽 전일 종가", "sort_ts": 1785362405}, {"date": "2026-07-29", "title": "반도체 주가 브리핑", "slug": "2026-07-29-19-00-c025c641", "url": "reports/2026-07-29-19-00-c025c641.html", "excerpt": "아시아 마감 · 미국·유럽 장중·마감 반영", "sort_ts": 1785319205}, {"date": "2026-07-29", "title": "마이크론 (Micron Technology)", "slug": "2026-07-29-mu-12-00-97cca4fe", "url": "reports/2026-07-29-mu-12-00-97cca4fe.html", "excerpt": "MU · NASDAQ · Yahoo Finance", "sort_ts": 1785294036}, {"date": "2026-07-29", "title": "ベビー用品セール＆ おでかけスポット", "slug": "2026-07-29-12-00-d601ac8f", "url": "reports/2026-07-29-12-00-d601ac8f.html", "excerpt": "本日、取得できたセール・特価情報はありませんでした。", "sort_ts": 1785294015}, {"date": "2026-07-29", "title": "펀드 브리핑", "slug": "2026-07-29-07-28-5f166a39", "url": "reports/2026-07-29-07-28-5f166a39.html", "excerpt": "野村世界業種別投資シリーズ(世界半導体株投資)", "sort_ts": 1785294006}, {"date": "2026-07-29", "title": "반도체 주가 브리핑", "slug": "2026-07-29-12-00-86994cb0", "url": "reports/2026-07-29-12-00-86994cb0.html", "excerpt": "한국·대만·일본 장중 · 미국 전일 종가", "sort_ts": 1785294005}, {"date": "2026-07-29", "title": "반도체 주가 브리핑", "slug": "2026-07-29-07-00-6a636954", "url": "reports/2026-07-29-07-00-6a636954.html", "excerpt": "아시아 장 전 · 미국·유럽 전일 종가", "sort_ts": 1785276004}, {"date": "2026-07-28", "title": "반도체 주가 브리핑", "slug": "2026-07-28-19-00-c025c641", "url": "reports/2026-07-28-19-00-c025c641.html", "excerpt": "아시아 마감 · 미국·유럽 장중·마감 반영", "sort_ts": 1785232805}, {"date": "2026-07-28", "title": "마이크론 (Micron Technology)", "slug": "2026-07-28-mu-12-00-97cca4fe", "url": "reports/2026-07-28-mu-12-00-97cca4fe.html", "excerpt": "MU · NASDAQ · Yahoo Finance", "sort_ts": 1785207658}, {"date": "2026-07-28", "title": "ベビー用品セール＆ おでかけスポット", "slug": "2026-07-28-12-00-d601ac8f", "url": "reports/2026-07-28-12-00-d601ac8f.html", "excerpt": "本日、取得できたセール・特価情報はありませんでした。", "sort_ts": 1785207613}, {"date": "2026-07-28", "title": "반도체 주가 브리핑", "slug": "2026-07-28-12-00-86994cb0", "url": "reports/2026-07-28-12-00-86994cb0.html", "excerpt": "한국·대만·일본 장중 · 미국 전일 종가", "sort_ts": 1785207605}, {"date": "2026-07-28", "title": "펀드 브리핑", "slug": "2026-07-28-07-27-bd5afd10", "url": "reports/2026-07-28-07-27-bd5afd10.html", "excerpt": "野村世界業種別投資シリーズ(世界半導体株投資)", "sort_ts": 1785207604}, {"date": "2026-07-28", "title": "반도체 주가 브리핑", "slug": "2026-07-28-07-00-6a636954", "url": "reports/2026-07-28-07-00-6a636954.html", "excerpt": "아시아 장 전 · 미국·유럽 전일 종가", "sort_ts": 1785189606}, {"date": "2026-07-27", "title": "반도체 주가 브리핑", "slug": "2026-07-27-19-00-c025c641", "url": "reports/2026-07-27-19-00-c025c641.html", "excerpt": "아시아 마감 · 미국·유럽 장중·마감 반영", "sort_ts": 1785146406}, {"date": "2026-07-27", "title": "마이크론 (Micron Technology)", "slug": "2026-07-27-mu-12-00-97cca4fe", "url": "reports/2026-07-27-mu-12-00-97cca4fe.html", "excerpt": "MU · NASDAQ · Yahoo Finance", "sort_ts": 1785121231}, {"date": "2026-07-27", "title": "ベビー用品セール＆ おでかけスポット", "slug": "2026-07-27-12-00-d601ac8f", "url": "reports/2026-07-27-12-00-d601ac8f.html", "excerpt": "本日、取得できたセール・特価情報はありませんでした。", "sort_ts": 1785121211}, {"date": "2026-07-27", "title": "반도체 주가 브리핑", "slug": "2026-07-27-12-00-86994cb0", "url": "reports/2026-07-27-12-00-86994cb0.html", "excerpt": "한국·대만·일본 장중 · 미국 전일 종가", "sort_ts": 1785121205}, {"date": "2026-07-27", "title": "펀드 브리핑", "slug": "2026-07-27-07-24-344dc048", "url": "reports/2026-07-27-07-24-344dc048.html", "excerpt": "野村世界業種別投資シリーズ(世界半導体株投資)", "sort_ts": 1785121203}, {"date": "2026-07-27", "title": "반도체 주가 브리핑", "slug": "2026-07-27-07-00-6a636954", "url": "reports/2026-07-27-07-00-6a636954.html", "excerpt": "아시아 장 전 · 미국·유럽 전일 종가", "sort_ts": 1785103205}, {"date": "2026-07-26", "title": "ベビー用品セール＆ おでかけスポット", "slug": "2026-07-26-12-02-95d158b0", "url": "reports/2026-07-26-12-02-95d158b0.html", "excerpt": "本日、取得できたセール・特価情報はありませんでした。", "sort_ts": 1785034948}, {"date": "2026-07-25", "title": "ベビー用品セール＆ おでかけスポット", "slug": "2026-07-25-12-05-f0da595b", "url": "reports/2026-07-25-12-05-f0da595b.html", "excerpt": "本日、取得できたセール・特価情報はありませんでした。", "sort_ts": 1784948733}, {"date": "2026-07-24", "title": "마이크론 (Micron Technology)", "slug": "2026-07-24-mu-12-03-7109b052", "url": "reports/2026-07-24-mu-12-03-7109b052.html", "excerpt": "MU · NASDAQ · Yahoo Finance", "sort_ts": 1784862233}, {"date": "2026-07-24", "title": "ベビー用品セール＆ おでかけスポット", "slug": "2026-07-24-12-03-73a38c8f", "url": "reports/2026-07-24-12-03-73a38c8f.html", "excerpt": "本日、取得できたセール・特価情報はありませんでした。", "sort_ts": 1784862200}, {"date": "2026-07-24", "title": "펀드 브리핑", "slug": "2026-07-24-07-23-f29f65a1", "url": "reports/2026-07-24-07-23-f29f65a1.html", "excerpt": "野村世界業種別投資シリーズ(世界半導体株投資)", "sort_ts": 1784862192}, {"date": "2026-07-23", "title": "반도체 주가 브리핑", "slug": "2026-07-23-19-00-c025c641", "url": "reports/2026-07-23-19-00-c025c641.html", "excerpt": "아시아 마감 · 미국·유럽 장중·마감 반영", "sort_ts": 1784800807}, {"date": "2026-07-23", "title": "마이크론 (Micron Technology)", "slug": "2026-07-23-mu-12-00-97cca4fe", "url": "reports/2026-07-23-mu-12-00-97cca4fe.html", "excerpt": "MU · NASDAQ · Yahoo Finance", "sort_ts": 1784775632}, {"date": "2026-07-23", "title": "ベビー用品セール＆ おでかけスポット", "slug": "2026-07-23-12-00-d601ac8f", "url": "reports/2026-07-23-12-00-d601ac8f.html", "excerpt": "本日、取得できたセール・特価情報はありませんでした。", "sort_ts": 1784775612}, {"date": "2026-07-23", "title": "펀드 브리핑", "slug": "2026-07-23-07-22-cb39dcbf", "url": "reports/2026-07-23-07-22-cb39dcbf.html", "excerpt": "野村世界業種別投資シリーズ(世界半導体株投資)", "sort_ts": 1784775605}, {"date": "2026-07-23", "title": "반도체 주가 브리핑", "slug": "2026-07-23-12-00-86994cb0", "url": "reports/2026-07-23-12-00-86994cb0.html", "excerpt": "한국·대만·일본 장중 · 미국 전일 종가", "sort_ts": 1784775605}, {"date": "2026-07-23", "title": "반도체 주가 브리핑", "slug": "2026-07-23-07-00-6a636954", "url": "reports/2026-07-23-07-00-6a636954.html", "excerpt": "아시아 장 전 · 미국·유럽 전일 종가", "sort_ts": 1784757606}, {"date": "2026-07-22", "title": "반도체 주가 브리핑", "slug": "2026-07-22-19-00-c025c641", "url": "reports/2026-07-22-19-00-c025c641.html", "excerpt": "아시아 마감 · 미국·유럽 장중·마감 반영", "sort_ts": 1784714405}, {"date": "2026-07-22", "title": "마이크론 (Micron Technology)", "slug": "2026-07-22-mu-12-06-d256b7f8", "url": "reports/2026-07-22-mu-12-06-d256b7f8.html", "excerpt": "MU · NASDAQ · Yahoo Finance", "sort_ts": 1784689635}, {"date": "2026-07-22", "title": "ベビー用品セール＆ おでかけスポット", "slug": "2026-07-22-12-06-dd0d232c", "url": "reports/2026-07-22-12-06-dd0d232c.html", "excerpt": "本日、取得できたセール・特価情報はありませんでした。", "sort_ts": 1784689611}, {"date": "2026-07-22", "title": "펀드 브리핑", "slug": "2026-07-22-07-21-86d7572b", "url": "reports/2026-07-22-07-21-86d7572b.html", "excerpt": "野村世界業種別投資シリーズ(世界半導体株投資)", "sort_ts": 1784689603}, {"date": "2026-07-22", "title": "반도체 주가 브리핑", "slug": "2026-07-22-07-02-378ed67d", "url": "reports/2026-07-22-07-02-378ed67d.html", "excerpt": "아시아 장 전 · 미국·유럽 전일 종가", "sort_ts": 1784671369}, {"date": "2026-07-21", "title": "반도체 주가 브리핑", "slug": "2026-07-21-19-00-c025c641", "url": "reports/2026-07-21-19-00-c025c641.html", "excerpt": "아시아 마감 · 미국·유럽 장중·마감 반영", "sort_ts": 1784628005}, {"date": "2026-07-21", "title": "반도체 주가 브리핑", "slug": "2026-07-21-15-19-fe603ec3", "url": "reports/2026-07-21-15-19-fe603ec3.html", "excerpt": "아시아 마감 · 미국·유럽 장중·마감 반영", "sort_ts": 1784614755}, {"date": "2026-07-21", "title": "마이크론 (Micron Technology)", "slug": "2026-07-21-mu-15-18-18a928e9", "url": "reports/2026-07-21-mu-15-18-18a928e9.html", "excerpt": "MU · NASDAQ · Yahoo Finance", "sort_ts": 1784614727}, {"date": "2026-07-21", "title": "펀드 브리핑", "slug": "2026-07-21-07-17-3ecc892b", "url": "reports/2026-07-21-07-17-3ecc892b.html", "excerpt": "野村世界業種別投資シリーズ(世界半導体株投資)", "sort_ts": 1784614664}, {"date": "2026-07-21", "title": "마이크론 (Micron Technology)", "slug": "2026-07-21-mu-15-15-a928b9cb", "url": "reports/2026-07-21-mu-15-15-a928b9cb.html", "excerpt": "MU · NASDAQ · Yahoo Finance", "sort_ts": 1784614546}, {"date": "2026-07-21", "title": "ベビー用品セール＆ おでかけスポット", "slug": "2026-07-21-15-14-7472a913", "url": "reports/2026-07-21-15-14-7472a913.html", "excerpt": "本日、取得できたセール・特価情報はありませんでした。", "sort_ts": 1784614491}, {"date": "2026-07-21", "title": "ベビー用品セール＆ おでかけスポット", "slug": "2026-07-21-12-00-d601ac8f", "url": "reports/2026-07-21-12-00-d601ac8f.html", "excerpt": "本日、取得できたセール・特価情報はありませんでした。", "sort_ts": 1784602854}, {"date": "2026-07-21", "title": "반도체 주가 브리핑", "slug": "2026-07-21-07-00-6a636954", "url": "reports/2026-07-21-07-00-6a636954.html", "excerpt": "아시아 장 전 · 미국·유럽 전일 종가", "sort_ts": 1784584805}, {"date": "2026-07-20", "title": "반도체 주가 브리핑", "slug": "2026-07-20-19-00-c025c641", "url": "reports/2026-07-20-19-00-c025c641.html", "excerpt": "아시아 마감 · 미국·유럽 장중·마감 반영", "sort_ts": 1784541605}, {"date": "2026-07-20", "title": "마이크론 (Micron Technology)", "slug": "2026-07-20-mu-12-00-97cca4fe", "url": "reports/2026-07-20-mu-12-00-97cca4fe.html", "excerpt": "MU · NASDAQ · Yahoo Finance", "sort_ts": 1784516466}, {"date": "2026-07-20", "title": "ベビー用品セール＆ おでかけスポット", "slug": "2026-07-20-12-00-d601ac8f", "url": "reports/2026-07-20-12-00-d601ac8f.html", "excerpt": "本日、取得できたセール・特価情報はありませんでした。", "sort_ts": 1784516413}, {"date": "2026-07-20", "title": "반도체 주가 브리핑", "slug": "2026-07-20-12-00-86994cb0", "url": "reports/2026-07-20-12-00-86994cb0.html", "excerpt": "한국·대만·일본 장중 · 미국 전일 종가", "sort_ts": 1784516405}, {"date": "2026-07-20", "title": "펀드 브리핑", "slug": "2026-07-20-07-17-3ecc892b", "url": "reports/2026-07-20-07-17-3ecc892b.html", "excerpt": "野村世界業種別投資シリーズ(世界半導体株投資)", "sort_ts": 1784516404}, {"date": "2026-07-20", "title": "반도체 주가 브리핑", "slug": "2026-07-20-07-00-6a636954", "url": "reports/2026-07-20-07-00-6a636954.html", "excerpt": "아시아 장 전 · 미국·유럽 전일 종가", "sort_ts": 1784498405}, {"date": "2026-07-19", "title": "ベビー用品セール＆ おでかけスポット", "slug": "2026-07-19-12-00-d601ac8f", "url": "reports/2026-07-19-12-00-d601ac8f.html", "excerpt": "本日、取得できたセール・特価情報はありませんでした。", "sort_ts": 1784430027}, {"date": "2026-07-18", "title": "ベビー用品セール＆ おでかけスポット", "slug": "2026-07-18-12-00-d601ac8f", "url": "reports/2026-07-18-12-00-d601ac8f.html", "excerpt": "本日、取得できたセール・特価情報はありませんでした。", "sort_ts": 1784343613}, {"date": "2026-07-18", "title": "펀드 브리핑", "slug": "2026-07-18-07-17-3ecc892b", "url": "reports/2026-07-18-07-17-3ecc892b.html", "excerpt": "野村世界業種別投資シリーズ(世界半導体株投資)", "sort_ts": 1784335103}, {"date": "2026-07-17", "title": "반도체 주가 브리핑", "slug": "2026-07-17-19-00-c025c641", "url": "reports/2026-07-17-19-00-c025c641.html", "excerpt": "아시아 마감 · 미국·유럽 장중·마감 반영", "sort_ts": 1784282405}, {"date": "2026-07-17", "title": "마이크론 (Micron Technology)", "slug": "2026-07-17-mu-12-00-97cca4fe", "url": "reports/2026-07-17-mu-12-00-97cca4fe.html", "excerpt": "MU · NASDAQ · Yahoo Finance", "sort_ts": 1784257229}, {"date": "2026-07-17", "title": "ベビー用品セール＆ おでかけスポット", "slug": "2026-07-17-12-00-d601ac8f", "url": "reports/2026-07-17-12-00-d601ac8f.html", "excerpt": "本日、取得できたセール・特価情報はありませんでした。", "sort_ts": 1784257215}, {"date": "2026-07-17", "title": "펀드 브리핑", "slug": "2026-07-17-07-16-7aa40540", "url": "reports/2026-07-17-07-16-7aa40540.html", "excerpt": "野村世界業種別投資シリーズ(世界半導体株投資)", "sort_ts": 1784257205}, {"date": "2026-07-17", "title": "반도체 주가 브리핑", "slug": "2026-07-17-12-00-86994cb0", "url": "reports/2026-07-17-12-00-86994cb0.html", "excerpt": "한국·대만·일본 장중 · 미국 전일 종가", "sort_ts": 1784257204}, {"date": "2026-07-17", "title": "반도체 주가 브리핑", "slug": "2026-07-17-07-00-6a636954", "url": "reports/2026-07-17-07-00-6a636954.html", "excerpt": "아시아 장 전 · 미국·유럽 전일 종가", "sort_ts": 1784239205}, {"date": "2026-07-16", "title": "반도체 주가 브리핑", "slug": "2026-07-16-19-00-c025c641", "url": "reports/2026-07-16-19-00-c025c641.html", "excerpt": "아시아 마감 · 미국·유럽 장중·마감 반영", "sort_ts": 1784196011}, {"date": "2026-07-16", "title": "마이크론 (Micron Technology)", "slug": "2026-07-16-mu-12-00-97cca4fe", "url": "reports/2026-07-16-mu-12-00-97cca4fe.html", "excerpt": "MU · NASDAQ · Yahoo Finance", "sort_ts": 1784170834}, {"date": "2026-07-16", "title": "ベビー用品セール＆ おでかけスポット", "slug": "2026-07-16-12-00-d601ac8f", "url": "reports/2026-07-16-12-00-d601ac8f.html", "excerpt": "本日、取得できたセール・特価情報はありませんでした。", "sort_ts": 1784170813}, {"date": "2026-07-16", "title": "반도체 주가 브리핑", "slug": "2026-07-16-12-00-86994cb0", "url": "reports/2026-07-16-12-00-86994cb0.html", "excerpt": "한국·대만·일본 장중 · 미국 전일 종가", "sort_ts": 1784170805}, {"date": "2026-07-16", "title": "펀드 브리핑", "slug": "2026-07-16-07-15-62d164d1", "url": "reports/2026-07-16-07-15-62d164d1.html", "excerpt": "野村世界業種別投資シリーズ(世界半導体株投資)", "sort_ts": 1784170805}, {"date": "2026-07-16", "title": "반도체 주가 브리핑", "slug": "2026-07-16-07-00-6a636954", "url": "reports/2026-07-16-07-00-6a636954.html", "excerpt": "아시아 장 전 · 미국·유럽 전일 종가", "sort_ts": 1784152805}, {"date": "2026-07-15", "title": "반도체 주가 브리핑", "slug": "2026-07-15-19-00-c025c641", "url": "reports/2026-07-15-19-00-c025c641.html", "excerpt": "아시아 마감 · 미국·유럽 장중·마감 반영", "sort_ts": 1784109606}, {"date": "2026-07-15", "title": "펀드 브리핑", "slug": "2026-07-15-07-14-421e1cdb", "url": "reports/2026-07-15-07-14-421e1cdb.html", "excerpt": "野村世界業種別投資シリーズ(世界半導体株投資)", "sort_ts": 1784085012}, {"date": "2026-07-15", "title": "마이크론 (Micron Technology)", "slug": "2026-07-15-mu-12-00-97cca4fe", "url": "reports/2026-07-15-mu-12-00-97cca4fe.html", "excerpt": "MU · NASDAQ · Yahoo Finance", "sort_ts": 1784084432}, {"date": "2026-07-15", "title": "ベビー用品セール＆ おでかけスポット", "slug": "2026-07-15-12-00-d601ac8f", "url": "reports/2026-07-15-12-00-d601ac8f.html", "excerpt": "本日、取得できたセール・特価情報はありませんでした。", "sort_ts": 1784084412}, {"date": "2026-07-15", "title": "반도체 주가 브리핑", "slug": "2026-07-15-12-00-86994cb0", "url": "reports/2026-07-15-12-00-86994cb0.html", "excerpt": "한국·대만·일본 장중 · 미국 전일 종가", "sort_ts": 1784084407}, {"date": "2026-07-15", "title": "노무라 세계반도체 펀드", "slug": "2026-07-15-07-14-d2d17846", "url": "reports/2026-07-15-07-14-d2d17846.html", "excerpt": "野村世界業種別投資シリーズ(世界半導体株投資)", "sort_ts": 1784084404}, {"date": "2026-07-15", "title": "반도체 주가 브리핑", "slug": "2026-07-15-07-00-6a636954", "url": "reports/2026-07-15-07-00-6a636954.html", "excerpt": "아시아 장 전 · 미국·유럽 전일 종가", "sort_ts": 1784066404}, {"date": "2026-07-14", "title": "반도체 주가 브리핑", "slug": "2026-07-14-19-00-c025c641", "url": "reports/2026-07-14-19-00-c025c641.html", "excerpt": "아시아 마감 · 미국·유럽 장중·마감 반영", "sort_ts": 1784023205}, {"date": "2026-07-14", "title": "마이크론 (Micron Technology)", "slug": "2026-07-14-mu-12-00-97cca4fe", "url": "reports/2026-07-14-mu-12-00-97cca4fe.html", "excerpt": "MU · NASDAQ · Yahoo Finance", "sort_ts": 1783998034}, {"date": "2026-07-14", "title": "ベビー用品セール＆ おでかけスポット", "slug": "2026-07-14-12-00-d601ac8f", "url": "reports/2026-07-14-12-00-d601ac8f.html", "excerpt": "本日、取得できたセール・特価情報はありませんでした。", "sort_ts": 1783998012}, {"date": "2026-07-14", "title": "반도체 주가 브리핑", "slug": "2026-07-14-12-00-86994cb0", "url": "reports/2026-07-14-12-00-86994cb0.html", "excerpt": "한국·대만·일본 장중 · 미국 전일 종가", "sort_ts": 1783998007}, {"date": "2026-07-14", "title": "반도체 주가 브리핑", "slug": "2026-07-14-07-00-6a636954", "url": "reports/2026-07-14-07-00-6a636954.html", "excerpt": "아시아 장 전 · 미국·유럽 전일 종가", "sort_ts": 1783980004}, {"date": "2026-07-13", "title": "반도체 주가 브리핑", "slug": "2026-07-13-19-00-c025c641", "url": "reports/2026-07-13-19-00-c025c641.html", "excerpt": "아시아 마감 · 미국·유럽 장중·마감 반영", "sort_ts": 1783936805}, {"date": "2026-07-13", "title": "마이크론 (Micron Technology)", "slug": "2026-07-13-mu-12-00-97cca4fe", "url": "reports/2026-07-13-mu-12-00-97cca4fe.html", "excerpt": "MU · NASDAQ · Yahoo Finance", "sort_ts": 1783911626}, {"date": "2026-07-13", "title": "ベビー用品セール＆ おでかけスポット", "slug": "2026-07-13-12-00-d601ac8f", "url": "reports/2026-07-13-12-00-d601ac8f.html", "excerpt": "本日、取得できたセール・特価情報はありませんでした。", "sort_ts": 1783911614}, {"date": "2026-07-13", "title": "반도체 주가 브리핑", "slug": "2026-07-13-12-00-86994cb0", "url": "reports/2026-07-13-12-00-86994cb0.html", "excerpt": "한국·대만·일본 장중 · 미국 전일 종가", "sort_ts": 1783911605}, {"date": "2026-07-13", "title": "반도체 주가 브리핑", "slug": "2026-07-13-07-00-6a636954", "url": "reports/2026-07-13-07-00-6a636954.html", "excerpt": "아시아 장 전 · 미국·유럽 전일 종가", "sort_ts": 1783893605}, {"date": "2026-07-12", "title": "ベビー用品セール＆ おでかけスポット", "slug": "2026-07-12-12-00-d601ac8f", "url": "reports/2026-07-12-12-00-d601ac8f.html", "excerpt": "本日、取得できたセール・特価情報はありませんでした。", "sort_ts": 1783825214}, {"date": "2026-07-11", "title": "ベビー用品セール＆ おでかけスポット", "slug": "2026-07-11-12-12-59517a29", "url": "reports/2026-07-11-12-12-59517a29.html", "excerpt": "本日、取得できたセール・特価情報はありませんでした。", "sort_ts": 1783739569}, {"date": "2026-07-10", "title": "마이크론 (Micron Technology)", "slug": "2026-07-10-mu-12-03-7109b052", "url": "reports/2026-07-10-mu-12-03-7109b052.html", "excerpt": "MU · NASDAQ · Yahoo Finance", "sort_ts": 1783652651}, {"date": "2026-07-10", "title": "ベビー用品セール＆ おでかけスポット", "slug": "2026-07-10-12-03-73a38c8f", "url": "reports/2026-07-10-12-03-73a38c8f.html", "excerpt": "本日、取得できたセール・特価情報はありませんでした。", "sort_ts": 1783652621}, {"date": "2026-07-09", "title": "반도체 주가 브리핑", "slug": "2026-07-09-19-00-c025c641", "url": "reports/2026-07-09-19-00-c025c641.html", "excerpt": "아시아 마감 · 미국·유럽 장중·마감 반영", "sort_ts": 1783591208}, {"date": "2026-07-09", "title": "마이크론 (Micron Technology)", "slug": "2026-07-09-mu-12-00-97cca4fe", "url": "reports/2026-07-09-mu-12-00-97cca4fe.html", "excerpt": "MU · NASDAQ · Yahoo Finance", "sort_ts": 1783566037}, {"date": "2026-07-09", "title": "ベビー用品セール＆ おでかけスポット", "slug": "2026-07-09-12-00-d601ac8f", "url": "reports/2026-07-09-12-00-d601ac8f.html", "excerpt": "本日、取得できたセール・特価情報はありませんでした。", "sort_ts": 1783566015}, {"date": "2026-07-09", "title": "반도체 주가 브리핑", "slug": "2026-07-09-12-00-86994cb0", "url": "reports/2026-07-09-12-00-86994cb0.html", "excerpt": "한국·대만·일본 장중 · 미국 전일 종가", "sort_ts": 1783566005}, {"date": "2026-07-09", "title": "반도체 주가 브리핑", "slug": "2026-07-09-07-00-6a636954", "url": "reports/2026-07-09-07-00-6a636954.html", "excerpt": "아시아 장 전 · 미국·유럽 전일 종가", "sort_ts": 1783548004}, {"date": "2026-07-08", "title": "반도체 주가 브리핑", "slug": "2026-07-08-19-00-c025c641", "url": "reports/2026-07-08-19-00-c025c641.html", "excerpt": "아시아 마감 · 미국·유럽 장중·마감 반영", "sort_ts": 1783504808}, {"date": "2026-07-08", "title": "마이크론 (Micron Technology)", "slug": "2026-07-08-mu-12-00-97cca4fe", "url": "reports/2026-07-08-mu-12-00-97cca4fe.html", "excerpt": "MU · NASDAQ · Yahoo Finance", "sort_ts": 1783479646}, {"date": "2026-07-08", "title": "ベビー用品セール＆ おでかけスポット", "slug": "2026-07-08-12-00-d601ac8f", "url": "reports/2026-07-08-12-00-d601ac8f.html", "excerpt": "本日、取得できたセール・特価情報はありませんでした。", "sort_ts": 1783479613}, {"date": "2026-07-08", "title": "반도체 주가 브리핑", "slug": "2026-07-08-12-00-86994cb0", "url": "reports/2026-07-08-12-00-86994cb0.html", "excerpt": "한국·대만·일본 장중 · 미국 전일 종가", "sort_ts": 1783479605}, {"date": "2026-07-08", "title": "반도체 주가 브리핑", "slug": "2026-07-08-07-00-6a636954", "url": "reports/2026-07-08-07-00-6a636954.html", "excerpt": "아시아 장 전 · 미국·유럽 전일 종가", "sort_ts": 1783461605}, {"date": "2026-07-07", "title": "반도체 주가 브리핑", "slug": "2026-07-07-19-00-c025c641", "url": "reports/2026-07-07-19-00-c025c641.html", "excerpt": "아시아 마감 · 미국·유럽 장중·마감 반영", "sort_ts": 1783418406}, {"date": "2026-07-07", "title": "마이크론 (Micron Technology)", "slug": "2026-07-07-mu-12-00-97cca4fe", "url": "reports/2026-07-07-mu-12-00-97cca4fe.html", "excerpt": "MU · NASDAQ · Yahoo Finance", "sort_ts": 1783393231}, {"date": "2026-07-07", "title": "ベビー用品セール＆ おでかけスポット", "slug": "2026-07-07-12-00-d601ac8f", "url": "reports/2026-07-07-12-00-d601ac8f.html", "excerpt": "本日、取得できたセール・特価情報はありませんでした。", "sort_ts": 1783393215}, {"date": "2026-07-07", "title": "반도체 주가 브리핑", "slug": "2026-07-07-12-00-86994cb0", "url": "reports/2026-07-07-12-00-86994cb0.html", "excerpt": "한국·대만·일본 장중 · 미국 전일 종가", "sort_ts": 1783393205}, {"date": "2026-07-07", "title": "애니플러스 주가 상승 분석", "slug": "2026-07-07-310200-2026-07-07-6fa58749", "url": "reports/2026-07-07-310200-2026-07-07-6fa58749.html", "excerpt": "310200 · ANIPLUS INC. · 2026-07-07 장마감 기준", "sort_ts": 1783385891}, {"date": "2026-07-07", "title": "반도체 주가 브리핑", "slug": "2026-07-07-07-00-6a636954", "url": "reports/2026-07-07-07-00-6a636954.html", "excerpt": "아시아 장 전 · 미국·유럽 전일 종가", "sort_ts": 1783375205}, {"date": "2026-07-06", "title": "洗濯乾燥機おすすめリスト 2026", "slug": "2026-07-06-2026-a3f9f092", "url": "reports/2026-07-06-2026-a3f9f092.html", "excerpt": "OpenClaw Research · 2026-07-06", "sort_ts": 1783332721}, {"date": "2026-07-06", "title": "반도체 주가 브리핑", "slug": "2026-07-06-19-00-c025c641", "url": "reports/2026-07-06-19-00-c025c641.html", "excerpt": "아시아 마감 · 미국·유럽 장중·마감 반영", "sort_ts": 1783332005}, {"date": "2026-07-06", "title": "洗濯乾燥機おすすめリスト 2026", "slug": "2026-07-06-2026-07f05d80", "url": "reports/2026-07-06-2026-07f05d80.html", "excerpt": "OpenClaw Research · 2026-07-06", "sort_ts": 1783320729}, {"date": "2026-07-06", "title": "마이크론 (Micron Technology)", "slug": "2026-07-06-mu-12-00-97cca4fe", "url": "reports/2026-07-06-mu-12-00-97cca4fe.html", "excerpt": "MU · NASDAQ · Yahoo Finance", "sort_ts": 1783306835}, {"date": "2026-07-06", "title": "ベビー用品セール＆ おでかけスポット", "slug": "2026-07-06-12-00-d601ac8f", "url": "reports/2026-07-06-12-00-d601ac8f.html", "excerpt": "本日、取得できたセール・特価情報はありませんでした。", "sort_ts": 1783306812}, {"date": "2026-07-06", "title": "반도체 주가 브리핑", "slug": "2026-07-06-12-00-86994cb0", "url": "reports/2026-07-06-12-00-86994cb0.html", "excerpt": "한국·대만·일본 장중 · 미국 전일 종가", "sort_ts": 1783306805}, {"date": "2026-07-06", "title": "반도체 주가 브리핑", "slug": "2026-07-06-07-00-6a636954", "url": "reports/2026-07-06-07-00-6a636954.html", "excerpt": "아시아 장 전 · 미국·유럽 전일 종가", "sort_ts": 1783288805}, {"date": "2026-07-05", "title": "レディースシェーバーおすすめリスト 2026", "slug": "2026-07-05-2026-f611b939", "url": "reports/2026-07-05-2026-f611b939.html", "excerpt": "OpenClaw Research · 2026-07-05", "sort_ts": 1783242254}, {"date": "2026-07-05", "title": "電気シェーバーおすすめリスト 2026", "slug": "2026-07-05-2026-96d77678", "url": "reports/2026-07-05-2026-96d77678.html", "excerpt": "OpenClaw Research · 2026-07-05", "sort_ts": 1783242088}, {"date": "2026-07-05", "title": "ベビー用品セール＆ おでかけスポット", "slug": "2026-07-05-12-00-d601ac8f", "url": "reports/2026-07-05-12-00-d601ac8f.html", "excerpt": "本日、取得できたセール・特価情報はありませんでした。", "sort_ts": 1783220417}, {"date": "2026-07-05", "title": "赤ちゃんのミルク作り おすすめケトル・電気ポット", "slug": "2026-07-05-2026-b27043f9", "url": "reports/2026-07-05-2026-b27043f9.html", "excerpt": "OpenClaw Research · 2026-07-05", "sort_ts": 1783217264}, {"date": "2026-07-05", "title": "満1歳から預けられる施設（奥戸近く10選）", "slug": "2026-07-05-1-10-2026-b2f5421e", "url": "reports/2026-07-05-1-10-2026-b2f5421e.html", "excerpt": "OpenClaw Research · 2026-07-05 · 葛飾区奥戸エリア", "sort_ts": 1783216872}, {"date": "2026-07-05", "title": "分割なしでスマホを安く買う方法（日本）", "slug": "2026-07-05-2026-fe5dfaef", "url": "reports/2026-07-05-2026-fe5dfaef.html", "excerpt": "OpenClaw Research · 2026-07-05 · 日本向けガイド", "sort_ts": 1783214218}, {"date": "2026-07-05", "title": "반도체 주가 브리핑", "slug": "2026-07-05-07-00-6a636954", "url": "reports/2026-07-05-07-00-6a636954.html", "excerpt": "아시아 장 전 · 미국·유럽 전일 종가", "sort_ts": 1783202410}, {"date": "2026-07-04", "title": "샌디스크 (SanDisk)", "slug": "2026-07-04-sndk-19-47-2e0c98e8", "url": "reports/2026-07-04-sndk-19-47-2e0c98e8.html", "excerpt": "SNDK · NASDAQ · Yahoo Finance", "sort_ts": 1783162094}, {"date": "2026-07-04", "title": "샌디스크 (SanDisk)", "slug": "2026-07-04-sndk-19-07-1962f874", "url": "reports/2026-07-04-sndk-19-07-1962f874.html", "excerpt": "SNDK · NASDAQ · Yahoo Finance", "sort_ts": 1783159643}, {"date": "2026-07-04", "title": "반도체 주가 브리핑", "slug": "2026-07-04-19-00-c025c641", "url": "reports/2026-07-04-19-00-c025c641.html", "excerpt": "아시아 마감 · 미국·유럽 장중·마감 반영", "sort_ts": 1783159210}, {"date": "2026-07-04", "title": "박력분 파전 레시피 베이킹파우더", "slug": "2026-07-04-report-135214d2", "url": "reports/2026-07-04-report-135214d2.html", "excerpt": "OpenClaw Research · 2026-07-04", "sort_ts": 1783157052}, {"date": "2026-07-04", "title": "みん評 口コミサイト まとめ 2026", "slug": "2026-07-04-2026-a0ac63a1", "url": "reports/2026-07-04-2026-a0ac63a1.html", "excerpt": "OpenClaw Research · 2026-07-04", "sort_ts": 1783153867}, {"date": "2026-07-04", "title": "東京 ベビーベッド レンタル おすすめ 2026", "slug": "2026-07-04-2026-87321a73", "url": "reports/2026-07-04-2026-87321a73.html", "excerpt": "OpenClaw Research · 2026-07-04", "sort_ts": 1783145916}, {"date": "2026-07-04", "title": "✈️ 東京発 格安航空券デイリー", "slug": "2026-07-04-14-41-e78e66dc", "url": "reports/2026-07-04-14-41-e78e66dc.html", "excerpt": "羽田（HND）・成田（NRT）発 — セール/特価の比較（参考）", "sort_ts": 1783143677}, {"date": "2026-07-04", "title": "마이크론 (Micron Technology)", "slug": "2026-07-04-mu-14-22-d3b43856", "url": "reports/2026-07-04-mu-14-22-d3b43856.html", "excerpt": "MU · NASDAQ · Yahoo Finance", "sort_ts": 1783142553}, {"date": "2026-07-04", "title": "마이크론 (Micron Technology)", "slug": "2026-07-04-mu-14-15-c07c9877", "url": "reports/2026-07-04-mu-14-15-c07c9877.html", "excerpt": "MU · NASDAQ · Yahoo Finance", "sort_ts": 1783142175}, {"date": "2026-07-04", "title": "마이크론 (Micron Technology)", "slug": "2026-07-04-mu-14-12-5f3d36cc", "url": "reports/2026-07-04-mu-14-12-5f3d36cc.html", "excerpt": "MU · NASDAQ · Yahoo Finance", "sort_ts": 1783141964}, {"date": "2026-07-04", "title": "🥞 밀가루 파전 만드는 법", "slug": "2026-07-04-report-86af4b63", "url": "reports/2026-07-04-report-86af4b63.html", "excerpt": "부침가루 없이 · 황금 반죽 비율 · 바삭하게 굽는 꿀팁", "sort_ts": 1783139448}, {"date": "2026-07-04", "title": "学資保険ガイド 2026", "slug": "2026-07-04-2026-38dccbea", "url": "reports/2026-07-04-2026-38dccbea.html", "excerpt": "選び方 · 返戻率 · おすすめ5社 · 新NISA併用 · タイプ別比較", "sort_ts": 1783138392}, {"date": "2026-07-04", "title": "生命保険ガイド 2026", "slug": "2026-07-04-2026-7be9fa9e", "url": "reports/2026-07-04-2026-7be9fa9e.html", "excerpt": "選び方 · 返戻率・予定利率 · 必要保障額 · おすすめ商品・会社比較", "sort_ts": 1783138389}, {"date": "2026-07-04", "title": "반도체 주가 브리핑", "slug": "2026-07-04-12-54-5d584270", "url": "reports/2026-07-04-12-54-5d584270.html", "excerpt": "한국·대만·일본 장중 · 미국 전일 종가", "sort_ts": 1783137277}, {"date": "2026-07-04", "title": "반도체 주가 브리핑", "slug": "2026-07-04-12-50-b1fb6553", "url": "reports/2026-07-04-12-50-b1fb6553.html", "excerpt": "한국 장중 / 미국 전일 종가 기준", "sort_ts": 1783137051}, {"date": "2026-07-04", "title": "ベビー用品セール＆ おでかけスポット", "slug": "2026-07-04-12-48-5570b32e", "url": "reports/2026-07-04-12-48-5570b32e.html", "excerpt": "時間を選ばずお買物。通販限定の商品やセール、フェアを実施！", "sort_ts": 1783136929}, {"date": "2026-07-04", "title": "🍼 ベビー用品セール & おでかけ", "slug": "2026-07-04-12-38-81d4b1c8", "url": "reports/2026-07-04-12-38-81d4b1c8.html", "excerpt": "時間を選ばずお買物。通販限定の商品やセール、フェアを実施！", "sort_ts": 1783136313}, {"date": "2026-07-04", "title": "반도체 주가 브리핑", "slug": "2026-07-04-12-37-1517ea01", "url": "reports/2026-07-04-12-37-1517ea01.html", "excerpt": "한국 장중 / 미국 전일 종가 기준", "sort_ts": 1783136263}, {"date": "2026-07-04", "title": "반도체 주가 브리핑", "slug": "2026-07-04-12-30-2714dc08", "url": "reports/2026-07-04-12-30-2714dc08.html", "excerpt": "한국 장중 / 미국 전일 종가 기준", "sort_ts": 1783135815}, {"date": "2026-07-04", "title": "반도체 주가 브리핑", "slug": "2026-07-04-12-23-bfe99cb3", "url": "reports/2026-07-04-12-23-bfe99cb3.html", "excerpt": "한국 장중 / 미국 전일 종가 기준", "sort_ts": 1783135393}, {"date": "2026-07-04", "title": "반도체 주가 브리핑 2026-07-04 12:20", "slug": "2026-07-04-2026-07-04-12-20-0900379a", "url": "reports/2026-07-04-2026-07-04-12-20-0900379a.html", "excerpt": "OpenClaw · 2026-07-04 12:20 JST", "sort_ts": 1783135229}, {"date": "2026-07-04", "title": "出産準備ガイド", "slug": "2026-07-04-report-0fb80cc6", "url": "reports/2026-07-04-report-0fb80cc6.html", "excerpt": "ベビーカー · ベビーベッド · 内祝い · 韓国ハーフの手続き · 婚姻届 · 奥戸・小岩の病院", "sort_ts": 1783132477}, {"date": "2026-07-04", "title": "OpenClaw Research 시작", "slug": "2026-07-04-openclaw-research-b97805cc", "url": "reports/2026-07-04-openclaw-research-b97805cc.html", "excerpt": "OpenClaw Research · 2026-07-04", "sort_ts": 1783129089}]</script>
+  <script id="reports-data" type="application/json">[{"date": "2026-08-05", "title": "펀드 브리핑", "slug": "2026-08-05-08-03-b5ba2c82", "url": "reports/2026-08-05-08-03-b5ba2c82.html", "excerpt": "野村世界業種別投資シリーズ(世界半導体株投資)", "sort_ts": 1785864968}, {"date": "2026-08-04", "title": "반도체 주가 브리핑", "slug": "2026-08-04-19-00-c025c641", "url": "reports/2026-08-04-19-00-c025c641.html", "excerpt": "아시아 마감 · 미국·유럽 장중·마감 반영", "sort_ts": 1785837605}, {"date": "2026-08-04", "title": "마이크론 (Micron Technology)", "slug": "2026-08-04-mu-12-00-97cca4fe", "url": "reports/2026-08-04-mu-12-00-97cca4fe.html", "excerpt": "MU · NASDAQ · Yahoo Finance", "sort_ts": 1785812433}, {"date": "2026-08-04", "title": "ベビー用品セール＆ おでかけスポット", "slug": "2026-08-04-12-00-d601ac8f", "url": "reports/2026-08-04-12-00-d601ac8f.html", "excerpt": "本日、取得できたセール・特価情報はありませんでした。", "sort_ts": 1785812415}, {"date": "2026-08-04", "title": "반도체 주가 브리핑", "slug": "2026-08-04-12-00-86994cb0", "url": "reports/2026-08-04-12-00-86994cb0.html", "excerpt": "한국·대만·일본 장중 · 미국 전일 종가", "sort_ts": 1785812407}, {"date": "2026-08-04", "title": "펀드 브리핑", "slug": "2026-08-04-08-03-b5ba2c82", "url": "reports/2026-08-04-08-03-b5ba2c82.html", "excerpt": "野村世界業種別投資シリーズ(世界半導体株投資)", "sort_ts": 1785812405}, {"date": "2026-08-04", "title": "청구서 엑셀 자동화 진행 계획", "slug": "2026-08-04-report-bdc61787", "url": "reports/2026-08-04-report-bdc61787.html", "excerpt": "OpenClaw Research · 2026-08-04", "sort_ts": 1785805030}, {"date": "2026-08-04", "title": "반도체 주가 브리핑", "slug": "2026-08-04-07-00-6a636954", "url": "reports/2026-08-04-07-00-6a636954.html", "excerpt": "아시아 장 전 · 미국·유럽 전일 종가", "sort_ts": 1785794406}, {"date": "2026-08-03", "title": "반도체 주가 브리핑", "slug": "2026-08-03-19-00-c025c641", "url": "reports/2026-08-03-19-00-c025c641.html", "excerpt": "아시아 마감 · 미국·유럽 장중·마감 반영", "sort_ts": 1785751205}, {"date": "2026-08-03", "title": "마이크론 (Micron Technology)", "slug": "2026-08-03-mu-12-00-97cca4fe", "url": "reports/2026-08-03-mu-12-00-97cca4fe.html", "excerpt": "MU · NASDAQ · Yahoo Finance", "sort_ts": 1785726033}, {"date": "2026-08-03", "title": "ベビー用品セール＆ おでかけスポット", "slug": "2026-08-03-12-00-d601ac8f", "url": "reports/2026-08-03-12-00-d601ac8f.html", "excerpt": "本日、取得できたセール・特価情報はありませんでした。", "sort_ts": 1785726013}, {"date": "2026-08-03", "title": "반도체 주가 브리핑", "slug": "2026-08-03-12-00-86994cb0", "url": "reports/2026-08-03-12-00-86994cb0.html", "excerpt": "한국·대만·일본 장중 · 미국 전일 종가", "sort_ts": 1785726012}, {"date": "2026-08-03", "title": "펀드 브리핑", "slug": "2026-08-03-07-31-b21adf43", "url": "reports/2026-08-03-07-31-b21adf43.html", "excerpt": "野村世界業種別投資シリーズ(世界半導体株投資)", "sort_ts": 1785726004}, {"date": "2026-08-03", "title": "반도체 주가 브리핑", "slug": "2026-08-03-07-00-6a636954", "url": "reports/2026-08-03-07-00-6a636954.html", "excerpt": "아시아 장 전 · 미국·유럽 전일 종가", "sort_ts": 1785708005}, {"date": "2026-08-02", "title": "ベビー用品セール＆ おでかけスポット", "slug": "2026-08-02-12-00-d601ac8f", "url": "reports/2026-08-02-12-00-d601ac8f.html", "excerpt": "本日、取得できたセール・特価情報はありませんでした。", "sort_ts": 1785639614}, {"date": "2026-08-01", "title": "ベビー用品セール＆ おでかけスポット", "slug": "2026-08-01-12-00-d601ac8f", "url": "reports/2026-08-01-12-00-d601ac8f.html", "excerpt": "本日、取得できたセール・特価情報はありませんでした。", "sort_ts": 1785553215}, {"date": "2026-07-31", "title": "반도체 주가 브리핑", "slug": "2026-07-31-19-00-c025c641", "url": "reports/2026-07-31-19-00-c025c641.html", "excerpt": "아시아 마감 · 미국·유럽 장중·마감 반영", "sort_ts": 1785492006}, {"date": "2026-07-31", "title": "마이크론 (Micron Technology)", "slug": "2026-07-31-mu-12-00-97cca4fe", "url": "reports/2026-07-31-mu-12-00-97cca4fe.html", "excerpt": "MU · NASDAQ · Yahoo Finance", "sort_ts": 1785466834}, {"date": "2026-07-31", "title": "ベビー用品セール＆ おでかけスポット", "slug": "2026-07-31-12-00-d601ac8f", "url": "reports/2026-07-31-12-00-d601ac8f.html", "excerpt": "本日、取得できたセール・特価情報はありませんでした。", "sort_ts": 1785466813}, {"date": "2026-07-31", "title": "반도체 주가 브리핑", "slug": "2026-07-31-12-00-86994cb0", "url": "reports/2026-07-31-12-00-86994cb0.html", "excerpt": "한국·대만·일본 장중 · 미국 전일 종가", "sort_ts": 1785466805}, {"date": "2026-07-31", "title": "펀드 브리핑", "slug": "2026-07-31-07-30-d2fa6c8b", "url": "reports/2026-07-31-07-30-d2fa6c8b.html", "excerpt": "野村世界業種別投資シリーズ(世界半導体株投資)", "sort_ts": 1785466803}, {"date": "2026-07-31", "title": "반도체 주가 브리핑", "slug": "2026-07-31-07-00-6a636954", "url": "reports/2026-07-31-07-00-6a636954.html", "excerpt": "아시아 장 전 · 미국·유럽 전일 종가", "sort_ts": 1785448805}, {"date": "2026-07-30", "title": "반도체 주가 브리핑", "slug": "2026-07-30-19-00-c025c641", "url": "reports/2026-07-30-19-00-c025c641.html", "excerpt": "아시아 마감 · 미국·유럽 장중·마감 반영", "sort_ts": 1785405604}, {"date": "2026-07-30", "title": "마이크론 (Micron Technology)", "slug": "2026-07-30-mu-12-00-97cca4fe", "url": "reports/2026-07-30-mu-12-00-97cca4fe.html", "excerpt": "MU · NASDAQ · Yahoo Finance", "sort_ts": 1785380435}, {"date": "2026-07-30", "title": "ベビー用品セール＆ おでかけスポット", "slug": "2026-07-30-12-00-d601ac8f", "url": "reports/2026-07-30-12-00-d601ac8f.html", "excerpt": "本日、取得できたセール・特価情報はありませんでした。", "sort_ts": 1785380414}, {"date": "2026-07-30", "title": "펀드 브리핑", "slug": "2026-07-30-07-29-742aa5ff", "url": "reports/2026-07-30-07-29-742aa5ff.html", "excerpt": "野村世界業種別投資シリーズ(世界半導体株投資)", "sort_ts": 1785380406}, {"date": "2026-07-30", "title": "반도체 주가 브리핑", "slug": "2026-07-30-12-00-86994cb0", "url": "reports/2026-07-30-12-00-86994cb0.html", "excerpt": "한국·대만·일본 장중 · 미국 전일 종가", "sort_ts": 1785380405}, {"date": "2026-07-30", "title": "반도체 주가 브리핑", "slug": "2026-07-30-07-00-6a636954", "url": "reports/2026-07-30-07-00-6a636954.html", "excerpt": "아시아 장 전 · 미국·유럽 전일 종가", "sort_ts": 1785362405}, {"date": "2026-07-29", "title": "반도체 주가 브리핑", "slug": "2026-07-29-19-00-c025c641", "url": "reports/2026-07-29-19-00-c025c641.html", "excerpt": "아시아 마감 · 미국·유럽 장중·마감 반영", "sort_ts": 1785319205}, {"date": "2026-07-29", "title": "마이크론 (Micron Technology)", "slug": "2026-07-29-mu-12-00-97cca4fe", "url": "reports/2026-07-29-mu-12-00-97cca4fe.html", "excerpt": "MU · NASDAQ · Yahoo Finance", "sort_ts": 1785294036}, {"date": "2026-07-29", "title": "ベビー用品セール＆ おでかけスポット", "slug": "2026-07-29-12-00-d601ac8f", "url": "reports/2026-07-29-12-00-d601ac8f.html", "excerpt": "本日、取得できたセール・特価情報はありませんでした。", "sort_ts": 1785294015}, {"date": "2026-07-29", "title": "펀드 브리핑", "slug": "2026-07-29-07-28-5f166a39", "url": "reports/2026-07-29-07-28-5f166a39.html", "excerpt": "野村世界業種別投資シリーズ(世界半導体株投資)", "sort_ts": 1785294006}, {"date": "2026-07-29", "title": "반도체 주가 브리핑", "slug": "2026-07-29-12-00-86994cb0", "url": "reports/2026-07-29-12-00-86994cb0.html", "excerpt": "한국·대만·일본 장중 · 미국 전일 종가", "sort_ts": 1785294005}, {"date": "2026-07-29", "title": "반도체 주가 브리핑", "slug": "2026-07-29-07-00-6a636954", "url": "reports/2026-07-29-07-00-6a636954.html", "excerpt": "아시아 장 전 · 미국·유럽 전일 종가", "sort_ts": 1785276004}, {"date": "2026-07-28", "title": "반도체 주가 브리핑", "slug": "2026-07-28-19-00-c025c641", "url": "reports/2026-07-28-19-00-c025c641.html", "excerpt": "아시아 마감 · 미국·유럽 장중·마감 반영", "sort_ts": 1785232805}, {"date": "2026-07-28", "title": "마이크론 (Micron Technology)", "slug": "2026-07-28-mu-12-00-97cca4fe", "url": "reports/2026-07-28-mu-12-00-97cca4fe.html", "excerpt": "MU · NASDAQ · Yahoo Finance", "sort_ts": 1785207658}, {"date": "2026-07-28", "title": "ベビー用品セール＆ おでかけスポット", "slug": "2026-07-28-12-00-d601ac8f", "url": "reports/2026-07-28-12-00-d601ac8f.html", "excerpt": "本日、取得できたセール・特価情報はありませんでした。", "sort_ts": 1785207613}, {"date": "2026-07-28", "title": "반도체 주가 브리핑", "slug": "2026-07-28-12-00-86994cb0", "url": "reports/2026-07-28-12-00-86994cb0.html", "excerpt": "한국·대만·일본 장중 · 미국 전일 종가", "sort_ts": 1785207605}, {"date": "2026-07-28", "title": "펀드 브리핑", "slug": "2026-07-28-07-27-bd5afd10", "url": "reports/2026-07-28-07-27-bd5afd10.html", "excerpt": "野村世界業種別投資シリーズ(世界半導体株投資)", "sort_ts": 1785207604}, {"date": "2026-07-28", "title": "반도체 주가 브리핑", "slug": "2026-07-28-07-00-6a636954", "url": "reports/2026-07-28-07-00-6a636954.html", "excerpt": "아시아 장 전 · 미국·유럽 전일 종가", "sort_ts": 1785189606}, {"date": "2026-07-27", "title": "반도체 주가 브리핑", "slug": "2026-07-27-19-00-c025c641", "url": "reports/2026-07-27-19-00-c025c641.html", "excerpt": "아시아 마감 · 미국·유럽 장중·마감 반영", "sort_ts": 1785146406}, {"date": "2026-07-27", "title": "마이크론 (Micron Technology)", "slug": "2026-07-27-mu-12-00-97cca4fe", "url": "reports/2026-07-27-mu-12-00-97cca4fe.html", "excerpt": "MU · NASDAQ · Yahoo Finance", "sort_ts": 1785121231}, {"date": "2026-07-27", "title": "ベビー用品セール＆ おでかけスポット", "slug": "2026-07-27-12-00-d601ac8f", "url": "reports/2026-07-27-12-00-d601ac8f.html", "excerpt": "本日、取得できたセール・特価情報はありませんでした。", "sort_ts": 1785121211}, {"date": "2026-07-27", "title": "반도체 주가 브리핑", "slug": "2026-07-27-12-00-86994cb0", "url": "reports/2026-07-27-12-00-86994cb0.html", "excerpt": "한국·대만·일본 장중 · 미국 전일 종가", "sort_ts": 1785121205}, {"date": "2026-07-27", "title": "펀드 브리핑", "slug": "2026-07-27-07-24-344dc048", "url": "reports/2026-07-27-07-24-344dc048.html", "excerpt": "野村世界業種別投資シリーズ(世界半導体株投資)", "sort_ts": 1785121203}, {"date": "2026-07-27", "title": "반도체 주가 브리핑", "slug": "2026-07-27-07-00-6a636954", "url": "reports/2026-07-27-07-00-6a636954.html", "excerpt": "아시아 장 전 · 미국·유럽 전일 종가", "sort_ts": 1785103205}, {"date": "2026-07-26", "title": "ベビー用品セール＆ おでかけスポット", "slug": "2026-07-26-12-02-95d158b0", "url": "reports/2026-07-26-12-02-95d158b0.html", "excerpt": "本日、取得できたセール・特価情報はありませんでした。", "sort_ts": 1785034948}, {"date": "2026-07-25", "title": "ベビー用品セール＆ おでかけスポット", "slug": "2026-07-25-12-05-f0da595b", "url": "reports/2026-07-25-12-05-f0da595b.html", "excerpt": "本日、取得できたセール・特価情報はありませんでした。", "sort_ts": 1784948733}, {"date": "2026-07-24", "title": "마이크론 (Micron Technology)", "slug": "2026-07-24-mu-12-03-7109b052", "url": "reports/2026-07-24-mu-12-03-7109b052.html", "excerpt": "MU · NASDAQ · Yahoo Finance", "sort_ts": 1784862233}, {"date": "2026-07-24", "title": "ベビー用品セール＆ おでかけスポット", "slug": "2026-07-24-12-03-73a38c8f", "url": "reports/2026-07-24-12-03-73a38c8f.html", "excerpt": "本日、取得できたセール・特価情報はありませんでした。", "sort_ts": 1784862200}, {"date": "2026-07-24", "title": "펀드 브리핑", "slug": "2026-07-24-07-23-f29f65a1", "url": "reports/2026-07-24-07-23-f29f65a1.html", "excerpt": "野村世界業種別投資シリーズ(世界半導体株投資)", "sort_ts": 1784862192}, {"date": "2026-07-23", "title": "반도체 주가 브리핑", "slug": "2026-07-23-19-00-c025c641", "url": "reports/2026-07-23-19-00-c025c641.html", "excerpt": "아시아 마감 · 미국·유럽 장중·마감 반영", "sort_ts": 1784800807}, {"date": "2026-07-23", "title": "마이크론 (Micron Technology)", "slug": "2026-07-23-mu-12-00-97cca4fe", "url": "reports/2026-07-23-mu-12-00-97cca4fe.html", "excerpt": "MU · NASDAQ · Yahoo Finance", "sort_ts": 1784775632}, {"date": "2026-07-23", "title": "ベビー用品セール＆ おでかけスポット", "slug": "2026-07-23-12-00-d601ac8f", "url": "reports/2026-07-23-12-00-d601ac8f.html", "excerpt": "本日、取得できたセール・特価情報はありませんでした。", "sort_ts": 1784775612}, {"date": "2026-07-23", "title": "펀드 브리핑", "slug": "2026-07-23-07-22-cb39dcbf", "url": "reports/2026-07-23-07-22-cb39dcbf.html", "excerpt": "野村世界業種別投資シリーズ(世界半導体株投資)", "sort_ts": 1784775605}, {"date": "2026-07-23", "title": "반도체 주가 브리핑", "slug": "2026-07-23-12-00-86994cb0", "url": "reports/2026-07-23-12-00-86994cb0.html", "excerpt": "한국·대만·일본 장중 · 미국 전일 종가", "sort_ts": 1784775605}, {"date": "2026-07-23", "title": "반도체 주가 브리핑", "slug": "2026-07-23-07-00-6a636954", "url": "reports/2026-07-23-07-00-6a636954.html", "excerpt": "아시아 장 전 · 미국·유럽 전일 종가", "sort_ts": 1784757606}, {"date": "2026-07-22", "title": "반도체 주가 브리핑", "slug": "2026-07-22-19-00-c025c641", "url": "reports/2026-07-22-19-00-c025c641.html", "excerpt": "아시아 마감 · 미국·유럽 장중·마감 반영", "sort_ts": 1784714405}, {"date": "2026-07-22", "title": "마이크론 (Micron Technology)", "slug": "2026-07-22-mu-12-06-d256b7f8", "url": "reports/2026-07-22-mu-12-06-d256b7f8.html", "excerpt": "MU · NASDAQ · Yahoo Finance", "sort_ts": 1784689635}, {"date": "2026-07-22", "title": "ベビー用品セール＆ おでかけスポット", "slug": "2026-07-22-12-06-dd0d232c", "url": "reports/2026-07-22-12-06-dd0d232c.html", "excerpt": "本日、取得できたセール・特価情報はありませんでした。", "sort_ts": 1784689611}, {"date": "2026-07-22", "title": "펀드 브리핑", "slug": "2026-07-22-07-21-86d7572b", "url": "reports/2026-07-22-07-21-86d7572b.html", "excerpt": "野村世界業種別投資シリーズ(世界半導体株投資)", "sort_ts": 1784689603}, {"date": "2026-07-22", "title": "반도체 주가 브리핑", "slug": "2026-07-22-07-02-378ed67d", "url": "reports/2026-07-22-07-02-378ed67d.html", "excerpt": "아시아 장 전 · 미국·유럽 전일 종가", "sort_ts": 1784671369}, {"date": "2026-07-21", "title": "반도체 주가 브리핑", "slug": "2026-07-21-19-00-c025c641", "url": "reports/2026-07-21-19-00-c025c641.html", "excerpt": "아시아 마감 · 미국·유럽 장중·마감 반영", "sort_ts": 1784628005}, {"date": "2026-07-21", "title": "반도체 주가 브리핑", "slug": "2026-07-21-15-19-fe603ec3", "url": "reports/2026-07-21-15-19-fe603ec3.html", "excerpt": "아시아 마감 · 미국·유럽 장중·마감 반영", "sort_ts": 1784614755}, {"date": "2026-07-21", "title": "마이크론 (Micron Technology)", "slug": "2026-07-21-mu-15-18-18a928e9", "url": "reports/2026-07-21-mu-15-18-18a928e9.html", "excerpt": "MU · NASDAQ · Yahoo Finance", "sort_ts": 1784614727}, {"date": "2026-07-21", "title": "펀드 브리핑", "slug": "2026-07-21-07-17-3ecc892b", "url": "reports/2026-07-21-07-17-3ecc892b.html", "excerpt": "野村世界業種別投資シリーズ(世界半導体株投資)", "sort_ts": 1784614664}, {"date": "2026-07-21", "title": "마이크론 (Micron Technology)", "slug": "2026-07-21-mu-15-15-a928b9cb", "url": "reports/2026-07-21-mu-15-15-a928b9cb.html", "excerpt": "MU · NASDAQ · Yahoo Finance", "sort_ts": 1784614546}, {"date": "2026-07-21", "title": "ベビー用品セール＆ おでかけスポット", "slug": "2026-07-21-15-14-7472a913", "url": "reports/2026-07-21-15-14-7472a913.html", "excerpt": "本日、取得できたセール・特価情報はありませんでした。", "sort_ts": 1784614491}, {"date": "2026-07-21", "title": "ベビー用品セール＆ おでかけスポット", "slug": "2026-07-21-12-00-d601ac8f", "url": "reports/2026-07-21-12-00-d601ac8f.html", "excerpt": "本日、取得できたセール・特価情報はありませんでした。", "sort_ts": 1784602854}, {"date": "2026-07-21", "title": "반도체 주가 브리핑", "slug": "2026-07-21-07-00-6a636954", "url": "reports/2026-07-21-07-00-6a636954.html", "excerpt": "아시아 장 전 · 미국·유럽 전일 종가", "sort_ts": 1784584805}, {"date": "2026-07-20", "title": "반도체 주가 브리핑", "slug": "2026-07-20-19-00-c025c641", "url": "reports/2026-07-20-19-00-c025c641.html", "excerpt": "아시아 마감 · 미국·유럽 장중·마감 반영", "sort_ts": 1784541605}, {"date": "2026-07-20", "title": "마이크론 (Micron Technology)", "slug": "2026-07-20-mu-12-00-97cca4fe", "url": "reports/2026-07-20-mu-12-00-97cca4fe.html", "excerpt": "MU · NASDAQ · Yahoo Finance", "sort_ts": 1784516466}, {"date": "2026-07-20", "title": "ベビー用品セール＆ おでかけスポット", "slug": "2026-07-20-12-00-d601ac8f", "url": "reports/2026-07-20-12-00-d601ac8f.html", "excerpt": "本日、取得できたセール・特価情報はありませんでした。", "sort_ts": 1784516413}, {"date": "2026-07-20", "title": "반도체 주가 브리핑", "slug": "2026-07-20-12-00-86994cb0", "url": "reports/2026-07-20-12-00-86994cb0.html", "excerpt": "한국·대만·일본 장중 · 미국 전일 종가", "sort_ts": 1784516405}, {"date": "2026-07-20", "title": "펀드 브리핑", "slug": "2026-07-20-07-17-3ecc892b", "url": "reports/2026-07-20-07-17-3ecc892b.html", "excerpt": "野村世界業種別投資シリーズ(世界半導体株投資)", "sort_ts": 1784516404}, {"date": "2026-07-20", "title": "반도체 주가 브리핑", "slug": "2026-07-20-07-00-6a636954", "url": "reports/2026-07-20-07-00-6a636954.html", "excerpt": "아시아 장 전 · 미국·유럽 전일 종가", "sort_ts": 1784498405}, {"date": "2026-07-19", "title": "ベビー用品セール＆ おでかけスポット", "slug": "2026-07-19-12-00-d601ac8f", "url": "reports/2026-07-19-12-00-d601ac8f.html", "excerpt": "本日、取得できたセール・特価情報はありませんでした。", "sort_ts": 1784430027}, {"date": "2026-07-18", "title": "ベビー用品セール＆ おでかけスポット", "slug": "2026-07-18-12-00-d601ac8f", "url": "reports/2026-07-18-12-00-d601ac8f.html", "excerpt": "本日、取得できたセール・特価情報はありませんでした。", "sort_ts": 1784343613}, {"date": "2026-07-18", "title": "펀드 브리핑", "slug": "2026-07-18-07-17-3ecc892b", "url": "reports/2026-07-18-07-17-3ecc892b.html", "excerpt": "野村世界業種別投資シリーズ(世界半導体株投資)", "sort_ts": 1784335103}, {"date": "2026-07-17", "title": "반도체 주가 브리핑", "slug": "2026-07-17-19-00-c025c641", "url": "reports/2026-07-17-19-00-c025c641.html", "excerpt": "아시아 마감 · 미국·유럽 장중·마감 반영", "sort_ts": 1784282405}, {"date": "2026-07-17", "title": "마이크론 (Micron Technology)", "slug": "2026-07-17-mu-12-00-97cca4fe", "url": "reports/2026-07-17-mu-12-00-97cca4fe.html", "excerpt": "MU · NASDAQ · Yahoo Finance", "sort_ts": 1784257229}, {"date": "2026-07-17", "title": "ベビー用品セール＆ おでかけスポット", "slug": "2026-07-17-12-00-d601ac8f", "url": "reports/2026-07-17-12-00-d601ac8f.html", "excerpt": "本日、取得できたセール・特価情報はありませんでした。", "sort_ts": 1784257215}, {"date": "2026-07-17", "title": "펀드 브리핑", "slug": "2026-07-17-07-16-7aa40540", "url": "reports/2026-07-17-07-16-7aa40540.html", "excerpt": "野村世界業種別投資シリーズ(世界半導体株投資)", "sort_ts": 1784257205}, {"date": "2026-07-17", "title": "반도체 주가 브리핑", "slug": "2026-07-17-12-00-86994cb0", "url": "reports/2026-07-17-12-00-86994cb0.html", "excerpt": "한국·대만·일본 장중 · 미국 전일 종가", "sort_ts": 1784257204}, {"date": "2026-07-17", "title": "반도체 주가 브리핑", "slug": "2026-07-17-07-00-6a636954", "url": "reports/2026-07-17-07-00-6a636954.html", "excerpt": "아시아 장 전 · 미국·유럽 전일 종가", "sort_ts": 1784239205}, {"date": "2026-07-16", "title": "반도체 주가 브리핑", "slug": "2026-07-16-19-00-c025c641", "url": "reports/2026-07-16-19-00-c025c641.html", "excerpt": "아시아 마감 · 미국·유럽 장중·마감 반영", "sort_ts": 1784196011}, {"date": "2026-07-16", "title": "마이크론 (Micron Technology)", "slug": "2026-07-16-mu-12-00-97cca4fe", "url": "reports/2026-07-16-mu-12-00-97cca4fe.html", "excerpt": "MU · NASDAQ · Yahoo Finance", "sort_ts": 1784170834}, {"date": "2026-07-16", "title": "ベビー用品セール＆ おでかけスポット", "slug": "2026-07-16-12-00-d601ac8f", "url": "reports/2026-07-16-12-00-d601ac8f.html", "excerpt": "本日、取得できたセール・特価情報はありませんでした。", "sort_ts": 1784170813}, {"date": "2026-07-16", "title": "반도체 주가 브리핑", "slug": "2026-07-16-12-00-86994cb0", "url": "reports/2026-07-16-12-00-86994cb0.html", "excerpt": "한국·대만·일본 장중 · 미국 전일 종가", "sort_ts": 1784170805}, {"date": "2026-07-16", "title": "펀드 브리핑", "slug": "2026-07-16-07-15-62d164d1", "url": "reports/2026-07-16-07-15-62d164d1.html", "excerpt": "野村世界業種別投資シリーズ(世界半導体株投資)", "sort_ts": 1784170805}, {"date": "2026-07-16", "title": "반도체 주가 브리핑", "slug": "2026-07-16-07-00-6a636954", "url": "reports/2026-07-16-07-00-6a636954.html", "excerpt": "아시아 장 전 · 미국·유럽 전일 종가", "sort_ts": 1784152805}, {"date": "2026-07-15", "title": "반도체 주가 브리핑", "slug": "2026-07-15-19-00-c025c641", "url": "reports/2026-07-15-19-00-c025c641.html", "excerpt": "아시아 마감 · 미국·유럽 장중·마감 반영", "sort_ts": 1784109606}, {"date": "2026-07-15", "title": "펀드 브리핑", "slug": "2026-07-15-07-14-421e1cdb", "url": "reports/2026-07-15-07-14-421e1cdb.html", "excerpt": "野村世界業種別投資シリーズ(世界半導体株投資)", "sort_ts": 1784085012}, {"date": "2026-07-15", "title": "마이크론 (Micron Technology)", "slug": "2026-07-15-mu-12-00-97cca4fe", "url": "reports/2026-07-15-mu-12-00-97cca4fe.html", "excerpt": "MU · NASDAQ · Yahoo Finance", "sort_ts": 1784084432}, {"date": "2026-07-15", "title": "ベビー用品セール＆ おでかけスポット", "slug": "2026-07-15-12-00-d601ac8f", "url": "reports/2026-07-15-12-00-d601ac8f.html", "excerpt": "本日、取得できたセール・特価情報はありませんでした。", "sort_ts": 1784084412}, {"date": "2026-07-15", "title": "반도체 주가 브리핑", "slug": "2026-07-15-12-00-86994cb0", "url": "reports/2026-07-15-12-00-86994cb0.html", "excerpt": "한국·대만·일본 장중 · 미국 전일 종가", "sort_ts": 1784084407}, {"date": "2026-07-15", "title": "노무라 세계반도체 펀드", "slug": "2026-07-15-07-14-d2d17846", "url": "reports/2026-07-15-07-14-d2d17846.html", "excerpt": "野村世界業種別投資シリーズ(世界半導体株投資)", "sort_ts": 1784084404}, {"date": "2026-07-15", "title": "반도체 주가 브리핑", "slug": "2026-07-15-07-00-6a636954", "url": "reports/2026-07-15-07-00-6a636954.html", "excerpt": "아시아 장 전 · 미국·유럽 전일 종가", "sort_ts": 1784066404}, {"date": "2026-07-14", "title": "반도체 주가 브리핑", "slug": "2026-07-14-19-00-c025c641", "url": "reports/2026-07-14-19-00-c025c641.html", "excerpt": "아시아 마감 · 미국·유럽 장중·마감 반영", "sort_ts": 1784023205}, {"date": "2026-07-14", "title": "마이크론 (Micron Technology)", "slug": "2026-07-14-mu-12-00-97cca4fe", "url": "reports/2026-07-14-mu-12-00-97cca4fe.html", "excerpt": "MU · NASDAQ · Yahoo Finance", "sort_ts": 1783998034}, {"date": "2026-07-14", "title": "ベビー用品セール＆ おでかけスポット", "slug": "2026-07-14-12-00-d601ac8f", "url": "reports/2026-07-14-12-00-d601ac8f.html", "excerpt": "本日、取得できたセール・特価情報はありませんでした。", "sort_ts": 1783998012}, {"date": "2026-07-14", "title": "반도체 주가 브리핑", "slug": "2026-07-14-12-00-86994cb0", "url": "reports/2026-07-14-12-00-86994cb0.html", "excerpt": "한국·대만·일본 장중 · 미국 전일 종가", "sort_ts": 1783998007}, {"date": "2026-07-14", "title": "반도체 주가 브리핑", "slug": "2026-07-14-07-00-6a636954", "url": "reports/2026-07-14-07-00-6a636954.html", "excerpt": "아시아 장 전 · 미국·유럽 전일 종가", "sort_ts": 1783980004}, {"date": "2026-07-13", "title": "반도체 주가 브리핑", "slug": "2026-07-13-19-00-c025c641", "url": "reports/2026-07-13-19-00-c025c641.html", "excerpt": "아시아 마감 · 미국·유럽 장중·마감 반영", "sort_ts": 1783936805}, {"date": "2026-07-13", "title": "마이크론 (Micron Technology)", "slug": "2026-07-13-mu-12-00-97cca4fe", "url": "reports/2026-07-13-mu-12-00-97cca4fe.html", "excerpt": "MU · NASDAQ · Yahoo Finance", "sort_ts": 1783911626}, {"date": "2026-07-13", "title": "ベビー用品セール＆ おでかけスポット", "slug": "2026-07-13-12-00-d601ac8f", "url": "reports/2026-07-13-12-00-d601ac8f.html", "excerpt": "本日、取得できたセール・特価情報はありませんでした。", "sort_ts": 1783911614}, {"date": "2026-07-13", "title": "반도체 주가 브리핑", "slug": "2026-07-13-12-00-86994cb0", "url": "reports/2026-07-13-12-00-86994cb0.html", "excerpt": "한국·대만·일본 장중 · 미국 전일 종가", "sort_ts": 1783911605}, {"date": "2026-07-13", "title": "반도체 주가 브리핑", "slug": "2026-07-13-07-00-6a636954", "url": "reports/2026-07-13-07-00-6a636954.html", "excerpt": "아시아 장 전 · 미국·유럽 전일 종가", "sort_ts": 1783893605}, {"date": "2026-07-12", "title": "ベビー用品セール＆ おでかけスポット", "slug": "2026-07-12-12-00-d601ac8f", "url": "reports/2026-07-12-12-00-d601ac8f.html", "excerpt": "本日、取得できたセール・特価情報はありませんでした。", "sort_ts": 1783825214}, {"date": "2026-07-11", "title": "ベビー用品セール＆ おでかけスポット", "slug": "2026-07-11-12-12-59517a29", "url": "reports/2026-07-11-12-12-59517a29.html", "excerpt": "本日、取得できたセール・特価情報はありませんでした。", "sort_ts": 1783739569}, {"date": "2026-07-10", "title": "마이크론 (Micron Technology)", "slug": "2026-07-10-mu-12-03-7109b052", "url": "reports/2026-07-10-mu-12-03-7109b052.html", "excerpt": "MU · NASDAQ · Yahoo Finance", "sort_ts": 1783652651}, {"date": "2026-07-10", "title": "ベビー用品セール＆ おでかけスポット", "slug": "2026-07-10-12-03-73a38c8f", "url": "reports/2026-07-10-12-03-73a38c8f.html", "excerpt": "本日、取得できたセール・特価情報はありませんでした。", "sort_ts": 1783652621}, {"date": "2026-07-09", "title": "반도체 주가 브리핑", "slug": "2026-07-09-19-00-c025c641", "url": "reports/2026-07-09-19-00-c025c641.html", "excerpt": "아시아 마감 · 미국·유럽 장중·마감 반영", "sort_ts": 1783591208}, {"date": "2026-07-09", "title": "마이크론 (Micron Technology)", "slug": "2026-07-09-mu-12-00-97cca4fe", "url": "reports/2026-07-09-mu-12-00-97cca4fe.html", "excerpt": "MU · NASDAQ · Yahoo Finance", "sort_ts": 1783566037}, {"date": "2026-07-09", "title": "ベビー用品セール＆ おでかけスポット", "slug": "2026-07-09-12-00-d601ac8f", "url": "reports/2026-07-09-12-00-d601ac8f.html", "excerpt": "本日、取得できたセール・特価情報はありませんでした。", "sort_ts": 1783566015}, {"date": "2026-07-09", "title": "반도체 주가 브리핑", "slug": "2026-07-09-12-00-86994cb0", "url": "reports/2026-07-09-12-00-86994cb0.html", "excerpt": "한국·대만·일본 장중 · 미국 전일 종가", "sort_ts": 1783566005}, {"date": "2026-07-09", "title": "반도체 주가 브리핑", "slug": "2026-07-09-07-00-6a636954", "url": "reports/2026-07-09-07-00-6a636954.html", "excerpt": "아시아 장 전 · 미국·유럽 전일 종가", "sort_ts": 1783548004}, {"date": "2026-07-08", "title": "반도체 주가 브리핑", "slug": "2026-07-08-19-00-c025c641", "url": "reports/2026-07-08-19-00-c025c641.html", "excerpt": "아시아 마감 · 미국·유럽 장중·마감 반영", "sort_ts": 1783504808}, {"date": "2026-07-08", "title": "마이크론 (Micron Technology)", "slug": "2026-07-08-mu-12-00-97cca4fe", "url": "reports/2026-07-08-mu-12-00-97cca4fe.html", "excerpt": "MU · NASDAQ · Yahoo Finance", "sort_ts": 1783479646}, {"date": "2026-07-08", "title": "ベビー用品セール＆ おでかけスポット", "slug": "2026-07-08-12-00-d601ac8f", "url": "reports/2026-07-08-12-00-d601ac8f.html", "excerpt": "本日、取得できたセール・特価情報はありませんでした。", "sort_ts": 1783479613}, {"date": "2026-07-08", "title": "반도체 주가 브리핑", "slug": "2026-07-08-12-00-86994cb0", "url": "reports/2026-07-08-12-00-86994cb0.html", "excerpt": "한국·대만·일본 장중 · 미국 전일 종가", "sort_ts": 1783479605}, {"date": "2026-07-08", "title": "반도체 주가 브리핑", "slug": "2026-07-08-07-00-6a636954", "url": "reports/2026-07-08-07-00-6a636954.html", "excerpt": "아시아 장 전 · 미국·유럽 전일 종가", "sort_ts": 1783461605}, {"date": "2026-07-07", "title": "반도체 주가 브리핑", "slug": "2026-07-07-19-00-c025c641", "url": "reports/2026-07-07-19-00-c025c641.html", "excerpt": "아시아 마감 · 미국·유럽 장중·마감 반영", "sort_ts": 1783418406}, {"date": "2026-07-07", "title": "마이크론 (Micron Technology)", "slug": "2026-07-07-mu-12-00-97cca4fe", "url": "reports/2026-07-07-mu-12-00-97cca4fe.html", "excerpt": "MU · NASDAQ · Yahoo Finance", "sort_ts": 1783393231}, {"date": "2026-07-07", "title": "ベビー用品セール＆ おでかけスポット", "slug": "2026-07-07-12-00-d601ac8f", "url": "reports/2026-07-07-12-00-d601ac8f.html", "excerpt": "本日、取得できたセール・特価情報はありませんでした。", "sort_ts": 1783393215}, {"date": "2026-07-07", "title": "반도체 주가 브리핑", "slug": "2026-07-07-12-00-86994cb0", "url": "reports/2026-07-07-12-00-86994cb0.html", "excerpt": "한국·대만·일본 장중 · 미국 전일 종가", "sort_ts": 1783393205}, {"date": "2026-07-07", "title": "애니플러스 주가 상승 분석", "slug": "2026-07-07-310200-2026-07-07-6fa58749", "url": "reports/2026-07-07-310200-2026-07-07-6fa58749.html", "excerpt": "310200 · ANIPLUS INC. · 2026-07-07 장마감 기준", "sort_ts": 1783385891}, {"date": "2026-07-07", "title": "반도체 주가 브리핑", "slug": "2026-07-07-07-00-6a636954", "url": "reports/2026-07-07-07-00-6a636954.html", "excerpt": "아시아 장 전 · 미국·유럽 전일 종가", "sort_ts": 1783375205}, {"date": "2026-07-06", "title": "洗濯乾燥機おすすめリスト 2026", "slug": "2026-07-06-2026-a3f9f092", "url": "reports/2026-07-06-2026-a3f9f092.html", "excerpt": "OpenClaw Research · 2026-07-06", "sort_ts": 1783332721}, {"date": "2026-07-06", "title": "반도체 주가 브리핑", "slug": "2026-07-06-19-00-c025c641", "url": "reports/2026-07-06-19-00-c025c641.html", "excerpt": "아시아 마감 · 미국·유럽 장중·마감 반영", "sort_ts": 1783332005}, {"date": "2026-07-06", "title": "洗濯乾燥機おすすめリスト 2026", "slug": "2026-07-06-2026-07f05d80", "url": "reports/2026-07-06-2026-07f05d80.html", "excerpt": "OpenClaw Research · 2026-07-06", "sort_ts": 1783320729}, {"date": "2026-07-06", "title": "마이크론 (Micron Technology)", "slug": "2026-07-06-mu-12-00-97cca4fe", "url": "reports/2026-07-06-mu-12-00-97cca4fe.html", "excerpt": "MU · NASDAQ · Yahoo Finance", "sort_ts": 1783306835}, {"date": "2026-07-06", "title": "ベビー用品セール＆ おでかけスポット", "slug": "2026-07-06-12-00-d601ac8f", "url": "reports/2026-07-06-12-00-d601ac8f.html", "excerpt": "本日、取得できたセール・特価情報はありませんでした。", "sort_ts": 1783306812}, {"date": "2026-07-06", "title": "반도체 주가 브리핑", "slug": "2026-07-06-12-00-86994cb0", "url": "reports/2026-07-06-12-00-86994cb0.html", "excerpt": "한국·대만·일본 장중 · 미국 전일 종가", "sort_ts": 1783306805}, {"date": "2026-07-06", "title": "반도체 주가 브리핑", "slug": "2026-07-06-07-00-6a636954", "url": "reports/2026-07-06-07-00-6a636954.html", "excerpt": "아시아 장 전 · 미국·유럽 전일 종가", "sort_ts": 1783288805}, {"date": "2026-07-05", "title": "レディースシェーバーおすすめリスト 2026", "slug": "2026-07-05-2026-f611b939", "url": "reports/2026-07-05-2026-f611b939.html", "excerpt": "OpenClaw Research · 2026-07-05", "sort_ts": 1783242254}, {"date": "2026-07-05", "title": "電気シェーバーおすすめリスト 2026", "slug": "2026-07-05-2026-96d77678", "url": "reports/2026-07-05-2026-96d77678.html", "excerpt": "OpenClaw Research · 2026-07-05", "sort_ts": 1783242088}, {"date": "2026-07-05", "title": "ベビー用品セール＆ おでかけスポット", "slug": "2026-07-05-12-00-d601ac8f", "url": "reports/2026-07-05-12-00-d601ac8f.html", "excerpt": "本日、取得できたセール・特価情報はありませんでした。", "sort_ts": 1783220417}, {"date": "2026-07-05", "title": "赤ちゃんのミルク作り おすすめケトル・電気ポット", "slug": "2026-07-05-2026-b27043f9", "url": "reports/2026-07-05-2026-b27043f9.html", "excerpt": "OpenClaw Research · 2026-07-05", "sort_ts": 1783217264}, {"date": "2026-07-05", "title": "満1歳から預けられる施設（奥戸近く10選）", "slug": "2026-07-05-1-10-2026-b2f5421e", "url": "reports/2026-07-05-1-10-2026-b2f5421e.html", "excerpt": "OpenClaw Research · 2026-07-05 · 葛飾区奥戸エリア", "sort_ts": 1783216872}, {"date": "2026-07-05", "title": "分割なしでスマホを安く買う方法（日本）", "slug": "2026-07-05-2026-fe5dfaef", "url": "reports/2026-07-05-2026-fe5dfaef.html", "excerpt": "OpenClaw Research · 2026-07-05 · 日本向けガイド", "sort_ts": 1783214218}, {"date": "2026-07-05", "title": "반도체 주가 브리핑", "slug": "2026-07-05-07-00-6a636954", "url": "reports/2026-07-05-07-00-6a636954.html", "excerpt": "아시아 장 전 · 미국·유럽 전일 종가", "sort_ts": 1783202410}, {"date": "2026-07-04", "title": "샌디스크 (SanDisk)", "slug": "2026-07-04-sndk-19-47-2e0c98e8", "url": "reports/2026-07-04-sndk-19-47-2e0c98e8.html", "excerpt": "SNDK · NASDAQ · Yahoo Finance", "sort_ts": 1783162094}, {"date": "2026-07-04", "title": "샌디스크 (SanDisk)", "slug": "2026-07-04-sndk-19-07-1962f874", "url": "reports/2026-07-04-sndk-19-07-1962f874.html", "excerpt": "SNDK · NASDAQ · Yahoo Finance", "sort_ts": 1783159643}, {"date": "2026-07-04", "title": "반도체 주가 브리핑", "slug": "2026-07-04-19-00-c025c641", "url": "reports/2026-07-04-19-00-c025c641.html", "excerpt": "아시아 마감 · 미국·유럽 장중·마감 반영", "sort_ts": 1783159210}, {"date": "2026-07-04", "title": "박력분 파전 레시피 베이킹파우더", "slug": "2026-07-04-report-135214d2", "url": "reports/2026-07-04-report-135214d2.html", "excerpt": "OpenClaw Research · 2026-07-04", "sort_ts": 1783157052}, {"date": "2026-07-04", "title": "みん評 口コミサイト まとめ 2026", "slug": "2026-07-04-2026-a0ac63a1", "url": "reports/2026-07-04-2026-a0ac63a1.html", "excerpt": "OpenClaw Research · 2026-07-04", "sort_ts": 1783153867}, {"date": "2026-07-04", "title": "東京 ベビーベッド レンタル おすすめ 2026", "slug": "2026-07-04-2026-87321a73", "url": "reports/2026-07-04-2026-87321a73.html", "excerpt": "OpenClaw Research · 2026-07-04", "sort_ts": 1783145916}, {"date": "2026-07-04", "title": "✈️ 東京発 格安航空券デイリー", "slug": "2026-07-04-14-41-e78e66dc", "url": "reports/2026-07-04-14-41-e78e66dc.html", "excerpt": "羽田（HND）・成田（NRT）発 — セール/特価の比較（参考）", "sort_ts": 1783143677}, {"date": "2026-07-04", "title": "마이크론 (Micron Technology)", "slug": "2026-07-04-mu-14-22-d3b43856", "url": "reports/2026-07-04-mu-14-22-d3b43856.html", "excerpt": "MU · NASDAQ · Yahoo Finance", "sort_ts": 1783142553}, {"date": "2026-07-04", "title": "마이크론 (Micron Technology)", "slug": "2026-07-04-mu-14-15-c07c9877", "url": "reports/2026-07-04-mu-14-15-c07c9877.html", "excerpt": "MU · NASDAQ · Yahoo Finance", "sort_ts": 1783142175}, {"date": "2026-07-04", "title": "마이크론 (Micron Technology)", "slug": "2026-07-04-mu-14-12-5f3d36cc", "url": "reports/2026-07-04-mu-14-12-5f3d36cc.html", "excerpt": "MU · NASDAQ · Yahoo Finance", "sort_ts": 1783141964}, {"date": "2026-07-04", "title": "🥞 밀가루 파전 만드는 법", "slug": "2026-07-04-report-86af4b63", "url": "reports/2026-07-04-report-86af4b63.html", "excerpt": "부침가루 없이 · 황금 반죽 비율 · 바삭하게 굽는 꿀팁", "sort_ts": 1783139448}, {"date": "2026-07-04", "title": "学資保険ガイド 2026", "slug": "2026-07-04-2026-38dccbea", "url": "reports/2026-07-04-2026-38dccbea.html", "excerpt": "選び方 · 返戻率 · おすすめ5社 · 新NISA併用 · タイプ別比較", "sort_ts": 1783138392}, {"date": "2026-07-04", "title": "生命保険ガイド 2026", "slug": "2026-07-04-2026-7be9fa9e", "url": "reports/2026-07-04-2026-7be9fa9e.html", "excerpt": "選び方 · 返戻率・予定利率 · 必要保障額 · おすすめ商品・会社比較", "sort_ts": 1783138389}, {"date": "2026-07-04", "title": "반도체 주가 브리핑", "slug": "2026-07-04-12-54-5d584270", "url": "reports/2026-07-04-12-54-5d584270.html", "excerpt": "한국·대만·일본 장중 · 미국 전일 종가", "sort_ts": 1783137277}, {"date": "2026-07-04", "title": "반도체 주가 브리핑", "slug": "2026-07-04-12-50-b1fb6553", "url": "reports/2026-07-04-12-50-b1fb6553.html", "excerpt": "한국 장중 / 미국 전일 종가 기준", "sort_ts": 1783137051}, {"date": "2026-07-04", "title": "ベビー用品セール＆ おでかけスポット", "slug": "2026-07-04-12-48-5570b32e", "url": "reports/2026-07-04-12-48-5570b32e.html", "excerpt": "時間を選ばずお買物。通販限定の商品やセール、フェアを実施！", "sort_ts": 1783136929}, {"date": "2026-07-04", "title": "🍼 ベビー用品セール & おでかけ", "slug": "2026-07-04-12-38-81d4b1c8", "url": "reports/2026-07-04-12-38-81d4b1c8.html", "excerpt": "時間を選ばずお買物。通販限定の商品やセール、フェアを実施！", "sort_ts": 1783136313}, {"date": "2026-07-04", "title": "반도체 주가 브리핑", "slug": "2026-07-04-12-37-1517ea01", "url": "reports/2026-07-04-12-37-1517ea01.html", "excerpt": "한국 장중 / 미국 전일 종가 기준", "sort_ts": 1783136263}, {"date": "2026-07-04", "title": "반도체 주가 브리핑", "slug": "2026-07-04-12-30-2714dc08", "url": "reports/2026-07-04-12-30-2714dc08.html", "excerpt": "한국 장중 / 미국 전일 종가 기준", "sort_ts": 1783135815}, {"date": "2026-07-04", "title": "반도체 주가 브리핑", "slug": "2026-07-04-12-23-bfe99cb3", "url": "reports/2026-07-04-12-23-bfe99cb3.html", "excerpt": "한국 장중 / 미국 전일 종가 기준", "sort_ts": 1783135393}, {"date": "2026-07-04", "title": "반도체 주가 브리핑 2026-07-04 12:20", "slug": "2026-07-04-2026-07-04-12-20-0900379a", "url": "reports/2026-07-04-2026-07-04-12-20-0900379a.html", "excerpt": "OpenClaw · 2026-07-04 12:20 JST", "sort_ts": 1783135229}, {"date": "2026-07-04", "title": "出産準備ガイド", "slug": "2026-07-04-report-0fb80cc6", "url": "reports/2026-07-04-report-0fb80cc6.html", "excerpt": "ベビーカー · ベビーベッド · 内祝い · 韓国ハーフの手続き · 婚姻届 · 奥戸・小岩の病院", "sort_ts": 1783132477}, {"date": "2026-07-04", "title": "OpenClaw Research 시작", "slug": "2026-07-04-openclaw-research-b97805cc", "url": "reports/2026-07-04-openclaw-research-b97805cc.html", "excerpt": "OpenClaw Research · 2026-07-04", "sort_ts": 1783129089}]</script>
   <script>
     (function () {
       var STORAGE_KEY = 'openclaw-research-ui-v1';
