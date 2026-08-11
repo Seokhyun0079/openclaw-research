@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>프로그래밍 뉴스 10선 (2026-08)</title>
+  <style>
+    :root { color-scheme: light dark; }
+    body {
+      font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+      line-height: 1.65;
+      max-width: 52rem;
+      margin: 2rem auto;
+      padding: 0 1.25rem;
+    }
+    .meta { color: #666; font-size: 0.9rem; margin-bottom: 2rem; }
+    @media (prefers-color-scheme: dark) { .meta { color: #999; } }
+    h1, h2, h3 { line-height: 1.25; }
+    pre, code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+    pre {
+      overflow-x: auto;
+      padding: 1rem;
+      border-radius: 8px;
+      background: #f4f4f4;
+    }
+    @media (prefers-color-scheme: dark) {
+      pre { background: #1e1e1e; }
+    }
+    table { border-collapse: collapse; width: 100%; margin: 1rem 0; }
+    th, td { border: 1px solid #ccc; padding: 0.5rem; text-align: left; }
+    a { color: #0969da; }
+    .back { margin-top: 3rem; font-size: 0.9rem; }
+    blockquote {
+      margin: 1rem 0;
+      padding: 0.5rem 1rem;
+      border-left: 4px solid #ccc;
+      color: #444;
+    }
+    @media (prefers-color-scheme: dark) {
+      blockquote { border-color: #555; color: #bbb; }
+    }
+  </style>
+</head>
+<body>
+  <p class="meta">OpenClaw Research · 2026-08-11</p>
+  <h1>프로그래밍 뉴스 10선 (2026-08)</h1>
+<h2>요약</h2>
+<p>2026년 8월 전후, 읽을 만한 프로그래밍·소프트웨어 엔지니어링 뉴스 10건을 한국어로 정리했다. 우선순위는 <strong>공급망 보안</strong> → <strong>API 종료 마감</strong> → <strong>실무 툴/거버넌스</strong> 순을 추천한다.</p>
+
+<h2>1. npm keyv / cacheable 웜 — 444개 패키지 침해</h2>
+<p>2026년 8월 4일경, <code>keyv</code>·<code>cacheable</code> 계열 유지자 GitHub 계정이 탈취되어 악성 npm 버전이 배포됐다. 설치 훅이 추가 런타임을 받아 자격증명(GitHub 토큰, AWS, Vault, SSH, CI 시크릿 등)을 훔치고, 탈취한 npm 토큰으로 다른 패키지까지 악성 버전을 퍼뜨리는 <strong>자기증식형 웜</strong>이었다. 영향 범위는 패키지명 약 444개, 중독 버전 2,000개대 이상으로 보도됐다.</p>
+<p>핵심은 CVE를 고치는 문제가 아니라 <strong>유지자 계정·발행 토큰</strong>이 뚫린 공급망 사고라는 점이다. 의존성에 캐시 관련 패키지가 있으면 lockfile·버전 고정·토큰 회전을 점검할 만하다.</p>
+<p>참고: <a href="https://safeguard.sh/resources/blog/keyv-cacheable-npm-worm-august-2026-blast-radius">safeguard.sh 분석</a></p>
+
+<h2>2. Rust <code>rust-lang/rust</code> LLM 기여 정책 채택</h2>
+<p>Rust 프로젝트의 메인 모노레포 <code>rust-lang/rust</code>에 LLM 사용 정책이 도입됐다(2026-08-05 Inside Rust). 요지: LLM으로 <strong>읽고·분석·학습</strong>하는 것은 허용하되, 생성한 코멘트·문서·진단을 그대로 공개 기여에 올리는 것은 금지에 가깝다. 공개하는 경우 고지가 필요하고, 소리 없이 LLM 산출물을 인간 것으로 위장하면 CoC 위반이다.</p>
+<p>실험적으로 LLM이 만든 코드 PR은 사전 합의·비치명 영역·충분한 테스트·리뷰·<code>ai-assisted</code> 라벨 등 조건이 있다. 정책 범위는 이 모노레포(비준한 팀)에 한정된다. AI 시대 오픈소스 거버넌스 참고 사례로 읽기 좋다.</p>
+<p>참고: <a href="https://blog.rust-lang.org/inside-rust/2026/08/05/rust-langrust-is-adopting-an-llm-policy/">Inside Rust 블로그</a> · <a href="https://forge.rust-lang.org/policies/llm-usage.html">Forge 정책 전문</a></p>
+
+<h2>3. GitHub Code Quality 정식 출시 (GA)</h2>
+<p>GitHub Code Quality가 Enterprise Cloud / Team에서 정식 제공된다(2026-07-20). CodeQL의 결정적 분석에 AI 기반 유지보수성·신뢰성 탐지를 더하고, Copilot Autofix로 PR에서 수정안을 제안한다. 조직 대시보드, 커버리지 메트릭, ruleset 품질 게이트, API가 포함된다.</p>
+<p>GitHub 내부에서는 발견의 약 67.3%가 머지 전에 해결됐다고 밝혔다. AI로 코드량만 늘리는 팀에 <strong>품질 통제층</strong>을 파는 제품으로 보이며, Advanced Security와는 별도 유료 제품이다.</p>
+<p>참고: <a href="https://github.blog/changelog/2026-07-20-github-code-quality-is-now-generally-available/">GitHub Changelog</a> · <a href="https://www.infoq.com/news/2026/08/github-code-quality/">InfoQ 해설</a></p>
+
+<h2>4. GitHub Copilot에 Kimi K3 GA</h2>
+<p>Moonshot의 오픈웨이트 모델 Kimi K3가 Copilot 모델 피커에 정식 추가됐다(2026-08-06). Fireworks AI 호스팅, 사용량 과금은 대략 입력 $3 / 캐시 입력 $0.30 / 출력 $15 (백만 토큰당). Pro~Enterprise에 롤아웃 중이며, Business·Enterprise는 <strong>기본 꺼짐</strong> — 관리자가 정책을 켜야 한다. 당일 Actions 이슈로 롤아웃이 잠시 멈췄다가 재개된 바 있다.</p>
+<p>모델 선택·비용 대비 품질을 실험해 볼 타이밍이다.</p>
+<p>참고: <a href="https://github.blog/changelog/2026-08-06-kimi-k3-is-now-available-in-github-copilot/">GitHub Changelog</a></p>
+
+<h2>5. Copilot MCP allowlist (엔터프라이즈 거버넌스)</h2>
+<p>같은 주 GitHub는 엔터프라이즈 Copilot에 MCP 서버 <strong>허용/거부 목록</strong>을 넣었다. <code>copilot/managed-settings.json</code>의 <code>allowedMcpServers</code> / <code>deniedMcpServers</code>로 코딩 에이전트가 붙일 수 있는 MCP를 파일 단위로 통제한다. Kimi K3처럼 새 모델이 전 표면에 퍼질 때, “에이전트가 어디까지 닿을 수 있나”를 관리자 설정으로 막는 장치다.</p>
+<p>참고: <a href="https://www.digitalapplied.com/blog/github-mcp-allowlists-copilot-roi-agent-governance">Digital Applied 정리</a></p>
+
+<h2>6. OpenAI Assistants API 종료 — 2026-08-26</h2>
+<p><code>/v1/assistants</code>, <code>/v1/threads</code>, runs 등 Assistants 계열 엔드포인트가 2026년 8월 26일 이후 오류로 죽는다. 유예·자동 마이그레이션 없음. Responses API(기본적으로 무상태)와 Conversations API(선택적 지속성)로 옮겨야 하며, 기존 스레드 히스토리는 직접 내보내야 한다.</p>
+<p>코드에 <code>openai.beta.assistants</code>가 있으면 감사·병행 테스트부터 당장 하는 편이 안전하다.</p>
+<p>참고: <a href="https://byteiota.com/openai-assistants-api-shutdown-august-2026/">byteiota 마이그레이션 가이드 요약</a></p>
+
+<h2>7. Meta Muse Code — 첫 AI 코딩 에이전트 베타</h2>
+<p>Meta가 Muse Spark 1.2 기반 <strong>Muse Code</strong> 베타를 공개했다. 다음 줄 완성이 아니라 대형 저장소 계획·작성·검증, 여러 지속 서브에이전트 병렬 조율까지를 목표로 한다. 장기 실행 작업(전체 레포 생성, E2E 프로젝트, 커널 프로파일링 루프 등)에 맞춘 학습을 강조한다. 종량제 토큰 과금(표준 티어 예: 입력 $1.25 / 출력 $4.25 per 1M).</p>
+<p>코딩 에이전트 시장이 이미 혼잡해서, 차별점은 “큰 일을 끝까지 안정적으로 하느냐”에 달렸다는 평가가 많다.</p>
+<p>참고: <a href="https://reframed.co/meta-muse-code-ai-coding-agent/">Reframed</a></p>
+
+<h2>8. CACM — 「코더의 끝?」</h2>
+<p>Communications of the ACM 기사는 Anthropic 등 랩의 “E2E 소프트웨어 엔지니어링 AI가 가깝다”는 발언과 Codex·멀티에이전트 워크플로 확산을 배경으로, 직업이 사라지기보다 <strong>구현자 → 요구·설계·리스크·감사·에이전트 지휘</strong>로 기운다고 정리한다. 특히 주니어가 손으로 쌓던 기초 연습이 줄어들 위험, 채용 기준의 변화를 다룬다.</p>
+<p>툴 뉴스보다 역할·교육 관점의 긴 호흡 글로 읽기 좋다.</p>
+<p>참고: <a href="https://cacm.acm.org/news/the-end-of-the-coder/">CACM</a></p>
+
+<h2>9. JDK 26 정식 출시</h2>
+<p>JDK 26은 2026년 3월 17일 GA. 단기 릴리스로 JEP 10개 — 대표적으로 HTTP Client의 HTTP/3(JEP 517), G1 동기화 줄여 처리량 개선(JEP 522), GC 무관 AOT 오브젝트 캐시(JEP 516), Applet API 제거, Structured Concurrency / Lazy Constants / 패턴의 원시 타입 등 프리뷰·인큐베이터 지속이다.</p>
+<p>Java 백엔드·컨테이너 환경이면 로컬/CI에 올려 두고 27 LTS 전에 감 익히기 좋은 버전이다.</p>
+<p>참고: <a href="https://openjdk.org/projects/jdk/26/">OpenJDK JDK 26</a> · <a href="https://blogs.oracle.com/java/the-arrival-of-java-26">Oracle Java 블로그</a></p>
+
+<h2>10. AI 코드 리뷰·품질 게이트의 제품화 (InfoQ 맥락)</h2>
+<p>InfoQ는 GitHub Code Quality GA와 함께 GitLab Duo Code Review(정액 에이전트 리뷰), Atlassian Rovo Dev Code Reviewer(내부 PR 사이클 단축 사례) 등 <strong>“생성량이 늘면 리뷰도 제품이 된다”</strong>는 흐름을 묶어 보여 준다. 보안(CodeQL) 위에 유지보수성·커버리지·인라인 피드백이 붙는 그림이다.</p>
+<p>도구를 고르기 전에 “우리 팀의 병목이 생성인가 리뷰인가”를 먼저 나누는 데 유용하다.</p>
+<p>참고: <a href="https://www.infoq.com/news/2026/08/github-code-quality/">InfoQ</a></p>
+
+<h2>읽는 순서 제안</h2>
+<ol>
+  <li>보안 실무: 1번 npm 웜</li>
+  <li>당장 마감: 6번 Assistants API</li>
+  <li>일상 툴: 3·4·5번 GitHub/Copilot</li>
+  <li>언어·생태계: 2번 Rust, 9번 JDK 26</li>
+  <li>큰 그림: 7·8·10번</li>
+</ol>
+
+<p><em>작성: 2026-08-11 · 출처는 각 절 링크. 요약·번역은 OpenClaw 워크스페이스에서 정리.</em></p>
+  <p class="back"><a href="../index.html">← 목록으로</a></p>
+</body>
+</html>
