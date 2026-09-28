@@ -1,0 +1,1088 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>반도체 주가 브리핑 19:00</title>
+  <style>
+    :root {
+      --bg: #0f1419;
+      --surface: #1a2332;
+      --surface-2: #243044;
+      --border: #2d3a4f;
+      --text: #e8edf4;
+      --muted: #8b9cb3;
+      --accent: #3b82f6;
+      --accent-glow: rgba(59, 130, 246, 0.15);
+      --up: #f87171;
+      --up-bg: rgba(248, 113, 113, 0.12);
+      --down: #60a5fa;
+      --down-bg: rgba(96, 165, 250, 0.12);
+      --flat: #94a3b8;
+      --chip-up: #ef4444;
+      --chip-down: #3b82f6;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: "Pretendard", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg);
+      background-image:
+        radial-gradient(ellipse 80% 50% at 50% -20%, rgba(59,130,246,0.18), transparent),
+        radial-gradient(ellipse 60% 40% at 100% 0%, rgba(139,92,246,0.08), transparent);
+      color: var(--text);
+      line-height: 1.5;
+      min-height: 100vh;
+      padding: 1.25rem;
+    }
+    .wrap { max-width: 720px; margin: 0 auto; }
+    header {
+      background: linear-gradient(135deg, var(--surface) 0%, var(--surface-2) 100%);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1.5rem 1.25rem;
+      margin-bottom: 1rem;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.35);
+    }
+    .badge {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: var(--accent-glow);
+      border: 1px solid rgba(59,130,246,0.35);
+      padding: 0.25rem 0.6rem;
+      border-radius: 999px;
+      margin-bottom: 0.75rem;
+    }
+    header h1 {
+      font-size: clamp(1.35rem, 4vw, 1.65rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.35rem;
+    }
+    .datetime {
+      font-size: 2rem;
+      font-weight: 800;
+      font-variant-numeric: tabular-nums;
+      letter-spacing: -0.03em;
+      color: #fff;
+      line-height: 1.1;
+    }
+    .datetime span { font-size: 1rem; font-weight: 500; color: var(--muted); margin-left: 0.35rem; }
+    .session {
+      margin-top: 0.75rem;
+      font-size: 0.88rem;
+      color: var(--muted);
+      padding: 0.5rem 0.75rem;
+      background: rgba(0,0,0,0.2);
+      border-radius: 8px;
+      border-left: 3px solid var(--accent);
+    }
+    .summary-bar {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 0.65rem;
+      margin-bottom: 1rem;
+    }
+    .chip.wide { grid-column: span 1; }
+    .chip-dual {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 0.15rem;
+    }
+    .chip-metric {
+      font-size: 1.15rem;
+      font-weight: 800;
+      font-variant-numeric: tabular-nums;
+      color: #fff;
+    }
+    .chip-metric em {
+      font-style: normal;
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--muted);
+      margin-right: 0.35rem;
+    }
+    .chip-metric.up { color: var(--chip-up); }
+    .chip-metric.down { color: var(--chip-down); }
+    .chip {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 0.85rem 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+    .chip.up { border-color: rgba(239,68,68,0.4); background: var(--up-bg); }
+    .chip.down { border-color: rgba(59,130,246,0.4); background: var(--down-bg); }
+    .chip-label { font-size: 0.78rem; color: var(--muted); font-weight: 500; }
+    .chip-value { font-size: 1.35rem; font-weight: 800; font-variant-numeric: tabular-nums; }
+    .chip.up .chip-value { color: var(--chip-up); }
+    .chip.down .chip-value { color: var(--chip-down); }
+    .chip.neutral .chip-value { color: var(--flat); }
+    section {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1.25rem;
+      margin-bottom: 1rem;
+    }
+    section > h2 {
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+    .region-head {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--muted);
+      margin: 1rem 0 0.65rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    .region-head:first-child { margin-top: 0; }
+    .flag { font-size: 1rem; }
+    .stock-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 0.65rem;
+      margin-bottom: 0.5rem;
+    }
+    .stock-card {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1rem;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+    .stock-card.up { border-left: 3px solid var(--up); }
+    .stock-card.down { border-left: 3px solid var(--down); }
+    .stock-card.flat { border-left: 3px solid var(--flat); }
+    .card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+    .stock-name { font-size: 0.95rem; font-weight: 700; color: #fff; }
+    .symbol {
+      font-size: 0.72rem;
+      color: var(--muted);
+      font-family: ui-monospace, monospace;
+      margin-top: 0.15rem;
+      display: block;
+    }
+    .pct-badge {
+      font-size: 0.82rem;
+      font-weight: 800;
+      font-variant-numeric: tabular-nums;
+      padding: 0.2rem 0.45rem;
+      border-radius: 6px;
+      white-space: nowrap;
+    }
+    .pct-badge.up { color: var(--up); background: var(--up-bg); }
+    .pct-badge.down { color: var(--down); background: var(--down-bg); }
+    .pct-badge.flat { color: var(--flat); background: rgba(148,163,184,0.12); }
+    .badges-col {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 0.15rem;
+    }
+    .badge-tag {
+      font-size: 0.62rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: var(--muted);
+      text-transform: uppercase;
+    }
+    .week-chart-wrap {
+      margin: 0.65rem 0 0.5rem;
+      padding: 0.55rem 0.5rem 0.35rem;
+      background: rgba(0,0,0,0.22);
+      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,0.04);
+    }
+    .week-chart-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.35rem;
+      padding: 0 0.15rem;
+    }
+    .week-label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--muted);
+      letter-spacing: 0.03em;
+    }
+    .week-pct {
+      font-size: 0.82rem;
+      font-weight: 800;
+      font-variant-numeric: tabular-nums;
+    }
+    .week-pct.up { color: var(--up); }
+    .week-pct.down { color: var(--down); }
+    .week-pct.flat { color: var(--flat); }
+    .week-chart {
+      display: block;
+      width: 100%;
+      height: 72px;
+    }
+    .chart-dates {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.68rem;
+      color: var(--muted);
+      margin-top: 0.25rem;
+      padding: 0 0.15rem;
+      font-variant-numeric: tabular-nums;
+    }
+    .chart-empty {
+      font-size: 0.78rem;
+      color: var(--muted);
+      text-align: center;
+      padding: 1rem 0;
+    }
+    .price {
+      font-size: 1.5rem;
+      font-weight: 800;
+      font-variant-numeric: tabular-nums;
+      color: #fff;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.5rem;
+    }
+    .price .unit { font-size: 0.85rem; font-weight: 600; color: var(--muted); margin-left: 0.1rem; }
+    .bar-track {
+      height: 4px;
+      background: rgba(255,255,255,0.06);
+      border-radius: 999px;
+      overflow: hidden;
+      margin-bottom: 0.45rem;
+    }
+    .bar-fill { height: 100%; border-radius: 999px; }
+    .bar-fill.up { background: linear-gradient(90deg, var(--up), #fca5a5); }
+    .bar-fill.down { background: linear-gradient(90deg, var(--down), #93c5fd); }
+    .bar-fill.flat { background: var(--flat); }
+    .change-detail { font-size: 0.75rem; color: var(--muted); }
+    .news-group { margin-bottom: 1rem; }
+    .news-group:last-child { margin-bottom: 0; }
+    .news-group h3 {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--muted);
+      margin-bottom: 0.5rem;
+    }
+    .news-card {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      padding: 0.75rem 0.9rem;
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      margin-bottom: 0.45rem;
+      text-decoration: none;
+      color: var(--text);
+      transition: border-color 0.15s, background 0.15s;
+    }
+    .news-card:hover {
+      border-color: var(--accent);
+      background: rgba(59,130,246,0.08);
+    }
+    .news-title { font-size: 0.88rem; line-height: 1.45; flex: 1; }
+    .news-link { color: var(--accent); font-size: 1rem; flex-shrink: 0; }
+    .empty { color: var(--muted); font-size: 0.9rem; }
+    footer {
+      text-align: center;
+      font-size: 0.78rem;
+      color: var(--muted);
+      padding: 1rem 0 0.5rem;
+      line-height: 1.6;
+    }
+    footer strong { color: #94a3b8; }
+    @media (max-width: 480px) {
+      .summary-bar { grid-template-columns: 1fr; }
+      .stock-grid { grid-template-columns: 1fr; }
+      .price { font-size: 1.35rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="badge">OpenClaw · Semiconductor</div>
+      <h1>반도체 주가 브리핑</h1>
+      <div class="datetime">09/28 <span>19:00 JST</span></div>
+      <p class="session">아시아 마감 · 미국·유럽 장중·마감 반영</p>
+    </header>
+
+    <div class="summary-bar"><div class="chip down wide"><span class="chip-label">🇰🇷 한국</span><div class="chip-dual"><span class="chip-metric"><em>오늘</em> -5.24%</span><span class="chip-metric up"><em>1주</em> +3.51%</span></div></div><div class="chip up wide"><span class="chip-label">🇹🇼 대만</span><div class="chip-dual"><span class="chip-metric"><em>오늘</em> +0.38%</span><span class="chip-metric up"><em>1주</em> +2.04%</span></div></div><div class="chip up wide"><span class="chip-label">🇺🇸 미국</span><div class="chip-dual"><span class="chip-metric"><em>오늘</em> +1.75%</span><span class="chip-metric up"><em>1주</em> +10.47%</span></div></div><div class="chip up wide"><span class="chip-label">🇪🇺 유럽</span><div class="chip-dual"><span class="chip-metric"><em>오늘</em> +1.24%</span><span class="chip-metric up"><em>1주</em> +7.01%</span></div></div><div class="chip down wide"><span class="chip-label">🇯🇵 일본</span><div class="chip-dual"><span class="chip-metric"><em>오늘</em> -0.57%</span><span class="chip-metric up"><em>1주</em> +11.52%</span></div></div></div>
+
+    <section aria-labelledby="stocks-heading">
+      <h2 id="stocks-heading">종목 시세 (23개)</h2>
+      <div class="region-head"><span class="flag">🇰🇷</span>한국</div><div class="stock-grid"><article class="stock-card down">
+  <div class="card-top">
+    <div>
+      <h3 class="stock-name">삼성전자</h3>
+      <span class="symbol">005930.KS</span>
+    </div>
+    <div class="badges-col">
+      <span class="pct-badge down" title="전일 대비">-5.43%</span>
+      <span class="badge-tag">오늘</span>
+    </div>
+  </div>
+  <p class="price">270,000<span class="unit">원</span></p>
+  <div class="week-chart-wrap">
+  <div class="week-chart-head">
+    <span class="week-label">1주 추이</span>
+    <span class="week-pct up">+6.51%</span>
+  </div>
+  <svg class="week-chart" viewBox="0 0 280 72" preserveAspectRatio="none" role="img" aria-label="1주 주가 추이">
+  <defs>
+    <linearGradient id="g005930KS" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f87171" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#f87171" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <path d="M4.0,62 L4.0,60.4 L49.3,62.0 L94.7,48.6 L140.0,28.1 L185.3,24.2 L230.7,10.0 L276.0,34.4 L276.0,62 Z" fill="url(#g005930KS)"/>
+  <polyline points="4.0,60.4 49.3,62.0 94.7,48.6 140.0,28.1 185.3,24.2 230.7,10.0 276.0,34.4" fill="none" stroke="#f87171" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="4.0" cy="60.4" r="2" fill="#f87171" fill-opacity="0.55"/><circle cx="49.3" cy="62.0" r="2" fill="#f87171" fill-opacity="0.55"/><circle cx="94.7" cy="48.6" r="2" fill="#f87171" fill-opacity="0.55"/><circle cx="140.0" cy="28.1" r="2" fill="#f87171" fill-opacity="0.55"/><circle cx="185.3" cy="24.2" r="2" fill="#f87171" fill-opacity="0.55"/><circle cx="230.7" cy="10.0" r="2" fill="#f87171" fill-opacity="0.55"/><circle cx="276.0" cy="34.4" r="3.5" fill="#f87171" fill-opacity="1"/>
+</svg>
+  <div class="chart-dates"><span>09/16</span><span>09/28</span></div>
+</div>
+  <div class="bar-track"><div class="bar-fill down" style="width:43.4%"></div></div>
+  <p class="change-detail">오늘 ▼ -5.43% (-15,500)</p>
+</article><article class="stock-card down">
+  <div class="card-top">
+    <div>
+      <h3 class="stock-name">SK하이닉스</h3>
+      <span class="symbol">000660.KS</span>
+    </div>
+    <div class="badges-col">
+      <span class="pct-badge down" title="전일 대비">-5.05%</span>
+      <span class="badge-tag">오늘</span>
+    </div>
+  </div>
+  <p class="price">1,768,000<span class="unit">원</span></p>
+  <div class="week-chart-wrap">
+  <div class="week-chart-head">
+    <span class="week-label">1주 추이</span>
+    <span class="week-pct up">+0.51%</span>
+  </div>
+  <svg class="week-chart" viewBox="0 0 280 72" preserveAspectRatio="none" role="img" aria-label="1주 주가 추이">
+  <defs>
+    <linearGradient id="g000660KS" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f87171" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#f87171" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <path d="M4.0,62 L4.0,56.1 L49.3,62.0 L94.7,14.7 L140.0,10.0 L185.3,21.8 L230.7,12.5 L276.0,52.3 L276.0,62 Z" fill="url(#g000660KS)"/>
+  <polyline points="4.0,56.1 49.3,62.0 94.7,14.7 140.0,10.0 185.3,21.8 230.7,12.5 276.0,52.3" fill="none" stroke="#f87171" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="4.0" cy="56.1" r="2" fill="#f87171" fill-opacity="0.55"/><circle cx="49.3" cy="62.0" r="2" fill="#f87171" fill-opacity="0.55"/><circle cx="94.7" cy="14.7" r="2" fill="#f87171" fill-opacity="0.55"/><circle cx="140.0" cy="10.0" r="2" fill="#f87171" fill-opacity="0.55"/><circle cx="185.3" cy="21.8" r="2" fill="#f87171" fill-opacity="0.55"/><circle cx="230.7" cy="12.5" r="2" fill="#f87171" fill-opacity="0.55"/><circle cx="276.0" cy="52.3" r="3.5" fill="#f87171" fill-opacity="1"/>
+</svg>
+  <div class="chart-dates"><span>09/16</span><span>09/28</span></div>
+</div>
+  <div class="bar-track"><div class="bar-fill down" style="width:40.4%"></div></div>
+  <p class="change-detail">오늘 ▼ -5.05% (-94,000)</p>
+</article></div>
+<div class="region-head"><span class="flag">🇹🇼</span>대만</div><div class="stock-grid"><article class="stock-card down">
+  <div class="card-top">
+    <div>
+      <h3 class="stock-name">TSMC</h3>
+      <span class="symbol">TSM</span>
+    </div>
+    <div class="badges-col">
+      <span class="pct-badge down" title="전일 대비">-0.12%</span>
+      <span class="badge-tag">오늘</span>
+    </div>
+  </div>
+  <p class="price"><span class="unit">$</span>450.61</p>
+  <div class="week-chart-wrap">
+  <div class="week-chart-head">
+    <span class="week-label">1주 추이</span>
+    <span class="week-pct up">+4.73%</span>
+  </div>
+  <svg class="week-chart" viewBox="0 0 280 72" preserveAspectRatio="none" role="img" aria-label="1주 주가 추이">
+  <defs>
+    <linearGradient id="gTSM" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f87171" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#f87171" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <path d="M4.0,62 L4.0,62.0 L49.3,51.5 L94.7,26.4 L140.0,10.0 L185.3,23.0 L230.7,12.0 L276.0,13.3 L276.0,62 Z" fill="url(#gTSM)"/>
+  <polyline points="4.0,62.0 49.3,51.5 94.7,26.4 140.0,10.0 185.3,23.0 230.7,12.0 276.0,13.3" fill="none" stroke="#f87171" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="4.0" cy="62.0" r="2" fill="#f87171" fill-opacity="0.55"/><circle cx="49.3" cy="51.5" r="2" fill="#f87171" fill-opacity="0.55"/><circle cx="94.7" cy="26.4" r="2" fill="#f87171" fill-opacity="0.55"/><circle cx="140.0" cy="10.0" r="2" fill="#f87171" fill-opacity="0.55"/><circle cx="185.3" cy="23.0" r="2" fill="#f87171" fill-opacity="0.55"/><circle cx="230.7" cy="12.0" r="2" fill="#f87171" fill-opacity="0.55"/><circle cx="276.0" cy="13.3" r="3.5" fill="#f87171" fill-opacity="1"/>
+</svg>
+  <div class="chart-dates"><span>09/17</span><span>09/25</span></div>
+</div>
+  <div class="bar-track"><div class="bar-fill down" style="width:1.0%"></div></div>
+  <p class="change-detail">오늘 ▼ -0.12% (-0.54)</p>
+</article><article class="stock-card up">
+  <div class="card-top">
+    <div>
+      <h3 class="stock-name">UMC</h3>
+      <span class="symbol">UMC</span>
+    </div>
+    <div class="badges-col">
+      <span class="pct-badge up" title="전일 대비">+0.87%</span>
+      <span class="badge-tag">오늘</span>
+    </div>
+  </div>
+  <p class="price"><span class="unit">$</span>24.31</p>
+  <div class="week-chart-wrap">
+  <div class="week-chart-head">
+    <span class="week-label">1주 추이</span>
+    <span class="week-pct down">-0.65%</span>
+  </div>
+  <svg class="week-chart" viewBox="0 0 280 72" preserveAspectRatio="none" role="img" aria-label="1주 주가 추이">
+  <defs>
+    <linearGradient id="gUMC" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#60a5fa" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#60a5fa" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <path d="M4.0,62 L4.0,50.5 L49.3,46.1 L94.7,20.6 L140.0,10.0 L185.3,43.9 L230.7,62.0 L276.0,55.5 L276.0,62 Z" fill="url(#gUMC)"/>
+  <polyline points="4.0,50.5 49.3,46.1 94.7,20.6 140.0,10.0 185.3,43.9 230.7,62.0 276.0,55.5" fill="none" stroke="#60a5fa" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="4.0" cy="50.5" r="2" fill="#60a5fa" fill-opacity="0.55"/><circle cx="49.3" cy="46.1" r="2" fill="#60a5fa" fill-opacity="0.55"/><circle cx="94.7" cy="20.6" r="2" fill="#60a5fa" fill-opacity="0.55"/><circle cx="140.0" cy="10.0" r="2" fill="#60a5fa" fill-opacity="0.55"/><circle cx="185.3" cy="43.9" r="2" fill="#60a5fa" fill-opacity="0.55"/><circle cx="230.7" cy="62.0" r="2" fill="#60a5fa" fill-opacity="0.55"/><circle cx="276.0" cy="55.5" r="3.5" fill="#60a5fa" fill-opacity="1"/>
+</svg>
+  <div class="chart-dates"><span>09/17</span><span>09/25</span></div>
+</div>
+  <div class="bar-track"><div class="bar-fill up" style="width:7.0%"></div></div>
+  <p class="change-detail">오늘 ▲ +0.87% (+0.21)</p>
+</article></div>
+<div class="region-head"><span class="flag">🇺🇸</span>미국</div><div class="stock-grid"><article class="stock-card up">
+  <div class="card-top">
+    <div>
+      <h3 class="stock-name">엔비디아</h3>
+      <span class="symbol">NVDA</span>
+    </div>
+    <div class="badges-col">
+      <span class="pct-badge up" title="전일 대비">+0.22%</span>
+      <span class="badge-tag">오늘</span>
+    </div>
+  </div>
+  <p class="price"><span class="unit">$</span>225.07</p>
+  <div class="week-chart-wrap">
+  <div class="week-chart-head">
+    <span class="week-label">1주 추이</span>
+    <span class="week-pct up">+2.61%</span>
+  </div>
+  <svg class="week-chart" viewBox="0 0 280 72" preserveAspectRatio="none" role="img" aria-label="1주 주가 추이">
+  <defs>
+    <linearGradient id="gNVDA" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f87171" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#f87171" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <path d="M4.0,62 L4.0,62.0 L49.3,46.0 L94.7,18.1 L140.0,10.0 L185.3,28.3 L230.7,33.4 L276.0,30.7 L276.0,62 Z" fill="url(#gNVDA)"/>
+  <polyline points="4.0,62.0 49.3,46.0 94.7,18.1 140.0,10.0 185.3,28.3 230.7,33.4 276.0,30.7" fill="none" stroke="#f87171" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="4.0" cy="62.0" r="2" fill="#f87171" fill-opacity="0.55"/><circle cx="49.3" cy="46.0" r="2" fill="#f87171" fill-opacity="0.55"/><circle cx="94.7" cy="18.1" r="2" fill="#f87171" fill-opacity="0.55"/><circle cx="140.0" cy="10.0" r="2" fill="#f87171" fill-opacity="0.55"/><circle cx="185.3" cy="28.3" r="2" fill="#f87171" fill-opacity="0.55"/><circle cx="230.7" cy="33.4" r="2" fill="#f87171" fill-opacity="0.55"/><circle cx="276.0" cy="30.7" r="3.5" fill="#f87171" fill-opacity="1"/>
+</svg>
+  <div class="chart-dates"><span>09/17</span><span>09/25</span></div>
+</div>
+  <div class="bar-track"><div class="bar-fill up" style="width:1.7%"></div></div>
+  <p class="change-detail">오늘 ▲ +0.22% (+0.49)</p>
+</article><article class="stock-card up">
+  <div class="card-top">
+    <div>
+      <h3 class="stock-name">AMD</h3>
+      <span class="symbol">AMD</span>
+    </div>
+    <div class="badges-col">
+      <span class="pct-badge up" title="전일 대비">+0.22%</span>
+      <span class="badge-tag">오늘</span>
+    </div>
+  </div>
+  <p class="price"><span class="unit">$</span>630.63</p>
+  <div class="week-chart-wrap">
+  <div class="week-chart-head">
+    <span class="week-label">1주 추이</span>
+    <span class="week-pct up">+15.69%</span>
+  </div>
+  <svg class="week-chart" viewBox="0 0 280 72" preserveAspectRatio="none" role="img" aria-label="1주 주가 추이">
+  <defs>
+    <linearGradient id="gAMD" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f87171" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#f87171" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <path d="M4.0,62 L4.0,62.0 L49.3,53.0 L94.7,19.2 L140.0,14.2 L185.3,19.7 L230.7,10.8 L276.0,10.0 L276.0,62 Z" fill="url(#gAMD)"/>
+  <polyline points="4.0,62.0 49.3,53.0 94.7,19.2 140.0,14.2 185.3,19.7 230.7,10.8 276.0,10.0" fill="none" stroke="#f87171" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="4.0" cy="62.0" r="2" fill="#f87171" fill-opacity="0.55"/><circle cx="49.3" cy="53.0" r="2" fill="#f87171" fill-opacity="0.55"/><circle cx="94.7" cy="19.2" r="2" fill="#f87171" fill-opacity="0.55"/><circle cx="140.0" cy="14.2" r="2" fill="#f87171" fill-opacity="0.55"/><circle cx="185.3" cy="19.7" r="2" fill="#f87171" fill-opacity="0.55"/><circle cx="230.7" cy="10.8" r="2" fill="#f87171" fill-opacity="0.55"/><circle cx="276.0" cy="10.0" r="3.5" fill="#f87171" fill-opacity="1"/>
+</svg>
+  <div class="chart-dates"><span>09/17</span><span>09/25</span></div>
+</div>
+  <div class="bar-track"><div class="bar-fill up" style="width:1.7%"></div></div>
+  <p class="change-detail">오늘 ▲ +0.22% (+1.37)</p>
+</article><article class="stock-card down">
+  <div class="card-top">
+    <div>
+      <h3 class="stock-name">인텔</h3>
+      <span class="symbol">INTC</span>
+    </div>
+    <div class="badges-col">
+      <span class="pct-badge down" title="전일 대비">-3.45%</span>
+      <span class="badge-tag">오늘</span>
+    </div>
+  </div>
+  <p class="price"><span class="unit">$</span>123.00</p>
+  <div class="week-chart-wrap">
+  <div class="week-chart-head">
+    <span class="week-label">1주 추이</span>
+    <span class="week-pct up">+13.05%</span>
+  </div>
+  <svg class="week-chart" viewBox="0 0 280 72" preserveAspectRatio="none" role="img" aria-label="1주 주가 추이">
+  <defs>
+    <linearGradient id="gINTC" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f87171" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#f87171" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <path d="M4.0,62 L4.0,61.4 L49.3,62.0 L94.7,25.5 L140.0,19.8 L185.3,23.3 L230.7,10.0 L276.0,22.1 L276.0,62 Z" fill="url(#gINTC)"/>
+  <polyline points="4.0,61.4 49.3,62.0 94.7,25.5 140.0,19.8 185.3,23.3 230.7,10.0 276.0,22.1" fill="none" stroke="#f87171" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="4.0" cy="61.4" r="2" fill="#f87171" fill-opacity="0.55"/><circle cx="49.3" cy="62.0" r="2" fill="#f87171" fill-opacity="0.55"/><circle cx="94.7" cy="25.5" r="2" fill="#f87171" fill-opacity="0.55"/><circle cx="140.0" cy="19.8" r="2" fill="#f87171" fill-opacity="0.55"/><circle cx="185.3" cy="23.3" r="2" fill="#f87171" fill-opacity="0.55"/><circle cx="230.7" cy="10.0" r="2" fill="#f87171" fill-opacity="0.55"/><circle cx="276.0" cy="22.1" r="3.5" fill="#f87171" fill-opacity="1"/>
+</svg>
+  <div class="chart-dates"><span>09/17</span><span>09/25</span></div>
+</div>
+  <div class="bar-track"><div class="bar-fill down" style="width:27.6%"></div></div>
+  <p class="change-detail">오늘 ▼ -3.45% (-4.39)</p>
+</article><article class="stock-card up">
+  <div class="card-top">
+    <div>
+      <h3 class="stock-name">퀄컴</h3>
+      <span class="symbol">QCOM</span>
+    </div>
+    <div class="badges-col">
+      <span class="pct-badge up" title="전일 대비">+3.97%</span>
+      <span class="badge-tag">오늘</span>
+    </div>
+  </div>
+  <p class="price"><span class="unit">$</span>201.97</p>
+  <div class="week-chart-wrap">
+  <div class="week-chart-head">
+    <span class="week-label">1주 추이</span>
+    <span class="week-pct up">+7.03%</span>
+  </div>
+  <svg class="week-chart" viewBox="0 0 280 72" preserveAspectRatio="none" role="img" aria-label="1주 주가 추이">
+  <defs>
+    <linearGradient id="gQCOM" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f87171" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#f87171" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <path d="M4.0,62 L4.0,38.4 L49.3,62.0 L94.7,26.6 L140.0,17.9 L185.3,20.1 L230.7,26.5 L276.0,10.0 L276.0,62 Z" fill="url(#gQCOM)"/>
+  <polyline points="4.0,38.4 49.3,62.0 94.7,26.6 140.0,17.9 185.3,20.1 230.7,26.5 276.0,10.0" fill="none" stroke="#f87171" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="4.0" cy="38.4" r="2" fill="#f87171" fill-opacity="0.55"/><circle cx="49.3" cy="62.0" r="2" fill="#f87171" fill-opacity="0.55"/><circle cx="94.7" cy="26.6" r="2" fill="#f87171" fill-opacity="0.55"/><circle cx="140.0" cy="17.9" r="2" fill="#f87171" fill-opacity="0.55"/><circle cx="185.3" cy="20.1" r="2" fill="#f87171" fill-opacity="0.55"/><circle cx="230.7" cy="26.5" r="2" fill="#f87171" fill-opacity="0.55"/><circle cx="276.0" cy="10.0" r="3.5" fill="#f87171" fill-opacity="1"/>
+</svg>
+  <div class="chart-dates"><span>09/17</span><span>09/25</span></div>
+</div>
+  <div class="bar-track"><div class="bar-fill up" style="width:31.8%"></div></div>
+  <p class="change-detail">오늘 ▲ +3.97% (+7.71)</p>
+</article><article class="stock-card up">
+  <div class="card-top">
+    <div>
+      <h3 class="stock-name">브로드컴</h3>
+      <span class="symbol">AVGO</span>
+    </div>
+    <div class="badges-col">
+      <span class="pct-badge up" title="전일 대비">+0.70%</span>
+      <span class="badge-tag">오늘</span>
+    </div>
+  </div>
+  <p class="price"><span class="unit">$</span>352.81</p>
+  <div class="week-chart-wrap">
+  <div class="week-chart-head">
+    <span class="week-label">1주 추이</span>
+    <span class="week-pct up">+1.59%</span>
+  </div>
+  <svg class="week-chart" viewBox="0 0 280 72" preserveAspectRatio="none" role="img" aria-label="1주 주가 추이">
+  <defs>
+    <linearGradient id="gAVGO" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f87171" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#f87171" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <path d="M4.0,62 L4.0,62.0 L49.3,30.9 L94.7,15.7 L140.0,10.0 L185.3,38.8 L230.7,52.8 L276.0,45.4 L276.0,62 Z" fill="url(#gAVGO)"/>
+  <polyline points="4.0,62.0 49.3,30.9 94.7,15.7 140.0,10.0 185.3,38.8 230.7,52.8 276.0,45.4" fill="none" stroke="#f87171" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="4.0" cy="62.0" r="2" fill="#f87171" fill-opacity="0.55"/><circle cx="49.3" cy="30.9" r="2" fill="#f87171" fill-opacity="0.55"/><circle cx="94.7" cy="15.7" r="2" fill="#f87171" fill-opacity="0.55"/><circle cx="140.0" cy="10.0" r="2" fill="#f87171" fill-opacity="0.55"/><circle cx="185.3" cy="38.8" r="2" fill="#f87171" fill-opacity="0.55"/><circle cx="230.7" cy="52.8" r="2" fill="#f87171" fill-opacity="0.55"/><circle cx="276.0" cy="45.4" r="3.5" fill="#f87171" fill-opacity="1"/>
+</svg>
+  <div class="chart-dates"><span>09/17</span><span>09/25</span></div>
+</div>
+  <div class="bar-track"><div class="bar-fill up" style="width:5.6%"></div></div>
+  <p class="change-detail">오늘 ▲ +0.70% (+2.45)</p>
+</article><article class="stock-card up">
+  <div class="card-top">
+    <div>
+      <h3 class="stock-name">마이크론</h3>
+      <span class="symbol">MU</span>
+    </div>
+    <div class="badges-col">
+      <span class="pct-badge up" title="전일 대비">+0.16%</span>
+      <span class="badge-tag">오늘</span>
+    </div>
+  </div>
+  <p class="price"><span class="unit">$</span>1,082.28</p>
+  <div class="week-chart-wrap">
+  <div class="week-chart-head">
+    <span class="week-label">1주 추이</span>
+    <span class="week-pct up">+10.72%</span>
+  </div>
+  <svg class="week-chart" viewBox="0 0 280 72" preserveAspectRatio="none" role="img" aria-label="1주 주가 추이">
+  <defs>
+    <linearGradient id="gMU" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f87171" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#f87171" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <path d="M4.0,62 L4.0,62.0 L49.3,45.2 L94.7,32.9 L140.0,10.0 L185.3,20.6 L230.7,16.8 L276.0,16.1 L276.0,62 Z" fill="url(#gMU)"/>
+  <polyline points="4.0,62.0 49.3,45.2 94.7,32.9 140.0,10.0 185.3,20.6 230.7,16.8 276.0,16.1" fill="none" stroke="#f87171" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="4.0" cy="62.0" r="2" fill="#f87171" fill-opacity="0.55"/><circle cx="49.3" cy="45.2" r="2" fill="#f87171" fill-opacity="0.55"/><circle cx="94.7" cy="32.9" r="2" fill="#f87171" fill-opacity="0.55"/><circle cx="140.0" cy="10.0" r="2" fill="#f87171" fill-opacity="0.55"/><circle cx="185.3" cy="20.6" r="2" fill="#f87171" fill-opacity="0.55"/><circle cx="230.7" cy="16.8" r="2" fill="#f87171" fill-opacity="0.55"/><circle cx="276.0" cy="16.1" r="3.5" fill="#f87171" fill-opacity="1"/>
+</svg>
+  <div class="chart-dates"><span>09/17</span><span>09/25</span></div>
+</div>
+  <div class="bar-track"><div class="bar-fill up" style="width:1.3%"></div></div>
+  <p class="change-detail">오늘 ▲ +0.16% (+1.75)</p>
+</article><article class="stock-card up">
+  <div class="card-top">
+    <div>
+      <h3 class="stock-name">샌디스크</h3>
+      <span class="symbol">SNDK</span>
+    </div>
+    <div class="badges-col">
+      <span class="pct-badge up" title="전일 대비">+1.38%</span>
+      <span class="badge-tag">오늘</span>
+    </div>
+  </div>
+  <p class="price"><span class="unit">$</span>1,777.80</p>
+  <div class="week-chart-wrap">
+  <div class="week-chart-head">
+    <span class="week-label">1주 추이</span>
+    <span class="week-pct up">+10.12%</span>
+  </div>
+  <svg class="week-chart" viewBox="0 0 280 72" preserveAspectRatio="none" role="img" aria-label="1주 주가 추이">
+  <defs>
+    <linearGradient id="gSNDK" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f87171" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#f87171" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <path d="M4.0,62 L4.0,62.0 L49.3,28.2 L94.7,33.0 L140.0,10.0 L185.3,23.4 L230.7,35.4 L276.0,30.8 L276.0,62 Z" fill="url(#gSNDK)"/>
+  <polyline points="4.0,62.0 49.3,28.2 94.7,33.0 140.0,10.0 185.3,23.4 230.7,35.4 276.0,30.8" fill="none" stroke="#f87171" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="4.0" cy="62.0" r="2" fill="#f87171" fill-opacity="0.55"/><circle cx="49.3" cy="28.2" r="2" fill="#f87171" fill-opacity="0.55"/><circle cx="94.7" cy="33.0" r="2" fill="#f87171" fill-opacity="0.55"/><circle cx="140.0" cy="10.0" r="2" fill="#f87171" fill-opacity="0.55"/><circle cx="185.3" cy="23.4" r="2" fill="#f87171" fill-opacity="0.55"/><circle cx="230.7" cy="35.4" r="2" fill="#f87171" fill-opacity="0.55"/><circle cx="276.0" cy="30.8" r="3.5" fill="#f87171" fill-opacity="1"/>
+</svg>
+  <div class="chart-dates"><span>09/17</span><span>09/25</span></div>
+</div>
+  <div class="bar-track"><div class="bar-fill up" style="width:11.0%"></div></div>
+  <p class="change-detail">오늘 ▲ +1.38% (+24.18)</p>
+</article><article class="stock-card up">
+  <div class="card-top">
+    <div>
+      <h3 class="stock-name">TI</h3>
+      <span class="symbol">TXN</span>
+    </div>
+    <div class="badges-col">
+      <span class="pct-badge up" title="전일 대비">+2.74%</span>
+      <span class="badge-tag">오늘</span>
+    </div>
+  </div>
+  <p class="price"><span class="unit">$</span>278.07</p>
+  <div class="week-chart-wrap">
+  <div class="week-chart-head">
+    <span class="week-label">1주 추이</span>
+    <span class="week-pct up">+7.72%</span>
+  </div>
+  <svg class="week-chart" viewBox="0 0 280 72" preserveAspectRatio="none" role="img" aria-label="1주 주가 추이">
+  <defs>
+    <linearGradient id="gTXN" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f87171" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#f87171" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <path d="M4.0,62 L4.0,62.0 L49.3,39.8 L94.7,28.8 L140.0,27.4 L185.3,24.2 L230.7,29.4 L276.0,10.0 L276.0,62 Z" fill="url(#gTXN)"/>
+  <polyline points="4.0,62.0 49.3,39.8 94.7,28.8 140.0,27.4 185.3,24.2 230.7,29.4 276.0,10.0" fill="none" stroke="#f87171" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="4.0" cy="62.0" r="2" fill="#f87171" fill-opacity="0.55"/><circle cx="49.3" cy="39.8" r="2" fill="#f87171" fill-opacity="0.55"/><circle cx="94.7" cy="28.8" r="2" fill="#f87171" fill-opacity="0.55"/><circle cx="140.0" cy="27.4" r="2" fill="#f87171" fill-opacity="0.55"/><circle cx="185.3" cy="24.2" r="2" fill="#f87171" fill-opacity="0.55"/><circle cx="230.7" cy="29.4" r="2" fill="#f87171" fill-opacity="0.55"/><circle cx="276.0" cy="10.0" r="3.5" fill="#f87171" fill-opacity="1"/>
+</svg>
+  <div class="chart-dates"><span>09/17</span><span>09/25</span></div>
+</div>
+  <div class="bar-track"><div class="bar-fill up" style="width:21.9%"></div></div>
+  <p class="change-detail">오늘 ▲ +2.74% (+7.42)</p>
+</article><article class="stock-card up">
+  <div class="card-top">
+    <div>
+      <h3 class="stock-name">ARM</h3>
+      <span class="symbol">ARM</span>
+    </div>
+    <div class="badges-col">
+      <span class="pct-badge up" title="전일 대비">+1.30%</span>
+      <span class="badge-tag">오늘</span>
+    </div>
+  </div>
+  <p class="price"><span class="unit">$</span>310.32</p>
+  <div class="week-chart-wrap">
+  <div class="week-chart-head">
+    <span class="week-label">1주 추이</span>
+    <span class="week-pct up">+17.15%</span>
+  </div>
+  <svg class="week-chart" viewBox="0 0 280 72" preserveAspectRatio="none" role="img" aria-label="1주 주가 추이">
+  <defs>
+    <linearGradient id="gARM" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f87171" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#f87171" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <path d="M4.0,62 L4.0,62.0 L49.3,53.8 L94.7,17.8 L140.0,10.0 L185.3,10.5 L230.7,30.4 L276.0,27.4 L276.0,62 Z" fill="url(#gARM)"/>
+  <polyline points="4.0,62.0 49.3,53.8 94.7,17.8 140.0,10.0 185.3,10.5 230.7,30.4 276.0,27.4" fill="none" stroke="#f87171" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="4.0" cy="62.0" r="2" fill="#f87171" fill-opacity="0.55"/><circle cx="49.3" cy="53.8" r="2" fill="#f87171" fill-opacity="0.55"/><circle cx="94.7" cy="17.8" r="2" fill="#f87171" fill-opacity="0.55"/><circle cx="140.0" cy="10.0" r="2" fill="#f87171" fill-opacity="0.55"/><circle cx="185.3" cy="10.5" r="2" fill="#f87171" fill-opacity="0.55"/><circle cx="230.7" cy="30.4" r="2" fill="#f87171" fill-opacity="0.55"/><circle cx="276.0" cy="27.4" r="3.5" fill="#f87171" fill-opacity="1"/>
+</svg>
+  <div class="chart-dates"><span>09/17</span><span>09/25</span></div>
+</div>
+  <div class="bar-track"><div class="bar-fill up" style="width:10.4%"></div></div>
+  <p class="change-detail">오늘 ▲ +1.30% (+3.98)</p>
+</article><article class="stock-card up">
+  <div class="card-top">
+    <div>
+      <h3 class="stock-name">마벨</h3>
+      <span class="symbol">MRVL</span>
+    </div>
+    <div class="badges-col">
+      <span class="pct-badge up" title="전일 대비">+1.15%</span>
+      <span class="badge-tag">오늘</span>
+    </div>
+  </div>
+  <p class="price"><span class="unit">$</span>261.94</p>
+  <div class="week-chart-wrap">
+  <div class="week-chart-head">
+    <span class="week-label">1주 추이</span>
+    <span class="week-pct up">+8.80%</span>
+  </div>
+  <svg class="week-chart" viewBox="0 0 280 72" preserveAspectRatio="none" role="img" aria-label="1주 주가 추이">
+  <defs>
+    <linearGradient id="gMRVL" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f87171" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#f87171" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <path d="M4.0,62 L4.0,62.0 L49.3,53.6 L94.7,22.0 L140.0,10.0 L185.3,13.5 L230.7,18.2 L276.0,11.0 L276.0,62 Z" fill="url(#gMRVL)"/>
+  <polyline points="4.0,62.0 49.3,53.6 94.7,22.0 140.0,10.0 185.3,13.5 230.7,18.2 276.0,11.0" fill="none" stroke="#f87171" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="4.0" cy="62.0" r="2" fill="#f87171" fill-opacity="0.55"/><circle cx="49.3" cy="53.6" r="2" fill="#f87171" fill-opacity="0.55"/><circle cx="94.7" cy="22.0" r="2" fill="#f87171" fill-opacity="0.55"/><circle cx="140.0" cy="10.0" r="2" fill="#f87171" fill-opacity="0.55"/><circle cx="185.3" cy="13.5" r="2" fill="#f87171" fill-opacity="0.55"/><circle cx="230.7" cy="18.2" r="2" fill="#f87171" fill-opacity="0.55"/><circle cx="276.0" cy="11.0" r="3.5" fill="#f87171" fill-opacity="1"/>
+</svg>
+  <div class="chart-dates"><span>09/17</span><span>09/25</span></div>
+</div>
+  <div class="bar-track"><div class="bar-fill up" style="width:9.2%"></div></div>
+  <p class="change-detail">오늘 ▲ +1.15% (+2.98)</p>
+</article><article class="stock-card up">
+  <div class="card-top">
+    <div>
+      <h3 class="stock-name">온세미</h3>
+      <span class="symbol">ON</span>
+    </div>
+    <div class="badges-col">
+      <span class="pct-badge up" title="전일 대비">+5.54%</span>
+      <span class="badge-tag">오늘</span>
+    </div>
+  </div>
+  <p class="price"><span class="unit">$</span>77.20</p>
+  <div class="week-chart-wrap">
+  <div class="week-chart-head">
+    <span class="week-label">1주 추이</span>
+    <span class="week-pct up">+13.03%</span>
+  </div>
+  <svg class="week-chart" viewBox="0 0 280 72" preserveAspectRatio="none" role="img" aria-label="1주 주가 추이">
+  <defs>
+    <linearGradient id="gON" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f87171" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#f87171" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <path d="M4.0,62 L4.0,62.0 L49.3,52.2 L94.7,42.0 L140.0,31.0 L185.3,28.1 L230.7,33.7 L276.0,10.0 L276.0,62 Z" fill="url(#gON)"/>
+  <polyline points="4.0,62.0 49.3,52.2 94.7,42.0 140.0,31.0 185.3,28.1 230.7,33.7 276.0,10.0" fill="none" stroke="#f87171" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="4.0" cy="62.0" r="2" fill="#f87171" fill-opacity="0.55"/><circle cx="49.3" cy="52.2" r="2" fill="#f87171" fill-opacity="0.55"/><circle cx="94.7" cy="42.0" r="2" fill="#f87171" fill-opacity="0.55"/><circle cx="140.0" cy="31.0" r="2" fill="#f87171" fill-opacity="0.55"/><circle cx="185.3" cy="28.1" r="2" fill="#f87171" fill-opacity="0.55"/><circle cx="230.7" cy="33.7" r="2" fill="#f87171" fill-opacity="0.55"/><circle cx="276.0" cy="10.0" r="3.5" fill="#f87171" fill-opacity="1"/>
+</svg>
+  <div class="chart-dates"><span>09/17</span><span>09/25</span></div>
+</div>
+  <div class="bar-track"><div class="bar-fill up" style="width:44.3%"></div></div>
+  <p class="change-detail">오늘 ▲ +5.54% (+4.05)</p>
+</article><article class="stock-card up">
+  <div class="card-top">
+    <div>
+      <h3 class="stock-name">마이크로칩</h3>
+      <span class="symbol">MCHP</span>
+    </div>
+    <div class="badges-col">
+      <span class="pct-badge up" title="전일 대비">+5.36%</span>
+      <span class="badge-tag">오늘</span>
+    </div>
+  </div>
+  <p class="price"><span class="unit">$</span>78.69</p>
+  <div class="week-chart-wrap">
+  <div class="week-chart-head">
+    <span class="week-label">1주 추이</span>
+    <span class="week-pct up">+11.11%</span>
+  </div>
+  <svg class="week-chart" viewBox="0 0 280 72" preserveAspectRatio="none" role="img" aria-label="1주 주가 추이">
+  <defs>
+    <linearGradient id="gMCHP" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f87171" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#f87171" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <path d="M4.0,62 L4.0,62.0 L49.3,45.8 L94.7,35.8 L140.0,29.0 L185.3,30.9 L230.7,36.4 L276.0,10.0 L276.0,62 Z" fill="url(#gMCHP)"/>
+  <polyline points="4.0,62.0 49.3,45.8 94.7,35.8 140.0,29.0 185.3,30.9 230.7,36.4 276.0,10.0" fill="none" stroke="#f87171" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="4.0" cy="62.0" r="2" fill="#f87171" fill-opacity="0.55"/><circle cx="49.3" cy="45.8" r="2" fill="#f87171" fill-opacity="0.55"/><circle cx="94.7" cy="35.8" r="2" fill="#f87171" fill-opacity="0.55"/><circle cx="140.0" cy="29.0" r="2" fill="#f87171" fill-opacity="0.55"/><circle cx="185.3" cy="30.9" r="2" fill="#f87171" fill-opacity="0.55"/><circle cx="230.7" cy="36.4" r="2" fill="#f87171" fill-opacity="0.55"/><circle cx="276.0" cy="10.0" r="3.5" fill="#f87171" fill-opacity="1"/>
+</svg>
+  <div class="chart-dates"><span>09/17</span><span>09/25</span></div>
+</div>
+  <div class="bar-track"><div class="bar-fill up" style="width:42.8%"></div></div>
+  <p class="change-detail">오늘 ▲ +5.36% (+4.00)</p>
+</article><article class="stock-card up">
+  <div class="card-top">
+    <div>
+      <h3 class="stock-name">NXP</h3>
+      <span class="symbol">NXPI</span>
+    </div>
+    <div class="badges-col">
+      <span class="pct-badge up" title="전일 대비">+3.44%</span>
+      <span class="badge-tag">오늘</span>
+    </div>
+  </div>
+  <p class="price"><span class="unit">$</span>238.08</p>
+  <div class="week-chart-wrap">
+  <div class="week-chart-head">
+    <span class="week-label">1주 추이</span>
+    <span class="week-pct up">+4.44%</span>
+  </div>
+  <svg class="week-chart" viewBox="0 0 280 72" preserveAspectRatio="none" role="img" aria-label="1주 주가 추이">
+  <defs>
+    <linearGradient id="gNXPI" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f87171" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#f87171" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <path d="M4.0,62 L4.0,62.0 L49.3,61.8 L94.7,39.1 L140.0,12.6 L185.3,23.6 L230.7,50.7 L276.0,10.0 L276.0,62 Z" fill="url(#gNXPI)"/>
+  <polyline points="4.0,62.0 49.3,61.8 94.7,39.1 140.0,12.6 185.3,23.6 230.7,50.7 276.0,10.0" fill="none" stroke="#f87171" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="4.0" cy="62.0" r="2" fill="#f87171" fill-opacity="0.55"/><circle cx="49.3" cy="61.8" r="2" fill="#f87171" fill-opacity="0.55"/><circle cx="94.7" cy="39.1" r="2" fill="#f87171" fill-opacity="0.55"/><circle cx="140.0" cy="12.6" r="2" fill="#f87171" fill-opacity="0.55"/><circle cx="185.3" cy="23.6" r="2" fill="#f87171" fill-opacity="0.55"/><circle cx="230.7" cy="50.7" r="2" fill="#f87171" fill-opacity="0.55"/><circle cx="276.0" cy="10.0" r="3.5" fill="#f87171" fill-opacity="1"/>
+</svg>
+  <div class="chart-dates"><span>09/17</span><span>09/25</span></div>
+</div>
+  <div class="bar-track"><div class="bar-fill up" style="width:27.5%"></div></div>
+  <p class="change-detail">오늘 ▲ +3.44% (+7.92)</p>
+</article><article class="stock-card up">
+  <div class="card-top">
+    <div>
+      <h3 class="stock-name">Applied Materials</h3>
+      <span class="symbol">AMAT</span>
+    </div>
+    <div class="badges-col">
+      <span class="pct-badge up" title="전일 대비">+2.27%</span>
+      <span class="badge-tag">오늘</span>
+    </div>
+  </div>
+  <p class="price"><span class="unit">$</span>485.00</p>
+  <div class="week-chart-wrap">
+  <div class="week-chart-head">
+    <span class="week-label">1주 추이</span>
+    <span class="week-pct up">+16.20%</span>
+  </div>
+  <svg class="week-chart" viewBox="0 0 280 72" preserveAspectRatio="none" role="img" aria-label="1주 주가 추이">
+  <defs>
+    <linearGradient id="gAMAT" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f87171" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#f87171" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <path d="M4.0,62 L4.0,62.0 L49.3,41.1 L94.7,26.0 L140.0,19.6 L185.3,18.2 L230.7,18.3 L276.0,10.0 L276.0,62 Z" fill="url(#gAMAT)"/>
+  <polyline points="4.0,62.0 49.3,41.1 94.7,26.0 140.0,19.6 185.3,18.2 230.7,18.3 276.0,10.0" fill="none" stroke="#f87171" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="4.0" cy="62.0" r="2" fill="#f87171" fill-opacity="0.55"/><circle cx="49.3" cy="41.1" r="2" fill="#f87171" fill-opacity="0.55"/><circle cx="94.7" cy="26.0" r="2" fill="#f87171" fill-opacity="0.55"/><circle cx="140.0" cy="19.6" r="2" fill="#f87171" fill-opacity="0.55"/><circle cx="185.3" cy="18.2" r="2" fill="#f87171" fill-opacity="0.55"/><circle cx="230.7" cy="18.3" r="2" fill="#f87171" fill-opacity="0.55"/><circle cx="276.0" cy="10.0" r="3.5" fill="#f87171" fill-opacity="1"/>
+</svg>
+  <div class="chart-dates"><span>09/17</span><span>09/25</span></div>
+</div>
+  <div class="bar-track"><div class="bar-fill up" style="width:18.1%"></div></div>
+  <p class="change-detail">오늘 ▲ +2.27% (+10.75)</p>
+</article><article class="stock-card up">
+  <div class="card-top">
+    <div>
+      <h3 class="stock-name">램 리서치</h3>
+      <span class="symbol">LRCX</span>
+    </div>
+    <div class="badges-col">
+      <span class="pct-badge up" title="전일 대비">+2.62%</span>
+      <span class="badge-tag">오늘</span>
+    </div>
+  </div>
+  <p class="price"><span class="unit">$</span>315.21</p>
+  <div class="week-chart-wrap">
+  <div class="week-chart-head">
+    <span class="week-label">1주 추이</span>
+    <span class="week-pct up">+17.04%</span>
+  </div>
+  <svg class="week-chart" viewBox="0 0 280 72" preserveAspectRatio="none" role="img" aria-label="1주 주가 추이">
+  <defs>
+    <linearGradient id="gLRCX" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f87171" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#f87171" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <path d="M4.0,62 L4.0,62.0 L49.3,40.7 L94.7,24.6 L140.0,14.8 L185.3,19.0 L230.7,19.1 L276.0,10.0 L276.0,62 Z" fill="url(#gLRCX)"/>
+  <polyline points="4.0,62.0 49.3,40.7 94.7,24.6 140.0,14.8 185.3,19.0 230.7,19.1 276.0,10.0" fill="none" stroke="#f87171" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="4.0" cy="62.0" r="2" fill="#f87171" fill-opacity="0.55"/><circle cx="49.3" cy="40.7" r="2" fill="#f87171" fill-opacity="0.55"/><circle cx="94.7" cy="24.6" r="2" fill="#f87171" fill-opacity="0.55"/><circle cx="140.0" cy="14.8" r="2" fill="#f87171" fill-opacity="0.55"/><circle cx="185.3" cy="19.0" r="2" fill="#f87171" fill-opacity="0.55"/><circle cx="230.7" cy="19.1" r="2" fill="#f87171" fill-opacity="0.55"/><circle cx="276.0" cy="10.0" r="3.5" fill="#f87171" fill-opacity="1"/>
+</svg>
+  <div class="chart-dates"><span>09/17</span><span>09/25</span></div>
+</div>
+  <div class="bar-track"><div class="bar-fill up" style="width:21.0%"></div></div>
+  <p class="change-detail">오늘 ▲ +2.62% (+8.05)</p>
+</article><article class="stock-card up">
+  <div class="card-top">
+    <div>
+      <h3 class="stock-name">KLA</h3>
+      <span class="symbol">KLAC</span>
+    </div>
+    <div class="badges-col">
+      <span class="pct-badge up" title="전일 대비">+0.43%</span>
+      <span class="badge-tag">오늘</span>
+    </div>
+  </div>
+  <p class="price"><span class="unit">$</span>187.92</p>
+  <div class="week-chart-wrap">
+  <div class="week-chart-head">
+    <span class="week-label">1주 추이</span>
+    <span class="week-pct up">+11.21%</span>
+  </div>
+  <svg class="week-chart" viewBox="0 0 280 72" preserveAspectRatio="none" role="img" aria-label="1주 주가 추이">
+  <defs>
+    <linearGradient id="gKLAC" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f87171" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#f87171" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <path d="M4.0,62 L4.0,62.0 L49.3,40.5 L94.7,21.7 L140.0,10.0 L185.3,11.2 L230.7,13.3 L276.0,11.1 L276.0,62 Z" fill="url(#gKLAC)"/>
+  <polyline points="4.0,62.0 49.3,40.5 94.7,21.7 140.0,10.0 185.3,11.2 230.7,13.3 276.0,11.1" fill="none" stroke="#f87171" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="4.0" cy="62.0" r="2" fill="#f87171" fill-opacity="0.55"/><circle cx="49.3" cy="40.5" r="2" fill="#f87171" fill-opacity="0.55"/><circle cx="94.7" cy="21.7" r="2" fill="#f87171" fill-opacity="0.55"/><circle cx="140.0" cy="10.0" r="2" fill="#f87171" fill-opacity="0.55"/><circle cx="185.3" cy="11.2" r="2" fill="#f87171" fill-opacity="0.55"/><circle cx="230.7" cy="13.3" r="2" fill="#f87171" fill-opacity="0.55"/><circle cx="276.0" cy="11.1" r="3.5" fill="#f87171" fill-opacity="1"/>
+</svg>
+  <div class="chart-dates"><span>09/17</span><span>09/25</span></div>
+</div>
+  <div class="bar-track"><div class="bar-fill up" style="width:3.5%"></div></div>
+  <p class="change-detail">오늘 ▲ +0.43% (+0.81)</p>
+</article></div>
+<div class="region-head"><span class="flag">🇪🇺</span>유럽</div><div class="stock-grid"><article class="stock-card up">
+  <div class="card-top">
+    <div>
+      <h3 class="stock-name">ASML</h3>
+      <span class="symbol">ASML</span>
+    </div>
+    <div class="badges-col">
+      <span class="pct-badge up" title="전일 대비">+1.24%</span>
+      <span class="badge-tag">오늘</span>
+    </div>
+  </div>
+  <p class="price"><span class="unit">$</span>1,743.94</p>
+  <div class="week-chart-wrap">
+  <div class="week-chart-head">
+    <span class="week-label">1주 추이</span>
+    <span class="week-pct up">+7.01%</span>
+  </div>
+  <svg class="week-chart" viewBox="0 0 280 72" preserveAspectRatio="none" role="img" aria-label="1주 주가 추이">
+  <defs>
+    <linearGradient id="gASML" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f87171" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#f87171" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <path d="M4.0,62 L4.0,62.0 L49.3,39.9 L94.7,26.1 L140.0,10.0 L185.3,11.4 L230.7,21.2 L276.0,11.7 L276.0,62 Z" fill="url(#gASML)"/>
+  <polyline points="4.0,62.0 49.3,39.9 94.7,26.1 140.0,10.0 185.3,11.4 230.7,21.2 276.0,11.7" fill="none" stroke="#f87171" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="4.0" cy="62.0" r="2" fill="#f87171" fill-opacity="0.55"/><circle cx="49.3" cy="39.9" r="2" fill="#f87171" fill-opacity="0.55"/><circle cx="94.7" cy="26.1" r="2" fill="#f87171" fill-opacity="0.55"/><circle cx="140.0" cy="10.0" r="2" fill="#f87171" fill-opacity="0.55"/><circle cx="185.3" cy="11.4" r="2" fill="#f87171" fill-opacity="0.55"/><circle cx="230.7" cy="21.2" r="2" fill="#f87171" fill-opacity="0.55"/><circle cx="276.0" cy="11.7" r="3.5" fill="#f87171" fill-opacity="1"/>
+</svg>
+  <div class="chart-dates"><span>09/17</span><span>09/25</span></div>
+</div>
+  <div class="bar-track"><div class="bar-fill up" style="width:10.0%"></div></div>
+  <p class="change-detail">오늘 ▲ +1.24% (+21.44)</p>
+</article></div>
+<div class="region-head"><span class="flag">🇯🇵</span>일본</div><div class="stock-grid"><article class="stock-card down">
+  <div class="card-top">
+    <div>
+      <h3 class="stock-name">도쿄 일렉트론</h3>
+      <span class="symbol">8035.T</span>
+    </div>
+    <div class="badges-col">
+      <span class="pct-badge down" title="전일 대비">-0.35%</span>
+      <span class="badge-tag">오늘</span>
+    </div>
+  </div>
+  <p class="price">56,320<span class="unit">円</span></p>
+  <div class="week-chart-wrap">
+  <div class="week-chart-head">
+    <span class="week-label">1주 추이</span>
+    <span class="week-pct up">+11.19%</span>
+  </div>
+  <svg class="week-chart" viewBox="0 0 280 72" preserveAspectRatio="none" role="img" aria-label="1주 주가 추이">
+  <defs>
+    <linearGradient id="g8035T" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f87171" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#f87171" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <path d="M4.0,62 L4.0,62.0 L49.3,52.8 L94.7,59.2 L140.0,40.2 L185.3,33.0 L230.7,10.0 L276.0,11.8 L276.0,62 Z" fill="url(#g8035T)"/>
+  <polyline points="4.0,62.0 49.3,52.8 94.7,59.2 140.0,40.2 185.3,33.0 230.7,10.0 276.0,11.8" fill="none" stroke="#f87171" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="4.0" cy="62.0" r="2" fill="#f87171" fill-opacity="0.55"/><circle cx="49.3" cy="52.8" r="2" fill="#f87171" fill-opacity="0.55"/><circle cx="94.7" cy="59.2" r="2" fill="#f87171" fill-opacity="0.55"/><circle cx="140.0" cy="40.2" r="2" fill="#f87171" fill-opacity="0.55"/><circle cx="185.3" cy="33.0" r="2" fill="#f87171" fill-opacity="0.55"/><circle cx="230.7" cy="10.0" r="2" fill="#f87171" fill-opacity="0.55"/><circle cx="276.0" cy="11.8" r="3.5" fill="#f87171" fill-opacity="1"/>
+</svg>
+  <div class="chart-dates"><span>09/15</span><span>09/28</span></div>
+</div>
+  <div class="bar-track"><div class="bar-fill down" style="width:2.8%"></div></div>
+  <p class="change-detail">오늘 ▼ -0.35% (-200)</p>
+</article><article class="stock-card down">
+  <div class="card-top">
+    <div>
+      <h3 class="stock-name">어반테스트</h3>
+      <span class="symbol">6857.T</span>
+    </div>
+    <div class="badges-col">
+      <span class="pct-badge down" title="전일 대비">-0.79%</span>
+      <span class="badge-tag">오늘</span>
+    </div>
+  </div>
+  <p class="price">33,730<span class="unit">円</span></p>
+  <div class="week-chart-wrap">
+  <div class="week-chart-head">
+    <span class="week-label">1주 추이</span>
+    <span class="week-pct up">+11.84%</span>
+  </div>
+  <svg class="week-chart" viewBox="0 0 280 72" preserveAspectRatio="none" role="img" aria-label="1주 주가 추이">
+  <defs>
+    <linearGradient id="g6857T" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f87171" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#f87171" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <path d="M4.0,62 L4.0,62.0 L49.3,54.7 L94.7,60.9 L140.0,36.4 L185.3,22.7 L230.7,10.0 L276.0,13.7 L276.0,62 Z" fill="url(#g6857T)"/>
+  <polyline points="4.0,62.0 49.3,54.7 94.7,60.9 140.0,36.4 185.3,22.7 230.7,10.0 276.0,13.7" fill="none" stroke="#f87171" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="4.0" cy="62.0" r="2" fill="#f87171" fill-opacity="0.55"/><circle cx="49.3" cy="54.7" r="2" fill="#f87171" fill-opacity="0.55"/><circle cx="94.7" cy="60.9" r="2" fill="#f87171" fill-opacity="0.55"/><circle cx="140.0" cy="36.4" r="2" fill="#f87171" fill-opacity="0.55"/><circle cx="185.3" cy="22.7" r="2" fill="#f87171" fill-opacity="0.55"/><circle cx="230.7" cy="10.0" r="2" fill="#f87171" fill-opacity="0.55"/><circle cx="276.0" cy="13.7" r="3.5" fill="#f87171" fill-opacity="1"/>
+</svg>
+  <div class="chart-dates"><span>09/15</span><span>09/28</span></div>
+</div>
+  <div class="bar-track"><div class="bar-fill down" style="width:6.4%"></div></div>
+  <p class="change-detail">오늘 ▼ -0.79% (-270)</p>
+</article></div>
+    </section>
+
+    <section aria-labelledby="news-heading">
+      <h2 id="news-heading">관련 뉴스</h2>
+      <div class="news-group"><h3>🇰🇷 한국</h3><a class="news-card" href="https://news.google.com/rss/articles/CBMigAFBVV95cUxNMkc4Xy1DcnpkVm1Fb3c0Q05EUWViT2h1ZHlZWU9zMmFQMjRZSlVqSlZLTjBqVWNLT1o0cUFpSmxiaVUyMVRNRWxwVjFiQmIyY3duOUlRVWtOVl90S2RLQmZLeEYtV2VDY3czZEg5bWN2dEFqXy1IU29yNWZjVDUxRg?oc=5" target="_blank" rel="noopener"><span class="news-title">10년 새 47배 뛴 K반도체…주가 폭등 뒤 숨겨진 기술이 바꾼 몸값</span><span class="news-link">↗</span></a><a class="news-card" href="https://news.google.com/rss/articles/CBMiywFBVV95cUxNd3lrWTQ1bGxQUENCamY5d1I0Ykd1V3lmaTRpRHZwWHFkMzBUeXVfd3NSTFpfbGNodElqZjE0cHQyYkdwbnlzaWVjVUZleTNuYW1XWXlzU0VOdTVkLWs5MFBkZEdGQ3BRclR4VVhBa1ZvOTNQTEhIbjd3TmJWZTRPb2VzbUk4a2dTbVFtX1Y5QXFUaTJVSVFxelNlbWRvUWdxSjlRNXhfbUVMR2E0YWEtREp6OVNiV2UyeGlFcXRiTFVCa3dRQ2F4MlRJOA?oc=5" target="_blank" rel="noopener"><span class="news-title">업데이트 전후 규칙을 대조하는 카지노 무료 온라인 플레이 변경 사항</span><span class="news-link">↗</span></a></div><div class="news-group"><h3>🇹🇼 대만</h3><a class="news-card" href="https://news.google.com/rss/articles/CBMiowFBVV95cUxQNWxhQjdhdlp5NlVTREl0QUNSdUsyMGoyRnozS3FaUWI2TFRudlhic0FHUVgzWEdVZGFuVkhtc3pwSVhGS2hhc0lNcThJZ1psQVFwVU1mNlFXWnd1LWhNMlB2Q3FEU0hIQmJtZWl1QU5faHBRSUZ2aW4tNXc1Mmt5QTRzaWFmMDJwUmhBMUQtMHl5WmRDVnZQOExBWG9SZGNlaUdZ?oc=5" target="_blank" rel="noopener"><span class="news-title">台積電拋 STCO 大計：先進封裝要「一起解題」，不再各自為政</span><span class="news-link">↗</span></a><a class="news-card" href="https://news.google.com/rss/articles/CBMijgFBVV95cUxPWkoyNFNnYkMtUXEyaE9ac0ZlS0xSd3lMZG9fTkJOLVp2WmpLdTFOY0QwRmhyeThrcENLTURXZXBmM2F3aFFDbTcyZ2dBNDZrT2FreHFlejRNMld5XzF5R24tTVI5QzhQa1Y5dEgtNmtmb3IyMnA4d3pYSnZ4YW1OamJKRWQxZUFaTjB6MUFn?oc=5" target="_blank" rel="noopener"><span class="news-title">【21:42 即時新聞】Taiwan Semiconductor (TSM) 大漲逾5%／擴大美國先進封裝版圖＋AI 長線需求支撐股價</span><span class="news-link">↗</span></a></div><div class="news-group"><h3>🇺🇸 미국</h3><a class="news-card" href="https://news.google.com/rss/articles/CBMivAFBVV95cUxPdTdkd3lSRVVNUkVSdm1NcTNwWlVRbHcycHp2c2VPdExBU3ZaRzdQZ1k0RGxkU2Zqa25wcjZ1anVQT0xucWc5bmM2SGRuT1ZxTlZoem5hQm9IV3ZOSkZhb1JOaklRbEdIV292THBtcmRSRlZaNXJPYUZVQ1NGNVhQMWM5VHc4R2oxbl9WNGZYVUxIWjdRZE0xTTl2RjVHdGdqT25BUkRoNnJKNTdUTHFqWXhEemFsTUtJcGlBaQ?oc=5" target="_blank" rel="noopener"><span class="news-title">2 Undervalued Semiconductor Stocks to Watch While the Market Is Skeptical of AI Growth</span><span class="news-link">↗</span></a><a class="news-card" href="https://news.google.com/rss/articles/CBMi2wFBVV95cUxNS256MzRROHkwUHd0ay12cTB0Q0hhanBuazhOeDRwdkJ0X3hxbkRJc2hPR0RhclhDRFRpbEJ3Z1NFTFlDYS1DS1BIX0FTOGtNS18wbWVibXlNcGctOWlfTXpUc19lYUdGdk1TM0F5dDFSSlVyRWo2MlMxeFI0bVVIb0VOc3hRVG9qeXJIT1JYaUZXc0lYN0ZtMC1va0dWdkpRWnhXQ2tPSUJJOGNyRS1MdnM0MWtPdndCd0dlVy1kQ0NwMENtTExla25hLUpmVlpxYmFXaTdBb2hXNFXSAeABQVVfeXFMT1lFSWtmcmhyM0huQUJIQjdOQUo1ak1aNGFoTlBWUDF3Znl3dHg2QXFwd1A1V1lmZ3M1NHVyODF2cmJQWnc4dktocEs4cjNkNV9ZZjN6NXEtNE1maE0zcnpUbjYwUURReVRfOElmb0tDLXhWWFNVNGc4SFM0VEtOUUdQT3RmM0hIVFhxcUZRWlF1SlJTd2liMUJzeGRzRktVd0lWeVdtTUtndDFOSEdiZUxxLWZqT2E3Qnhxcl9RQ3d6elZrMFdzOWtvejVISkZqTnJydFk4eHVjZkdmV2xkR2o?oc=5" target="_blank" rel="noopener"><span class="news-title">Tower Semiconductor Stock In Focus After Index Addition And AI Optics Shipments</span><span class="news-link">↗</span></a></div><div class="news-group"><h3>🇪🇺 유럽</h3><a class="news-card" href="https://news.google.com/rss/articles/CBMi1wFBVV95cUxNVXNTOGdaT1dackdKN0RxQjZPek8yamd0RFdnU3BlMlBTSmFqWFBfUFYtbXp1blNTcWFGak4zTTRhQlZ4TU5MLVZZZjRuVFU0VDJFYVo4S0lmalVWVkZzbXhaTEpRZWhpcU1mRkJGSFh0Q2k5TG5JVEhhUHZFY2wzOFdQR0cwN0dPNFB1OGUxbWFaTG1kU1JMTkNka1FiX1NuQ013am1FbE9iVS0zOXdVcW91YzBqV05RMUpMdGhHSFg3ZDBwSkR0QmM2ZU1DUHVoNUkxZkstaw?oc=5" target="_blank" rel="noopener"><span class="news-title">ASML says it sold &#x27;absolutely nothing&#x27; in Europe in 2026 — lithography giant calls on EU to help create demand</span><span class="news-link">↗</span></a><a class="news-card" href="https://news.google.com/rss/articles/CBMitgFBVV95cUxNQTZrVTMtc1h4MjNLb0dYNGZoQzhxeU1uRnZPMDhyckpQUVdZNDdrSm5VNmlWWGxSQzdRanBIZWpnMXNQc1g5dDJ2bnZibW1OemZ5aWI2Mm1UeXFwallMTGdUUzJwNGRCNm5nV1I3cV96dGduTEVkRExrcXlVX1dEZHJ5TUphbnVwZzl1NEJmOE92ZHhhUmFtY2Rkd0pDVS1ucmM4ZV80ZDR4Rk1LcGpFQW5nVDAzdw?oc=5" target="_blank" rel="noopener"><span class="news-title">ASML Executive Says Europe’s Biggest Firm Has No Sales in Europe</span><span class="news-link">↗</span></a></div><div class="news-group"><h3>🇯🇵 일본</h3><a class="news-card" href="https://news.google.com/rss/articles/CBMiVEFVX3lxTE4zck56RnFoM3JMVEFzOTlfVk1sN1FmVHF2dEdBLXJFa2NmMFcxbjlCYWYtbzE3NlhpMWNidVFpMkM0TjFVUm9Vby1PNGdaM2hYbEZ4Tg?oc=5" target="_blank" rel="noopener"><span class="news-title">日経平均は6日ぶり反落、韓国株安受け半導体関連下落</span><span class="news-link">↗</span></a><a class="news-card" href="https://news.google.com/rss/articles/CBMiX0FVX3lxTFBMa0xHazc5S3dHaGswcHNhV25OMkd0WFNiblBFNFRLcS1GN3hKYWZ2QmtXZ3dEZzZzU0Jqekx6OEtrakIzVFo1dlloeEROaXNzQnZpUG42eTQzMzlDMnRr?oc=5" target="_blank" rel="noopener"><span class="news-title">長期金利上昇は「AI・半導体株以外」への投資を促すか 株式相場は底堅く推移すると考える理由 野村CIO・宮嵜浩</span><span class="news-link">↗</span></a></div>
+    </section>
+
+    <footer>
+      <strong>※ 참고용</strong> · Yahoo Finance 기준 · 투자 조언이 아닙니다<br>
+      2026-09-28 19:00 JST
+    </footer>
+  </div>
+</body>
+</html>
